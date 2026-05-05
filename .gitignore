@@ -1,0 +1,39 @@
+# === Secretos ===
+.env
+.env.*
+
+# === Obsidian UI local ===
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.obsidian/plugins/*/data.json
+
+# === Sistema ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Python ===
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# === Node ===
+node_modules/
+
+# === Logs ===
+*.log
+logs/
+
+# === Temporales y outputs ===
+tmp/
+outputs/
+credentials/
+
+# === Claude Code cache ===
+.claude/cache/
+
+# === Claude Code config local (específica de máquina) ===
+.claude/settings.local.json
+.claude/*.local.json
