@@ -37,3 +37,7 @@ credentials/
 # === Claude Code config local (específica de máquina) ===
 .claude/settings.local.json
 .claude/*.local.json
+
+# === Obsidian Git plugin artifacts ===
+.obsidian/plugins/obsidian-git/.git_credentials_input
+.obsidian/plugins/obsidian-git/*.tmp
