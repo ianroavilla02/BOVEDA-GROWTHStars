@@ -166,6 +166,9 @@ Entregar documento estructurado con:
 
 ---
 
+> **Nota de numeración:** Este agente es el Pipeline #12 (ROI), no #5.
+> El slot #5 está reservado para gs-cotizador (DT-002). Ver BOVEDA/02_AGENTES/Agente-5-Cotizacion/README.md
+
 **Referencias:**
 - Fuente original: `~/.claude/projects/c--Users-Ian-Villaveces/memory/agent_gs_roi.md` (a deprecar bajo D-006)
 - Decisión: D-006
