@@ -83,3 +83,63 @@ Estas son piezas que sé que necesitamos pero no he construido en este sprint:
 - Quieras revisar contratos antes de crear los workflows n8n.
 
 — G\*S-CTO
+
+---
+
+## Mapa del Repo G*S — Dónde encontrar qué
+
+### Archivos de identidad (raíz)
+
+| Archivo | Función | Audiencia |
+|---|---|---|
+| `CLAUDE.md` | Identidad CTO auto-cargada por Claude Code al arrancar en BOVEDA | Claude Code (auto) |
+| `GROWTHACKER-v1-1.md` | Playbook humano fundacional de Ian | Ian (humano) |
+| `README.md` | Punto de entrada al repo (este archivo) | Cualquier humano |
+
+### Sub-agentes invocables (`.claude/agents/`)
+
+Invocables con `/agent <slug>` desde Claude Code dentro de BOVEDA:
+
+| Slug | Panel | Función |
+|---|---|---|
+| `gs-cto` | Directivo | Consultas arquitectónicas (wrapper de CLAUDE.md) |
+| `gs-growth-hacker` | Directivo | Master context G*S (wrapper del skill) |
+| `gs-bibliotecario` | Maestro | Auditor de inventario de skills (wrapper del skill) |
+| `gs-auditor-redes` | Operativo | Pipeline #1 — Auditoría de redes sociales |
+| `gs-auditor-musical` | Operativo | Pipeline #2 — Auditoría musical |
+| `gs-sintesis-growth` | Operativo | Pipeline #3 — Síntesis growth |
+| `gs-estrategia-activaciones` | Operativo | Pipeline #4 — Strategy brief |
+| `gs-cotizador` | Operativo | Pipeline #5 — RESERVADO (DT-002) |
+| `gs-calendarizador` | Operativo | Pipeline #6 — Calendario operativo |
+| `gs-roi` | Operativo | Pipeline #12 — Cálculo ROI/ROAS |
+| `gs-canva` | Operativo (contenido) | Producción visual Canva |
+| `gs-memes-fans` | Operativo (contenido) | Shitposts y memes virales |
+| `gs-prod-vfx` | Operativo (contenido) | Producción VFX |
+
+### Carpetas numeradas
+
+Ver `03_PROTOCOLOS/decisions/D-008-organizacion-archivos.md` para
+mapa completo y función de cada nivel.
+
+### Decisiones arquitectónicas activas
+
+| ID | Decisión |
+|---|---|
+| D-001 | No adoptar orquestador dedicado (criterios para revisar) |
+| D-002 | Postgres como tabla de estado central |
+| D-003 | Supabase como BD operacional |
+| D-005 | Sub-agentes en proyecto (no globales) |
+| D-006 v2 | Arquitectura de 5 capas de agentes G*S |
+| D-008 | Organización de archivos en repo |
+
+Ver `03_PROTOCOLOS/decisions/` para detalles.
+
+### Cómo arrancar
+
+```bash
+cd "C:\Users\Ian Villaveces\Documents\BOVEDA - GROWTHStars"
+claude
+```
+
+Esto carga la identidad CTO automáticamente. Para invocar agentes
+específicos, usar `/agent <slug>` (ej: `/agent gs-auditor-redes`).
