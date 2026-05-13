@@ -41,3 +41,11 @@ credentials/
 # === Obsidian Git plugin artifacts ===
 .obsidian/plugins/obsidian-git/.git_credentials_input
 .obsidian/plugins/obsidian-git/*.tmp
+
+# === Obsidian artifacts ===
+# Archivos canvas sin título (creados accidentalmente)
+**/Sin título*.canvas
+**/Untitled*.canvas
+# Carpeta de papelera de Obsidian
+.trash/
+.obsidian/.trash/
