@@ -34,7 +34,7 @@ vault_write:
 
 engram_namespace: "gs-estrategia-activaciones/<client_slug>"
 
-handoff_to: gs-calendarizador
+handoff_to: gs-cotizador
 depends_on: [gs-sintesis-growth]
 
 created: 2026-05-12
@@ -454,9 +454,18 @@ Tu output completo es la base de operación de los agentes 5-11. La calidad de t
 
 ---
 
+## Pipeline downstream actualizado
+
+A partir de DT-009 (cerrada 2026-05-13), mi handoff_to apunta a gs-cotizador
+(Pipeline #5) en lugar de gs-calendarizador. El cotizador convierte el
+Strategy Brief en propuesta económica antes de pasar al calendarizador.
+
+Flujo actualizado:
+gs-estrategia-activaciones (yo) → gs-cotizador → gs-canva → ...
+
 ## Referencias
 
 - Fuente principal: `BOVEDA/02_AGENTES/Agente-4-Estrategia-Activaciones/Agente-4-Strategy-Brief-prompt-v3.md`
 - Fuente secundaria: `~/.claude/projects/C--Users-Ian-Villaveces/memory/agent_gs_estrategia_activaciones.md`
 - D-006 v2
-- DT-009: actualizar handoff_to cuando exista gs-cotizador
+- DT-009: cerrada 2026-05-13 (handoff_to actualizado a gs-cotizador)
