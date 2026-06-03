@@ -1,6 +1,7 @@
 # === Secretos ===
 .env
 .env.*
+!.env.example
 
 # === Obsidian UI local ===
 .obsidian/workspace.json
