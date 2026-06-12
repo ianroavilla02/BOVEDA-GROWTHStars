@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0D0A12">
+<title>ATARAXIA · POS Noche</title>
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiQVRBUkFYSUEgUE9TIiwic2hvcnRfbmFtZSI6IlBPUyIsInN0YXJ0X3VybCI6Ii4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMEQwQTEyIiwidGhlbWVfY29sb3IiOiIjMEQwQTEyIn0=">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body style="margin:0;background:#0D0A12;">
+<div id="root"></div>
+<script type="text/babel" data-type="module">
+const { useState, useEffect, useMemo } = React;
+
+/* ============ Helpers ============ */
+const fmt = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 });
+const cop = (n) => fmt.format(n || 0);
+const uid = () => Math.random().toString(36).slice(2, 9) + Date.now().toString(36);
+
+const CATS = ["Boletería", "Bebidas", "Otros"];
+const METHODS = [
+  { id: "efectivo", label: "Efectivo", color: "#4ADE80" },
+  { id: "nequi", label: "Nequi", color: "#FF2D8A" },
+  { id: "tarjeta", label: "Tarjeta", color: "#5EB3FF" },
+];
+const methodOf = (id) => METHODS.find((m) => m.id === id);
+
+const SEED = [
+  { id: uid(), name: "Entrada preventa", cat: "Boletería", cost: 0, price: 25000, stock: 100 },
+  { id: uid(), name: "Entrada taquilla", cat: "Boletería", cost: 0, price: 35000, stock: 100 },
+  { id: uid(), name: "Combo x3 entradas", cat: "Boletería", cost: 0, price: 60000, stock: 30 },
+  { id: uid(), name: "Entrada promo", cat: "Boletería", cost: 0, price: 15000, stock: 20 },
+];
+
+const STORAGE_KEY = "pos-noche-v1";
+
+const storage = {
+  get(key) {
+    try { const v = localStorage.getItem(key); return v ? { value: v } : null; } catch { return null; }
+  },
+  set(key, value) {
+    try { localStorage.setItem(key, value); } catch(e) { console.error("storage", e); }
+  }
+};
+
+/* ============ App ============ */
+function App() {
+  const [items, setItems] = useState(null);
+  const [sales, setSales] = useState([]);
+  const [tab, setTab] = useState("vender");
+  const [catFilter, setCatFilter] = useState("Todo");
+  const [saleItem, setSaleItem] = useState(null);
+  const [saleQty, setSaleQty] = useState(1);
+  const [editItem, setEditItem] = useState(null);
+  const [confirmReset, setConfirmReset] = useState(false);
+  const [toast, setToast] = useState(null);
+
+  useEffect(() => {
+    const r = storage.get(STORAGE_KEY);
+    if (r && r.value) {
+      try {
+        const d = JSON.parse(r.value);
+        setItems(d.items || []);
+        setSales(d.sales || []);
+        return;
+      } catch {}
+    }
+    setItems(SEED);
+    setSales([]);
+  }, []);
+
+  const persist = (nextItems, nextSales) => {
+    storage.set(STORAGE_KEY, JSON.stringify({ items: nextItems, sales: nextSales }));
+  };
+  const update = (nextItems, nextSales) => {
+    setItems(nextItems);
+    setSales(nextSales);
+    persist(nextItems, nextSales);
+  };
+
+  const flash = (msg) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 2200);
+  };
+
+  const recordSale = (method) => {
+    const it = items.find((i) => i.id === saleItem.id);
+    if (!it || it.stock < saleQty) return;
+    const sale = {
+      id: uid(), itemId: it.id, name: it.name, cat: it.cat,
+      qty: saleQty, price: it.price, cost: it.cost, method, ts: Date.now(),
+    };
+    const nextItems = items.map((i) => (i.id === it.id ? { ...i, stock: i.stock - saleQty } : i));
+    update(nextItems, [sale, ...sales]);
+    setSaleItem(null);
+    setSaleQty(1);
+    flash(`${saleQty} × ${it.name} · ${cop(it.price * saleQty)} · ${methodOf(method).label}`);
+  };
+
+  const undoSale = (sale) => {
+    const nextItems = items.map((i) => (i.id === sale.itemId ? { ...i, stock: i.stock + sale.qty } : i));
+    update(nextItems, sales.filter((s) => s.id !== sale.id));
+    flash("Venta deshecha, stock restaurado");
+  };
+
+  const saveItem = (data) => {
+    if (!data.name.trim()) return;
+    let nextItems;
+    if (data.id) {
+      nextItems = items.map((i) => (i.id === data.id ? { ...i, ...data } : i));
+    } else {
+      nextItems = [...items, { ...data, id: uid() }];
+    }
+    update(nextItems, sales);
+    setEditItem(null);
+  };
+
+  const deleteItem = (id) => {
+    update(items.filter((i) => i.id !== id), sales);
+    setEditItem(null);
+  };
+
+  const bumpStock = (id, delta) => {
+    const nextItems = items.map((i) => (i.id === id ? { ...i, stock: Math.max(0, i.stock + delta) } : i));
+    update(nextItems, sales);
+  };
+
+  const resetNight = (keepItems) => {
+    if (keepItems) update(items, []);
+    else update([], []);
+    setConfirmReset(false);
+    setTab("vender");
+    flash("Noche reiniciada");
+  };
+
+  const totals = useMemo(() => {
+    const t = { revenue: 0, costGoods: 0, byMethod: { efectivo: 0, nequi: 0, tarjeta: 0 }, units: 0 };
+    for (const s of sales) {
+      t.revenue += s.price * s.qty;
+      t.costGoods += s.cost * s.qty;
+      t.byMethod[s.method] += s.price * s.qty;
+      t.units += s.qty;
+    }
+    return t;
+  }, [sales]);
+
+  const perItem = useMemo(() => {
+    const map = {};
+    for (const s of sales) {
+      if (!map[s.itemId]) map[s.itemId] = { name: s.name, cat: s.cat, qty: 0, revenue: 0, cost: 0 };
+      map[s.itemId].qty += s.qty;
+      map[s.itemId].revenue += s.price * s.qty;
+      map[s.itemId].cost += s.cost * s.qty;
+    }
+    for (const i of items || []) {
+      if (!map[i.id]) map[i.id] = { name: i.name, cat: i.cat, qty: 0, revenue: 0, cost: 0 };
+      map[i.id].stock = i.stock;
+    }
+    return map;
+  }, [sales, items]);
+
+  if (items === null)
+    return (
+      <div className="app">
+        <style>{CSS}</style>
+        <div className="loading">Cargando la noche…</div>
+      </div>
+    );
+
+  const visible = catFilter === "Todo" ? items : items.filter((i) => i.cat === catFilter);
+
+  return (
+    <div className="app">
+      <style>{CSS}</style>
+
+      <header className="head">
+        <div>
+          <div className="brand">ATARAXIA</div>
+          <div className="date">{new Date().toLocaleDateString("es-CO", { weekday: "long", day: "numeric", month: "long" })}</div>
+        </div>
+        <div className="head-total">
+          <div className="ht-label">Vendido</div>
+          <div className="ht-num">{cop(totals.revenue)}</div>
+        </div>
+      </header>
+
+      {tab === "vender" && (
+        <main className="main">
+          <div className="chips">
+            {["Todo", ...CATS].map((c) => (
+              <button key={c} className={"chip" + (catFilter === c ? " on" : "")} onClick={() => setCatFilter(c)}>
+                {c}
+              </button>
+            ))}
+          </div>
+
+          {visible.length === 0 && (
+            <div className="empty">
+              No hay productos en esta categoría.
+              <button className="link" onClick={() => setTab("inventario")}>Agregar productos →</button>
+            </div>
+          )}
+
+          <div className="grid">
+            {visible.map((i) => {
+              const out = i.stock <= 0;
+              return (
+                <button key={i.id} className={"card" + (out ? " out" : "")} disabled={out}
+                  onClick={() => { setSaleItem(i); setSaleQty(1); }}>
+                  <div className="card-cat">{i.cat}</div>
+                  <div className="card-name">{i.name}</div>
+                  <div className="card-foot">
+                    <span className="card-price">{cop(i.price)}</span>
+                    <span className={"card-stock" + (i.stock <= 5 && !out ? " low" : "")}>
+                      {out ? "AGOTADO" : `${i.stock} und`}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {sales.length > 0 && (
+            <section className="recent">
+              <div className="sec-title">Últimas ventas</div>
+              {sales.slice(0, 6).map((s) => (
+                <div key={s.id} className="sale-row">
+                  <span className="dot" style={{ background: methodOf(s.method).color }} />
+                  <div className="sale-info">
+                    <div className="sale-name">{s.qty} × {s.name}</div>
+                    <div className="sale-meta">
+                      {methodOf(s.method).label} · {new Date(s.ts).toLocaleTimeString("es-CO", { hour: "2-digit", minute: "2-digit" })}
+                    </div>
+                  </div>
+                  <div className="sale-amt">{cop(s.price * s.qty)}</div>
+                  <button className="undo" onClick={() => undoSale(s)}>Deshacer</button>
+                </div>
+              ))}
+            </section>
+          )}
+        </main>
+      )}
+
+      {tab === "inventario" && (
+        <main className="main">
+          <button className="btn-primary" onClick={() => setEditItem({ name: "", cat: "Bebidas", cost: 0, price: 0, stock: 0 })}>
+            + Agregar producto
+          </button>
+
+          {CATS.map((cat) => {
+            const list = items.filter((i) => i.cat === cat);
+            if (!list.length) return null;
+            return (
+              <section key={cat}>
+                <div className="sec-title">{cat}</div>
+                {list.map((i) => (
+                  <div key={i.id} className="inv-row">
+                    <div className="inv-main" onClick={() => setEditItem(i)}>
+                      <div className="inv-name">{i.name}</div>
+                      <div className="inv-meta">
+                        Venta {cop(i.price)}{i.cost > 0 && <> · Costo {cop(i.cost)} · Margen {cop(i.price - i.cost)}</>}
+                      </div>
+                    </div>
+                    <div className="inv-stock">
+                      <button className="step" onClick={() => bumpStock(i.id, -1)}>−</button>
+                      <span className="stock-n">{i.stock}</span>
+                      <button className="step" onClick={() => bumpStock(i.id, 1)}>+</button>
+                    </div>
+                  </div>
+                ))}
+              </section>
+            );
+          })}
+        </main>
+      )}
+
+      {tab === "cierre" && (
+        <main className="main">
+          <div className="kpis">
+            <div className="kpi big">
+              <div className="kpi-label">Ingresos totales</div>
+              <div className="kpi-num">{cop(totals.revenue)}</div>
+            </div>
+            <div className="kpi">
+              <div className="kpi-label">Costo mercancía vendida</div>
+              <div className="kpi-num">{cop(totals.costGoods)}</div>
+            </div>
+            <div className="kpi accent">
+              <div className="kpi-label">Ganancia neta</div>
+              <div className="kpi-num">{cop(totals.revenue - totals.costGoods)}</div>
+            </div>
+            <div className="kpi">
+              <div className="kpi-label">Unidades vendidas</div>
+              <div className="kpi-num">{totals.units}</div>
+            </div>
+          </div>
+
+          <div className="sec-title">Por medio de pago</div>
+          <div className="methods">
+            {METHODS.map((m) => (
+              <div key={m.id} className="method-card" style={{ borderColor: m.color }}>
+                <div className="m-label" style={{ color: m.color }}>{m.label}</div>
+                <div className="m-num">{cop(totals.byMethod[m.id])}</div>
+              </div>
+            ))}
+          </div>
+
+          {CATS.map((cat) => {
+            const rows = Object.entries(perItem).filter(([, v]) => v.cat === cat);
+            if (!rows.length) return null;
+            return (
+              <section key={cat}>
+                <div className="sec-title">{cat}</div>
+                <div className="table">
+                  <div className="tr th">
+                    <span>Producto</span><span>Vend.</span><span>Stock</span><span>Ingresos</span><span>Ganancia</span>
+                  </div>
+                  {rows.map(([id, v]) => (
+                    <div key={id} className="tr">
+                      <span className="td-name">{v.name}</span>
+                      <span>{v.qty}</span>
+                      <span>{v.stock ?? "—"}</span>
+                      <span>{cop(v.revenue)}</span>
+                      <span className="td-gain">{cop(v.revenue - v.cost)}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
+
+          <button className="btn-danger" onClick={() => setConfirmReset(true)}>Reiniciar noche</button>
+        </main>
+      )}
+
+      <nav className="tabs">
+        {[["vender", "Vender"], ["inventario", "Inventario"], ["cierre", "Cierre"]].map(([id, label]) => (
+          <button key={id} className={"tab" + (tab === id ? " on" : "")} onClick={() => setTab(id)}>
+            {label}
+          </button>
+        ))}
+      </nav>
+
+      {saleItem && (
+        <div className="overlay" onClick={() => setSaleItem(null)}>
+          <div className="sheet" onClick={(e) => e.stopPropagation()}>
+            <div className="sheet-name">{saleItem.name}</div>
+            <div className="sheet-sub">{cop(saleItem.price)} c/u · {items.find((i) => i.id === saleItem.id)?.stock ?? 0} disponibles</div>
+
+            <div className="qty">
+              <button className="step lg" onClick={() => setSaleQty(Math.max(1, saleQty - 1))}>−</button>
+              <div className="qty-n">{saleQty}</div>
+              <button className="step lg" onClick={() => {
+                const max = items.find((i) => i.id === saleItem.id)?.stock ?? 1;
+                setSaleQty(Math.min(max, saleQty + 1));
+              }}>+</button>
+            </div>
+
+            <div className="sheet-total">{cop(saleItem.price * saleQty)}</div>
+            <div className="sheet-hint">Toca el medio de pago para confirmar</div>
+
+            <div className="pay-btns">
+              {METHODS.map((m) => (
+                <button key={m.id} className="pay" style={{ background: m.color }} onClick={() => recordSale(m.id)}>
+                  {m.label}
+                </button>
+              ))}
+            </div>
+            <button className="link center" onClick={() => setSaleItem(null)}>Cancelar</button>
+          </div>
+        </div>
+      )}
+
+      {editItem && (
+        <ItemForm item={editItem} onSave={saveItem}
+          onDelete={editItem.id ? () => deleteItem(editItem.id) : null}
+          onClose={() => setEditItem(null)} />
+      )}
+
+      {confirmReset && (
+        <div className="overlay" onClick={() => setConfirmReset(false)}>
+          <div className="sheet" onClick={(e) => e.stopPropagation()}>
+            <div className="sheet-name">Reiniciar noche</div>
+            <div className="sheet-sub">Las ventas registradas se borran. Esta acción no se puede deshacer.</div>
+            <button className="btn-primary" onClick={() => resetNight(true)}>Borrar ventas, conservar productos</button>
+            <button className="btn-danger" onClick={() => resetNight(false)}>Borrar todo (ventas + productos)</button>
+            <button className="link center" onClick={() => setConfirmReset(false)}>Cancelar</button>
+          </div>
+        </div>
+      )}
+
+      {toast && <div className="toast">{toast}</div>}
+    </div>
+  );
+}
+
+function ItemForm({ item, onSave, onDelete, onClose }) {
+  const [f, setF] = useState({ ...item });
+  const num = (v) => (v === "" ? 0 : Math.max(0, parseInt(String(v).replace(/\D/g, ""), 10) || 0));
+
+  return (
+    <div className="overlay" onClick={onClose}>
+      <div className="sheet" onClick={(e) => e.stopPropagation()}>
+        <div className="sheet-name">{item.id ? "Editar producto" : "Nuevo producto"}</div>
+
+        <label className="field">
+          <span>Nombre</span>
+          <input value={f.name} onChange={(e) => setF({ ...f, name: e.target.value })} placeholder="Ej: Cerveza Águila" autoFocus />
+        </label>
+
+        <label className="field">
+          <span>Categoría</span>
+          <div className="chips">
+            {CATS.map((c) => (
+              <button key={c} className={"chip" + (f.cat === c ? " on" : "")} onClick={() => setF({ ...f, cat: c })}>{c}</button>
+            ))}
+          </div>
+        </label>
+
+        <div className="field-row">
+          <label className="field">
+            <span>Costo (lo que nos sale)</span>
+            <input inputMode="numeric" value={f.cost || ""} onChange={(e) => setF({ ...f, cost: num(e.target.value) })} placeholder="0" />
+          </label>
+          <label className="field">
+            <span>Precio de venta</span>
+            <input inputMode="numeric" value={f.price || ""} onChange={(e) => setF({ ...f, price: num(e.target.value) })} placeholder="0" />
+          </label>
+        </div>
+
+        <label className="field">
+          <span>Stock disponible</span>
+          <input inputMode="numeric" value={f.stock || ""} onChange={(e) => setF({ ...f, stock: num(e.target.value) })} placeholder="0" />
+        </label>
+
+        {f.price > 0 && <div className="margin-hint">Margen por unidad: {cop(f.price - (f.cost || 0))}</div>}
+
+        <button className="btn-primary" onClick={() => onSave(f)}>Guardar</button>
+        {onDelete && <button className="btn-danger" onClick={onDelete}>Eliminar producto</button>}
+        <button className="link center" onClick={onClose}>Cancelar</button>
+      </div>
+    </div>
+  );
+}
+
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=JetBrains+Mono:wght@500;700&display=swap');
+:root {
+  --bg: #0D0A12; --panel: #17121F; --panel-2: #1F1830; --line: #2C2240;
+  --text: #F2EDF7; --muted: #8E82A6; --amber: #FFB347; --green: #4ADE80; --red: #FF5C72;
+}
+* { box-sizing: border-box; margin: 0; }
+html { height: 100%; -webkit-tap-highlight-color: transparent; }
+body { height: 100%; }
+.app {
+  min-height: 100vh; background: var(--bg); color: var(--text);
+  font-family: 'Archivo', system-ui, sans-serif; padding-bottom: 84px;
+}
+.loading { padding: 48px; text-align: center; color: var(--muted); }
+.head {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding: 20px 16px 14px; border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; background: var(--bg); z-index: 5;
+}
+.brand {
+  font-stretch: 115%; font-weight: 900; font-size: 20px; letter-spacing: 0.06em;
+  background: linear-gradient(90deg, var(--amber), #FF2D8A);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.date { color: var(--muted); font-size: 12px; text-transform: capitalize; margin-top: 2px; }
+.head-total { text-align: right; }
+.ht-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.ht-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 18px; color: var(--green); }
+.main { padding: 16px; display: flex; flex-direction: column; gap: 16px; max-width: 720px; margin: 0 auto; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  background: var(--panel); color: var(--muted); border: 1px solid var(--line);
+  border-radius: 999px; padding: 8px 14px; font-size: 13px; font-weight: 600;
+  font-family: inherit; cursor: pointer;
+}
+.chip.on { background: var(--text); color: var(--bg); border-color: var(--text); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px; text-align: left; cursor: pointer; font-family: inherit; color: var(--text);
+  display: flex; flex-direction: column; gap: 6px; min-height: 104px; transition: transform 0.06s ease;
+}
+.card:active { transform: scale(0.97); }
+.card.out { opacity: 0.4; cursor: not-allowed; }
+.card-cat { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; }
+.card-name { font-weight: 700; font-size: 15px; line-height: 1.2; flex: 1; }
+.card-foot { display: flex; justify-content: space-between; align-items: baseline; }
+.card-price { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px; color: var(--amber); }
+.card-stock { font-size: 11px; color: var(--muted); }
+.card-stock.low { color: var(--red); font-weight: 700; }
+.sec-title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); font-weight: 700; }
+.recent { display: flex; flex-direction: column; gap: 8px; }
+.sale-row {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px;
+}
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.sale-info { flex: 1; min-width: 0; }
+.sale-name { font-size: 14px; font-weight: 600; }
+.sale-meta { font-size: 11px; color: var(--muted); }
+.sale-amt { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; }
+.undo {
+  background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 8px;
+  padding: 6px 10px; font-size: 11px; font-family: inherit; cursor: pointer;
+}
+.undo:active { color: var(--red); border-color: var(--red); }
+.inv-row {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin-top: 8px;
+}
+.inv-main { flex: 1; min-width: 0; cursor: pointer; }
+.inv-name { font-weight: 700; font-size: 15px; }
+.inv-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.inv-stock { display: flex; align-items: center; gap: 8px; }
+.stock-n { font-family: 'JetBrains Mono', monospace; font-weight: 700; min-width: 32px; text-align: center; }
+.step {
+  width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--panel-2); color: var(--text); font-size: 18px; cursor: pointer; font-family: inherit;
+}
+.step.lg { width: 56px; height: 56px; font-size: 26px; border-radius: 14px; }
+.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.kpi.big { grid-column: 1 / -1; }
+.kpi.accent { border-color: var(--green); }
+.kpi.accent .kpi-num { color: var(--green); }
+.kpi-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.kpi-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 22px; margin-top: 4px; }
+.kpi.big .kpi-num { font-size: 30px; }
+.methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.method-card { background: var(--panel); border: 1px solid; border-radius: 14px; padding: 12px; text-align: center; }
+.m-label { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
+.m-num { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px; margin-top: 6px; }
+.table { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-top: 8px; }
+.tr {
+  display: grid; grid-template-columns: 1.6fr 0.5fr 0.5fr 1fr 1fr;
+  gap: 6px; padding: 10px 12px; font-size: 12px; align-items: center;
+  font-family: 'JetBrains Mono', monospace; border-top: 1px solid var(--line);
+}
+.tr.th { font-family: 'Archivo', sans-serif; color: var(--muted); text-transform: uppercase; font-size: 10px; letter-spacing: 0.08em; border-top: none; }
+.td-name { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; }
+.td-gain { color: var(--green); }
+.tr span:nth-child(n+2):not(.td-name) { text-align: right; }
+.tr.th span:nth-child(n+2) { text-align: right; }
+.tabs {
+  position: fixed; bottom: 0; left: 0; right: 0; display: flex;
+  background: var(--panel); border-top: 1px solid var(--line); z-index: 10;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tab {
+  flex: 1; padding: 16px 0; background: none; border: none; color: var(--muted);
+  font-family: inherit; font-weight: 700; font-size: 13px; text-transform: uppercase;
+  letter-spacing: 0.08em; cursor: pointer; border-top: 2px solid transparent;
+}
+.tab.on { color: var(--amber); border-top-color: var(--amber); }
+.overlay {
+  position: fixed; inset: 0; background: rgba(8,5,14,0.78); z-index: 20;
+  display: flex; align-items: flex-end; justify-content: center;
+}
+.sheet {
+  background: var(--panel-2); width: 100%; max-width: 480px;
+  border-radius: 22px 22px 0 0; padding: 24px 20px 32px;
+  display: flex; flex-direction: column; gap: 14px; max-height: 88vh; overflow-y: auto;
+}
+.sheet-name { font-weight: 800; font-size: 20px; }
+.sheet-sub { color: var(--muted); font-size: 13px; margin-top: -8px; }
+.qty { display: flex; align-items: center; justify-content: center; gap: 24px; padding: 8px 0; }
+.qty-n { font-family: 'JetBrains Mono', monospace; font-size: 40px; font-weight: 700; min-width: 70px; text-align: center; }
+.sheet-total { text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: var(--amber); }
+.sheet-hint { text-align: center; font-size: 12px; color: var(--muted); margin-top: -8px; }
+.pay-btns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.pay {
+  border: none; border-radius: 14px; padding: 18px 6px; font-family: inherit;
+  font-weight: 800; font-size: 14px; color: #0D0A12; cursor: pointer; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.pay:active { filter: brightness(0.85); }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field > span { font-size: 12px; color: var(--muted); font-weight: 600; }
+.field input {
+  background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+  padding: 13px 14px; color: var(--text); font-family: inherit; font-size: 16px; width: 100%;
+}
+.field input:focus { outline: 2px solid var(--amber); outline-offset: 0; border-color: transparent; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.margin-hint { font-size: 13px; color: var(--green); font-family: 'JetBrains Mono', monospace; }
+.btn-primary {
+  background: var(--amber); color: var(--bg); border: none; border-radius: 14px;
+  padding: 15px; font-family: inherit; font-weight: 800; font-size: 15px; cursor: pointer;
+}
+.btn-danger {
+  background: none; color: var(--red); border: 1px solid var(--red); border-radius: 14px;
+  padding: 13px; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer;
+}
+.link { background: none; border: none; color: var(--amber); font-family: inherit; font-size: 14px; cursor: pointer; padding: 4px; font-weight: 600; }
+.link.center { align-self: center; }
+.empty { color: var(--muted); text-align: center; padding: 32px 0; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.toast {
+  position: fixed; bottom: 76px; left: 50%; transform: translateX(-50%);
+  background: var(--text); color: var(--bg); padding: 10px 18px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; z-index: 30; white-space: nowrap; max-width: 92vw;
+  overflow: hidden; text-overflow: ellipsis;
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+`;
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>
