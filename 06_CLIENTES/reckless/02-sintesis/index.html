@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0a0a">
+<title>RECKLESS · Síntesis Growth · Growth*Stars</title>
+<meta name="description" content="Síntesis Growth oficial de RECKLESS — Diagnóstico integral + Roadmap 90 días. Growth*Stars.">
+<meta property="og:title" content="RECKLESS · Síntesis Growth">
+<meta property="og:description" content="Diagnóstico integral + Roadmap 90 días. Growth*Stars — Agente 3.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0a0a; --paper:#ffffff;
+  --g1:#f4f4f4; --g2:#e2e2e2; --g3:#bdbdbd; --g4:#8a8a8a; --g5:#4d4d4d; --g6:#1c1c1c;
+  --maxw:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Space Grotesk',sans-serif;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+.disp{font-family:'Archivo Black',sans-serif;text-transform:uppercase;line-height:1.02;letter-spacing:-0.01em;}
+.osw{font-family:'Oswald',sans-serif;}
+a{color:inherit;}
+
+/* progreso */
+#prog{position:fixed;top:0;left:0;height:4px;background:var(--ink);width:0%;z-index:100;transition:width .1s linear;}
+body.darknav #prog{background:var(--paper);}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:90;background:rgba(10,10,10,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--g6);}
+.navin{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:18px;padding:0 20px;height:54px;overflow-x:auto;scrollbar-width:none;}
+.navin::-webkit-scrollbar{display:none;}
+.navbrand{font-family:'Archivo Black';color:var(--paper);font-size:13px;text-transform:uppercase;white-space:nowrap;flex-shrink:0;}
+.navbrand span{color:transparent;-webkit-text-stroke:1px var(--paper);}
+nav a.nl{font-family:'Oswald';font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--g4);text-decoration:none;white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+nav a.nl:hover{color:var(--paper);}
+nav a.nl.act{color:var(--paper);border-bottom-color:var(--paper);}
+
+/* tags / pills */
+.tag{display:inline-block;font-family:'Oswald';font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:11px;padding:5px 12px;border:2px solid var(--ink);}
+.tag.fill{background:var(--ink);color:var(--paper);}
+.tag.inv{border-color:var(--paper);color:var(--paper);}
+.tag.inv.fill{background:var(--paper);color:var(--ink);}
+.pill{display:inline-block;font-family:'Oswald';font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border:1.5px solid var(--ink);white-space:nowrap;}
+.pill.fill{background:var(--ink);color:var(--paper);}
+.pill.gray{background:var(--g2);border-color:var(--g3);color:var(--g5);}
+.pill.stripe{background:repeating-linear-gradient(-45deg,var(--g2) 0 4px,var(--paper) 4px 8px);}
+
+/* layout */
+section{padding:90px 20px;}
+.wrap{max-width:var(--maxw);margin:0 auto;}
+.dark{background:var(--ink);color:var(--paper);}
+.gray{background:var(--g1);}
+.kicker{font-family:'Oswald';font-weight:600;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--g4);}
+.sechead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:14px;}
+.sechead h2{font-family:'Archivo Black';text-transform:uppercase;font-size:clamp(26px,4.5vw,44px);line-height:1.02;margin-top:8px;}
+.secno{font-family:'Archivo Black';font-size:clamp(40px,7vw,72px);line-height:.9;color:transparent;-webkit-text-stroke:2px var(--ink);flex-shrink:0;}
+.dark .secno{-webkit-text-stroke:2px var(--g5);}
+.hazard{height:10px;background:repeating-linear-gradient(-45deg,var(--ink) 0 9px,transparent 9px 18px);margin:18px 0 34px;}
+.dark .hazard{background:repeating-linear-gradient(-45deg,var(--paper) 0 9px,transparent 9px 18px);opacity:.85;}
+.lead{font-size:17px;color:var(--g5);max-width:760px;}
+.dark .lead{color:var(--g3);}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+.rv.on{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.rv{opacity:1;transform:none;transition:none;}.tick-track{animation:none!important;}}
+
+/* hero */
+.hero{min-height:100svh;background:var(--ink);color:var(--paper);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:120px 20px 70px;}
+.hero .star1{position:absolute;right:-90px;top:-130px;font-family:'Archivo Black';font-size:480px;color:transparent;-webkit-text-stroke:2px var(--g6);line-height:1;pointer-events:none;}
+.hero .star2{position:absolute;left:-60px;bottom:-80px;font-family:'Archivo Black';font-size:300px;color:var(--g6);line-height:1;pointer-events:none;}
+.hero h1{font-family:'Archivo Black';text-transform:uppercase;font-size:clamp(64px,14vw,180px);line-height:.92;letter-spacing:-.02em;}
+.hero h1 .ol{color:transparent;-webkit-text-stroke:3px var(--paper);}
+.hero .sub{font-family:'Oswald';font-size:clamp(14px,2vw,19px);letter-spacing:.08em;text-transform:uppercase;color:var(--g3);margin-top:18px;}
+.herobadges{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;}
+.herostats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:54px;background:var(--g6);border:2px solid var(--g6);}
+.herostats .hs{background:var(--ink);padding:22px 18px;}
+.herostats .v{font-family:'Archivo Black';font-size:clamp(26px,4vw,44px);line-height:1;}
+.herostats .l{font-family:'Oswald';font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--g4);margin-top:8px;}
+.scrollcue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-family:'Oswald';font-weight:600;font-size:11px;letter-spacing:.3em;color:var(--g4);text-transform:uppercase;animation:bob 2s infinite;}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* ticker */
+.tick{background:var(--paper);color:var(--ink);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);overflow:hidden;padding:12px 0;}
+.tick-track{display:flex;gap:46px;white-space:nowrap;font-family:'Oswald';font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:14px;animation:tick 28s linear infinite;width:max-content;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* toc */
+.tocgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px;background:var(--g2);border:2px solid var(--ink);}
+.tocgrid a{background:var(--paper);padding:20px 18px;text-decoration:none;transition:background .2s,color .2s;display:block;}
+.tocgrid a:hover{background:var(--ink);color:var(--paper);}
+.tocgrid .no{font-family:'Archivo Black';font-size:20px;}
+.tocgrid .tt{font-family:'Oswald';font-weight:600;text-transform:uppercase;font-size:14px;letter-spacing:.05em;margin-top:6px;}
+.tocgrid .dd{font-size:12.5px;color:var(--g4);margin-top:3px;}
+
+/* stat cards generic */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+.stat{border:2.5px solid var(--ink);padding:22px 18px;background:var(--paper);transition:transform .25s;}
+.stat:hover{transform:translateY(-5px);}
+.stat.dark{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+.stat .v{font-family:'Archivo Black';font-size:36px;line-height:1;}
+.stat .l{font-family:'Oswald';font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-top:9px;color:var(--g4);}
+.stat.dark .l{color:var(--g3);}
+
+/* ncards */
+.ncard{display:flex;gap:20px;border-bottom:2px solid var(--g2);padding:20px 0;}
+.dark .ncard{border-bottom-color:var(--g6);}
+.ncard .n{font-family:'Archivo Black';font-size:30px;line-height:1;min-width:54px;color:transparent;-webkit-text-stroke:1.6px var(--ink);}
+.dark .ncard .n{-webkit-text-stroke:1.6px var(--paper);}
+.ncard .t{font-family:'Oswald';font-weight:600;text-transform:uppercase;font-size:17px;letter-spacing:.03em;}
+.ncard .d{font-size:14.5px;color:var(--g5);margin-top:4px;}
+.dark .ncard .d{color:var(--g3);}
+
+/* boxes */
+.box{border:2.5px solid var(--ink);padding:24px;background:var(--paper);}
+.box.dark{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+.box.soft{background:var(--g1);border-color:var(--g3);}
+.box h4{font-family:'Oswald';font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:13.5px;margin-bottom:9px;}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+@media(max-width:820px){.cols2,.cols3{grid-template-columns:1fr;}}
+.small{font-size:14px;color:var(--g5);}
+.dark .small,.box.dark .small{color:var(--g3);}
+
+/* tables */
+table.gs{width:100%;border-collapse:collapse;font-size:13.5px;}
+table.gs th{font-family:'Oswald';font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:11px;background:var(--ink);color:var(--paper);padding:10px 12px;text-align:left;}
+table.gs td{padding:10px 12px;border-bottom:1.5px solid var(--g2);vertical-align:top;}
+table.gs tr:nth-child(even) td{background:var(--g1);}
+.tablewrap{overflow-x:auto;border:2px solid var(--ink);}
+.tablewrap table.gs td{min-width:90px;}
+
+/* ICE bars */
+.icebar{margin-bottom:26px;}
+.icebar .lbl{display:flex;justify-content:space-between;align-items:baseline;font-family:'Oswald';font-weight:600;text-transform:uppercase;font-size:15px;margin-bottom:7px;gap:10px;}
+.icebar .score{font-family:'Archivo Black';font-size:22px;}
+.icebar .track{background:var(--g1);border:2px solid var(--ink);height:34px;position:relative;}
+.icebar .fillb{height:100%;width:0;display:flex;align-items:center;padding-left:12px;font-family:'Space Grotesk';font-size:12.5px;color:var(--paper);transition:width 1.2s cubic-bezier(.2,.8,.2,1);white-space:nowrap;overflow:hidden;}
+
+/* poderes */
+.pod{display:grid;grid-template-columns:1fr 300px;gap:26px;}
+@media(max-width:860px){.pod{grid-template-columns:1fr;}}
+.crit{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:2px solid var(--g2);}
+.crit .ic{width:46px;height:38px;flex-shrink:0;border:2.5px solid var(--g4);position:relative;}
+.crit .ic.falta{background:repeating-linear-gradient(-45deg,var(--g3) 0 5px,var(--g1) 5px 10px);}
+.crit .ic.falla{background:var(--ink);border-color:var(--ink);}
+.crit .ic.falla::before,.crit .ic.falla::after{content:'';position:absolute;left:50%;top:50%;width:24px;height:3.5px;background:var(--paper);}
+.crit .ic.falla::before{transform:translate(-50%,-50%) rotate(45deg);}
+.crit .ic.falla::after{transform:translate(-50%,-50%) rotate(-45deg);}
+.crit .t{font-weight:700;font-size:15px;}
+.crit .d{font-size:13px;color:var(--g4);}
+.bignum{font-family:'Archivo Black';font-size:84px;line-height:1;}
+.bignum .dim{color:var(--g4);}
+
+/* funnel */
+.funnel{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr 36px 1fr 36px 1fr;align-items:stretch;gap:0;}
+@media(max-width:880px){.funnel{grid-template-columns:1fr;}.fx{transform:rotate(90deg);margin:4px auto;}}
+.fstage{border:2.5px solid var(--ink);padding:18px 14px;text-align:center;cursor:pointer;transition:transform .2s, box-shadow .2s;background:var(--paper);}
+.fstage:hover{transform:translateY(-5px);box-shadow:6px 6px 0 var(--ink);}
+.fstage.on{background:var(--ink);color:var(--paper);}
+.fstage .nm{font-family:'Oswald';font-weight:600;text-transform:uppercase;font-size:14.5px;letter-spacing:.05em;}
+.fstage .mt{font-size:12.5px;color:var(--g4);margin-top:5px;}
+.fstage.on .mt{color:var(--g3);}
+.fstage.broken{background:repeating-linear-gradient(-45deg,var(--g2) 0 6px,var(--paper) 6px 12px);}
+.fstage.broken.on{background:var(--ink);}
+.fx{display:flex;align-items:center;justify-content:center;font-family:'Archivo Black';font-size:20px;}
+.dark .fstage{border-color:var(--paper);background:var(--ink);color:var(--paper);}
+.dark .fstage .mt{color:var(--g4);}
+.dark .fstage.broken{background:repeating-linear-gradient(-45deg,var(--g6) 0 6px,var(--ink) 6px 12px);}
+.dark .fstage.on{background:var(--paper);color:var(--ink);}
+.dark .fstage.on .nm{color:var(--ink);}
+.dark .fstage.on .mt{color:var(--g5);}
+.dark .fstage:hover{box-shadow:6px 6px 0 var(--g4);}
+.dark .fx{color:var(--paper);}
+.fdetail{border:2.5px solid var(--ink);border-top-width:6px;padding:22px;margin-top:22px;min-height:96px;background:var(--g1);}
+.fdetail .ft{font-family:'Oswald';font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:.06em;}
+.fdetail .fb{font-size:14.5px;color:var(--g5);margin-top:6px;}
+
+/* nsm bars */
+.nsm{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:end;height:300px;margin-top:30px;}
+@media(max-width:680px){.nsm{height:230px;gap:10px;}}
+.nsmcol{display:flex;flex-direction:column;justify-content:flex-end;height:100%;text-align:center;}
+.nsmcol .num{font-family:'Archivo Black';font-size:clamp(18px,3vw,30px);margin-bottom:6px;}
+.nsmcol .barv{width:100%;height:0;transition:height 1.2s cubic-bezier(.2,.8,.2,1);}
+.nsmcol .cap{font-family:'Oswald';font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-top:10px;}
+.nsmcol .ref{font-size:11.5px;color:var(--g4);}
+
+/* tabs */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0;}
+.tabs button{font-family:'Oswald';font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:13px;padding:11px 20px;border:2.5px solid var(--ink);background:var(--paper);cursor:pointer;transition:background .15s,color .15s;}
+.tabs button:hover{background:var(--g2);}
+.tabs button.act{background:var(--ink);color:var(--paper);}
+.tabpan{display:none;border:2.5px solid var(--ink);border-top-width:6px;padding:24px;margin-top:14px;background:var(--paper);}
+.tabpan.act{display:block;animation:fadein .35s ease;}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* accordion */
+.acc{border:2.5px solid var(--ink);border-bottom:none;}
+.accit{border-bottom:2.5px solid var(--ink);}
+.accbtn{width:100%;text-align:left;background:var(--paper);border:none;cursor:pointer;padding:18px 20px;display:flex;gap:16px;align-items:baseline;font-family:'Space Grotesk';transition:background .15s;}
+.accbtn:hover{background:var(--g1);}
+.accbtn .no{font-family:'Archivo Black';font-size:19px;min-width:34px;}
+.accbtn .q{font-size:15px;font-weight:500;flex:1;}
+.accbtn .pm{font-family:'Archivo Black';font-size:19px;}
+.accbody{display:none;padding:0 20px 20px 70px;font-size:14px;color:var(--g5);}
+.accit.open .accbody{display:block;animation:fadein .3s ease;}
+.accit.open .accbtn{background:var(--ink);color:var(--paper);}
+.accit.open .accbtn .q{color:var(--paper);}
+@media(max-width:680px){.accbody{padding-left:20px;}}
+
+/* riesgo matriz */
+.riskwrap{display:grid;grid-template-columns:380px 1fr;gap:30px;align-items:start;}
+@media(max-width:920px){.riskwrap{grid-template-columns:1fr;}}
+.rmatrix{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,90px);gap:3px;border:2.5px solid var(--ink);background:var(--ink);}
+.rcell{position:relative;display:flex;align-items:center;justify-content:center;gap:6px;}
+.rdot{width:36px;height:36px;border-radius:50%;background:var(--paper);border:2.5px solid var(--ink);font-family:'Archivo Black';font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s;}
+.rdot:hover{transform:scale(1.18);}
+.raxis{font-family:'Oswald';font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g4);}
+.risklist .rit{padding:13px 0;border-bottom:1.5px solid var(--g2);transition:background .2s;font-size:14px;}
+.risklist .rit.hl{background:var(--g1);outline:2px solid var(--ink);padding-left:10px;padding-right:10px;}
+.risklist .rit b{font-family:'Oswald';font-weight:600;text-transform:uppercase;font-size:13.5px;letter-spacing:.03em;}
+
+/* escenarios */
+.scen{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+@media(max-width:820px){.scen{grid-template-columns:1fr;}}
+.scen .box{transition:transform .2s;}
+.scen .box:hover{transform:translateY(-6px);}
+
+/* promesa */
+.promo{min-height:88svh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+.promo .star1{position:absolute;left:-80px;bottom:-140px;font-family:'Archivo Black';font-size:420px;color:transparent;-webkit-text-stroke:2px var(--g6);line-height:1;pointer-events:none;}
+.promo h2{font-family:'Archivo Black';text-transform:uppercase;font-size:clamp(34px,6.5vw,72px);line-height:1.0;}
+.promo h2 .ol{color:transparent;-webkit-text-stroke:2.5px var(--paper);}
+footer{background:var(--ink);color:var(--g4);border-top:1px solid var(--g6);padding:30px 20px;font-family:'Oswald';font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.totop{position:fixed;right:18px;bottom:18px;z-index:80;width:50px;height:50px;background:var(--ink);color:var(--paper);border:2px solid var(--paper);font-family:'Archivo Black';font-size:18px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s;}
+.totop.show{opacity:1;pointer-events:auto;}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<nav>
+  <div class="navin">
+    <a href="#hero" class="navbrand" style="text-decoration:none;">G<span>*</span>S</a>
+    <a class="nl" href="#toc">Index</a>
+    <a class="nl" href="#s01">01·Resumen</a>
+    <a class="nl" href="#s02">02·Tier</a>
+    <a class="nl" href="#s03">03·PODERES</a>
+    <a class="nl" href="#s04">04·ICE</a>
+    <a class="nl" href="#s05">05·Funnel</a>
+    <a class="nl" href="#s06">06·NSM</a>
+    <a class="nl" href="#s07">07·Métricas</a>
+    <a class="nl" href="#s09">09·Triggers</a>
+    <a class="nl" href="#s10">10·Roadmap</a>
+    <a class="nl" href="#s12">12·Experimentos</a>
+    <a class="nl" href="#s13">13·Riesgos</a>
+    <a class="nl" href="#s14">14·Éxito</a>
+    <a class="nl" href="#s15">15·Brief</a>
+    <a class="nl" href="#s17">17·Promesa</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero" id="hero">
+  <div class="star1">*</div>
+  <div class="star2">*</div>
+  <div class="wrap" style="position:relative;">
+    <div class="kicker" style="color:var(--g4);">GROWTH*STARS · AGENTE 3 — SINTETIZADOR v3 · 2026.06.10</div>
+    <h1>RECK<br>LESS<span class="ol">*</span></h1>
+    <div class="sub">Síntesis Growth · Diagnóstico integral + Roadmap 90 días — Reckless Music / La Maniática</div>
+    <div class="herobadges">
+      <span class="tag inv fill">TIER 1 — EMERGENTE</span>
+      <span class="tag inv">MODO ESTÁNDAR</span>
+      <span class="tag inv">NSM: SUPER-LISTENERS</span>
+    </div>
+    <div class="herostats">
+      <div class="hs"><div class="v"><span class="cnt" data-to="30">0</span></div><div class="l">Listeners/mes Spotify</div></div>
+      <div class="hs"><div class="v"><span class="cnt" data-to="0">0</span></div><div class="l">Posts en redes · 28 días</div></div>
+      <div class="hs"><div class="v">$<span class="cnt" data-to="118">0</span></div><div class="l">USD ingresos lifetime</div></div>
+      <div class="hs"><div class="v"><span class="cnt" data-to="0">0</span>%</div><div class="l">Follows desde $50 en ads</div></div>
+    </div>
+  </div>
+  <div class="scrollcue">↓ SCROLL</div>
+</header>
+
+<!-- ticker -->
+<div class="tick"><div class="tick-track" id="ticker"></div></div>
+
+<!-- ═══ TOC ═══ -->
+<section id="toc">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">CONTENIDO · INDEX</div><h2>Índice<span style="color:transparent;-webkit-text-stroke:2px var(--ink);">*</span></h2></div><div class="secno">17</div></div>
+    <div class="hazard rv"></div>
+    <div class="tocgrid rv">
+      <a href="#s01"><div class="no">01</div><div class="tt">Resumen ejecutivo</div><div class="dd">Estado crítico · 5 hallazgos</div></a>
+      <a href="#s02"><div class="no">02</div><div class="tt">Clasificación de tier</div><div class="dd">Tier 1 Emergente · reglas</div></a>
+      <a href="#s03"><div class="no">03</div><div class="tt">Evaluación PODERES</div><div class="dd">Scorecard 0/7 · gaps</div></a>
+      <a href="#s04"><div class="no">04</div><div class="tt">Diagnóstico ICE</div><div class="dd">5 hallazgos priorizados</div></a>
+      <a href="#s05"><div class="no">05</div><div class="tt">El funnel roto</div><div class="dd">Interactivo · 3 roturas + geo</div></a>
+      <a href="#s06"><div class="no">06</div><div class="tt">North Star Metric</div><div class="dd">3-5 → 50 super-listeners</div></a>
+      <a href="#s07"><div class="no">07</div><div class="tt">Framework de medición</div><div class="dd">Input · Output · Salud</div></a>
+      <a href="#s08"><div class="no">08</div><div class="tt">Baseline cuantitativo</div><div class="dd">Spotify · TikTok · IG</div></a>
+      <a href="#s09"><div class="no">09</div><div class="tt">Triggers prioritarios</div><div class="dd">Sistema v2.3 · top 7</div></a>
+      <a href="#s10"><div class="no">10</div><div class="tt">Roadmap 90 días</div><div class="dd">3 meses · ICE score</div></a>
+      <a href="#s12"><div class="no">12</div><div class="tt">Experimentos</div><div class="dd">7 hipótesis con criterio</div></a>
+      <a href="#s13"><div class="no">13</div><div class="tt">Riesgos</div><div class="dd">Matriz + contingencias</div></a>
+      <a href="#s14"><div class="no">14</div><div class="tt">Éxito a 90 días</div><div class="dd">3 escenarios + hitos</div></a>
+      <a href="#s15"><div class="no">15</div><div class="tt">Executive brief</div><div class="dd">La foto · para el artista</div></a>
+      <a href="#s16"><div class="no">16</div><div class="tt">Plan en 3 capítulos</div><div class="dd">Compromisos mutuos</div></a>
+      <a href="#s17"><div class="no">17</div><div class="tt">La promesa</div><div class="dd">Firma G*S</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S01 RESUMEN ═══ -->
+<section id="s01" class="gray">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 01</div><h2>Resumen ejecutivo técnico</h2></div><div class="secno">01</div></div>
+    <div class="hazard rv"></div>
+    <p class="lead rv">RECKLESS es un proyecto musical en <b>estado crítico con necesidad de reconstrucción integral</b>. Ambas auditorías confirman un ecosistema colapsado. La única señal positiva es un nicho identitario (#studsoftiktok, #lgbt, pareja) con tracción orgánica demostrada que no se está capitalizando.</p>
+    <div class="stats rv" style="margin-top:34px;">
+      <div class="stat"><div class="v">0%</div><div class="l">Playlists editoriales Spotify</div></div>
+      <div class="stat"><div class="v">7%</div><div class="l">Streams algorítmicos</div></div>
+      <div class="stat"><div class="v">41.4%</div><div class="l">For You TikTok · cayó desde 84.8%</div></div>
+      <div class="stat dark"><div class="v">13.8%</div><div class="l">Like rate mejor video · la señal viva</div></div>
+    </div>
+    <h3 class="disp rv" style="font-size:22px;margin:44px 0 6px;">5 hallazgos integrados</h3>
+    <div class="rv">
+      <div class="ncard"><div class="n">01</div><div><div class="t">Colapso total de actividad cross-platform</div><div class="d">Patrón spike-and-die en Spotify + inactividad completa en redes sociales.</div></div></div>
+      <div class="ncard"><div class="n">02</div><div><div class="t">Funnel de conversión roto en todas las capas</div><div class="d">$50 en ads = 0 followers, 0 link clicks, 0 saves medibles.</div></div></div>
+      <div class="ncard"><div class="n">03</div><div><div class="t">Nicho identitario con product-market fit parcial</div><div class="d">Tracción orgánica real, no capitalizada por inactividad.</div></div></div>
+      <div class="ncard"><div class="n">04</div><div><div class="t">Motor de discovery apagado en todas las plataformas</div><div class="d">0% editorial en Spotify; For You de TikTok en caída libre.</div></div></div>
+      <div class="ncard"><div class="n">05</div><div><div class="t">Desalineación geográfica crítica</div><div class="d">Audiencia social en Connecticut (US) vs audiencia Spotify en Quintana Roo (MX).</div></div></div>
+    </div>
+    <div class="cols2 rv" style="margin-top:34px;">
+      <div class="box dark"><h4>★ NSM definido</h4><div class="disp" style="font-size:21px;">Super-listeners mensuales en Spotify</div><div class="small" style="margin-top:9px;">Sin super-listeners no hay señal algorítmica posible. La prioridad: base mínima de oyentes recurrentes que guarden la música.</div></div>
+      <div class="box"><h4>Roadmap 90 días</h4><div class="small"><b>MES 1</b> — Reconstrucción de fundaciones (perfil, cadencia, medición)<br><b>MES 2</b> — Tracción vía nicho identitario + primer experimento TikTok→Spotify<br><b>MES 3</b> — Release estratégico con pre-save y activación de discovery</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S02 TIER ═══ -->
+<section id="s02">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 02</div><h2>Clasificación de tier</h2></div><div class="secno">02</div></div>
+    <div class="hazard rv"></div>
+    <svg viewBox="0 0 760 270" style="width:100%;" class="rv">
+      <g font-family="Oswald">
+        <rect x="570" y="20" width="170" height="50" fill="none" stroke="#0a0a0a" stroke-width="2.5"/>
+        <text x="582" y="42" font-size="15" font-weight="600" fill="#0a0a0a">TIER 4</text>
+        <text x="582" y="60" font-size="10" fill="#8a8a8a">CONSOLIDADO · &gt;1M SPOTIFY</text>
+        <rect x="390" y="80" width="170" height="50" fill="none" stroke="#bdbdbd" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <text x="402" y="102" font-size="15" font-weight="600" fill="#8a8a8a">TIER 3</text>
+        <text x="402" y="120" font-size="10" fill="#bdbdbd">EN ASCENSO</text>
+        <rect x="210" y="140" width="170" height="50" fill="none" stroke="#bdbdbd" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <text x="222" y="162" font-size="15" font-weight="600" fill="#8a8a8a">TIER 2</text>
+        <text x="222" y="180" font-size="10" fill="#bdbdbd">EN DESARROLLO</text>
+        <rect x="30" y="200" width="170" height="56" fill="#0a0a0a"/>
+        <text x="42" y="224" font-size="15" font-weight="600" fill="#ffffff">TIER 1 ★</text>
+        <text x="42" y="242" font-size="10" fill="#bdbdbd">EMERGENTE · &lt;15K / &lt;50K</text>
+        <g transform="translate(115,168)">
+          <rect x="-52" y="-22" width="104" height="22" fill="#ffffff" stroke="#0a0a0a" stroke-width="2"/>
+          <text x="0" y="-7" text-anchor="middle" font-size="11" font-weight="600" fill="#0a0a0a">ESTÁS AQUÍ ↓</text>
+        </g>
+        <path d="M 120 195 L 295 135 L 475 75 L 640 18" stroke="#bdbdbd" stroke-width="2" fill="none" stroke-dasharray="2 5"/>
+      </g>
+    </svg>
+    <div class="cols2 rv" style="margin-top:26px;">
+      <div class="box"><h4>Tier por Spotify</h4><div class="small">~30 listeners en 28 días. Histórico 12m: 23,636 listeners (spike puntual, no recurrente). Umbral Tier 1: &lt;15K oyentes/mes — el artista está en el <b>extremo inferior</b>.</div></div>
+      <div class="box"><h4>Tier por TikTok</h4><div class="small">Estimación &lt;5K seguidores (33K views anuales, 1,644 likes anuales, top videos &lt;5,600 views). Umbral Tier 1: &lt;50K seguidores.</div></div>
+    </div>
+    <div class="box dark rv" style="margin-top:20px;"><h4>Tier final aplicado: TIER 1 — EMERGENTE</h4>
+      <div class="small"><b style="color:#fff;">Regla 1</b> (toma el tier más bajo): ambas plataformas son Tier 1. · <b style="color:#fff;">Regla 2</b>: las banderas rojas de marca CONFIRMAN Tier 1 pero no bajan más allá.</div>
+    </div>
+    <div class="cols2 rv" style="margin-top:20px;">
+      <div class="box soft"><h4>⚑ Banderas de marca</h4><div class="small">— Identidad visual no trasladada de TikTok a Instagram<br>— 0 publicaciones en 28+ días en ambas plataformas<br>— Bio y perfil no optimizados (conversión 0% en ads)<br>— Sin equipo profesional visible</div></div>
+      <div class="box soft"><h4>Implicaciones para el sistema</h4><div class="small">— Benchmarks calibrados a Tier 1 Modo Estándar<br>— NSM: super-listeners mensuales · Pricing rango Tier 1<br>— TOFU/MOFU/BOFU: 50/30/20 (5/3/1 piezas)<br>— Marquee: <b>NO USAR</b> (UCT-05: ROI negativo en Tier 1)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S03 PODERES ═══ -->
+<section id="s03" class="gray">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 03</div><h2>Evaluación Modo PODERES</h2></div><div class="secno">03</div></div>
+    <div class="hazard rv"></div>
+    <div class="pod">
+      <div class="rv">
+        <div class="crit"><div class="ic falta"></div><div><div class="t">C1 · Save rate histórico &gt;12%</div><div class="d">DATOS FALTANTES — requiere S4A desktop</div></div></div>
+        <div class="crit"><div class="ic falta"></div><div><div class="t">C2 · Skip rate &lt;30%</div><div class="d">DATOS FALTANTES — requiere S4A desktop</div></div></div>
+        <div class="crit"><div class="ic falla"></div><div><div class="t">C3 · Crecimiento orgánico 90d</div><div class="d">FALLA — tendencia severamente negativa en TODAS las plataformas</div></div></div>
+        <div class="crit"><div class="ic falla"></div><div><div class="t">C4 · Coherencia demográfica</div><div class="d">FALLA — geografía desalineada CT(US) vs Quintana Roo(MX), gap de edad 5-7 años</div></div></div>
+        <div class="crit"><div class="ic falta"></div><div><div class="t">C5 · Presupuesto suficiente</div><div class="d">DATOS FALTANTES — sin perfil cualitativo del cliente</div></div></div>
+        <div class="crit"><div class="ic falta"></div><div><div class="t">C6 · Disponibilidad del artista</div><div class="d">DATOS FALTANTES — evidencia indirecta negativa (0 posts/28d)</div></div></div>
+        <div class="crit" style="border-bottom:none;"><div class="ic falla"></div><div><div class="t">C7 · Identidad establecida</div><div class="d">FALLA — narrativa TikTok no trasladada a IG, sin branding coherente</div></div></div>
+      </div>
+      <div class="rv" style="display:flex;flex-direction:column;gap:16px;">
+        <div class="box dark" style="text-align:center;padding:34px 20px;">
+          <div class="bignum"><span class="cnt" data-to="0">0</span><span class="dim">/7</span></div>
+          <div class="osw" style="font-weight:600;font-size:12px;letter-spacing:.16em;color:var(--g3);margin-top:6px;">CRITERIOS CONFIRMADOS</div>
+          <div class="small" style="margin-top:10px;">3 FALLA + 4 DATOS FALTANTES</div>
+        </div>
+        <div class="box" style="text-align:center;background:var(--paper);">
+          <div class="disp" style="font-size:34px;">4/7</div>
+          <div class="osw" style="font-weight:600;font-size:11px;letter-spacing:.12em;color:var(--g4);margin-top:5px;">MÁXIMO POSIBLE SI SE COMPLETAN DATOS</div>
+          <div class="small" style="margin-top:9px;">Umbral PODERES: 5/7<br><b>No alcanzable hoy</b></div>
+        </div>
+        <div class="tag fill" style="text-align:center;">VEREDICTO: MODO ESTÁNDAR</div>
+      </div>
+    </div>
+    <div class="box rv" style="margin-top:30px;background:var(--paper);">
+      <h4>Gaps a cerrar para optar a PODERES</h4>
+      <div class="small" style="columns:2;column-gap:36px;">
+        <b>1.</b> Restablecer crecimiento orgánico positivo sostenido 90+ días (C3)<br>
+        <b>2.</b> Unificar narrativa visual/temática entre TikTok e Instagram (C7)<br>
+        <b>3.</b> Resolver desalineación geográfica: mercado primario US o MX (C4)<br>
+        <b>4.</b> Obtener save rate y skip rate de S4A desktop (C1, C2)<br>
+        <b>5.</b> Confirmar presupuesto y disponibilidad con el artista (C5, C6)<br>
+        <b>↻ Re-evaluación:</b> 90 días post-inicio de operaciones (Q4 2026)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S04 ICE ═══ -->
+<section id="s04">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 04</div><h2>Diagnóstico integrado — ICE ranking</h2></div><div class="secno">04</div></div>
+    <div class="hazard rv"></div>
+    <p class="lead rv" style="margin-bottom:34px;">Los 5 hallazgos priorizados por ICE Score (Impacto × Confianza × Esfuerzo). A mayor score, mayor prioridad de intervención.</p>
+    <div id="icebars" class="rv">
+      <div class="icebar"><div class="lbl"><span>H1 · Colapso cross-platform</span><span class="score">700</span></div><div class="track"><div class="fillb" data-w="100" style="background:#0a0a0a;">I:10 · C:10 · E:7</div></div></div>
+      <div class="icebar"><div class="lbl"><span>H2 · Funnel de conversión roto</span><span class="score">540</span></div><div class="track"><div class="fillb" data-w="77" style="background:#262626;">I:10 · C:9 · E:6</div></div></div>
+      <div class="icebar"><div class="lbl"><span>H3 · Nicho identitario desaprovechado</span><span class="score">504</span></div><div class="track"><div class="fillb" data-w="72" style="background:#4d4d4d;">I:9 · C:7 · E:8</div></div></div>
+      <div class="icebar"><div class="lbl"><span>H4 · Motor de discovery apagado</span><span class="score">360</span></div><div class="track"><div class="fillb" data-w="51" style="background:#8a8a8a;">I:9 · C:8 · E:5</div></div></div>
+      <div class="icebar"><div class="lbl"><span>H5 · Desalineación geográfica</span><span class="score">224</span></div><div class="track"><div class="fillb" data-w="32" style="background:#bdbdbd;color:#0a0a0a;">I:8 · C:7 · E:4</div></div></div>
+    </div>
+    <div class="tablewrap rv" style="margin-top:30px;">
+      <table class="gs">
+        <tr><th>#</th><th>Hallazgo</th><th>Evidencia clave</th><th>Impacto cuantificado</th></tr>
+        <tr><td><b>1</b></td><td><b>Spike-and-die sin sostenibilidad</b></td><td>Spotify: 23,636 listeners/12m colapsaron a 30/28d (−99.87%). 0 posts/28d. For You: 84.8%→41.4%. IG: −92 seg/365d.</td><td>Sin plan de retención, se pierde el 99%+ de cualquier tracción ganada.</td></tr>
+        <tr><td><b>2</b></td><td><b>Funnel roto en todas las capas</b></td><td>$24.93 ad = 15.6K views, 50 visitas, 0 follows. 0 link clicks/28d. Spotify: 73% own playlists = loop cerrado.</td><td>Toda inversión en awareness se fuga. ROI actual de ads: 0%.</td></tr>
+        <tr><td><b>3</b></td><td><b>Nicho con tracción no capitalizada</b></td><td>13.8% like rate mejor video. "let me be couple" = 10–20% del search. Clúster Nov 2025: 3 videos = 12,239 views.</td><td>Única señal positiva. "Perreo Anormal": 31K streams/12m demuestran respuesta cuando hay actividad.</td></tr>
+        <tr><td><b>4</b></td><td><b>Discovery apagado</b></td><td>0% editorial, 7% algorítmico, 1 sola playlist externa. Alcance orgánico IG ~0.</td><td>Dependencia 100% del círculo personal. El save rate es la llave del algorítmico.</td></tr>
+        <tr><td><b>5</b></td><td><b>Geografía desalineada</b></td><td>IG/Meta: 24.9% en Connecticut, US 58.6%. Spotify: MX #1 (36% streams), Quintana Roo 38% reciente.</td><td>Estrategias compiten entre sí. Targeting incoherente hasta resolverlo.</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S05 FUNNEL ═══ -->
+<section id="s05" class="dark">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 05 · TOCA CADA ETAPA</div><h2>Dónde se rompe el funnel</h2></div><div class="secno">05</div></div>
+    <div class="hazard rv"></div>
+    <div class="funnel rv" id="funnel" style="margin-top:10px;">
+      <div class="fstage on" data-f="0"><div class="nm">Descubrimiento</div><div class="mt">15.6K views (ads)</div></div>
+      <div class="fx">✕</div>
+      <div class="fstage broken" data-f="1"><div class="nm">Comunidad</div><div class="mt">0 follows</div></div>
+      <div class="fx">✕</div>
+      <div class="fstage broken" data-f="2"><div class="nm">Conversión</div><div class="mt">0 link clicks</div></div>
+      <div class="fx">✕</div>
+      <div class="fstage broken" data-f="3"><div class="nm">Streaming</div><div class="mt">53 streams/28d</div></div>
+      <div class="fx">~</div>
+      <div class="fstage" data-f="4"><div class="nm">Retención</div><div class="mt">~3–5 super-listeners</div></div>
+    </div>
+    <div class="fdetail rv" id="fdetail" style="background:var(--g6);border-color:var(--paper);">
+      <div class="ft" id="ft">DESCUBRIMIENTO — LA GENTE VE</div>
+      <div class="fb" id="fb" style="color:var(--g3);">Esta capa funciona: $24.93 en un solo ad generó 15,600 views y 50 visitas al perfil. 27K viewers anuales en TikTok. El problema NO es atraer gente — es todo lo que viene después.</div>
+    </div>
+    <h3 class="disp rv" style="font-size:24px;margin:56px 0 20px;">Dos mundos que no se hablan</h3>
+    <div class="cols2 rv">
+      <div class="box" style="background:var(--paper);color:var(--ink);border-color:var(--paper);">
+        <h4>Ecosistema social — Connecticut, US</h4>
+        <div style="display:flex;gap:30px;margin-top:8px;">
+          <div><div class="disp" style="font-size:34px;">24.9%</div><div class="small">audiencia IG en ciudades CT · Waterbury #1</div></div>
+          <div><div class="disp" style="font-size:34px;">58.6%</div><div class="small">audiencia Meta en US</div></div>
+        </div>
+      </div>
+      <div class="box" style="background:transparent;border-color:var(--paper);">
+        <h4>Ecosistema musical — Quintana Roo, MX</h4>
+        <div style="display:flex;gap:30px;margin-top:8px;">
+          <div><div class="disp" style="font-size:34px;">36%</div><div class="small">de streams 12m desde MX (11,182)</div></div>
+          <div><div class="disp" style="font-size:34px;">38%</div><div class="small">streams recientes en Quintana Roo</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="small rv" style="margin-top:18px;">Decisión pendiente (Semana 2): definir mercado primario — hipótesis US (Connecticut) por RPS y localización del artista.</p>
+  </div>
+</section>
+
+<!-- ═══ S06 NSM ═══ -->
+<section id="s06">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 06</div><h2>North Star Metric</h2></div><div class="secno">06</div></div>
+    <div class="hazard rv"></div>
+    <div class="box dark rv" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:260px;">
+        <div class="kicker" style="color:var(--g4);">★ LA MÉTRICA QUE GOBIERNA TODO</div>
+        <div class="disp" style="font-size:clamp(20px,3vw,30px);margin-top:6px;">Super-listeners mensuales en Spotify</div>
+        <div class="small" style="margin-top:9px;">Oyentes que escucharon &gt;5 veces en 28 días (S4A desktop › Audience › Listener segments). Reporte semanal.</div>
+      </div>
+      <div style="text-align:center;">
+        <div class="disp" style="font-size:54px;">×10</div>
+        <div class="osw" style="font-weight:600;font-size:11px;letter-spacing:.14em;color:var(--g3);">CRECIMIENTO META · 90 DÍAS</div>
+      </div>
+    </div>
+    <div class="nsm rv" id="nsm">
+      <div class="nsmcol"><div class="num">~3–5</div><div class="barv" data-h="9%" style="background:repeating-linear-gradient(-45deg,var(--g3) 0 6px,var(--g1) 6px 12px);border:2px solid var(--ink);"></div><div class="cap">HOY (estimado)</div><div class="ref">30 listeners totales</div></div>
+      <div class="nsmcol"><div class="num">10</div><div class="barv" data-h="22%" style="background:var(--g3);"></div><div class="cap">META 30 DÍAS</div><div class="ref">~80–100 listeners</div></div>
+      <div class="nsmcol"><div class="num">25</div><div class="barv" data-h="52%" style="background:var(--g5);"></div><div class="cap">META 60 DÍAS</div><div class="ref">~200–300 listeners</div></div>
+      <div class="nsmcol"><div class="num">50 ★</div><div class="barv" data-h="100%" style="background:var(--ink);"></div><div class="cap">META 90 DÍAS</div><div class="ref">~500–800 listeners</div></div>
+    </div>
+    <div class="box soft rv" style="margin-top:34px;"><h4>⚠ Nota crítica</h4>
+      <div class="small">Las metas son conservadoras y calibradas a Modo Estándar Tier 1. Con baseline de 30 listeners/mes, llegar a 500–800 en 90 días <b>requiere activación real del motor de discovery y un release estratégico en el Mes 3</b>. Sin release, las metas de Spotify se reducen ~60%.</div>
+    </div>
+    <p class="small rv" style="margin-top:16px;"><b>Rationale:</b> no importan los oyentes casuales — importan los que vuelven. Esos 50 son los que le dicen al algoritmo de Spotify: "esta música vale la pena".</p>
+  </div>
+</section>
+
+<!-- ═══ S07 METRICAS (tabs) ═══ -->
+<section id="s07" class="gray">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 07</div><h2>Framework de medición</h2></div><div class="secno">07</div></div>
+    <div class="hazard rv"></div>
+    <div class="tabs rv" data-tg="m">
+      <button class="act" data-t="m0">INPUT · se operan</button>
+      <button data-t="m1">OUTPUT · se reportan</button>
+      <button data-t="m2">SALUD · se monitorean</button>
+    </div>
+    <div class="tabpan act rv" id="m0">
+      <div class="tablewrap" style="border:none;"><table class="gs">
+        <tr><th>Métrica</th><th>Baseline</th><th>Meta 90d</th><th>Fuente</th><th>Frec.</th></tr>
+        <tr><td>Cadencia de publicación TikTok</td><td>0 posts/sem</td><td><b>3–4/sem sostenido</b></td><td>TikTok Analytics</td><td>Semanal</td></tr>
+        <tr><td>Save rate Spotify (UCT-01)</td><td><span class="pill stripe">FALTANTE</span></td><td><b>&gt;6% min / &gt;9% obj</b></td><td>S4A desktop</td><td>Por release</td></tr>
+        <tr><td>Conversión profile visit→follow TikTok</td><td>~0%</td><td><b>&gt;5%</b></td><td>TikTok Analytics</td><td>Semanal</td></tr>
+        <tr><td>Playlist adds orgánicas sem. 1 (UCT-04)</td><td>1 playlist</td><td><b>3+ min / 8+ obj</b></td><td>S4A + Soundcharts</td><td>Por release</td></tr>
+        <tr><td>Source of streams algorítmico</td><td>7%</td><td><b>&gt;20%</b></td><td>S4A</td><td>Mensual</td></tr>
+      </table></div>
+    </div>
+    <div class="tabpan" id="m1">
+      <div class="tablewrap" style="border:none;"><table class="gs">
+        <tr><th>Métrica</th><th>Baseline</th><th>Meta 90d</th><th>Fuente</th></tr>
+        <tr><td>Oyentes mensuales Spotify</td><td>30</td><td><b>500–800</b></td><td>S4A</td></tr>
+        <tr><td>Streams mensuales</td><td>53</td><td><b>2,000–4,000</b></td><td>S4A</td></tr>
+        <tr><td>Seguidores TikTok</td><td>&lt;5K (est.)</td><td><b>+500–1,000 netos</b></td><td>TikTok Analytics</td></tr>
+        <tr><td>Seguidores Instagram</td><td>1,032</td><td><b>1,100–1,200</b> (detener pérdida)</td><td>Meta Business Suite</td></tr>
+        <tr><td>Ingresos mensuales streaming</td><td>~$3 USD</td><td><b>$15–30 USD</b> con tendencia positiva</td><td>TuneCore</td></tr>
+      </table></div>
+    </div>
+    <div class="tabpan" id="m2">
+      <div class="tablewrap" style="border:none;"><table class="gs">
+        <tr><th>Métrica</th><th>Baseline</th><th>Umbral de alerta</th><th>Fuente</th></tr>
+        <tr><td>Skip rate</td><td><span class="pill stripe">FALTANTE</span></td><td>&gt;40% = crisis (Escenario C, Triggers v2.3)</td><td>S4A desktop</td></tr>
+        <tr><td>RPS (Revenue Per Stream)</td><td>$0.00112</td><td>&lt;$0.002 = geografía de bajo valor dominante</td><td>TuneCore</td></tr>
+        <tr><td>% streams plataforma única (Spotify)</td><td>100%</td><td>&gt;70% = riesgo crítico de diversificación</td><td>TuneCore</td></tr>
+        <tr><td>TikTok For You % como source</td><td>41.4% (cayendo)</td><td>&lt;30% = algoritmo dejó de distribuir</td><td>TikTok Analytics</td></tr>
+        <tr><td>Repeat-listen ratio (UCT-02)</td><td>~1.77 ✓</td><td>&lt;1.2 = bajo engagement de la base</td><td>S4A</td></tr>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S08 BASELINE (tabs) ═══ -->
+<section id="s08">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 08</div><h2>Baseline cuantitativo</h2></div><div class="secno">08</div></div>
+    <div class="hazard rv"></div>
+    <p class="small rv" style="margin-bottom:18px;">Estado actual vs benchmark Tier 1 Estándar. <span class="pill fill">CRÍTICA</span> <span class="pill">ALTA</span> <span class="pill gray">MEDIA / OK</span> · ✓ = cumple</p>
+    <div class="tabs rv" data-tg="b">
+      <button class="act" data-t="b0">SPOTIFY</button>
+      <button data-t="b1">TIKTOK</button>
+      <button data-t="b2">INSTAGRAM + ECONOMÍA</button>
+    </div>
+    <div class="tabpan act rv" id="b0">
+      <div class="tablewrap" style="border:none;"><table class="gs">
+        <tr><th>KPI</th><th>Actual</th><th>Benchmark</th><th>Prioridad</th></tr>
+        <tr><td>Oyentes mensuales</td><td>~30</td><td>&gt;1K para operar</td><td><span class="pill fill">CRÍTICA</span></td></tr>
+        <tr><td>Streams mensuales</td><td>53</td><td>&gt;500 para medir</td><td><span class="pill fill">CRÍTICA</span></td></tr>
+        <tr><td>Save rate (UCT-01)</td><td><span class="pill stripe">N/D</span></td><td>&gt;6% / &gt;9%</td><td><span class="pill fill">CRÍTICA</span></td></tr>
+        <tr><td>Skip rate</td><td><span class="pill stripe">N/D</span></td><td>&lt;30%</td><td><span class="pill fill">CRÍTICA</span></td></tr>
+        <tr><td>Source editorial</td><td>0%</td><td>&gt;0%</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>Source algorítmico</td><td>7%</td><td>&gt;25–30%</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>Playlist adds (UCT-04)</td><td>1</td><td>3+ / 8+</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>Repeat-listen (UCT-02)</td><td>~1.77 ✓</td><td>&gt;1.2</td><td><span class="pill gray">OK</span></td></tr>
+        <tr><td>Canvas activo (UAU-02)</td><td>Sí ✓</td><td>Sí</td><td><span class="pill gray">OK</span></td></tr>
+        <tr><td>Diversificación plataformas</td><td>100% Spotify</td><td>&lt;70% en una</td><td><span class="pill fill">CRÍTICA</span></td></tr>
+        <tr><td>RPS</td><td>$0.00112</td><td>$0.003–0.004</td><td><span class="pill gray">MEDIA</span></td></tr>
+        <tr><td>Pre-saves (MOC-05)</td><td><span class="pill stripe">N/D</span></td><td>150+ / 350+</td><td><span class="pill">ALTA</span></td></tr>
+      </table></div>
+    </div>
+    <div class="tabpan rv" id="b1">
+      <div class="tablewrap" style="border:none;"><table class="gs">
+        <tr><th>KPI</th><th>Actual</th><th>Benchmark</th><th>Prioridad</th></tr>
+        <tr><td>Views mensuales</td><td>438 (28d)</td><td>&gt;2K para medir</td><td><span class="pill fill">CRÍTICA</span></td></tr>
+        <tr><td>Cadencia</td><td>0 posts/28d</td><td>3–4/semana</td><td><span class="pill fill">CRÍTICA</span></td></tr>
+        <tr><td>Like rate</td><td>4.98% ✓</td><td>&gt;4%</td><td><span class="pill gray">OK</span></td></tr>
+        <tr><td>Comment-to-view (UAU-05)</td><td>0.07%</td><td>&gt;2%</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>Share-to-view (UCT-07)</td><td>0.12%</td><td>&gt;0.4% / &gt;0.7%</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>For You % tráfico</td><td>41.4%</td><td>&gt;60% sano</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>Profile visit rate (UAU-06)</td><td>1.7%</td><td>&gt;5%</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>Completion rate (UAU-03)</td><td><span class="pill stripe">N/D</span></td><td>&gt;55%</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>Spark Ads engagement</td><td>0.026%</td><td>&gt;8%</td><td><span class="pill">ALTA — no invertir hasta optimizar</span></td></tr>
+      </table></div>
+    </div>
+    <div class="tabpan rv" id="b2">
+      <div class="tablewrap" style="border:none;"><table class="gs">
+        <tr><th>KPI</th><th>Actual</th><th>Benchmark</th><th>Prioridad</th></tr>
+        <tr><td>Engagement rate IG</td><td>~0.39%</td><td>&gt;2% min</td><td><span class="pill fill">CRÍTICA</span></td></tr>
+        <tr><td>Cadencia IG</td><td>0 posts/28d</td><td>3–5/semana</td><td><span class="pill fill">CRÍTICA</span></td></tr>
+        <tr><td>Conversión visit→follow</td><td>0% ads / 16.7% orgánico</td><td>&gt;5%</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>Link clicks</td><td>0</td><td>&gt;0</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>Story reply rate (UAU-08)</td><td><span class="pill stripe">N/D · 0 stories</span></td><td>&gt;3%</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>Ingresos mensuales</td><td>~$3 USD</td><td>&gt;$50 USD costos básicos</td><td><span class="pill gray">CONTEXTO</span></td></tr>
+        <tr><td>Presencia Apple Music</td><td>0%</td><td>&gt;10% streams</td><td><span class="pill">ALTA</span></td></tr>
+        <tr><td>Ingresos lifetime</td><td>$118 USD</td><td>—</td><td><span class="pill gray">CONTEXTO</span></td></tr>
+      </table></div>
+    </div>
+    <div class="box soft rv" style="margin-top:22px;"><div class="small"><b>Lo que cumple hoy:</b> like rate TikTok (4.98%), repeat-listen ratio (1.77) y Canvas activo. Es poco — pero confirma el mismo patrón: <b>quien llega, responde. El problema es que casi nadie está llegando.</b></div></div>
+  </div>
+</section>
+
+<!-- ═══ S09 TRIGGERS ═══ -->
+<section id="s09" class="gray">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 09 · SISTEMA DE TRIGGERS v2.3</div><h2>Triggers algorítmicos prioritarios</h2></div><div class="secno">09</div></div>
+    <div class="hazard rv"></div>
+    <div class="tablewrap rv">
+      <table class="gs">
+        <tr><th>#</th><th>Trigger</th><th>Actual</th><th>Meta T1 Estándar</th><th>Por qué importa</th></tr>
+        <tr><td><b>1</b></td><td><b>UCT-01 · Save Rate Spotify</b></td><td><span class="pill stripe">FALTANTE</span></td><td>&gt;6% min / &gt;9% obj</td><td>El trigger MÁS CRÍTICO. Sin save rate Spotify no empuja a algorítmico. Es la llave de Discover Weekly y Release Radar.</td></tr>
+        <tr><td><b>2</b></td><td><b>UAU-01 · Completion Rate Spotify</b></td><td><span class="pill stripe">FALTANTE</span></td><td>&gt;70%</td><td>Si la canción no se completa, Spotify penaliza. Par con UCT-01: save + completion = hit real.</td></tr>
+        <tr><td><b>3</b></td><td><b>UAU-05 · Comment-to-View TikTok</b></td><td>0.07%</td><td>&gt;2%</td><td>La señal de engagement activo que TikTok prioriza. Sin comentarios, los videos no escalan más allá de la primera cohorte.</td></tr>
+        <tr><td><b>4</b></td><td><b>UCT-07 · Share-to-View TikTok</b></td><td>0.12%</td><td>&gt;0.4% / &gt;0.7%</td><td>Los shares son el motor de expansión. La narrativa de pareja es inherentemente "shareable".</td></tr>
+        <tr><td><b>5</b></td><td><b>UAU-06 · Profile Visits desde Sound Page</b></td><td>0.1%</td><td>&gt;5%</td><td>Sin visitas al perfil desde el sonido, no hay conversión viewer→follower. Requiere bio optimizada y pinned video.</td></tr>
+        <tr><td><b>6</b></td><td><b>UCT-04 · Playlist Adds Orgánicas</b></td><td>1 playlist</td><td>3+ / 8+</td><td>Sin playlists no hay discovery pasivo. Requiere pitching editorial + curaduría independiente pre-release.</td></tr>
+        <tr><td><b>7</b></td><td><b>MOC-05 · Pre-saves</b></td><td><span class="pill stripe">FALTANTE</span></td><td>150+ / 350+</td><td>Los pre-saves alimentan el Release Radar (IE-01). Sin pre-saves, el release no tiene impulso inicial.</td></tr>
+      </table>
+    </div>
+    <div class="cols2 rv" style="margin-top:22px;">
+      <div class="box dark"><h4>La cadena causal</h4>
+        <div class="osw" style="font-size:16px;line-height:1.8;">CADENCIA → ENGAGEMENT (UAU-05/07) → PERFIL CONVIERTE (UAU-06) → PUENTE A SPOTIFY → SAVES (UCT-01) → EL ALGORITMO SE ENCIENDE</div>
+      </div>
+      <div class="box" style="background:var(--paper);"><h4>Bloqueante día 1</h4><div class="small">Obtener acceso a <b>S4A desktop</b>: sin save rate, skip rate ni completion rate no se puede diagnosticar la calidad del producto musical.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S10 ROADMAP (tabs) ═══ -->
+<section id="s10">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 10–11</div><h2>Roadmap 90 días</h2></div><div class="secno">10</div></div>
+    <div class="hazard rv"></div>
+    <div class="tabs rv" data-tg="r">
+      <button class="act" data-t="r0">MES 1 · FOUNDATION</button>
+      <button data-t="r1">MES 2 · TRACCIÓN</button>
+      <button data-t="r2">MES 3 · RELEASE PREP</button>
+    </div>
+    <div class="tabpan act rv" id="r0">
+      <div class="tablewrap" style="border:none;"><table class="gs">
+        <tr><th>#</th><th>Acción</th><th>Hipótesis</th><th>ICE</th><th>Owner</th><th>Inicio</th></tr>
+        <tr><td><b>1.1</b></td><td><b>Obtener save/skip/completion rate de S4A desktop</b></td><td>Con datos críticos diagnosticamos calidad del producto y evaluamos PODERES C1–C2</td><td><b>1000</b></td><td>G*S + Artista</td><td>Día 1</td></tr>
+        <tr><td><b>1.6</b></td><td><b>PAUSAR todo gasto en ads</b> hasta que perfil convierta (&gt;5% visit→follow)</td><td>No invertir con funnel roto = ahorro ~$50/mes de desperdicio</td><td><b>800</b></td><td>G*S</td><td>Inmediato</td></tr>
+        <tr><td><b>1.2</b></td><td><b>Optimizar perfil TikTok</b>: bio con CTA a Spotify, pinned video, link funcional</td><td>Perfil que comunica valor sube conversión de ~0% a &gt;5%</td><td><b>648</b></td><td>G*S</td><td>Día 1–2</td></tr>
+        <tr><td><b>1.5</b></td><td><b>Verificar distribución Apple Music + YouTube Music</b> vía TuneCore</td><td>Diversifica revenue y mejora RPS</td><td><b>648</b></td><td>G*S</td><td>Día 1–3</td></tr>
+        <tr><td><b>1.3</b></td><td><b>Optimizar perfil Instagram</b>: bio clara, link, highlights, 9-grid coherente</td><td>Propuesta de valor visible convierte profile visits en follows</td><td><b>576</b></td><td>G*S + Artista</td><td>Día 1–3</td></tr>
+        <tr><td><b>1.7</b></td><td><b>Instrumentar tracking</b>: UTM en bio + monitoreo semanal de KPIs base</td><td>Medir weekly = detectar tendencias y ajustar en tiempo real</td><td><b>504</b></td><td>G*S</td><td>Día 1</td></tr>
+        <tr><td><b>1.4</b></td><td><b>Reactivar cadencia TikTok</b>: 3–4 posts/semana formato identitario</td><td>Cadencia en el nicho que funcionó (Nov 2025) restaura For You a &gt;60%</td><td><b>420</b></td><td>Artista + G*S</td><td>Día 3</td></tr>
+      </table></div>
+      <div class="cols2" style="margin-top:18px;">
+        <div class="box soft"><h4>Recursos Mes 1</h4><div class="small">30 min de acceso desktop · ~6h de trabajo de perfiles · 2–3h/semana del artista · 1h/semana de tracking · <b>$0 de inversión paga</b> (es ahorro, no gasto).</div></div>
+        <div class="box dark"><h4>Éxito al Día 30</h4><div class="small">Publicando regularmente · alcance TikTok creciendo semana a semana · dashboard con todos los KPIs clave operando.</div></div>
+      </div>
+    </div>
+    <div class="tabpan rv" id="r1">
+      <div class="tablewrap" style="border:none;"><table class="gs">
+        <tr><th>#</th><th>Acción</th><th>Hipótesis</th><th>ICE</th><th>Inicio</th></tr>
+        <tr><td><b>2.1</b></td><td><b>4–6 TikToks con sonido propio "Let Me Be"</b> en formato pareja/couple</td><td>Capitalizar la demanda orgánica de búsqueda (10–20% del search) sube sound reuse y views</td><td><b>441</b></td><td>Semana 5</td></tr>
+        <tr><td><b>2.3</b></td><td><b>Stories IG 3–5/semana</b>: behind-the-scenes, polls, Q&A</td><td>Activar la base dormida de 1,032 followers y medir UAU-08 (&gt;3%)</td><td><b>392</b></td><td>Semana 5</td></tr>
+        <tr><td><b>2.2</b></td><td><b>Trasladar narrativa #studsoftiktok a IG</b> vía Reels adaptados (no cross-posting)</td><td>Unificar identidad y activar engagement de followers dormidos</td><td><b>336</b></td><td>Semana 5</td></tr>
+        <tr><td><b>2.4</b></td><td><b>Primer experimento TikTok→Spotify</b>: CTA explícito en 2–3 videos</td><td>CTA que convierte &gt;1% de viewers a clicks valida el puente</td><td><b>315</b></td><td>Semana 6</td></tr>
+        <tr><td><b>2.5</b></td><td><b>2–3 colaboraciones con creadores del nicho en Connecticut</b></td><td>Collabs = followers + cross-pollination de audiencia ($0–$100)</td><td><b>210</b></td><td>Semana 6–8</td></tr>
+      </table></div>
+      <div class="box dark" style="margin-top:18px;"><h4>Éxito al Día 60</h4><div class="small">Métricas TikTok en verde (más views, más interacción, más visitas al perfil) · Instagram empieza a activarse · hay gente haciendo click para ir a Spotify.</div></div>
+    </div>
+    <div class="tabpan rv" id="r2">
+      <div class="tablewrap" style="border:none;"><table class="gs">
+        <tr><th>#</th><th>Acción</th><th>Hipótesis</th><th>ICE</th><th>Inicio</th></tr>
+        <tr><td><b>3.1</b></td><td><b>Planificar release con SOP completo</b>: pre-save, UGC, editorial pitch, countdown</td><td>El SOP G*S reemplaza el patrón spike-and-die con una curva sostenida</td><td><b>350</b></td><td>Semana 9</td></tr>
+        <tr><td><b>3.3</b></td><td><b>Doblar cadencia y formatos que funcionaron</b> en Mes 2 (basado en data)</td><td>Duplicar lo que convirtió acelera las métricas input</td><td><b>336</b></td><td>Semana 9</td></tr>
+        <tr><td><b>3.2</b></td><td><b>Pitch editorial a Spotify</b> (si save rate del catálogo &gt;6%)</td><td>Editorial placement: source editorial pasa de 0% a &gt;0% → unlock masivo</td><td><b>200</b></td><td>Semana 10</td></tr>
+        <tr><td><b>3.4</b></td><td><b>Evaluar calidad de producción musical</b> con benchmark del género</td><td>Si la mezcla/master no compite, ningún growth la salva. Mejor saberlo antes de invertir</td><td><b>200</b></td><td>Semana 9</td></tr>
+      </table></div>
+      <div class="box soft" style="margin-top:18px;"><h4>Nota de secuencia (Agente 6)</h4>
+        <div class="small">Hay una fase previa al SOP estándar: <b>los primeros 30–60 días son de reconstrucción</b> (cadencia, perfiles, medición). El calendario de lanzamiento SOP aplica DESPUÉS. Calendario por tier: Días 1–7 = 5 piezas TOFU · Días 8–12 = 3 MOFU · Días 13–14 = 1 BOFU (50/30/20).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S12 EXPERIMENTOS (accordion) ═══ -->
+<section id="s12" class="gray">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 12 · TOCA CADA HIPÓTESIS</div><h2>Hipótesis de experimentos</h2></div><div class="secno">12</div></div>
+    <div class="hazard rv"></div>
+    <p class="lead rv" style="margin-bottom:24px;">7 experimentos priorizados. Cada uno con criterio de éxito medible y decisión predefinida — sin interpretaciones a posteriori.</p>
+    <div class="acc rv" id="acc">
+      <div class="accit open">
+        <button class="accbtn"><span class="no">01</span><span class="q">Cadencia 3–4 TikToks/semana en formato identitario → For You de 41.4% a &gt;60%</span><span class="pm">−</span></button>
+        <div class="accbody"><b>Por qué:</b> el algoritmo premia cadencia y nicho consistente.<br><b>KPI primario:</b> For You % como source · <b>Secundario:</b> views totales · <b>Muestra:</b> 12–16 videos (4 semanas).<br><b>Éxito:</b> For You &gt;60% y &gt;200 views promedio/video.<br><b>Si gana:</b> mantener cadencia. <b>Si falla:</b> probar formatos alternativos (duets, trends).</div>
+      </div>
+      <div class="accit">
+        <button class="accbtn"><span class="no">02</span><span class="q">3 TikToks con sonido "Let Me Be" formato pareja → &gt;500 views combinados</span><span class="pm">+</span></button>
+        <div class="accbody"><b>Por qué:</b> hay demanda orgánica de búsqueda ("let me be couple" = 10–20% del search).<br><b>KPI primario:</b> views en videos con "Let Me Be" · <b>Secundario:</b> sound page visits · <b>Duración:</b> 2 semanas.<br><b>Éxito:</b> &gt;500 views combinados, &gt;2% search traffic.<br><b>Si gana:</b> crear 5 más con variaciones. <b>Si falla:</b> el sonido no tiene tracción fuera de búsqueda orgánica.</div>
+      </div>
+      <div class="accit">
+        <button class="accbtn"><span class="no">03</span><span class="q">Optimizar perfil TikTok (bio + CTA + pinned) → conversión visit→follow de ~0% a &gt;5%</span><span class="pm">+</span></button>
+        <div class="accbody"><b>Por qué:</b> el perfil comunicará valor.<br><b>KPI primario:</b> visit→follow rate · <b>Muestra:</b> &gt;50 profile visits (significancia) · <b>Duración:</b> 4 semanas.<br><b>Éxito:</b> &gt;5% conversión.<br><b>Si gana:</b> invertir en ads para tráfico al perfil. <b>Si falla:</b> el perfil necesita más trabajo de marca.</div>
+      </div>
+      <div class="accit">
+        <button class="accbtn"><span class="no">04</span><span class="q">Reels adaptados del contenido TikTok en IG (3/sem) → engagement de 0.39% a &gt;2%</span><span class="pm">+</span></button>
+        <div class="accbody"><b>Por qué:</b> el contenido identitario genera interacción en el nicho.<br><b>KPI primario:</b> IG engagement rate · <b>Secundario:</b> follows netos · <b>Muestra:</b> 12 Reels (4 semanas).<br><b>Éxito:</b> ER &gt;2%, follows netos &gt;0/semana.<br><b>Si gana:</b> IG se vuelve canal secundario activo. <b>Si falla:</b> IG es canal de retención, no de growth.</div>
+      </div>
+      <div class="accit">
+        <button class="accbtn"><span class="no">05</span><span class="q">Stories IG con polls/Q&A (3–5/sem) → &gt;3% reply rate</span><span class="pm">+</span></button>
+        <div class="accbody"><b>Por qué:</b> el formato interactivo activa la base dormida de 1,032 followers.<br><b>KPI primario:</b> UAU-08 Story reply rate · <b>Secundario:</b> story views · <b>Muestra:</b> 12–20 stories (4 semanas).<br><b>Éxito:</b> reply rate &gt;3%.<br><b>Si gana:</b> stories como herramienta de community. <b>Si falla:</b> la base de followers no es activa / no es real.</div>
+      </div>
+      <div class="accit">
+        <button class="accbtn"><span class="no">06</span><span class="q">CTA explícito a Spotify en 2–3 TikToks → &gt;1% click-through rate</span><span class="pm">+</span></button>
+        <div class="accbody"><b>Por qué:</b> la audiencia del nicho ya busca "let me be".<br><b>KPI primario:</b> link clicks desde bio · <b>Secundario:</b> streams post-click · <b>Duración:</b> 2 semanas.<br><b>Éxito:</b> &gt;1% de viewers hacen click.<br><b>Si gana:</b> validamos el puente TikTok→Spotify. <b>Si falla:</b> formato diferente de CTA (link in comments, pinned comment).</div>
+      </div>
+      <div class="accit">
+        <button class="accbtn"><span class="no">07</span><span class="q">Distribución activa en Apple Music → &gt;5% de streams nuevos en 30 días</span><span class="pm">+</span></button>
+        <div class="accbody"><b>Por qué:</b> hay audiencia en US que usa Apple.<br><b>KPI primario:</b> % streams Apple Music · <b>Secundario:</b> RPS promedio · <b>Duración:</b> 30 días (observación).<br><b>Éxito:</b> &gt;5% streams desde Apple Music.<br><b>Si gana:</b> priorizar Apple Music en futuros CTA. <b>Si falla:</b> la distribución puede no estar activa (verificar TuneCore).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S13 RIESGOS ═══ -->
+<section id="s13">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 13 · TOCA CADA PUNTO DE LA MATRIZ</div><h2>Riesgos y mitigación</h2></div><div class="secno">13</div></div>
+    <div class="hazard rv"></div>
+    <div class="riskwrap rv">
+      <div>
+        <div class="rmatrix" id="rmatrix">
+          <div class="rcell" style="background:#8a8a8a;"></div><div class="rcell" style="background:#4d4d4d;"><div class="rdot" data-r="3">3</div></div><div class="rcell" style="background:#1c1c1c;"><div class="rdot" data-r="1">1</div></div>
+          <div class="rcell" style="background:#bdbdbd;"><div class="rdot" data-r="5">5</div></div><div class="rcell" style="background:#8a8a8a;"><div class="rdot" data-r="4">4</div></div><div class="rcell" style="background:#4d4d4d;"><div class="rdot" data-r="2">2</div></div>
+          <div class="rcell" style="background:#e2e2e2;"></div><div class="rcell" style="background:#bdbdbd;"><div class="rdot" data-r="6">6</div></div><div class="rcell" style="background:#8a8a8a;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;"><span class="raxis">MEDIO</span><span class="raxis">IMPACTO →</span><span class="raxis">CRÍTICO</span></div>
+        <div class="raxis" style="margin-top:4px;">↑ PROBABILIDAD: ALTA (arriba) → BAJA (abajo)</div>
+      </div>
+      <div class="risklist" id="risklist">
+        <div class="rit" data-r="1"><b>1 · Artista no mantiene cadencia</b> (ALTA/CRÍTICO) — Cadencia mínima viable (2 posts/sem). G*S provee dirección y templates. "Contrato de cadencia" antes de iniciar.</div>
+        <div class="rit" data-r="2"><b>2 · Save/skip rate revelan que la música no retiene</b> (MEDIA/CRÍTICO) — Si la música no retiene, ningún growth la salva. Sesión con productor/ingeniero antes del release. Ajustar expectativas.</div>
+        <div class="rit" data-r="3"><b>3 · Base demasiado pequeña para medir</b> (ALTA/ALTO) — Mes 1–2 = "siembra" sin data significativa. No decidir con n&lt;100. Proxy metrics de TikTok mientras Spotify crece.</div>
+        <div class="rit" data-r="4"><b>4 · Desalineación geográfica persiste</b> (MEDIA/ALTO) — Decisión en Semana 2: mercado primario US o MX. Hipótesis: US (Connecticut).</div>
+        <div class="rit" data-r="5"><b>5 · Presupuesto insuficiente para activación paga</b> (MEDIA/MEDIO) — Plan B: 100% orgánico. Mes 1–2 es $0. Ads/UGC pago solo en Mes 3 con presupuesto confirmado.</div>
+        <div class="rit" data-r="6"><b>6 · Música no distribuida en Apple/YouTube Music</b> (BAJA/MEDIO) — Verificar en Semana 1 y activar vía TuneCore (configuración rápida).</div>
+      </div>
+    </div>
+    <div class="box dark rv" style="margin-top:26px;"><h4>Escenario base D+7 del próximo release (Agente 10)</h4>
+      <div class="small"><b style="color:#fff;">ESCENARIO C "No Prende" es el más probable</b> dado el baseline actual (sound reuse &lt;10/día, save &lt;6%, skip &gt;40%). El plan debe preverlo como escenario base: pausar TikTok Ads → mover presupuesto a Meta Ads directos a Spotify → pivotar a YouTube.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S14 EXITO ═══ -->
+<section id="s14" class="gray">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 14</div><h2>Reporting + éxito a 90 días</h2></div><div class="secno">14</div></div>
+    <div class="hazard rv"></div>
+    <div class="stats rv">
+      <div class="stat"><div class="v" style="font-size:21px;">DAILY</div><div class="l">Sprint 72hrs del release: streams vs benchmark, UGC vs MOC-01, sound reuse, comment-to-view, link clicks</div></div>
+      <div class="stat"><div class="v" style="font-size:21px;">WEEKLY</div><div class="l">Listeners 28d, views TikTok 7d, cadencia vs meta, ER de IG, For You %, conversión visit→follow</div></div>
+      <div class="stat"><div class="v" style="font-size:21px;">MONTHLY</div><div class="l">Reporte al artista: oyentes, seguidores netos, top 3 contenidos, ingresos, progreso 30/60/90</div></div>
+      <div class="stat dark"><div class="v" style="font-size:21px;">QUARTERLY</div><div class="l">Q4 2026: NSM vs meta, re-evaluación PODERES 7/7, re-clasificación de tier, ROI en 4 dimensiones</div></div>
+    </div>
+    <h3 class="disp rv" style="font-size:22px;margin:44px 0 18px;">Definición de éxito — 3 escenarios</h3>
+    <div class="scen rv">
+      <div class="box dark"><span class="tag inv fill">ON-TRACK</span>
+        <div class="disp" style="font-size:30px;margin-top:14px;">≥ 50 <span style="font-size:14px;color:var(--g4);">SUPER-LISTENERS</span></div>
+        <div class="small" style="margin-top:9px;">Listeners ≥ 500 · cadencia 3+ posts/sem por 8+ semanas.<br><br><b style="color:#fff;">Decisión:</b> proyecto listo para release con SOP completo. Evaluar PODERES.</div></div>
+      <div class="box" style="background:var(--paper);"><span class="tag">REBALANCEAR</span>
+        <div class="disp" style="font-size:30px;margin-top:14px;">25–50</div>
+        <div class="small" style="margin-top:9px;">Listeners 250–500 · cadencia 2+ posts/sem con gaps.<br><br><b>Decisión:</b> ajustar formatos, intensificar el nicho que funcione. Release con expectativas ajustadas.</div></div>
+      <div class="box" style="background:repeating-linear-gradient(-45deg,var(--g1) 0 8px,var(--paper) 8px 16px);"><span class="tag" style="background:var(--paper);">REDISEÑAR</span>
+        <div class="disp" style="font-size:30px;margin-top:14px;">&lt; 25</div>
+        <div class="small" style="margin-top:9px;">Listeners &lt; 250 · &lt;2 posts/sem o abandono.<br><br><b>Decisión:</b> revisar compromiso real y calidad de la música. Si save &lt;6%: producto antes que marketing. Conversación honesta.</div></div>
+    </div>
+    <h3 class="disp rv" style="font-size:18px;margin:38px 0 14px;">Hitos intermedios (Agente 11)</h3>
+    <div class="tablewrap rv"><table class="gs">
+      <tr><th>Periodo</th><th>On-track</th><th>Rebalancear</th><th>Rediseñar</th></tr>
+      <tr><td><b>30 días</b></td><td>SL ≥ 10 · listeners ≥ 80</td><td>SL 5–10 · listeners 40–80</td><td>SL &lt; 5 · listeners &lt; 40</td></tr>
+      <tr><td><b>60 días</b></td><td>SL ≥ 25 · listeners ≥ 200</td><td>SL 10–25 · listeners 100–200</td><td>SL &lt; 10 · listeners &lt; 100</td></tr>
+      <tr><td><b>90 días</b></td><td>SL ≥ 50 · listeners ≥ 500</td><td>SL 25–50 · listeners 250–500</td><td>SL &lt; 25 · listeners &lt; 250</td></tr>
+    </table></div>
+    <div class="box soft rv" style="margin-top:22px;"><h4>Framework de ROI</h4>
+      <div class="small">ROI = (capital de marca + capital de audiencia + capital creativo + ingresos) vs inversión total. En Tier 1 con $118 lifetime, el ROI monetario directo será marginal — <b>se reporta en las 4 dimensiones, no solo la monetaria.</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S15 BRIEF ═══ -->
+<section id="s15">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 15 · EXECUTIVE BRIEF (PARA EL ARTISTA)</div><h2>La foto actual del proyecto</h2></div><div class="secno">15</div></div>
+    <div class="hazard rv"></div>
+    <div class="box dark rv">
+      <div class="disp" style="font-size:clamp(17px,2.6vw,24px);">"El proyecto está en estado de reconstrucción: tiene potencial real en un nicho específico, pero necesita volver a los fundamentales antes de crecer."</div>
+    </div>
+    <div class="cols2 rv" style="margin-top:30px;">
+      <div>
+        <span class="tag fill">3 FORTALEZAS REALES</span>
+        <div class="ncard"><div class="n">01</div><div><div class="t">Tu nicho conecta</div><div class="d">El contenido de pareja y comunidad LGBT generó 13.8% de engagement (el promedio es 4–5%). Eso no se compra — es genuino.</div></div></div>
+        <div class="ncard"><div class="n">02</div><div><div class="t">La gente busca tu música</div><div class="d">"Let me be couple" aparece como búsqueda orgánica en TikTok. Demanda real sin marketing.</div></div></div>
+        <div class="ncard"><div class="n">03</div><div><div class="t">Quien te escucha, te escucha de verdad</div><div class="d">80% de tus reproducciones vienen de gente que ya guardó tu música. Pocos, pero reales: te eligieron.</div></div></div>
+      </div>
+      <div>
+        <span class="tag">3 PUNTOS DE FRICCIÓN</span>
+        <div class="ncard"><div class="n">01</div><div><div class="t">No estás publicando</div><div class="d">Más de un mes sin postear. Sin contenido el algoritmo deja de mostrarte: tu alcance cayó a la mitad.</div></div></div>
+        <div class="ncard"><div class="n">02</div><div><div class="t">Tu perfil no convierte</div><div class="d">$50 en ads, 28,000+ personas vieron, ninguna siguió. Llegan al perfil y no entienden por qué quedarse.</div></div></div>
+        <div class="ncard"><div class="n">03</div><div><div class="t">Sin motor de descubrimiento</div><div class="d">Cero playlists editoriales, casi nada de algoritmo. Solo te escuchan quienes ya te conocen.</div></div></div>
+      </div>
+    </div>
+    <div class="box rv" style="margin-top:26px;border-width:3px;">
+      <h4>★ 1 oportunidad oculta — comunidad local real en Connecticut</h4>
+      <div class="small">Casi el 25% de tu audiencia de Instagram está concentrada en Waterbury, Meriden y New Haven. Eso no es normal — <b>eso es comunidad</b>. Mientras otros intentan llegar a "todo el mundo", tú tienes una base local: eventos, colaboraciones con creadores de tu zona, shows íntimos. Todo más factible y más poderoso de lo que crees.</div>
+    </div>
+    <div class="cols2 rv" style="margin-top:20px;">
+      <div class="box soft"><h4>Tu lugar: nivel Emergente</h4><div class="small">No es un insulto — es un punto de partida. Tu recurso más valioso no es plata: es tu tiempo y tu creatividad. Lo que importa no es cuántos te escuchan, sino <b>cuántos VUELVEN a escucharte</b>.</div></div>
+      <div class="box soft"><h4>Modo de servicio: base (Estándar)</h4><div class="small">Es lo correcto para hoy: reconstruir fundamentales primero. Optas al modo avanzado con 8+ semanas de cadencia, save/skip rate en rango positivo, y presupuesto + disponibilidad confirmados.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S16 PLAN 3 CAPS ═══ -->
+<section id="s16" class="gray">
+  <div class="wrap">
+    <div class="sechead rv"><div><div class="kicker">SECCIÓN 16 · EXECUTIVE BRIEF</div><h2>El plan en 3 capítulos</h2></div><div class="secno">16</div></div>
+    <div class="hazard rv"></div>
+    <div class="cols3 rv">
+      <div class="box" style="background:var(--paper);border-width:3px;">
+        <div class="disp" style="font-size:19px;">CAP. 1<br>"Encender las luces"</div>
+        <span class="tag" style="margin-top:10px;display:inline-block;">MES 1</span>
+        <div class="small" style="margin-top:12px;"><b>Logramos:</b> perfiles optimizados y listos para convertir · rutina de 3–4 posts/sem · todos los datos faltantes · música verificada en Apple/YouTube Music.</div>
+        <div class="small" style="margin-top:12px;border-top:2px solid var(--g2);padding-top:12px;"><b>Necesitamos de vos:</b> acceso a S4A desktop · compromiso de grabar y publicar 3–4×/sem · 1 reunión semanal de 30 min.</div>
+      </div>
+      <div class="box" style="background:var(--paper);border-width:3px;">
+        <div class="disp" style="font-size:19px;">CAP. 2<br>"Conectar los puntos"</div>
+        <span class="tag" style="margin-top:10px;display:inline-block;">MES 2</span>
+        <div class="small" style="margin-top:12px;"><b>Logramos:</b> contenido con "Let Me Be" capitalizando la demanda · narrativa TikTok llevada a IG · primer experimento TikTok→Spotify · collabs en Connecticut.</div>
+        <div class="small" style="margin-top:12px;border-top:2px solid var(--g2);padding-top:12px;"><b>Necesitamos de vos:</b> mantener cadencia (no aflojar) · 3 TikToks con "Let Me Be" en formato pareja · apertura a colaborar.</div>
+      </div>
+      <div class="box dark" style="border-width:3px;">
+        <div class="disp" style="font-size:19px;">CAP. 3<br>"El siguiente nivel"</div>
+        <span class="tag inv" style="margin-top:10px;display:inline-block;">MES 3</span>
+        <div class="small" style="margin-top:12px;"><b style="color:#fff;">Logramos:</b> plan de lanzamiento completo (pre-save, anticipación, playlists) · duplicar lo que funcionó · evaluación de la producción musical.</div>
+        <div class="small" style="margin-top:12px;border-top:2px solid var(--g6);padding-top:12px;"><b style="color:#fff;">Necesitamos de vos:</b> canción lista (mezclada, masterizada) · calendario intensivo pre-release · decisión de presupuesto.</div>
+      </div>
+    </div>
+    <div class="cols2 rv" style="margin-top:22px;">
+      <div class="box" style="background:var(--paper);"><h4>Qué hace Growth*Stars</h4>
+        <div class="small">Estrategia y dirección creativa · optimización de perfiles · monitoreo semanal y ajuste · planificación del release con SOP completo · reportes mensuales con números reales · <b>honestidad total sobre lo que funciona y lo que no.</b></div>
+      </div>
+      <div class="box" style="background:var(--paper);"><h4>Qué hace el equipo del artista</h4>
+        <div class="small">Publicar 3–4×/sem (TikTok prioridad) · dar acceso a S4A desktop · 1 reunión semanal de 30 min · responder comentarios e interactuar · <b>no invertir en publicidad sin consultarnos primero.</b></div>
+      </div>
+    </div>
+    <div class="box rv" style="margin-top:20px;background:var(--paper);"><h4>Decisiones que requieren al artista directamente</h4>
+      <div class="small">① Mercado primario: ¿Estados Unidos o México? · ② Presupuesto para activaciones pagas (influencers, ads, prensa) · ③ Timeline del próximo release · ④ Disponibilidad para shows/eventos locales en Connecticut.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S17 PROMESA ═══ -->
+<section id="s17" class="dark promo">
+  <div class="star1">*</div>
+  <div class="wrap" style="position:relative;">
+    <div class="kicker rv" style="color:var(--g4);">SECCIÓN 17 · LA PROMESA — RECKLESS × GROWTH*STARS</div>
+    <div class="hazard rv"></div>
+    <h2 class="rv">Lo que falta no es talento.<br><span class="ol">Es sistema.</span></h2>
+    <p class="lead rv" style="margin-top:26px;">RECKLESS, tu proyecto tiene algo que muchos artistas envidian y pocos tienen: <b style="color:#fff;">autenticidad</b>. Tu historia, tu relación, tu comunidad — eso no se fabrica. Lo que falta es cadencia. Plan. Medición. Constancia. Y eso es exactamente lo que vamos a construir juntos en los próximos 90 días.</p>
+    <p class="lead rv" style="margin-top:16px;">No te vamos a prometer millones de reproducciones ni fama viral. Te vamos a prometer algo mejor: <b style="color:#fff;">una base de fans real que crece, datos claros para decidir, y un sistema que multiplica cada esfuerzo tuyo</b> en vez de dejarlo perderse en el vacío.</p>
+    <p class="lead rv" style="margin-top:16px;">El primer paso es el más importante: <b style="color:#fff;">volver a publicar.</b> Consistentemente. Con intención. Con estrategia. Todo lo demás se construye sobre eso.</p>
+    <div class="disp rv" style="font-size:clamp(20px,3.4vw,32px);margin-top:40px;">Nos vemos en 90 días con los números sobre la mesa. Vamos<span style="color:transparent;-webkit-text-stroke:2px var(--paper);">*</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>GROWTH*STARS — SÍNTESIS GROWTH · AGENTE 3</span>
+    <span>RECKLESS · TIER 1 EMERGENTE · MODO ESTÁNDAR</span>
+    <span>2026.06.10 · PRÓXIMO PASO: S4A DESKTOP + SEMANA 1</span>
+  </div>
+</footer>
+
+<button class="totop" id="totop" aria-label="Volver arriba">↑</button>
+
+<script>
+// ticker
+(function(){
+  const items = ["RECKLESS","SÍNTESIS GROWTH","TIER 1 — EMERGENTE","MODO ESTÁNDAR","NSM: SUPER-LISTENERS","30 → 500-800 LISTENERS","ROADMAP 90 DÍAS","#STUDSOFTIKTOK","LET ME BE","GROWTH*STARS","AGENTE 3 · v3","CONNECTICUT × QUINTANA ROO","SAVE RATE = LA LLAVE","VOLVER A PUBLICAR"];
+  const seq = items.map(t=>`<span>${t} ·</span>`).join("");
+  document.getElementById('ticker').innerHTML = seq + seq;
+})();
+
+// progress + totop + nav contraste
+const prog=document.getElementById('prog'), totop=document.getElementById('totop');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  totop.classList.toggle('show',h.scrollTop>700);
+},{passive:true});
+totop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// counters
+function animCount(el){
+  const to=+el.dataset.to, dur=1400, t0=performance.now();
+  (function step(t){const p=Math.min((t-t0)/dur,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);})(t0);
+}
+const ioc=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){animCount(e.target);ioc.unobserve(e.target);}}),{threshold:.5});
+document.querySelectorAll('.cnt').forEach(el=>ioc.observe(el));
+
+// ICE bars
+const ioIce=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.querySelectorAll('.fillb').forEach((b,i)=>setTimeout(()=>b.style.width=b.dataset.w+'%',i*140));ioIce.unobserve(e.target);}
+}),{threshold:.3});
+const ib=document.getElementById('icebars'); if(ib)ioIce.observe(ib);
+
+// NSM bars
+const ioNsm=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.querySelectorAll('.barv').forEach((b,i)=>setTimeout(()=>b.style.height=b.dataset.h,i*160));ioNsm.unobserve(e.target);}
+}),{threshold:.3});
+const nm=document.getElementById('nsm'); if(nm)ioNsm.observe(nm);
+
+// funnel interactivo
+const FD=[
+ ["DESCUBRIMIENTO — LA GENTE VE","Esta capa funciona: $24.93 en un solo ad generó 15,600 views y 50 visitas al perfil. 27K viewers anuales en TikTok. El problema NO es atraer gente — es todo lo que viene después."],
+ ["✕ ROTURA 1 · COMUNIDAD — PERO NO SIGUE","De 15.6K views y 50 visitas al perfil: 0 follows (0.0% de conversión). 462 visitas anuales en TikTok con conversión ~0%. El perfil no comunica por qué quedarse: la vitrina está rota."],
+ ["✕ ROTURA 2 · CONVERSIÓN — NI HACE CLICK","0 link clicks en 28 días. No existe puente medible entre redes y Spotify. Arreglo: link en bio funcional + UTM tracking + CTA explícito (acciones 1.2, 1.7 y 2.4 del roadmap)."],
+ ["✕ ROTURA 3 · STREAMING — SOLO CÍRCULO CERCANO","53 streams/28d. Source: 73% own playlists = loop cerrado del círculo personal. 0% editorial, 7% algorítmico, 1 sola playlist externa. Spotify no está recomendando a nadie nuevo."],
+ ["RETENCIÓN — LOS POCOS QUE LLEGAN, SE QUEDAN","80% de streams son de oyentes que ya guardaron la música. Repeat-listen ratio 1.77 (cumple benchmark). La base es mínima (~3-5 super-listeners) pero es REAL. Sobre esto se construye."]
+];
+document.querySelectorAll('#funnel .fstage').forEach(st=>{
+  st.addEventListener('click',()=>{
+    document.querySelectorAll('#funnel .fstage').forEach(s=>s.classList.remove('on'));
+    st.classList.add('on');
+    const d=FD[+st.dataset.f];
+    document.getElementById('ft').textContent=d[0];
+    document.getElementById('fb').textContent=d[1];
+  });
+});
+
+// tabs
+document.querySelectorAll('.tabs').forEach(tg=>{
+  tg.querySelectorAll('button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      tg.querySelectorAll('button').forEach(b=>b.classList.remove('act'));
+      btn.classList.add('act');
+      const group=tg.dataset.tg;
+      document.querySelectorAll('.tabpan[id^="'+group+'"]').forEach(p=>p.classList.remove('act'));
+      document.getElementById(btn.dataset.t).classList.add('act');
+    });
+  });
+});
+
+// accordion
+document.querySelectorAll('.accbtn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const it=b.parentElement, open=it.classList.contains('open');
+    document.querySelectorAll('.accit').forEach(i=>{i.classList.remove('open');i.querySelector('.pm').textContent='+';});
+    if(!open){it.classList.add('open');b.querySelector('.pm').textContent='−';}
+  });
+});
+
+// riesgo matriz <-> lista
+document.querySelectorAll('.rdot').forEach(d=>{
+  d.addEventListener('click',()=>{
+    document.querySelectorAll('.risklist .rit').forEach(r=>r.classList.toggle('hl',r.dataset.r===d.dataset.r));
+    document.querySelector('.risklist .rit[data-r="'+d.dataset.r+'"]').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+});
+
+// nav activo
+const secs=[...document.querySelectorAll('section[id],header[id]')];
+const navls=[...document.querySelectorAll('nav a.nl')];
+const ioNav=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      navls.forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id));
+    }
+  });
+},{rootMargin:'-40% 0px -55% 0px'});
+secs.forEach(s=>ioNav.observe(s));
+</script>
+</body>
+</html>
