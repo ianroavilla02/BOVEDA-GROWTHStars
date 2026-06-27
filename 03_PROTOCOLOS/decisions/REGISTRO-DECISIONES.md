@@ -2,7 +2,7 @@
 
 > Canon único de decisiones (D-082). Este archivo es la ÚNICA fuente de verdad.
 > El CTO-Engram registra nuevas decisiones aquí al cerrar cada discusión (D-084).
-> Última actualización: 2026-06-26 · Última decisión: D-084
+> Última actualización: 2026-06-26 · Última decisión: D-085
 
 ---
 
@@ -391,6 +391,30 @@
 | Feed Architect (cola) | D-060 a D-064 |
 | Holding (modelo) | D-066 a D-079 |
 | Agentes directivos | D-080 a D-084 |
+| Dashboard Artista | D-085 |
+
+---
+
+# PARTE 10 — Dashboard del Artista (Día 10, D-085)
+
+### D-085 — Dashboard centrado en Artista reemplaza modelo G*S/MGMT separado
+
+**Contexto.** El frontend tenía 2 workspaces (G*S y MGMT) como productos separados con vistas duplicadas: `clients` (G*S), `mgmt-clients`, `mgmt-overview`, `mgmt-objectives`, `mgmt-client-detail`, `client-360`. El modelo Holding (D-067) ya unificó el backend con artista como entidad de primer nivel, pero el frontend seguía fragmentado.
+
+**Decisión.** Una sola navegación **Sistema / Artistas**. El artista es la entidad de primer nivel. Su dashboard reutiliza `renderMgmtClientDetail()` con tabs por línea de servicio (MGMT activo, AV/Eventos placeholders). Sección "Recursos del Artista" (artist_links D-075) como recursos permanentes que sobreviven entre engagements.
+
+**Qué descartó.**
+- Mantener coexistencia G*S/MGMT en frontend (over-engineering con 1 cliente).
+- Sistema de tabs desde el arranque (solo MGMT activo, tabs son prematuros).
+- Reescribir `renderMgmtClientDetail()` (se reutiliza tal cual, menos riesgo).
+
+**Detalle técnico.**
+- **Sidebar:** 2 grupos — Sistema (Métricas, Agentes, Proyectos) + Artistas. Eliminado product switcher.
+- **Vista Artistas:** `GET /api/artists` lee de `artists → service_lines → service_types`. Cards con badges de líneas activas.
+- **Dashboard Artista:** `GET /api/artist/:slug/dashboard` consolida artist + service_lines + engagement + objectives + missions + links + boveda. Frontend llama a `renderMgmtClientDetail()` con datos adaptados.
+- **artist_links (D-075):** tabla en Supabase (`artist_links`: id, artist_id, label, url, file_path, attachment_type, category). CRUD: `GET/POST /api/artist/:slug/links`, `DELETE /api/artist-link/:id`. Categorías: brandbook, guia-tecnica, biolink, auditoria, general.
+- **Limpieza:** ~1027 líneas eliminadas. Muertas: `switchProduct()`, `renderClients()`, `renderMgmtClients()`, `renderMgmtOverview()`, `renderMgmtObjectives()`, `openClient360()`, `renderClient360()`. Restauradas: `openOnboardClientModal()` (adaptada a "Nuevo Artista"), `openMdEditor()`, `openInObsidian()`.
+- **DT-027 cerrada:** frontend ya no consume `metadata->>service='mgmt'`. Endpoints backend legacy siguen existiendo pero sin consumidor.
 
 ---
 

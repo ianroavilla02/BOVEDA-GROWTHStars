@@ -17,7 +17,7 @@
 | DT-024 | Huérfanos en Supabase Storage al reemplazar adjunto | D-059/D-075 | Abierta (volumen bajo) |
 | DT-025 | Commit consolidado no atómico (commit 5692507) | Día 8 | Asumida |
 | DT-026 | closeBatch y saveAgentOutput duplican ruta BOVEDA → extraer getAgentDir() | D-065 | Abierta |
-| DT-027 | getMgmtClients() y getMgmtMetricsOverview() usan metadata->>service='mgmt' → migrar a service_lines | D-079 | Abierta |
+| DT-027 | getMgmtClients() y getMgmtMetricsOverview() usan metadata->>service='mgmt' → migrar a service_lines | D-079/D-085 | Cerrada (frontend migrado a /api/artists) |
 
 ## Deuda activa — detalle expandido
 
