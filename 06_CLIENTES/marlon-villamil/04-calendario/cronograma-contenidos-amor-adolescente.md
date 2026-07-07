@@ -253,7 +253,7 @@ SECRETO                    TENTACIÓN            ENAMORAMIENTO / GIRA / CUMPLE  
 | 21 ago | Vie | Artista · PRODUCCIÓN | Foto BTS #5 + #6 + Frame #4 (carrusel legado) | IG Feed | 6pm |
 | 24 ago | Lun | Artista · LIBRE | Reacción a covers/duetos de fans con el EP | TikTok | 8pm |
 | 27 ago | Mié | Fans · AGENCIA | Compilado "las mejores reacciones al EP" | TikTok | 7pm |
-| 30 ago | Sáb | Artista · LIBRE | **Post cierre:** "AMOR ADOLESCENTE siempre fue de ustedes" + números | IG Feed | 5pm |
+| 30 ago | Dom | Artista · LIBRE | **Post cierre:** "AMOR ADOLESCENTE siempre fue de ustedes" + números | IG Feed | 5pm |
 
 **Piezas gastadas en Post:** Lyrics ×1, One Shot ×2, Foto BTS ×4, Frame ×2, BTS Prod = **10** (+ contenido en vivo de gira, no contabilizado en las 22)
 
