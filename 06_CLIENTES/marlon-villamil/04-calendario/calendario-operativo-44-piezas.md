@@ -1,304 +1,246 @@
-# CALENDARIO OPERATIVO — 44 PIEZAS AUDIOVISUALES
+# CALENDARIO OPERATIVO — PUBLICACIONES (44 PIEZAS AGRUPADAS)
 
 **Cliente:** Marlon Villamil · **EP:** "AMOR ADOLESCENTE" · **Producido por:** Growth*Stars
 **Documento hermano:** [cronograma-contenidos-amor-adolescente.md](cronograma-contenidos-amor-adolescente.md) (capa estratégica/narrativa)
-**Este documento:** capa operativa — cada pieza con ID, fecha/hora, plataforma, **copy listo para pegar** y **estrategia de publicación**.
-**Voz de copy:** Marlon en primera persona (influencer, público 14–25 mayoría mujeres, COL+MEX). Cercano, juvenil, sin sonar a marca.
+**Este documento:** capa operativa. La unidad es la **PUBLICACIÓN**. Las 44 piezas de material se agrupan en carruseles/reels; cada publicación declara qué piezas contiene, con **copy listo para pegar** y **estrategia**.
 
 ---
 
-## 1. SISTEMA DE NOMENCLATURA
+## 1. MODELO DE PUBLICACIÓN (cómo se agrupan las 44 piezas)
 
-`[LANZAMIENTO]-[TIPO]-[##]`
+Por videoclip (× 2 = TENTACIÓN y HENESSY):
 
-| Lanzamiento | Tipo | Código |
-|---|---|---|
-| **T** = TENTACIÓN | Videoclip 4K | VC |
-| **H** = HENESSY | Portada | POR |
-| | Trailer / Canvas Spotify | TRL |
-| | Frame producción | FRM |
-| | Foto BTS | BTS |
-| | Video One Shot | OS |
-| | Performance / Lyrics Reel | LYR |
-| | BTS Producción by G*S | BPG |
+| Publicación | Formato | Qué contiene | Cuántas |
+|---|---|---|---|
+| Videoclip 4K | Video YouTube | El clip completo | 1 |
+| Portada | Post estático | Portada (reveal pre + oficial release) | 1 |
+| Trailer / Canvas | Reel + Canvas Spotify | Trailer (pre) → Canvas (release) | 1 |
+| **Carrusel COMBINADO** | Carrusel IG | 3 One Shots + 3 Fotos BTS alternados | **2** |
+| **Carrusel LANZAMIENTO** | Carrusel IG | 4 Frames + secciones del videoclip | **1** |
+| Performance / Lyrics | **Reel vertical directo** | Lyrics video de la canción | 2 |
+| BTS Producción by G*S | Reel + YouTube | El "cómo se hizo" | 1 |
 
-Ej: `T-OS-03` = TENTACIÓN, One Shot #3. `H-BTS-05` = HENESSY, Foto BTS #5.
+> **REGLA DE FORMATO (confirmada):** los **One Shots NUNCA van sueltos** — siempre dentro de carruseles. Lo **único que sube como Reel vertical directo** son los **Performance/Lyrics videos**. Los **Frames** se reservan para el **carrusel de lanzamiento** el día del videoclip, alternando con secciones del clip.
+
+**Total por videoclip:** ~9 publicaciones. **Total campaña:** ~18–20 publicaciones + orgánico LIBRE diario + contenido de gira en vivo.
+
+### Nomenclatura
+`[T/H]-P##` = publicación. Cada ficha lista las **piezas de las 44** que consume (ej: `OS-01, OS-02, OS-03 + BTS-01, BTS-02, BTS-03`).
 
 ---
 
-## 2. TABLA MAESTRA — LAS 44 PIEZAS DE UN VISTAZO
+## 2. TABLA MAESTRA — PUBLICACIONES
 
-### TENTACIÓN (22 piezas · ventana 15 jul – 9 ago)
+### TENTACIÓN (15 jul – 8 ago)
 
-| ID | Tipo | Fecha | Día | Plataforma | Fase |
-|---|---|---|---|---|---|
-| T-OS-01 | One Shot | 15 jul | Mié | IG Reel + TikTok | PRE |
-| T-BTS-01 | Foto BTS | 18 jul | Sáb | IG Feed | PRE |
-| T-OS-02 | One Shot | 20 jul | Lun 🇨🇴 | TikTok + Reel | PRE |
-| T-POR-01 | Portada | 24 jul | Vie | IG Feed + Stories | PRE |
-| T-BTS-02 | Foto BTS | 26 jul | Dom | IG Feed (carrusel) | PRE |
-| T-BTS-03 | Foto BTS | 26 jul | Dom | IG Feed (carrusel) | PRE |
-| T-TRL-01 | Trailer/Canvas | 28 jul | Mar | IG Reel + TikTok + YT | PRE |
-| T-FRM-01 | Frame | 31 jul | Vie | IG Feed | PRE |
-| T-VC-01 | Videoclip 4K | 1 ago | Sáb 00:00 | YouTube | RELEASE |
-| T-LYR-01 | Lyrics Reel | 1 ago | Sáb 13:00 | IG Reel + TikTok | RELEASE |
-| T-OS-03 | One Shot | 1 ago | Sáb 16:00 | TikTok + Reel | RELEASE |
-| T-OS-04 | One Shot | 1 ago | Sáb 19:00 | TikTok + Reel | RELEASE |
-| T-FRM-02 | Frame | 1 ago | Sáb 19:00 | IG Feed | RELEASE |
-| T-LYR-02 | Lyrics Reel | 2 ago | Dom | IG Reel + TikTok | POST |
-| T-BPG-01 | BTS Prod G*S | 3 ago | Lun | YouTube + IG Reel | POST |
-| T-OS-05 | One Shot | 5 ago | Mié | TikTok + Reel | POST |
-| T-FRM-03 | Frame | 5 ago | Mié | IG Feed | POST |
-| T-BTS-04 | Foto BTS | 6 ago | Jue | IG Feed (carrusel) | POST |
-| T-BTS-05 | Foto BTS | 6 ago | Jue | IG Feed (carrusel) | POST |
-| T-OS-06 | One Shot | 7 ago | Vie 🇨🇴 | TikTok + Reel | POST |
-| T-FRM-04 | Frame | 7 ago | Vie 🇨🇴 | IG Feed | POST |
-| T-BTS-06 | Foto BTS | 8 ago | Sáb | IG Feed + Stories | POST (bisagra) |
+| ID | Fecha | Día | Publicación | Piezas que consume | Plataforma | Fase |
+|---|---|---|---|---|---|---|
+| — | 15 jul | Mié | Anuncio faceta musical (LIBRE, cara a cámara) | — orgánico | IG/TikTok | PRE |
+| T-P01 | 20 jul | Lun 🇨🇴 | **Carrusel combinado #1** | OS-01,02,03 + BTS-01,02,03 | IG carrusel | PRE |
+| T-P02 | 24 jul | Vie | Portada reveal | POR-01 | IG Feed + Stories | PRE |
+| T-P03 | 28 jul | Mar | Trailer + pre-save | TRL-01 | Reel + TikTok + YT | PRE |
+| T-P04 | 1 ago | Sáb 00:00 | **Videoclip 4K** | VC-01 | YouTube | RELEASE |
+| T-P05 | 1 ago | Sáb 09:00 | Canvas Spotify + portada oficial | TRL-01 + POR-01 (reuso) | Spotify + IG Feed | RELEASE |
+| T-P06 | 1 ago | Sáb 13:00 | **Carrusel de lanzamiento** | FRM-01,02,03,04 + secciones VC | IG carrusel | RELEASE |
+| T-P07 | 1 ago | Sáb 16:00 | Performance/Lyrics #1 | LYR-01 | Reel + TikTok | RELEASE |
+| T-P08 | 2 ago | Dom | Performance/Lyrics #2 | LYR-02 | Reel + TikTok | POST |
+| T-P09 | 3 ago | Lun | BTS Producción by G*S | BPG-01 | Reel + YouTube | POST |
+| T-P10 | 6 ago | Jue | **Carrusel combinado #2** | OS-04,05,06 + BTS-04,05,06 | IG carrusel | POST |
+| — | 8 ago | Sáb | Bisagra hacia HENESSY (LIBRE + Stories) | — orgánico | IG Stories | POST |
 
-### HENESSY + EP (22 piezas · ventana 3 – 30 ago · drop 10 ago)
+### HENESSY + EP (3 – 30 ago · drop 10 ago)
 
-| ID | Tipo | Fecha | Día | Plataforma | Fase |
-|---|---|---|---|---|---|
-| H-FRM-01 | Frame | 3 ago | Lun | IG Feed + TikTok | PRE (anuncio EP) |
-| H-BTS-01 | Foto BTS | 5 ago | Mié | IG Feed | PRE |
-| H-OS-01 | One Shot | 6 ago | Jue | TikTok + Reel | PRE |
-| H-POR-01 | Portada | 7 ago | Vie 🇨🇴 | IG Feed | PRE |
-| H-FRM-02 | Frame | 7 ago | Vie 🇨🇴 | IG Feed | PRE |
-| H-BTS-02 | Foto BTS | 8 ago | Sáb | Multi-cuenta (colab amigos) | PRE |
-| H-TRL-01 | Trailer/Canvas | 8 ago | Sáb | IG Reel + TikTok + YT | PRE |
-| H-OS-02 | One Shot | 8 ago | Sáb | TikTok + Reel | PRE |
-| H-BTS-03 | Foto BTS | 9 ago | Dom | IG Feed + Stories | PRE |
-| H-VC-01 | Videoclip 4K | 10 ago | Lun 08:00 | YouTube | RELEASE |
-| H-LYR-01 | Lyrics Reel | 10 ago | Lun 12:00 | IG Reel + TikTok | RELEASE |
-| H-FRM-03 | Frame | 10 ago | Lun 16:00 | IG Feed | RELEASE |
-| H-OS-03 | One Shot | 10 ago | Lun 16:00 | TikTok + Reel | RELEASE |
-| H-OS-04 | One Shot | 10 ago | Lun 19:00 | TikTok + Reel | RELEASE |
-| H-LYR-02 | Lyrics Reel | 14 ago | Vie | IG Reel + TikTok | POST (bday week) |
-| H-OS-05 | One Shot | 15 ago | Sáb | Reel + TikTok | POST (recap gira) |
-| H-BTS-04 | Foto BTS | 16 ago | Dom | IG Feed | POST |
-| H-BPG-01 | BTS Prod G*S | 17 ago | Lun 🇨🇴 | YouTube + IG Reel | POST |
-| H-OS-06 | One Shot | 19 ago | Mié | TikTok + Reel | POST |
-| H-FRM-04 | Frame | 19 ago | Mié | IG Feed | POST |
-| H-BTS-05 | Foto BTS | 21 ago | Vie | IG Feed (carrusel) | POST |
-| H-BTS-06 | Foto BTS | 21 ago | Vie | IG Feed (carrusel) | POST |
+| ID | Fecha | Día | Publicación | Piezas que consume | Plataforma | Fase |
+|---|---|---|---|---|---|---|
+| — | 3 ago | Lun | Anuncio EP (LIBRE + primera imagen) | — orgánico | IG/TikTok | PRE |
+| H-P01 | 5 ago | Mié | **Carrusel combinado #1** 🤝 | OS-01,02,03 + BTS-01,02,03 | IG carrusel | PRE |
+| H-P02 | 7 ago | Vie 🇨🇴 | Portada reveal + pre-save | POR-01 | IG Feed | PRE |
+| H-P03 | 8 ago | Sáb | Trailer + empuje colab amigos 🤝 | TRL-01 (+ BTS para colab) | Reel + TikTok + multi-cuenta | PRE |
+| H-P04 | 10 ago | Lun 08:00 | **Videoclip 4K** 🤝 | VC-01 | YouTube | RELEASE |
+| H-P05 | 10 ago | Lun 09:00 | Canvas Spotify + portada oficial | TRL-01 + POR-01 (reuso) | Spotify + IG Feed | RELEASE |
+| H-P06 | 10 ago | Lun 12:00 | **Carrusel de lanzamiento** | FRM-01,02,03,04 + secciones VC | IG carrusel | RELEASE |
+| H-P07 | 10 ago | Lun 13:00 | Performance/Lyrics #1 + oleada colab 🤝 | LYR-01 | Reel + TikTok | RELEASE |
+| H-P08 | 14 ago | Vie | Performance/Lyrics #2 | LYR-02 | Reel + TikTok | POST (bday week) |
+| H-P09 | 17 ago | Lun 🇨🇴 | BTS Producción by G*S 🤝 | BPG-01 | Reel + YouTube | POST |
+| H-P10 | 21 ago | Vie | **Carrusel combinado #2** 🤝 | OS-04,05,06 + BTS-04,05,06 | IG carrusel | POST |
+| — | 30 ago | Dom | Post cierre / legado (LIBRE) | — orgánico | IG Feed | POST |
 
-> **Nota de reutilización:** `T-POR-01` / `H-POR-01` (portadas) y `T-TRL-01` / `H-TRL-01` (Canvas Spotify) se re-publican el ReleaseDay como post oficial + Canvas, además de su uso en PreRelease. Se cuentan una sola vez.
+> 🤝 = publicación con amigos/familia influencers → coordinar **repost cruzado** de cada invitado (multiplica alcance sin pauta).
+> Gira 11–13 ago: contenido en vivo (Stories + recap), fuera de las 44. Ver §7 del documento narrativo.
 
 ---
 
 ## 3. FICHAS OPERATIVAS — TENTACIÓN
 
-> Cada ficha: **COPY** (listo para pegar) + **Estrategia** (objetivo, CTA, hashtags). Los hashtags base van al final (§5).
+> Cada ficha: **COPY** (listo para pegar) + **Estrategia**. En carruseles, el copy es del post completo; el **orden interno** de las piezas se indica.
 
-### ═══ PRERELEASE — "EL SECRETO" (15–31 jul) ═══
+### ═══ PRERELEASE — "EL SECRETO" ═══
 
-**T-OS-01 · 15 jul (mié) 19:00 · IG Reel + TikTok**
+**15 jul (mié) 19:00 · Anuncio faceta musical · LIBRE (orgánico)**
 > Llevo meses guardando algo. No sé si estoy listo… pero ya no puedo callarlo. 🔴
-> Prometo que nada de lo que sabías de mí va a seguir igual.
+> Nada de lo que sabían de mí va a seguir igual.
 
-- **Estrategia:** Teaser cero. Anuncia la faceta musical SIN mostrar la canción. Corte enigmático (8–12s), audio de tensión, sin melodía aún. **Objetivo:** intriga + activar notificaciones. **CTA:** "Activá la campanita 🔔". **#:** #MarlonVillamil #ProntoAlgoNuevo
+- **Estrategia:** Marlon cara a cámara, sin producción — el anuncio pega más crudo. NO consume pieza de las 44. **Objetivo:** intriga + activar notificaciones. **CTA:** "Activá la campanita 🔔". **#:** #MarlonVillamil #ProntoAlgoNuevo
 
-**T-BTS-01 · 18 jul (sáb) 19:00 · IG Feed**
-> Hay lugares a los que uno no debería volver.
-> Yo volví. 🔴
+**T-P01 · 20 jul (lun, festivo 🇨🇴) 12:00–14:00 · Carrusel combinado #1 · IG**
+> **Piezas:** OS-01 → BTS-01 → OS-02 → BTS-02 → OS-03 → BTS-03 (video/foto alternados)
+> Copy:
+> Hay lugares a los que uno no debería volver. Yo volví. 🔴
+> Deslizá y entendé de qué les hablo. →
 
-- **Estrategia:** Primera imagen del universo visual (luces rojas, silueta). Siembra la estética de TENTACIÓN sin nombrarla. **Objetivo:** construir mundo + guardar/compartir. **CTA:** dejar comentario "¿qué crees que es?". **#:** #MarlonVillamil #AmorAdolescente
+- **Estrategia:** Primer material cinematográfico en festivo (alto consumo). El carrusel alterna cortes One Shot + fotos BTS = alta retención (el usuario desliza). Muestra el mundo visual (rojo, la chica) SIN spoilear la canción. **Objetivo:** construir universo + guardar/compartir. **CTA:** "¿qué creen que pasó ahí? 👀". **#:** #MarlonVillamil #AmorAdolescente
 
-**T-OS-02 · 20 jul (lun, festivo 🇨🇴) 12:00–14:00 · TikTok + Reel**
-> POV: descubriste que la persona que menos imaginabas te iba a quitar el sueño.
-> (y todavía no escuchan nada 👀)
-
-- **Estrategia:** Festivo = alto consumo. Snippet 8s formato POV (viral con público joven). **Objetivo:** alcance orgánico máximo, primer pico de la campaña. **CTA:** "guardá esto para el 1 de agosto". **#:** #POV #MarlonVillamil #TikTokMusica
-
-**T-POR-01 · 24 jul (vie) 18:00 · IG Feed + Stories**
+**T-P02 · 24 jul (vie) 18:00 · Portada reveal · IG Feed + Stories**
 > TENTACIÓN.
-> 01 · 08 · 26 🔴
+> 01 · 08 🔴
 > Mi primera canción. La escribí cuando no debía sentir lo que sentí.
 
-- **Estrategia:** REVEAL de portada + título + fecha. El post que oficializa el primer single. **Objetivo:** conversión a "espera" + primer save mental. **CTA:** "Marcá la fecha 📌". **#:** #Tentacion #MarlonVillamil #NuevaMusica
+- **Estrategia:** Reveal de portada + título + fecha. Oficializa el primer single. **Objetivo:** conversión a "espera". **CTA:** "Marcá la fecha 📌". **#:** #Tentacion #MarlonVillamil #NuevaMusica
 
-**T-BTS-02 + T-BTS-03 · 26 jul (dom) 13:00 · IG Feed (carrusel)**
-> Detrás de lo que van a ver hay una historia que casi no cuento.
-> Deslizá →
+**T-P03 · 28 jul (mar) 19:00 · Trailer + pre-save · Reel + TikTok + YouTube**
+> 4 días. 🔴 Esto es TENTACIÓN. Y apenas es el principio de "AMOR ADOLESCENTE".
 
-- **Estrategia:** Carrusel de 2 fotos BTS (la chica insinuada, el set rojo). El carrusel sube retención en IG. **Objetivo:** storytelling + tiempo de permanencia. **CTA:** "¿team se lo cuenta o se lo calla?". **#:** #BTS #Tentacion #MarlonVillamil
-
-**T-TRL-01 · 28 jul (mar) 19:00 · IG Reel + TikTok + YouTube**
-> 4 días. 🔴
-> Esto es TENTACIÓN. Y apenas es el principio de "AMOR ADOLESCENTE".
-
-- **Estrategia:** TRAILER oficial (15–30s con fragmento de audio real por primera vez). Se activa el link de pre-guardado del single. **Objetivo:** conversión dura a pre-save + hype. **CTA:** "Link en bio para guardarla antes que nadie". **#:** #Tentacion #Trailer #MarlonVillamil
-> *(Nota: esta misma pieza se usa como Canvas de Spotify el día del drop.)*
-
-**T-FRM-01 · 31 jul (vie) 19:00 · IG Feed**
-> Mañana.
-> No digan que no les advertí. 🔴
-
-- **Estrategia:** Frame estático de alta calidad + countdown 24h en Stories. Última pieza antes del drop. **Objetivo:** recordatorio final, cerrar la espera. **CTA:** Stories con sticker de cuenta regresiva. **#:** #Tentacion #Manana #MarlonVillamil
+- **Estrategia:** Trailer (primer audio real) + activa link de pre-guardado. **Objetivo:** conversión dura a pre-save. **CTA:** "Link en bio para guardarla antes que nadie". **#:** #Tentacion #Trailer #MarlonVillamil
+> *(Esta pieza se reutiliza como Canvas de Spotify el día del drop.)*
 
 ### ═══ RELEASEDAY — "LA TENTACIÓN" (1 ago, sáb) ═══
 
-**T-VC-01 · 1 ago 00:00 · YouTube**
+**T-P04 · 1 ago 00:00 · Videoclip 4K · YouTube**
 > TENTACIÓN — Marlon Villamil (Video Oficial)
-> El primer capítulo de AMOR ADOLESCENTE ya está afuera. 🔴 Link para escucharla en todas las plataformas ↓
+> El primer capítulo de AMOR ADOLESCENTE ya está afuera. 🔴 Escúchala en todas las plataformas ↓
 
-- **Estrategia:** Videoclip 4K como pieza ancla. Publicar a medianoche para acumular vistas antes del pico social del día. **Objetivo:** vistas + retención YouTube + tráfico a DSP. **CTA:** descripción con smartlink a Spotify/Apple. **#:** #Tentacion #MarlonVillamil #VideoOficial
+- **Estrategia:** Pieza ancla a medianoche para acumular vistas antes del pico social. **Objetivo:** vistas + tráfico a DSP. **CTA:** smartlink en descripción. **#:** #Tentacion #MarlonVillamil #VideoOficial
 
-**T-LYR-01 · 1 ago 13:00 · IG Reel + TikTok**
+**T-P05 · 1 ago 09:00 · Canvas Spotify + portada oficial · Spotify + IG Feed**
+> Ya está en todas las plataformas. Dale play sin miedo. 🔴
+
+- **Estrategia:** Activa Canvas (loop del trailer) en Spotify + post oficial de portada. **Objetivo:** experiencia en la DSP + save. **CTA:** "guardala en tu playlist 🎵". **#:** #Tentacion #MarlonVillamil
+
+**T-P06 · 1 ago 13:00 · Carrusel de lanzamiento · IG**
+> **Piezas:** FRM-01 → [sección VC] → FRM-02 → [sección VC] → FRM-03 → [sección VC] → FRM-04
+> Copy:
+> Cada frame de este video tiene una historia. Deslizá por TENTACIÓN. 🔴🎬
+
+- **Estrategia:** Carrusel que alterna Frames (cine) + secciones del videoclip. Muestra la calidad de producción y lleva tráfico al clip completo. **Objetivo:** percepción de calidad + clics a YouTube. **CTA:** "el video completo está en mi canal". **#:** #Tentacion #MarlonVillamil #VideoOficial
+
+**T-P07 · 1 ago 16:00 · Performance/Lyrics #1 · Reel + TikTok**
 > Se supone que no debía sentir esto. 🔴 #Tentacion ya está afuera.
 
-- **Estrategia:** Lyrics/Performance Reel con la frase más "coreable" del tema (el gancho para que la usen). **Objetivo:** activar uso del audio + saves. **CTA:** "usá este audio 🎵". **#:** #Tentacion #MarlonVillamil #Lyrics
+- **Estrategia:** Reel vertical directo con la frase más coreable (el gancho para UGC). **Objetivo:** activar uso del audio. **CTA:** "usá este audio 🎵". **#:** #Tentacion #MarlonVillamil #Lyrics
 
-**T-OS-03 · 1 ago 16:00 · TikTok + Reel**
-> El momento exacto en que supe que estaba en problemas 🔴
+### ═══ POSTRELEASE — bisagra hacia HENESSY ═══
 
-- **Estrategia:** One Shot más viral del clip, con audio original para siembra de UGC. **Objetivo:** que la audiencia replique el audio. **CTA:** "hacé tu versión con este sonido". **#:** #Tentacion #MarlonVillamil #FYP
-
-**T-OS-04 + T-FRM-02 · 1 ago 19:00 · TikTok + IG Feed**
-> Ya son miles escuchándola. Gracias por caer conmigo. 🔴
-
-- **Estrategia:** Segundo One Shot (energía distinta) + Frame en feed. Publicación de tarde para el segundo pico de consumo. **Objetivo:** sostener el día, mostrar tracción social. **CTA:** "¿ya la tenés en repeat?". **#:** #Tentacion #MarlonVillamil
-
-### ═══ POSTRELEASE — bisagra hacia HENESSY (2–8 ago) ═══
-
-**T-LYR-02 · 2 ago (dom) 13:00 · IG Reel + TikTok**
+**T-P08 · 2 ago (dom) 13:00 · Performance/Lyrics #2 · Reel + TikTok**
 > Esta parte es la que más me duele cantar. 🔴 #Tentacion
 
-- **Estrategia:** Segundo lyrics reel con otra sección del tema (extiende la vida del audio). **Objetivo:** segunda ola de UGC. **CTA:** "cuál parte les pega más". **#:** #Tentacion #MarlonVillamil #Lyrics
+- **Estrategia:** Segundo Reel de lyrics con otra sección (extiende la vida del audio). **Objetivo:** segunda ola de UGC. **CTA:** "¿cuál parte les pega más?". **#:** #Tentacion #MarlonVillamil #Lyrics
 
-**T-BPG-01 · 3 ago (lun) 19:00 · YouTube + IG Reel**
+**T-P09 · 3 ago (lun) 19:00 · BTS Producción by G*S · Reel + YouTube**
 > Cómo hicimos TENTACIÓN. Nada de esto era fácil. 🎬 (producido por Growth*Stars)
 
-- **Estrategia:** BTS de producción — autoridad y valor de producción. Muestra el nivel cinematográfico. **Objetivo:** percepción de calidad + credibilidad de "artista real". **CTA:** "¿qué escena quieren que les explique?". **#:** #BehindTheScenes #Tentacion #MarlonVillamil
+- **Estrategia:** Autoridad y valor de producción. **Objetivo:** percepción de "artista real". **CTA:** "¿qué escena quieren que les explique?". **#:** #BehindTheScenes #Tentacion #MarlonVillamil
 
-**T-OS-05 + T-FRM-03 · 5 ago (mié) 19:00 · TikTok + IG Feed**
-> Todavía pienso en esa noche. 🔴
+**T-P10 · 6 ago (jue) 18:00 · Carrusel combinado #2 · IG**
+> **Piezas:** OS-04 → BTS-04 → OS-05 → BTS-05 → OS-06 → BTS-06
+> Copy:
+> Lo que la cámara no alcanzó a grabar. Y algo más que todavía no les digo. Deslizá → 🔴
 
-- **Estrategia:** Mantener el tema vivo a mitad de semana con One Shot + Frame. **Objetivo:** frecuencia sin saturar. **CTA:** comentario abierto. **#:** #Tentacion #MarlonVillamil
+- **Estrategia:** Segundo carrusel combinado (material restante). Cierra TENTACIÓN y empieza a sembrar la intriga de HENESSY. **Objetivo:** retención + puente narrativo. **CTA:** "¿ya se imaginan qué viene?". **#:** #Tentacion #AmorAdolescente #MarlonVillamil
 
-**T-BTS-04 + T-BTS-05 · 6 ago (jue) 18:00 · IG Feed (carrusel)**
-> Lo que la cámara no alcanzó a grabar. Deslizá → 🔴
+**8 ago (sáb) 17:00 · Bisagra · LIBRE + Stories**
+> Esto fue solo la tentación. Lo que de verdad me pasó… se los cuento el lunes. 🎂
 
-- **Estrategia:** Carrusel BTS íntimo (2 fotos). Storytelling de cierre del tema. **Objetivo:** conexión emocional + tiempo en post. **CTA:** "guardá tu favorita". **#:** #BTS #Tentacion #MarlonVillamil
-
-**T-OS-06 + T-FRM-04 · 7 ago (vie, festivo 🇨🇴) 12:00–14:00 · TikTok + IG Feed**
-> Antes de que pase algo el lunes… escuchá TENTACIÓN otra vez. 🔴👀
-
-- **Estrategia:** Festivo = alto consumo. Últimas piezas de TENTACIÓN + primera insinuación del EP. **Objetivo:** aprovechar tráfico y empezar a girar hacia HENESSY. **CTA:** "algo grande viene el lunes". **#:** #Tentacion #MarlonVillamil #AmorAdolescente
-
-**T-BTS-06 · 8 ago (sáb) 17:00 · IG Feed + Stories**
-> Esto fue solo la tentación.
-> Lo que de verdad me pasó… se los cuento el lunes. 🎂
-
-- **Estrategia:** BISAGRA narrativa. Cierra TENTACIÓN y abre HENESSY/EP + cumpleaños. **Objetivo:** transferir toda la audiencia de TENTACIÓN al EP. **CTA:** "pre-guardá el EP, link en bio". **#:** #AmorAdolescente #Henessy #MarlonVillamil
+- **Estrategia:** Orgánico. Transfiere la audiencia de TENTACIÓN al EP + cumpleaños. **CTA:** "pre-guardá el EP, link en bio". **#:** #AmorAdolescente #Henessy #MarlonVillamil
 
 ---
 
-## 4. FICHAS OPERATIVAS — HENESSY + EP "AMOR ADOLESCENTE"
+## 4. FICHAS OPERATIVAS — HENESSY + EP
 
-> **Palanca clave:** las piezas con amigos influencers + familia (BTS y Frames) se coordinan para **repost cruzado** de cada invitado. Marcadas con 🤝.
+> 🤝 = coordinar repost cruzado de amigos/familia influencers.
 
-### ═══ PRERELEASE — "DE LA TENTACIÓN AL AMOR" (3–9 ago) ═══
+### ═══ PRERELEASE — "DE LA TENTACIÓN AL AMOR" ═══
 
-**H-FRM-01 · 3 ago (lun) 19:00 · IG Feed + TikTok**
-> AMOR ADOLESCENTE.
-> 5 canciones. 1 historia. Mi primer EP.
+**3 ago (lun) 19:00 · Anuncio EP · LIBRE + primera imagen**
+> AMOR ADOLESCENTE. 5 canciones. 1 historia. Mi primer EP.
 > 10 · 08 — el día que cumplo años, se los regalo. 🎂
 
-- **Estrategia:** ANUNCIO oficial del EP completo. Conecta el drop con el cumpleaños. **Objetivo:** posicionar el EP como evento + regalo. **CTA:** "Pre-guardá el EP, link en bio". **#:** #AmorAdolescente #MarlonVillamil #NuevoEP
+- **Estrategia:** Anuncio del EP conectado al cumpleaños. **Objetivo:** posicionar el EP como evento-regalo. **CTA:** "Pre-guardá el EP, link en bio". **#:** #AmorAdolescente #MarlonVillamil #NuevoEP
 
-**H-BTS-01 · 5 ago (mié) 19:00 · IG Feed**
-> HENESSY se hizo con la gente que me sostiene. En el carro de siempre, con los de siempre. 🤝
+**H-P01 · 5 ago (mié) 19:00 · Carrusel combinado #1 🤝 · IG**
+> **Piezas:** OS-01 → BTS-01 → OS-02 → BTS-02 → OS-03 → BTS-03
+> Copy:
+> De noche era tentación. De día… esto. ☀️🚗 HENESSY se hizo con la gente que me sostiene. Deslizá → 🤝
 
-- **Estrategia:** Primera foto BTS de HENESSY (el carro, los amigos). Contraste luminoso vs el rojo de TENTACIÓN. **Objetivo:** mostrar el giro emocional (deseo → pertenencia). 🤝 amigos etiquetados repostean. **CTA:** "esperen a que vean quién sale". **#:** #Henessy #AmorAdolescente #MarlonVillamil
+- **Estrategia:** Primer material de HENESSY: contraste luminoso vs el rojo de TENTACIÓN. Aparecen amigos → 🤝 reposts. **Objetivo:** mostrar el giro emocional (deseo → pertenencia) + activar audiencias de terceros. **CTA:** "esperen a ver quién más sale". **#:** #Henessy #AmorAdolescente #MarlonVillamil
 
-**H-OS-01 · 6 ago (jue) 20:00 · TikTok + Reel**
-> De noche era tentación. De día… esto. ☀️🚗 #Henessy pronto.
-
-- **Estrategia:** Snippet 8s del mundo diurno de HENESSY. Refuerza el contraste narrativo. **Objetivo:** intriga + save. **CTA:** "guardá para el 10". **#:** #Henessy #MarlonVillamil #FYP
-
-**H-POR-01 + H-FRM-02 · 7 ago (vie, festivo 🇨🇴) 12:00–14:00 · IG Feed**
+**H-P02 · 7 ago (vie, festivo 🇨🇴) 12:00–14:00 · Portada reveal + pre-save · IG Feed**
 > HENESSY.
 > La canción más importante que he hecho. Y no la hice solo. 🤝
 > 10 · 08 🎂
 
-- **Estrategia:** REVEAL portada HENESSY + Frame, en festivo de alto consumo. **Objetivo:** oficializar el single principal + pre-save. **CTA:** "Pre-guardá el EP 📌". **#:** #Henessy #AmorAdolescente #MarlonVillamil
+- **Estrategia:** Reveal portada en festivo de alto consumo. **Objetivo:** oficializar el single + pre-save. **CTA:** "Pre-guardá el EP 📌". **#:** #Henessy #AmorAdolescente #MarlonVillamil
 
-**H-BTS-02 · 8 ago (sáb) 18:00 · Multi-cuenta (colab amigos 🤝)**
-> Copy para amigos influencers (cada uno adapta):
-> "El lunes mi parcero @marlonvillamil saca su primer EP y estuve ahí. 🤝 Ya saben qué hacer: pre-guárdenlo. 🎂"
+**H-P03 · 8 ago (sáb) 20:00 · Trailer + empuje colab 🤝 · Reel + TikTok + multi-cuenta**
+> 2 días para AMOR ADOLESCENTE. 🎂 Esto es HENESSY. Denle play y entiendan por qué la guardé para mi cumpleaños.
+> **Copy para amigos (adaptable):** "El lunes mi parcero @marlonvillamil saca su primer EP y estuve ahí. 🤝 Pre-guárdenlo. 🎂"
 
-- **Estrategia:** EMPUJE COORDINADO. Cada amigo influencer postea una foto BTS donde aparece + CTA de pre-save. Multiplica alcance sin pauta. **Objetivo:** activar audiencias de terceros. **CTA:** pre-save + etiquetar a Marlon. **#:** #AmorAdolescente #MarlonVillamil
-
-**H-TRL-01 + H-OS-02 · 8 ago (sáb) 20:00 · IG Reel + TikTok + YouTube**
-> 2 días para AMOR ADOLESCENTE. 🎂
-> Esto es HENESSY. Denle play y entiendan por qué la guardé para mi cumpleaños.
-
-- **Estrategia:** TRAILER HENESSY (con audio real) + One Shot. Segunda pieza fuerte del sábado. **Objetivo:** pre-save duro + hype de cumpleaños. **CTA:** "Link en bio". **#:** #Henessy #Trailer #MarlonVillamil
-> *(El Trailer se reutiliza como Canvas de Spotify el 10.)*
-
-**H-BTS-03 · 9 ago (dom) 20:00 · IG Feed + Stories**
-> Mañana cumplo años. Y en vez de pedir, doy.
-> Mi familia estuvo en esto. Todo cobra sentido. 🤝🎂 (countdown 24h en stories)
-
-- **Estrategia:** Foto BTS con familia + countdown final. Emoción de víspera. **Objetivo:** cerrar la espera con carga emocional máxima. **CTA:** cuenta regresiva en Stories. **#:** #AmorAdolescente #MarlonVillamil
+- **Estrategia:** Trailer HENESSY + empuje coordinado de amigos (cada uno postea una foto BTS donde aparece + CTA de pre-save). **Objetivo:** pre-save duro amplificado por terceros. **CTA:** "Link en bio". **#:** #Henessy #Trailer #MarlonVillamil
+> *(El trailer se reutiliza como Canvas de Spotify el 10.)*
 
 ### ═══ RELEASEDAY — EP + HENESSY (10 ago, lun) ═══
 
-**H-VC-01 · 10 ago 08:00 · YouTube**
+**10 ago 00:00 · Drop EP + post medianoche · LIBRE + todas las DSP**
+> Nace AMOR ADOLESCENTE, mi primer EP. 5 canciones que son mi corazón. 🎂
+
+- **Estrategia:** EP completo (5 tracks) live + post emocional. **CTA:** "escúchalo completo, link en bio". **#:** #AmorAdolescente #MarlonVillamil
+
+**H-P04 · 10 ago 08:00 · Videoclip HENESSY 4K 🤝 · YouTube**
 > HENESSY — Marlon Villamil (Video Oficial)
-> Hoy cumplo años y nace mi primer EP: AMOR ADOLESCENTE. Este video lo hice con mi gente. 🤝🎂 Escúchalo completo ↓
+> Hoy cumplo años y nace mi primer EP. Este video lo hice con mi gente. 🤝🎂 Escúchalo completo ↓
 
-- **Estrategia:** Videoclip HENESSY 4K, la pieza más importante de la campaña. Publicar en la mañana para todo el día de empuje. **Objetivo:** vistas + tráfico a EP completo. **CTA:** smartlink al EP. **#:** #Henessy #AmorAdolescente #MarlonVillamil #VideoOficial
+- **Estrategia:** La pieza más importante de la campaña. **Objetivo:** vistas + tráfico al EP. **CTA:** smartlink al EP. **#:** #Henessy #AmorAdolescente #MarlonVillamil #VideoOficial
 
-**H-LYR-01 · 10 ago 12:00 · IG Reel + TikTok**
+**H-P05 · 10 ago 09:00 · Canvas Spotify + portada oficial · Spotify + IG Feed**
+> El EP ya está en todas las plataformas. Gracias por estar. 🤝
+
+- **Estrategia:** Canvas HENESSY + post oficial. **CTA:** "guardá el EP completo 🎵". **#:** #AmorAdolescente #MarlonVillamil
+
+**H-P06 · 10 ago 12:00 · Carrusel de lanzamiento · IG**
+> **Piezas:** FRM-01 → [sección VC] → FRM-02 → [sección VC] → FRM-03 → [sección VC] → FRM-04
+> Copy:
+> Cada imagen de HENESSY tiene a alguien que amo. Deslizá. 🤝🎬
+
+- **Estrategia:** Carrusel Frames + secciones del clip. Muestra producción + invitados. **Objetivo:** calidad + clics a YouTube + 🤝 reposts. **CTA:** "el video completo está en mi canal". **#:** #Henessy #MarlonVillamil #VideoOficial
+
+**H-P07 · 10 ago 13:00 · Performance/Lyrics #1 + oleada colab 🤝 · Reel + TikTok**
 > "Contigo hasta la HENESSY se acaba lento." 🥃 EP afuera.
+> **Oleada:** amigos + familia postean felicitación + link EP.
 
-- **Estrategia:** Lyrics reel con el gancho más coreable (el que se vuelve trend). **Objetivo:** siembra de audio para UGC de cumpleaños. **CTA:** "usá el audio y felicítame 🎂". **#:** #Henessy #MarlonVillamil #Lyrics
+- **Estrategia:** Reel del gancho más coreable + oleada de cumpleaños de todos los invitados. **Objetivo:** siembra de audio para UGC + pico de alcance del día. **CTA:** "usá el audio y felicítame 🎂". **#:** #Henessy #MarlonVillamil #Lyrics
 
-**H-FRM-03 + H-OS-03 · 10 ago 16:00 · IG Feed + TikTok**
-> Gracias a cada uno que hoy tiene el EP en repeat. Esto es de todos. 🤝
+### ═══ POSTRELEASE — BIRTHDAY WEEK + LEGADO ═══
 
-- **Estrategia:** Frame + One Shot de tarde. Muestra tracción del día. **Objetivo:** prueba social + sostener el drop. **CTA:** "¿cuál track es su favorita?". **#:** #AmorAdolescente #Henessy #MarlonVillamil
-
-**H-OS-04 · 10 ago 19:00 · TikTok + Reel**
-> El mejor cumpleaños de mi vida y apenas empieza. Mañana nos vemos en Bogotá. 🎂🔥
-
-- **Estrategia:** One Shot más viral + puente al showcase del 11. **Objetivo:** cerrar el día pico y abrir la gira. **CTA:** "¿quién va mañana al showcase?". **#:** #Henessy #MarlonVillamil #Bogota
-
-### ═══ POSTRELEASE — GIRA + BIRTHDAY WEEK + LEGADO (14–30 ago) ═══
-
-> Gira 11–13 ago: contenido en vivo (Stories + Reels next-day), no incluido en las 44. Ver §7 del documento narrativo.
-
-**H-LYR-02 · 14 ago (vie) 18:00 · IG Reel + TikTok**
+**H-P08 · 14 ago (vie) 18:00 · Performance/Lyrics #2 · Reel + TikTok**
 > Cumplí años cantando esto en 3 países. Todavía no lo creo. 🥃🎂 #Henessy
 
-- **Estrategia:** Segundo lyrics reel + fotos de la gira que acaba de terminar. Abre la birthday week de contenido. **Objetivo:** capitalizar el festejo + segunda ola de audio. **CTA:** "felicítenme con el audio". **#:** #Henessy #AmorAdolescente #MarlonVillamil
+- **Estrategia:** Segundo Reel de lyrics + abre la birthday week de contenido. **Objetivo:** capitalizar el festejo + segunda ola de audio. **CTA:** "felicítenme con el audio". **#:** #Henessy #AmorAdolescente #MarlonVillamil
 
-**H-OS-05 · 15 ago (sáb) 13:00 · Reel + TikTok**
-> 3 shows. 3 países. Un cumpleaños que no voy a olvidar. Gracias. 🇨🇴🇵🇦🇲🇽 (recap gira)
-
-- **Estrategia:** One Shot editado con clips en vivo de Bogotá/Panamá/México. **Objetivo:** mostrar magnitud del evento + FOMO. **CTA:** "etiquetá con quién fuiste". **#:** #MarlonVillamil #EnVivo #AmorAdolescente
-
-**H-BTS-04 · 16 ago (dom) 13:00 · IG Feed 🤝**
-> Los que estuvieron en HENESSY estuvieron en mi cumpleaños. Así se hace. 🤝
-
-- **Estrategia:** Foto BTS con amigos en el set + festejo. 🤝 repost de invitados. **Objetivo:** cierre de la narrativa de comunidad. **CTA:** etiquetar amigos. **#:** #AmorAdolescente #MarlonVillamil
-
-**H-BPG-01 · 17 ago (lun, festivo 🇨🇴) 12:00 · YouTube + IG Reel**
+**H-P09 · 17 ago (lun, festivo 🇨🇴) 12:00 · BTS Producción by G*S 🤝 · Reel + YouTube**
 > Cómo reunimos a toda mi gente para HENESSY. El detrás de cámaras más especial. 🎬🤝 (producido por Growth*Stars)
 
-- **Estrategia:** BTS de producción HENESSY — el más emotivo (amigos + familia). Cierra birthday week en festivo. **Objetivo:** autoridad de producción + carga emocional. **CTA:** "¿quién quieren que salga en el próximo?". **#:** #BehindTheScenes #Henessy #MarlonVillamil
+- **Estrategia:** BTS más emotivo (amigos + familia). Cierra la birthday week en festivo. **Objetivo:** autoridad + carga emocional + 🤝 reposts. **CTA:** "¿quién quieren en el próximo?". **#:** #BehindTheScenes #Henessy #MarlonVillamil
 
-**H-OS-06 + H-FRM-04 · 19 ago (mié) 19:00 · TikTok + IG Feed**
-> Ya pasó lo más loco, pero AMOR ADOLESCENTE sigue sonando. ¿Cuál track te tiene atrapado? 🎧
-
-- **Estrategia:** Sostener el EP a mitad de semana. One Shot + Frame. **Objetivo:** frecuencia de recordación + conversación sobre tracks del EP. **CTA:** encuesta de track favorito. **#:** #AmorAdolescente #MarlonVillamil
-
-**H-BTS-05 + H-BTS-06 · 21 ago (vie) 18:00 · IG Feed (carrusel legado)**
+**H-P10 · 21 ago (vie) 18:00 · Carrusel combinado #2 🤝 · IG**
+> **Piezas:** OS-04 → BTS-04 → OS-05 → BTS-05 → OS-06 → BTS-06
+> Copy:
 > Hace un mes esto era un secreto. Hoy es mi primer EP, un cumpleaños y 3 países. Gracias por caer conmigo. Deslizá → 🤝🎂
 
-- **Estrategia:** Carrusel final de fotos BTS — recap emocional de todo el arco. **Objetivo:** cerrar la campaña con gratitud + sembrar comunidad permanente. **CTA:** "esto apenas empieza. ¿me acompañan?". **#:** #AmorAdolescente #MarlonVillamil #Gracias
+- **Estrategia:** Carrusel final (material restante) = recap emocional del arco completo. **Objetivo:** cerrar con gratitud + sembrar comunidad permanente. **CTA:** "esto apenas empieza. ¿me acompañan?". **#:** #AmorAdolescente #MarlonVillamil #Gracias
+
+**30 ago (dom) 17:00 · Post cierre · LIBRE**
+> AMOR ADOLESCENTE siempre fue de ustedes. Los números son una locura, pero lo que me llevo son ustedes. 🤝
+
+- **Estrategia:** Cierre de campaña con métricas + gratitud. **CTA:** "esto apenas empieza". **#:** #AmorAdolescente #MarlonVillamil #Gracias
 
 ---
 
@@ -309,26 +251,37 @@ Ej: `T-OS-03` = TENTACIÓN, One Shot #3. `H-BTS-05` = HENESSY, Foto BTS #5.
 **Descubrimiento:** `#FYP` `#ParaTi` `#POV` `#NuevaMusica` `#MusicaColombiana` `#MusicaMexicana`
 **Contexto:** `#BTS` `#BehindTheScenes` `#Lyrics` `#VideoOficial` `#EnVivo`
 
-> **Regla:** máx. 3–5 hashtags en IG/TikTok (más se lee como spam para público joven). Rotar, no repetir el mismo bloque siempre.
+> Máx. 3–5 hashtags por post (público joven lee más como spam). Rotar el bloque.
 
 ---
 
 ## 6. REGLAS DE PUBLICACIÓN (transversales)
 
-1. **Ventanas horarias COL** (público 14–25): entre semana **18:00–21:00**; fines de semana y festivos **12:00–14:00** y **19:00–21:00**. TikTok agrega pico **07:00–09:00**.
-2. **1 hito de PRODUCCIÓN por día máximo** en feed. El resto del volumen va a Stories (efímero, no satura).
-3. **Orgánico LIBRE de Marlon todos los días** en Stories (el pegamento humano entre piezas).
-4. **Cross-posting:** todo Reel se publica también como TikTok nativo (re-subir, no compartir link) para no penalizar alcance.
-5. **Piezas 🤝 (colab):** confirmar reposts de amigos/familia **por escrito 7 días antes**. Tener pieza de respaldo si alguno falla.
-6. **Contenido de gira (11–13):** publicar en <24h o pierde valor. Responsable de captura asignado por show.
-7. **Todo link va a bio** (smartlink único que apunte a pre-save antes del drop y a todas las DSP después).
+1. **Ventanas COL** (14–25): entre semana **18:00–21:00**; findes/festivos **12:00–14:00** y **19:00–21:00**. TikTok añade **07:00–09:00**.
+2. **1 publicación de feed por día máximo.** El volumen extra va a Stories (efímero, no satura).
+3. **Orgánico LIBRE de Marlon todos los días** en Stories — el pegamento humano entre publicaciones.
+4. **Reels/Lyrics:** subir nativo a TikTok e IG por separado (no compartir link) para no penalizar alcance.
+5. **Carruseles:** primer ítem SIEMPRE un One Shot con movimiento (el video detiene el scroll mejor que la foto).
+6. **Piezas 🤝:** confirmar reposts de amigos/familia **por escrito 7 días antes**. Pieza de respaldo si alguno falla.
+7. **Gira (11–13):** publicar contenido en vivo en <24h. Responsable de captura por show.
+8. **Todo link va a bio** (smartlink único: pre-save antes del drop → todas las DSP después).
 
 ---
 
-## 7. CHECKLIST DE COBERTURA — LAS 44 ✓
+## 7. CHECKLIST DE COBERTURA — LAS 44 PIEZAS ✓
 
-- TENTACIÓN: 22/22 piezas asignadas (VC×1, POR×1, TRL×1, FRM×4, BTS×6, OS×6, LYR×2, BPG×1) ✓
-- HENESSY: 22/22 piezas asignadas (VC×1, POR×1, TRL×1, FRM×4, BTS×6, OS×6, LYR×2, BPG×1) ✓
-- **Total: 44/44 piezas con fecha, plataforma, copy y estrategia.** ✓
+**TENTACIÓN (22):**
+- VC-01 → T-P04 · POR-01 → T-P02/P05 · TRL-01 → T-P03/P05
+- FRM-01..04 → T-P06 (carrusel lanzamiento)
+- OS-01,02,03 + BTS-01,02,03 → T-P01 · OS-04,05,06 + BTS-04,05,06 → T-P10
+- LYR-01 → T-P07 · LYR-02 → T-P08 · BPG-01 → T-P09 ✓ **22/22**
 
-*Documento operativo vivo. Cada pieza es un ítem de trabajo. Actualizar estado (PENDIENTE / LISTO / PUBLICADO) a medida que se ejecuta.*
+**HENESSY (22):**
+- VC-01 → H-P04 · POR-01 → H-P02/P05 · TRL-01 → H-P03/P05
+- FRM-01..04 → H-P06 (carrusel lanzamiento)
+- OS-01,02,03 + BTS-01,02,03 → H-P01 · OS-04,05,06 + BTS-04,05,06 → H-P10
+- LYR-01 → H-P07 · LYR-02 → H-P08 · BPG-01 → H-P09 ✓ **22/22**
+
+**Total: 44/44 piezas agrupadas en ~20 publicaciones, cada una con fecha, plataforma, copy y estrategia.** ✓
+
+*Documento operativo vivo. La unidad de trabajo es la PUBLICACIÓN. Actualizar estado (PENDIENTE / ARMADO / PUBLICADO) por publicación.*
