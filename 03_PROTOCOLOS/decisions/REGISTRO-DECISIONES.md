@@ -2,7 +2,7 @@
 
 > Canon único de decisiones (D-082). Este archivo es la ÚNICA fuente de verdad.
 > El CTO-Engram registra nuevas decisiones aquí al cerrar cada discusión (D-084).
-> Última actualización: 2026-06-26 · Última decisión: D-085
+> Última actualización: 2026-07-02 · Última decisión: D-098
 
 ---
 
@@ -391,11 +391,15 @@
 | Feed Architect (cola) | D-060 a D-064 |
 | Holding (modelo) | D-066 a D-079 |
 | Agentes directivos | D-080 a D-084 |
-| Dashboard Artista | D-085 |
+| Dashboard Artista | D-085, D-086 |
+| Proyectos universal | D-087 |
+| Snippet Testing | D-089 (OBSOLETA), D-090, D-091 |
+| SOP Análisis 360 | D-092 a D-096 |
+| Modelo Comercial / Tier | D-097, D-098 |
 
 ---
 
-# PARTE 10 — Dashboard del Artista (Día 10, D-085)
+# PARTE 10 — Dashboard del Artista (Día 10, D-085 a D-087)
 
 ### D-085 — Dashboard centrado en Artista reemplaza modelo G*S/MGMT separado
 
@@ -415,6 +419,243 @@
 - **artist_links (D-075):** tabla en Supabase (`artist_links`: id, artist_id, label, url, file_path, attachment_type, category). CRUD: `GET/POST /api/artist/:slug/links`, `DELETE /api/artist-link/:id`. Categorías: brandbook, guia-tecnica, biolink, auditoria, general.
 - **Limpieza:** ~1027 líneas eliminadas. Muertas: `switchProduct()`, `renderClients()`, `renderMgmtClients()`, `renderMgmtOverview()`, `renderMgmtObjectives()`, `openClient360()`, `renderClient360()`. Restauradas: `openOnboardClientModal()` (adaptada a "Nuevo Artista"), `openMdEditor()`, `openInObsidian()`.
 - **DT-027 cerrada:** frontend ya no consume `metadata->>service='mgmt'`. Endpoints backend legacy siguen existiendo pero sin consumidor.
+
+### D-086 — Portal público del artista (read-only, Supabase directo)
+
+**Contexto.** El artista necesita ver sus entregables, documentos maestros y misiones asignadas. El dashboard interno (localhost:3737) no se puede exponer.
+
+**Decisión.** HTML standalone (`artist-portal.html`) que lee de Supabase con anon key + RLS. Deploy en Vercel con subdominio por artista (`reckless.growthstars.net`). Read-only, sin auth (slug como acceso implícito).
+
+**Qué descartó.**
+- Vista pública en el mismo server (expone endpoints admin).
+- Notion embebido (sync compleja).
+- Portal con backend propio (over-engineering para read-only).
+
+**Detalle técnico.** Archivo standalone, Supabase JS CDN, queries directas con anon key. RLS policies configuradas para SELECT en: artists, service_lines, service_types, artist_links, secondary_tasks, mgmt_engagements, mgmt_objectives, mgmt_deliverables, clients. Slug obtenido del subdominio o query param `?artist=`. Criterio para revisar: agregar auth cuando ≥3 artistas o cuando el artista necesite escribir.
+
+### D-087 — Projects como registro universal de servicios no-MGMT
+
+**Contexto.** La tabla `projects` solo soportaba lanzamientos con paquetes fijos (CREATOR!/ARTIST!/STAR!). El negocio ejecuta más servicios: videoclips, cubrimientos, bookings, estrategias growth. El modelo de cotización cambió: se cotiza por tier del artista + activaciones vía gs-cotizador, no por paquete fijo.
+
+**Decisión.** Expandir `projects` para ser el registro universal de cualquier servicio no-MGMT. Paquetes fijos OBSOLETOS — el precio sale del gs-cotizador.
+
+**Qué descartó.**
+- Crear tabla nueva por tipo de servicio (fragmenta el modelo).
+- Mantener paquetes fijos CREATOR!/ARTIST!/STAR! (modelo de negocio evolucionó).
+
+**Detalle técnico.**
+- `project_type` CHECK expandido: 'lanzamiento', 'videoclip', 'cubrimiento', 'sesion-contenido', 'sesion-fotos', 'booking', 'estrategia-growth', 'otro'.
+- `phase` CHECK expandido: fases originales + 'pre-produccion', 'produccion', 'post-produccion', 'entregado'.
+- Columna `artist_id` UUID agregada (FK a artists).
+- TUCUTÚ migrado: project_type='lanzamiento', artist_id=jot4r.
+- Entregables siguen en BOVEDA como carpetas. Estructura varía por tipo de servicio.
+
+---
+
+# PARTE 11 — Infraestructura Financiera (Día 11, D-088)
+
+### D-088 — Agente CFO y modelo financiero LLC USA + persona natural COL
+
+**Contexto.** G*S factura entre $3K-7K USD/mes a clientes locales e internacionales. Hasta ahora: cuentas de cobro manuales en Canva, facturación como persona natural (Art. 383), emisor rotando entre Ian y Santiago, sin estructura fiscal formal ni tracking de cobros/pagos.
+
+**Decisión.** Crear agente directivo gs-cfo con modelo financiero dual:
+- **LLC Wyoming (USA):** entidad internacional, cuenta Mercury, Stripe, 50/50 Ian+Santiago. Costo ~$500/año.
+- **Persona natural (COL):** para clientes locales COP, régimen Art. 383. Sin cambios al modelo actual.
+- **SAS Colombia:** diferida hasta cumplir ≥2 de 4 criterios (gastos >$3M/mes, ingresos >$100M/año, empleados formales, cliente exige FE).
+
+**Qué descartó.**
+- SAS inmediata (costo $8-22M COP/año no justificado al volumen actual).
+- Operar solo en Colombia (pierde eficiencia para clientes internacionales).
+- LLC en Delaware (Wyoming más barato, misma funcionalidad para LLC extranjera).
+
+**Detalle técnico.**
+- Agente: `.claude/agents/gs-cfo.md` (panel: directivo, par del CTO y Growth Hacker).
+- Skill: `~/.claude/skills/gs-cfo/SKILL.md` (fuente de verdad canónica).
+- Sub-agentes planificados: gs-facturador (Fase 1), gs-tesorero (Fase 2), gs-tributario (Fase 3).
+- Flujo de fondos: clientes → LLC Mercury → gastos operativos + distributions a socios.
+- Optimización fiscal: gastos desde LLC reducen base gravable en COL.
+- Tasa efectiva estimada (50/50, $84K/año): ~7.1% por socio.
+- Integración futura: Canva MCP para generación automática de cuentas de cobro.
+
+### D-089 — ~~Modelo de dos tiers por artista (metrics_tier vs access_tier)~~ — OBSOLETA
+
+> **⚠ OBSOLETA — Supersedida por D-097 (2026-07-02).** Se descarta el eje Tier-Acceso. El modelo se queda con un solo tier por artista basado en métricas.
+
+**Fecha:** 2026-06-28
+**Contexto.** Al diseñar el sistema de Snippet Testing, se identificó que un artista puede tener métricas bajas pero acceso alto (contactos, eventos, proximidad industria) o viceversa. Tratarlos como un solo eje distorsiona la estrategia de contenido.
+
+**Decisión.** Separar la clasificación del artista en dos ejes independientes:
+- **`metrics_tier`**: derivado del audit cuantitativo (Spotify, YouTube, engagement). Es el número duro.
+- **`access_tier`**: derivado de red/acceso — con quién trabaja, eventos, proximidad a la industria. Es el capital relacional.
+
+**Regla operativa:**
+- Si `access > metrics` → estrategia **documentación-led** (capturar momentos > crear contenido manufacturado).
+- Si `access ≈ metrics` (ambos bajos) → estrategia **concepto manufacturado** (crear desde cero).
+
+**Qué descartó.** Un solo tier unificado que mezclaba métricas con acceso.
+
+> **Nota posteridad:** La regla operativa de documentación-led vs concepto manufacturado sigue siendo válida como heurística de contenido, pero ya no se formaliza como eje de clasificación del artista. Ver D-097.
+
+### D-090 — El funnel vive en el snippet, no en el formato
+
+**Fecha:** 2026-06-28
+**Contexto.** Al diseñar el catálogo de formatos para Snippet Testing, la tentación era etiquetar cada formato con TOFU/MOFU/BOFU. Pero el mismo formato (ej: "behind the scenes") puede ser TOFU en un contexto y MOFU en otro, dependiendo de la intención y el CTA.
+
+**Decisión.** `funnel = f(intención de la idea, CTA, etapa del artista)`. El formato es funnel-agnóstico. El catálogo de formatos NO lleva campo funnel. La clasificación funnel se asigna en el **snippet** al momento del test, no en el formato.
+
+**Qué descartó.** Catálogo de formatos con campo funnel fijo por formato.
+
+### D-091 — Catálogo de formatos = activo de sistema, global y vivo
+
+**Fecha:** 2026-06-28
+**Contexto.** Los formatos de contenido (behind the scenes, reaction, storytime, etc.) son reutilizables entre artistas. Pero los formatos decaen: lo que era innovador en 2024 puede estar saturado en 2026.
+
+**Decisión.** El catálogo de formatos es un activo GLOBAL del sistema G*S (no per-artist) con campo `vigencia` que refleja el ciclo de vida del formato:
+- `emergente` → formato nuevo, bajo riesgo de saturación
+- `vigente` → formato activo, funciona bien
+- `saturado` → formato sobreusado, rendimientos decrecientes
+- `muerto` → formato obsoleto, no usar
+
+La activación/estado por artista vive en una capa per-artist separada (no en el catálogo global).
+
+**Qué descartó.** Catálogo per-artist (duplicación) o catálogo sin vigencia (no refleja decaimiento natural de formatos).
+
+---
+
+# PARTE 12 — SOP Análisis 360 y Capa de Auditoría (D-092 a D-096)
+
+### D-092 — Auditor de Mercado separado del Auditor Musical
+
+**Fecha:** 2026-06-30
+**Contexto.** Al diseñar el pipeline de Análisis 360, se evaluó si el análisis de mercado/competencia debía vivir dentro del Auditor Musical o en un agente separado.
+
+**Decisión.** Agentes separados. Musical mira al artista propio (S4A, distribuidora, Soundcharts — filas del artista); Mercado mira el entorno (competencia, nicho, demanda — filas de otros). Mezclarlos produce mandato confuso y trabajo duplicado. Misma fuente (Soundcharts), objetos distintos.
+
+**Qué descartó.** Un solo auditor que mezcle artista propio + competencia (mandato ambiguo, output difícil de consumir).
+
+### D-093 — Auditor de Mercado es fase 2, dependiente del Perfilador (no paralelo)
+
+**Fecha:** 2026-06-30
+**Contexto.** En el pipeline de Análisis 360, tres agentes (Auditor Redes, Auditor Musical, Perfilador) corren en paralelo en Fase 1. Se evaluó si el Auditor de Mercado podía correr en paralelo también.
+
+**Decisión.** No. El Auditor de Mercado corre en Fase 2, DESPUÉS del Perfilador. Razón: un auditor de entorno no puede definir qué recorte del mercado estudiar sin saber quién es el artista. Sin perfil, estudiaría un nicho al azar. El perfil define los bordes del "afuera". Handoff: `hipotesis_nicho` + `adyacencias_a_barrer`.
+
+**Qué descartó.** Ejecución paralela de todos los agentes (el Auditor de Mercado necesita scope del Perfilador).
+
+### D-094 — El Perfilador entrega el punto único como HIPÓTESIS NO VALIDADA
+
+**Fecha:** 2026-06-30
+**Contexto.** El Perfilador extrae un "punto único" (diferencial del artista) de la transcripción cualitativa. Se debatió si el Perfilador debe validar su propia hipótesis.
+
+**Decisión.** No. El sello ✅/⚠️/❌ lo pone el Sintetizador tras cruzar con los auditores (data cuantitativa). El Perfilador no valida lo suyo porque no toca data. Etiqueta explícita: `HIPÓTESIS NO VALIDADA`.
+
+**Qué descartó.** Auto-validación del Perfilador (no tiene acceso a data para confirmar/negar).
+
+### D-095 — El perfil de cliente real es output del Sintetizador, no de un auditor
+
+**Fecha:** 2026-06-30
+**Contexto.** El "perfil de cliente real" (quién es el oyente accionable) requiere cruzar múltiples fuentes. Se evaluó dónde producirlo.
+
+**Decisión.** El Sintetizador. Nace del cruce: audiencia REAL (auditores) vs. audiencia DESEADA (Perfilador) vs. norma del nicho (Auditor Mercado). Ningún agente lo produce solo.
+
+**Regla de los 4 ángulos de audiencia:**
+| Ángulo | Quién lo produce | Qué responde |
+|---|---|---|
+| Audiencia real | Auditor Musical/Redes | ¿Quién lo escucha hoy? |
+| Audiencia deseada | Perfilador | ¿A quién quiere hablarle? |
+| Norma del nicho | Auditor Mercado | ¿A quién atrae la competencia? |
+| Perfil de cliente real | Sintetizador (cruce) | Retrato accionable |
+
+**Qué descartó.** Asignarlo al Auditor de Mercado ("porque es audiencia" — error: el tema es uno, las operaciones son cuatro).
+
+### D-096 — SOP Análisis 360: orquestación por fases con separación de responsabilidades
+
+**Fecha:** 2026-06-30
+**Contexto.** Se diseñó el SOP completo del Análisis 360 que integra todos los agentes de auditoría + perfilamiento + síntesis.
+
+**Decisión.** Pipeline de 4 fases con dependencia de datos:
+```
+Fase 0: Onboarding (reunión → transcripción del notetaker)
+Fase 1: Recolección autónoma en paralelo (Auditor Redes + Auditor Musical + Perfilador)
+Fase 2: Recolección dependiente (Auditor Mercado, disparado por output del Perfilador)
+Fase 3: Síntesis (Sintetizador recibe los 4 outputs → veredicto + brandbook)
+```
+
+**Invariantes (no negociables):**
+1. Los auditores recolectan hechos. No juzgan.
+2. El Perfilador es cualitativo puro. No toca números. Cita evidencia textual.
+3. Solo el Sintetizador cruza y dictamina (vacío, defendibilidad, gaps, veredicto).
+4. El Perfilador orienta pero no encarcela al Auditor de Mercado (mandato anti-eco).
+
+**Entregables finales:** 3 inputs (escáner algorítmico, análisis de entorno, perfil de identidad) → fundidos por Sintetizador en veredicto estratégico + brandbook.
+
+**Qué descartó.** Ordenar todos los agentes igual (la capa NO es simétrica). Pipeline secuencial completo (3 agentes pueden correr en paralelo).
+
+---
+
+# PARTE 13 — Modelo Comercial y Tier Unificado (2026-07-02, D-097 a D-098)
+
+### D-097 — Descarte del eje Tier-Acceso: un solo tier por artista (métricas)
+
+**Fecha:** 2026-07-02
+**Contexto.** En sesión COO se evaluó introducir un segundo eje de segmentación, "Tier-Acceso" (nivel de entorno/contactos/recursos del artista), separado del "Tier-Artista" (métricas). Caso disparador: Reckless — Tier 1 en métricas (~30 oyentes/mes, ecosistema por reconstruir) pero con acceso a entorno de artistas posicionados (NY, productor de DeiV, shows internacionales previos). D-089 formalizaba ese modelo dual.
+
+**Decisión.** Se DESCARTA el eje Tier-Acceso. Un artista con buen entorno pero métricas T1 enfrenta los mismos retos operativos que cualquier T1. El acceso es un activo del artista, no un eje que cambie el dolor, el producto ni la calibración de palancas. El modelo se queda con un solo tier por artista (métricas, regla del más bajo entre plataformas).
+
+**Qué descartó.** Modelo dual metrics_tier + access_tier (D-089, ahora OBSOLETA).
+
+**Supersede:** D-089.
+
+**Criterio para revisar:** si aparecen ≥3 artistas donde el entorno cambie materialmente el producto entregado (no solo el discurso de venta), se reabre la discusión.
+
+### D-098 — Nomenclatura comercial por tier (Matriz Tier-Dolor-Lenguaje)
+
+**Fecha:** 2026-07-02
+**Contexto.** El motor interno de G*S son 3 líneas de servicio fijas (MGMT / Productora AV / Eventos) que aplican a todos los tiers. Sin embargo, el lenguaje comercial que ve el cliente debe variar por tier: un artista emergente (T1/T2) no entiende ni necesita escuchar "growth hacking" — ese término solo aparece en T3/T4 donde el artista ya tiene tracción y busca escalar.
+
+**Decisión.** El nombre comercial que ve el cliente varía por tier según la Matriz Tier-Dolor-Lenguaje:
+- **T1 (Emergente)** y **T2 (En Desarrollo)**: lenguaje de "acompañamiento", "desarrollo artístico", "producción". Nunca "growth hacking".
+- **T3 (En Crecimiento)** y **T4 (Consolidado)**: lenguaje de "growth", "estrategia de escalamiento", "growth hacking". El artista ya entiende el juego.
+
+**Qué descartó.** Nombre comercial único para todos los tiers (generaba rechazo o confusión en T1/T2).
+
+**Detalle.** La Matriz Tier-Dolor-Lenguaje es un documento vivo bajo `03_PROTOCOLOS/comercial/Matriz-Tier-Dolor-Lenguaje-v1.md` que define: dolor principal por tier, lenguaje de venta, objeciones frecuentes, y caso de uso. El contenido comercial fino (copy, objeciones, casos) es responsabilidad del COO, no del CTO.
+
+**Criterio para revisar:** cuando el pipeline tenga ≥2 artistas por tier y se pueda validar si el lenguaje diferenciado convierte mejor que uno genérico.
+
+# PARTE 14 — Jerarquía organizacional de agentes (2026-07-05, D-099)
+
+### D-099 — Jerarquía de agentes en 2 bloques y 6 cajas (organigrama G*S)
+
+**Fecha:** 2026-07-05
+**Contexto.** El sistema de agentes creció a 14+ agentes sin una jerarquía organizacional formal. El dashboard ya los agrupa visualmente, pero faltaba la definición canónica de roles, fronteras entre capas y flujo de contexto. Complementa D-006 (arquitectura de agentes) y D-080 a D-084 (agentes directivos).
+
+**Decisión.** La jerarquía de agentes G*S se organiza en 2 bloques y 6 cajas:
+
+**BLOQUE 1 — AGENTES DE DIRECCIÓN** (corazón de G*S: decisiones infraestructurales e ideológicas)
+1. **DIRECTIVOS** — dirigen agentes junior por área (CTO, CFO, Growth Hacker). Deciden el CÓMO se construye.
+2. **MAESTROS** — almacenan y sirven contexto de áreas específicas (Bibliotecario de Skills, Bibliotecario de Artistas). Memoria viva por área.
+3. **ÓRGANOS DE CONTROL** — puente bidireccional de contexto entre dirección y operación: destilan estado operativo hacia arriba (operativo → directivo) y traducen decisiones directivas hacia abajo (directivo → operativo). Supervisan a los Jefes de Área. *(Pendiente de construir; roles ya definidos.)*
+
+**BLOQUE 2 — AGENTES OPERATIVOS** (cerebro operativo: decisiones técnicas y profesionales)
+
+*Backend (producción de conocimiento):*
+4. **OPERATIVOS** — agentes profesionales de área (auditores, sintetizador, estrategia, etc.).
+5. **SOPORTE** — análisis y tareas paralelas que alimentan a los operativos (ej.: COO de análisis psicológico/aspiracional del artista). *(Pendiente de construir.)*
+
+*Frontend (entrega):*
+6. **DOCUMENTACIÓN** — formatos, presentaciones, estructuras visuales. Puente entre el backend y el contexto final (cliente) o de proceso (interno).
+7. **JEFES DE ÁREA** — vigilan progresos y promueven cambios estructurales de los agentes operativos de su área. Reportan a los Órganos de Control. *(Pendiente de construir.)*
+
+**Flujo de contexto:** DIRECTIVOS ↔ ÓRGANOS DE CONTROL ↔ JEFES DE ÁREA → OPERATIVOS/SOPORTE → DOCUMENTACIÓN → cliente.
+
+**Restricción técnica (obligatoria al construir las cajas pendientes).** La cadena Directivo → Control → Jefe de Área → Operativo tiene 3+ saltos de delegación. Para evitar degradación de contexto por salto, cada capa se comunica con la siguiente vía **formato fijo** (metadata estructurada en Supabase per D-002), nunca prosa libre. Los contratos de formato se diseñan cuando se programe cada caja, no antes.
+
+**Nota D-001.** Cuando las cajas pendientes se llenen, este flujo cumple el criterio 3 de D-001 (≥3 agentes con cadenas de delegación >3 saltos) — en ese momento se revisa si n8n + Claude Code siguen bastando como orquestación o se evalúa orquestador dedicado. Los /loops de Claude Code (charters con ciclo encontrar→hacer→revisarse→recordar→repetir) son la primera opción de orquestación para Órganos de Control y Jefes de Área antes de considerar herramienta nueva.
+
+**Qué descartó.** (a) Construir las cajas vacías por completitud del organigrama — cada agente nuevo se construye cuando resuelva un dolor actual (filosofía #3). (b) Órganos de Control como auditores de runs individuales — ese rol quedó descartado; son puente de contexto, no QA por run.
+
+**Criterio para revisar:** cuando Órganos de Control y Jefes de Área estén operando, validar que la separación de responsabilidades (Control = puente de contexto; Jefes = vigilancia de proceso operativo) no genere solapamiento en la práctica.
 
 ---
 
