@@ -2,7 +2,7 @@
 
 > Canon único de decisiones (D-082). Este archivo es la ÚNICA fuente de verdad.
 > El CTO-Engram registra nuevas decisiones aquí al cerrar cada discusión (D-084).
-> Última actualización: 2026-07-15 · Última decisión: D-101
+> Última actualización: 2026-07-15 · Última decisión: D-102
 
 ---
 
@@ -399,6 +399,7 @@
 | Jerarquía organizacional de agentes | D-099 |
 | Infraestructura / PaaS (stateless first) | D-100 |
 | Ingesta automática de reuniones (Drive → bitácora) | D-101 |
+| Revenue por devengo + switch de estado de contrato | D-102 |
 
 ---
 
@@ -703,6 +704,34 @@ Fase 3: Síntesis (Sintetizador recibe los 4 outputs → veredicto + brandbook)
 - **Ejecución:** DT-040 (elevada de *Diferida* a **Alta** por esta decisión). El backlog inmediato de Chimbita y Marlon se sube a mano una sola vez; la automatización evita el próximo atraso, no cura este.
 
 **Criterio para revisar:** si el ruteo automático manda reuniones a la carpeta equivocada más de una vez, se corta el auto-archivado y todo pasa por bandeja de pendientes con confirmación de Ian.
+
+---
+
+# PARTE 17 — Revenue por devengo (2026-07-15, D-102)
+
+### D-102 — El revenue se cuenta por DEVENGO (contrato firmado), no por caja
+
+**Fecha:** 2026-07-15 · **Estado:** APROBADA por Ian — **implementación pendiente (próxima sesión)**
+
+**Contexto.** La card "REVENUE TOTAL" mostraba el acumulado de vida (`computeRevenueLifetime`, db.js:1834): todas las `cuentas_cobro` pagadas sin filtrar mes. Ian la leyó como plata del mes y objetó. Peor: mostraba `$2.947 USD` y `$10.1M COP` en dos columnas paralelas como si fueran monedas sumables, cuando son **la misma plata normalizada dos veces** (`total_cop = cop + usd*trm`, línea 1845) — el error que DT-057 ya había atrapado en el historial y que en el hero seguía vivo. Al mismo tiempo, "REVENUE MES" daba $0 en julio (cash-basis: nadie pagó todavía), lo cual era contablemente correcto pero operativamente inútil: había 5.2M COP firmados y sin cobrar que el dashboard no mostraba en ningún lado.
+
+**Decisión.** El revenue del mes se cuenta por **devengo**: un contrato suma al mes en que ENTRA, esté pagado o no. Solo se excluye si el contrato **se cae** (estado `Anulada`, que Ian avisa explícitamente). Se **elimina** la card de revenue total de vida.
+
+**Qué descartó.** (a) Seguir en cash-basis puro — invisibiliza el negocio firmado. (b) Contar desde `projects.package_price` — duplicaría el revenue (el Videoclip Henessy vale 3M en `projects` **y** 3M en `cuentas_cobro`: contarlos juntos da 6M). Se mantiene la regla vigente: **el revenue sale SIEMPRE de `cuentas_cobro`, nunca de `package_price`**. (c) Reemplazar caja por devengo sin más — el dashboard diría que hay plata que no entró.
+
+**Implementación (próxima sesión).**
+1. **Revenue del mes = `cuentas_cobro` con estado `Pendiente` + `Abonado` + `Pagada`**, excluyendo `Anulada`. Sin tocar `projects`, sin fuente nueva, sin duplicar. Efecto esperado: julio pasa de $0 a **1.200 USD + 4M COP**.
+2. **Nueva métrica "Por cobrar"** = solo lo no pagado. Es la contracara obligatoria del devengo: sin ella el dashboard miente sobre la caja. Sale de los mismos datos, costo cero.
+3. **Eliminar** la card REVENUE TOTAL + `computeRevenueLifetime()` + sus llamadas (código muerto no se deja). El acumulado histórico sigue siendo derivable del HISTORIAL mes a mes.
+4. **Denominación:** donde se muestre plata convertida, se lee `$X COP (≈ $Y USD)` — nunca dos columnas paralelas. Los montos crudos por moneda viven en `by_line`.
+5. **Estado del contrato:** 4 estados — `Pendiente` / `Abonado` / `Pagada` / `Anulada`. **Sin montos parciales**: el revenue cuenta SIEMPRE el total del contrato; "Abonado" es etiqueta informativa. Costo aceptado: "Por cobrar" muestra el total aunque haya abono parcial. Si se necesita el saldo exacto, se agrega `monto_abonado` **después** (implica teclear la cifra en cada abono — fricción que hoy no se justifica).
+6. **Switch de estado en la vista interna del contrato** + estado visible como info adicional en la vista reducida.
+
+**🚨 Restricción no negociable del switch.** El estado de pago vive en el `.md` (`08_OPERACIONES/consecutivos-cuentas-cobro.md`), que es la **fuente de verdad** (DT-056). **El switch escribe en el `.md` y luego sincroniza** — el server ya tiene acceso al filesystem de BOVEDA y el parser ya existe en `syncCuentasCobro`. Si el switch escribiera solo en la tabla, **el próximo sync lo pisaría y el estado volvería atrás en silencio**: es exactamente el error del slug del fantasma de Marlon (DT-052), donde renombrar solo la tabla habría sido revertido por el sync. Un switch que el sync deshace es peor que no tener switch.
+
+**Por qué Ian no avisa cada pago.** El switch existe para que Ian NO sea el transporte: aprieta → el server escribe el `.md` → sincroniza. El CTO no interviene. Si el CTO tuviera que editar el `.md` en cada pago, sería el mismo cuello de botella humano que D-101 elimina para las reuniones. **Ian solo avisa lo excepcional: el contrato caído (`Anulada`).**
+
+**Riesgo asumido.** El devengo muestra plata firmada que todavía no entró (hoy: 5.2M COP de julio). Con 4 clientes y Ian controlando cada peso, es manejable. **Criterio para revisar:** al pasar de ~10 clientes o si aparece un cliente que se atrasa en pagos, la card "Por cobrar" deja de ser informativa y pasa a necesitar antigüedad de saldos (aging) y alertas de vencimiento — ver DT-029.
 
 ---
 
