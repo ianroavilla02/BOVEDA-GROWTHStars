@@ -45,6 +45,48 @@ function parseFrontmatter(md) {
   return { body, frontmatter: result };
 }
 
+function parseYamlFrontmatter(md) {
+  const result = {};
+  if (!md || !md.startsWith('---')) return result;
+  const end = md.indexOf('---', 3);
+  if (end === -1) return result;
+  const fm = md.slice(3, end).trim();
+
+  let currentKey = null;
+  let currentList = null;
+
+  for (const raw of fm.split('\n')) {
+    const line = raw.replace(/\r$/, '');
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+
+    if (trimmed.startsWith('- ')) {
+      const item = trimmed.replace(/^-\s+/, '').replace(/^["']|["']$/g, '');
+      if (currentKey && currentList) {
+        currentList.push(item);
+      }
+      continue;
+    }
+
+    const idx = line.indexOf(':');
+    if (idx === -1) continue;
+    currentKey = line.slice(0, idx).trim();
+    let val = line.slice(idx + 1).trim();
+    val = val.replace(/^["']|["']$/g, '');
+
+    if (val === '') {
+      currentList = [];
+      result[currentKey] = currentList;
+    } else {
+      currentList = null;
+      const num = Number(val);
+      result[currentKey] = Number.isFinite(num) ? num : val;
+    }
+  }
+
+  return result;
+}
+
 function extractSection(body, heading) {
   const regex = new RegExp(`##\\s+${heading}\\s*\\n(.*?)(?=\\n##\\s|$)`, 'is');
   const m = body.match(regex);
@@ -213,6 +255,10 @@ function compileReport(slug, month) {
   const brandBook = readFileSafe(path.join(artistPath, 'brand-book', '01-vision-estrategica.md'));
   const direccionArtistica = readFileSafe(path.join(artistPath, 'direccion-artistica', `${month}.md`));
 
+  // Resumen operativo mensual (input de Control, D-099)
+  const resumenMd = readFileSafe(path.join(artistPath, 'mgmt', 'monthly', `resumen-${month}.md`));
+  const resumen = resumenMd ? parseYamlFrontmatter(resumenMd) : null;
+
   // Leer reuniones del mes
   const meetingsDir = path.join(artistPath, 'mgmt', 'meetings');
   let meetings = [];
@@ -238,11 +284,27 @@ function compileReport(slug, month) {
     .map(a => ({ text: a.text, meeting: m.name })));
 
   // Métricas de operación
-  // Objetivos, entregables y misiones NO se derivan con confianza desde los .md actuales.
-  // Requieren una fuente estructurada (ver propuesta de normalización en SOP-CIERRE-DE-MES.md).
-  // Hasta entonces, el compilador no inventa números: muestra "—".
-  const reuniones = meetings.length;
-  const totalDecisiones = allDecisions.length;
+  // El compilador prioriza el resumen-YYYY-MM.md (input de Control, D-099).
+  // Si no existe, no inventa: muestra "—" para lo que no pueda derivar.
+  function fmtRatio(num, total) {
+    if (Number.isFinite(num) && Number.isFinite(total) && total > 0) return `${num}/${total}`;
+    return '—';
+  }
+
+  const objetivos = fmtRatio(resumen?.objetivos_completados, resumen?.objetivos_total);
+  const entregables = fmtRatio(resumen?.entregables_completados, resumen?.entregables_total);
+  const reuniones = Number.isFinite(resumen?.reuniones_realizadas)
+    ? resumen.reuniones_realizadas
+    : meetings.length;
+  const totalDecisiones = Number.isFinite(resumen?.decisiones_estrategicas)
+    ? resumen.decisiones_estrategicas
+    : allDecisions.length;
+  const misionesCount = Array.isArray(resumen?.misiones)
+    ? resumen.misiones.length
+    : '—';
+  const documentosCount = Array.isArray(resumen?.documentos)
+    ? resumen.documentos.length
+    : '—';
 
   // Sección 0 — tesis del mes
   let tesis = '';
@@ -364,12 +426,20 @@ function compileReport(slug, month) {
   report += `## 5. Métricas de Operación\n\n`;
   report += `| Indicador | Valor |\n`;
   report += `|-----------|-------|\n`;
-  report += `| Objetivos completados | — |\n`;
-  report += `| Entregables finalizados | — |\n`;
+  report += `| Objetivos completados | ${objetivos} |\n`;
+  report += `| Entregables finalizados | ${entregables} |\n`;
   report += `| Reuniones realizadas | ${reuniones} |\n`;
-  report += `| Misiones ejecutadas | — |\n`;
-  report += `| Decisiones registradas en actas | ${totalDecisiones} |\n`;
+  report += `| Misiones ejecutadas | ${misionesCount} |\n`;
+  report += `| Documentos producidos | ${documentosCount} |\n`;
+  report += `| Decisiones estratégicas registradas | ${totalDecisiones} |\n`;
   report += `\n`;
+
+  if (Array.isArray(resumen?.misiones) && resumen.misiones.length) {
+    report += `**Misiones:** ${resumen.misiones.join(', ')}\n\n`;
+  }
+  if (Array.isArray(resumen?.documentos) && resumen.documentos.length) {
+    report += `**Documentos:** ${resumen.documentos.join(', ')}\n\n`;
+  }
 
   // 6. Antes y después
   report += `## 6. El Antes y El Después\n\n`;
