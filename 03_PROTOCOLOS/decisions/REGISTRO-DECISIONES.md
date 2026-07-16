@@ -734,6 +734,13 @@ Fase 3: Síntesis (Sintetizador recibe los 4 outputs → veredicto + brandbook)
 
 **Riesgo asumido.** El devengo muestra plata firmada que todavía no entró (hoy: 5.2M COP de julio). Con 4 clientes y Ian controlando cada peso, es manejable. **Criterio para revisar:** al pasar de ~10 clientes o si aparece un cliente que se atrasa en pagos, la card "Por cobrar" deja de ser informativa y pasa a necesitar antigüedad de saldos (aging) y alertas de vencimiento — ver DT-029.
 
+**Frontera cash/devengo — REGLA INMUTABLE (2026-07-16).** D-102 cambió la política de conteo el 2026-07-15. Por lo tanto:
+- **Junio 2026 y meses anteriores están cerrados en CASH.** Se congelaron bajo la política vigente en su momento (revenue = solo `cuentas_cobro` pagadas). Su snapshot es **inmutable**: el revenue de junio es 1.200 USD + 6M COP y **no se toca**. El informe de junio ya está publicado con esas cifras (`reckless-cierre-junio`).
+- **Julio 2026 en adelante es DEVENGO** (Pendiente+Abonado+Pagada, excluye Anulada).
+- **PROHIBIDO regenerar un snapshot cerrado con el código nuevo.** `freezeMonthSnapshot` recalcula el payload entero con la política ACTUAL (devengo), lo que inflaría junio de 10.1M a 16.2M COP metiendo plata Pendiente que nunca se cobró. Verificado 2026-07-16: el protocolo DT-054 frenó exactamente esto y restauró junio byte a byte.
+- **Correcciones puntuales a un mes cerrado** (ej. DT-055: `projects_by_phase`) se hacen con **UPDATE quirúrgico del campo específico en el jsonb, SIN recalcular el revenue** — nunca vía regeneración completa. `projects_by_phase` es eje de EJECUCIÓN, no de pago: puede diferir del revenue sin inconsistencia (modelo de dos ejes).
+- **Por qué es defendible:** un período contable cerrado refleja las reglas de su cierre. La asimetría junio-cash / julio-devengo no es un bug, es el registro fiel de un cambio de política con fecha. `metadata.reason` en cada snapshot deja la traza.
+
 ---
 
 # PARTE 18 — Definición de Hecho (2026-07-15, D-103)
