@@ -33,7 +33,7 @@
 | DT-039 | **PARCIAL (2026-07-16).** Agente `gs-limpiador-input.md` creado y commiteado (commit `0ebe408`). Prompt v1.0 completo: rol, límites, input, 6 pasos de limpieza, formato de output `TRANSCRIPCIÓN LIMPIA`, regla de calidad, preservación de evidencia textual. Sin secrets. **Nunca se ejecutó sobre una transcripción real:** no existe `transcripcion-limpia.md` en ningún artista, ni referencias en outputs, ni invocaciones registradas. Falta validar con una reunión real de onboarding. | SOP Análisis 360 | Parcial — ver traza en detalle expandido |
 | DT-040 | Pipeline automático Drive → BÓVEDA: n8n vigila carpeta de Drive, convierte .docx → .md, empuja a BÓVEDA | Operaciones / Meetings | **Alta** (elevada 2026-07-15 por D-101) |
 | DT-041 | **PARCIAL (2026-07-15).** Fase 0 de higiene estabilizadora: smoke tests Jest 5/5 pasan (`tests/smoke.test.js`), `npm test` configurado, rutas BOVEDA centralizadas en `config.js` con migración de consumidores (`deliverables.js`, scripts de test). **Falta:** tests E2E por endpoint crítico, schema validation contra Supabase, guardrails de regresión. | Operaciones | Parcial — ver traza en detalle expandido |
-| DT-042 | Informe mensual de entrega (.md con Kimi) — compilar objetivos, entregables, reuniones, misiones → narrativa | Operaciones / MGMT | Abierta |
+| DT-042 | **PARCIAL (2026-07-16).** Compilador creado en `03_PROTOCOLOS/herramientas/compilador-informe-mensual.js` (commit `56420e5`). Lee `contexto.md`, auditorías, síntesis growth, brand-book y actas de `mgmt/meetings/`. Genera las 7 secciones del SOP-CIERRE-DE-MES.md. Validado sobre Reckless junio 2026: 7 reuniones incluidas, fechas corregidas. **Output mecánico, no entregable:** pierde narrativa sintética, conexiones diagnóstico→entregable, análisis cualitativo y métricas de baseline que el informe humano sí tiene. Requiere revisión narrativa por Growth Hacker. **Falta:** normalizar tablas de métricas en auditorías para que el compilador extraiga baseline completo; posiblemente integrar LLM para narrativa de sección 0 y 4. | Operaciones / MGMT | Parcial — ver traza en detalle expandido |
 | DT-043 | Modelo de 3 cerebros: Antigravity (externo) + Claude (interno) + Kimi (runtime) — convención de roles y formato I/O | Stack / Arquitectura | Abierta |
 | DT-044 | Activación jerarquía D-099: Growth Hacker → Órgano de Control + primer Jefe de Área (registro mensual MGMT/Growth por artista) + primer Loop de cierre de mes | D-099 / DT-042 | Abierta (primer módulo orquestador — enciende Loops + GitHub Pages) |
 | DT-045 | Infraestructura de datos para cierres de mes en el DASHBOARD: baseline/métricas time-series (`artist_metrics`), lanzamientos + 4 frentes (`launches`/`launch_fronts`), dirección artística mensual (`artistic_direction`), decisiones estructuradas (`mgmt_decisions`), índice de documentos por artista | Auditoría SOP-Cierre | Diferida (los cierres se generan ARCHIVO-FIRST; estas tablas son para VISUALIZAR en el dashboard, no para producir el informe) |
@@ -267,6 +267,35 @@
 **Prompt:** `agent-dashboard/design/PROMPT-DT042-INFORME-MENSUAL.md`
 **Conexión:** Complementa el flujo de "Cerrar Mes" (PROMPT-FIX-MES-FALLBACK.md Part 2). Idealmente se genera el informe ANTES de cerrar el mes.
 **Actualización 2026-07-05 (converge con DT-044):** El output ya NO es solo `.md`. El deliverable de cierre es un **HTML llamativo para GitHub Pages** con gráficas y data real (estética la provee Ian). El `.md` de narrativa pasa a ser un artefacto intermedio (la lectura del Órgano de Control), no el entregable final. La ORQUESTACIÓN de este informe se reasigna a la jerarquía D-099 — ver DT-044 para la descomposición en 3 roles (Jefe de Área acumula → Growth Hacker/Control interpreta → Documentación renderiza HTML).
+
+**Actualización 2026-07-16 (v0.1 del compilador, commit `56420e5`):**
+**Qué se hizo:**
+- Se construyó `compilador-informe-mensual.js` en `03_PROTOCOLOS/herramientas/`.
+- Sigue el principio archive-first del SOP-CIERRE-DE-MES.md: lee `.md` de la BÓVEDA, no tablas de BD.
+- Parser de actas soporta el formato actual de `mgmt/meetings/` (`> Fecha:`, `> Tipo:`, secciones `Resumen`/`Decisiones`/`Action Items`).
+- Corrigió bug de fechas (zona horaria desplazaba un día atrás).
+- Genera output en `06_CLIENTES/<slug>/mgmt/monthly/informe-YYYY-MM.md`.
+
+**Cómo se validó:**
+- Ejecutado sobre Reckless junio 2026.
+- Incluyó 7 reuniones: 2 empalmes Meta #1 (11/jun), empalme Meta #3 (11/jun, fecha en archivo posiblemente errónea), entrega Meta #3 (12/jun), entrega Meta #1 (21/jun), empalme Meta #4 (30/jun), snippet testing (1/jul).
+- Se comparó output generado contra `informe-2026-06.md` humano.
+
+**Delta vs informe humano (lo que pierde el compilador):**
+- **Sección 0 ("El mes en una frase"):** el compilador produce un fragmento del resumen ejecutivo o concatenación de resúmenes; el humano escribe una tesis sintética ("Reckless dejó de ser canciones sueltas y se convirtió en proyecto con arquitectura").
+- **Sección 1 (Baseline):** solo extrae Tier porque las auditorías no tienen una tabla normalizada `| Indicador | Valor |`. El humano armó 15 indicadores a mano desde el texto libre de la auditoría.
+- **Sección 2 (Entregables):** agrupa por meta, no por tema narrativo (Brand Book, Dirección Musical, Auditoría, Limpieza de Feed, Showcase, Videoclip, Snippet Testing). Pierde el "por qué importa", conexión con diagnóstico, y análisis cualitativo.
+- **Sección 3 (Decisiones):** lista todas las decisiones de las actas, incluyendo tácticas/operativas; el humano filtró 8 decisiones estratégicas definitorias.
+- **Sección 4 (Lo que demostró):** no encuentra sección equivalente en `contexto.md` (que tiene "Diferenciador competitivo" / "Mensajes clave"). El humano escribió 5 cualidades con evidencia.
+- **Sección 5 (Métricas de operación):** calcula 3 objetivos / 2 entregables / 27 misiones; el humano reportó 5/5 / 8/8 / 5 misiones. La fuente de objetivos/entregables/misiones no está estructurada en los archivos.
+- **Sección 6 (Antes/Después):** genera filas genéricas; el humano hizo una tabla de 10 dimensiones con valores concretos.
+- **Sección 7 (Pendientes):** extrae action items abiertos; el humano los agrupó por área (Ejecución inmediata, Producción, Estrategia, Evaluación).
+
+**Qué quedó afuera / siguiente paso:**
+- Normalizar métricas de baseline en `01-auditorias/` (tabla clave-valor) para que el compilador las extraiga.
+- Normalizar objetivos/entregables/misiones del mes en un archivo estructurado (o en frontmatter de actas).
+- Decidir si la narrativa sintética la genera un LLM (Claude/Kimi) a partir del compilado mecánico, o si el compilador es solo un asistente de borrador para Growth Hacker.
+- Revisión narrativa de Growth Hacker sigue siendo obligatoria antes de entregar al cliente.
 
 ### DT-043 · Modelo de 3 cerebros — convención de roles y formato I/O entre modelos
 **Prioridad:** Alta · **Fecha:** 2026-07-04
