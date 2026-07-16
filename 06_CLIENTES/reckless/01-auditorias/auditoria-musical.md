@@ -10,6 +10,24 @@
 
 ---
 
+## Métricas clave
+
+| Indicador | Valor | Significado |
+|-----------|-------|-------------|
+| Tier G*S | 1 — Emergente | Por debajo de 15.000 oyentes mensuales |
+| Listeners Spotify /28d | 30 | Nivel de cuenta inactiva |
+| Streams /28d | 53 | Menos de 2 streams/día |
+| Streams lifetime | 105.074 | Catálogo acumulado en 12 meses |
+| Revenue lifetime | $118 USD | En toda la carrera, no en un mes |
+| RPS (Revenue Per Stream) | $0.00112 | 10× menor al benchmark ($0.003–0.005) |
+| Score musical | 6/25 (1.2/5) | Crítico |
+| PODERES cumplidos | 0/7 | Sin ninguna capacidad premium activa |
+| Streams algorítmicos | 7% | Motor de descubrimiento apagado |
+| Streams editoriales | 0% | Cero contacto con curadores |
+| Dependencia Spotify | 100% | 0% Apple Music, Amazon, YouTube Music |
+
+---
+
 ## 1. Resumen ejecutivo
 
 RECKLESS es un proyecto musical en fase ultra-emergente con un catalogo que acumula 105K streams lifetime y $118 USD en ingresos totales via TuneCore. El track ancla "Perreo Anormal" concentra la mayor parte de la actividad con 31,153 streams y 23,636 listeners en 12 meses, pero la actividad actual muestra una caida severa: apenas 53 streams y 30 listeners en los ultimos 28 dias. La audiencia depende 100% de Spotify segun TuneCore, con cero presencia en Apple Music, Amazon o cualquier otra plataforma de streaming. Mexico lidera la geografia con 11,213 streams (representando ~34% del total), seguido de Estados Unidos (5,088) y Colombia (3,268). Las fuentes de stream estan dominadas por escucha activa del propio oyente (73% listener's own playlists/library), con solo 7% algoritmico y 0% editorial. Los ingresos son criticos: $118 USD lifetime indica un RPS extremadamente bajo y un proyecto sin traccion economica.
