@@ -33,7 +33,7 @@
 | DT-039 | **PARCIAL (2026-07-16).** Agente `gs-limpiador-input.md` creado y commiteado (commit `0ebe408`). Prompt v1.0 completo: rol, límites, input, 6 pasos de limpieza, formato de output `TRANSCRIPCIÓN LIMPIA`, regla de calidad, preservación de evidencia textual. Sin secrets. **Nunca se ejecutó sobre una transcripción real:** no existe `transcripcion-limpia.md` en ningún artista, ni referencias en outputs, ni invocaciones registradas. Falta validar con una reunión real de onboarding. | SOP Análisis 360 | Parcial — ver traza en detalle expandido |
 | DT-040 | Pipeline automático Drive → BÓVEDA: n8n vigila carpeta de Drive, convierte .docx → .md, empuja a BÓVEDA | Operaciones / Meetings | **Alta** (elevada 2026-07-15 por D-101) |
 | DT-041 | **PARCIAL (2026-07-15).** Fase 0 de higiene estabilizadora: smoke tests Jest 5/5 pasan (`tests/smoke.test.js`), `npm test` configurado, rutas BOVEDA centralizadas en `config.js` con migración de consumidores (`deliverables.js`, scripts de test). **Falta:** tests E2E por endpoint crítico, schema validation contra Supabase, guardrails de regresión. | Operaciones | Parcial — ver traza en detalle expandido |
-| DT-042 | **PARCIAL (2026-07-16).** Compilador creado en `03_PROTOCOLOS/herramientas/compilador-informe-mensual.js` (commit `56420e5`). Lee `contexto.md`, auditorías, síntesis growth, brand-book y actas de `mgmt/meetings/`. Genera las 7 secciones del SOP-CIERRE-DE-MES.md. Validado sobre Reckless junio 2026: 7 reuniones incluidas, fechas corregidas. **Output mecánico, no entregable:** pierde narrativa sintética, conexiones diagnóstico→entregable, análisis cualitativo y métricas de baseline que el informe humano sí tiene. Requiere revisión narrativa por Growth Hacker. **Falta:** normalizar tablas de métricas en auditorías para que el compilador extraiga baseline completo; posiblemente integrar LLM para narrativa de sección 0 y 4. | Operaciones / MGMT | Parcial — ver traza en detalle expandido |
+| DT-042 | **PARCIAL (2026-07-16).** Compilador corregido en `03_PROTOCOLOS/herramientas/compilador-informe-mensual.js`. Ya no inventa conteos: objetivos, entregables y misiones muestran "—" cuando la fuente no está estructurada. Lee actas, contexto.md, auditorías, síntesis growth y brand-book. Genera las 7 secciones del SOP-CIERRE-DE-MES.md como andamio mecánico. Validado sobre Reckless junio 2026: 7 reuniones incluidas, fechas corregidas. **Falta:** normalizar métricas de baseline en auditorías y crear `resumen-YYYY-MM.md` para objetivos/entregables/misiones. Narrativa, tesis y análisis cualitativo son trabajo del Growth Hacker (D-099), NO del compilador. | Operaciones / MGMT | Parcial — ver traza en detalle expandido |
 | DT-043 | Modelo de 3 cerebros: Antigravity (externo) + Claude (interno) + Kimi (runtime) — convención de roles y formato I/O | Stack / Arquitectura | Abierta |
 | DT-044 | Activación jerarquía D-099: Growth Hacker → Órgano de Control + primer Jefe de Área (registro mensual MGMT/Growth por artista) + primer Loop de cierre de mes | D-099 / DT-042 | Abierta (primer módulo orquestador — enciende Loops + GitHub Pages) |
 | DT-045 | Infraestructura de datos para cierres de mes en el DASHBOARD: baseline/métricas time-series (`artist_metrics`), lanzamientos + 4 frentes (`launches`/`launch_fronts`), dirección artística mensual (`artistic_direction`), decisiones estructuradas (`mgmt_decisions`), índice de documentos por artista | Auditoría SOP-Cierre | Diferida (los cierres se generan ARCHIVO-FIRST; estas tablas son para VISUALIZAR en el dashboard, no para producir el informe) |
@@ -278,8 +278,67 @@
 
 **Cómo se validó:**
 - Ejecutado sobre Reckless junio 2026.
-- Incluyó 7 reuniones: 2 empalmes Meta #1 (11/jun), empalme Meta #3 (11/jun, fecha en archivo posiblemente errónea), entrega Meta #3 (12/jun), entrega Meta #1 (21/jun), empalme Meta #4 (30/jun), snippet testing (1/jul).
-- Se comparó output generado contra `informe-2026-06.md` humano.
+- Incluyó 7 reuniones: 2 empalmes Meta #1 (11/jun), empalme Meta #3 (11/jun), entrega Meta #3 (12/jun), entrega Meta #1 (21/jun), empalme Meta #4 (30/jun), snippet testing (1/jul).
+- Se comparó output generado contra `informe-2026-06.md` humano (reconstruido desde el HTML publicado tras sobrescribirse accidentalmente).
+
+**Corrección Prioridad 1 — conteos (2026-07-16):**
+- El compilador ya NO inventa números.
+- Sección 5 ahora reporta:
+  - `Objetivos completados: —`
+  - `Entregables finalizados: —`
+  - `Misiones ejecutadas: —`
+  - `Reuniones realizadas: <derivado de actas>`
+  - `Decisiones registradas en actas: <derivado de actas>`
+- Razón: objetivos, entregables y misiones no están estructurados en los `.md` fuente. Un "—" es honesto; un conteo heurístico es falso.
+
+**Verificación Prioridad 3 — fecha `empalme-meta-3-1781193050306.md`:**
+- Timestamp `1781193050306` = `2026-06-11T15:50:50.306Z` (10:50 a.m. hora Colombia).
+- La fecha del archivo (`2026-06-11`) coincide con el timestamp. **No es typo.** Se deja tal cual.
+
+**Propuesta Prioridad 2 — formato mínimo de normalización (pendiente de aprobación):**
+Para que el compilador lea números reales sin inventar, se proponen dos fuentes estructuradas:
+
+1. **Tabla de métricas clave en auditorías** (`01-auditorias/auditoria-musical.md` y `auditoria-redes-sociales.md`):
+   ```markdown
+   ## Métricas clave
+
+   | Indicador | Valor | Significado |
+   |-----------|-------|-------------|
+   | Tier G*S | 1 — Emergente | ... |
+   | Listeners Spotify /28d | 30 | ... |
+   | Streams /28d | 53 | ... |
+   | Revenue lifetime | $118 USD | ... |
+   | RPS | $0.00112 | ... |
+   | Score musical | 6/25 (1.2/5) | ... |
+   | Score redes | 7/30 | ... |
+   | IG followers | 1.032 | ... |
+   | TikTok views /año | 33.000 | ... |
+   ```
+
+2. **Archivo resumen operativo mensual** (`06_CLIENTES/<slug>/mgmt/monthly/resumen-YYYY-MM.md`):
+   ```markdown
+   ---
+   mes: 2026-06
+   objetivos_total: 5
+   objetivos_completados: 5
+   entregables_total: 8
+   entregables_completados: 8
+   misiones:
+     - Pinterest
+     - limpieza IG
+     - pago internacional
+     - maquetas a WhatsApp
+     - Drive
+   documentos:
+     - Brand Book (4 secciones)
+     - Guía Técnica Producción
+     - Auditoría Musical
+     - Auditoría Redes
+     - Síntesis Growth
+     - Guion Literario Videoclip
+   ---
+   ```
+   Ventaja: no toca las 7 actas; es un solo archivo por mes que llena el Growth Hacker/Jefe de Área al cerrar.
 
 **Delta vs informe humano (lo que pierde el compilador):**
 - **Sección 0 ("El mes en una frase"):** el compilador produce un fragmento del resumen ejecutivo o concatenación de resúmenes; el humano escribe una tesis sintética ("Reckless dejó de ser canciones sueltas y se convirtió en proyecto con arquitectura").
@@ -291,10 +350,14 @@
 - **Sección 6 (Antes/Después):** genera filas genéricas; el humano hizo una tabla de 10 dimensiones con valores concretos.
 - **Sección 7 (Pendientes):** extrae action items abiertos; el humano los agrupó por área (Ejecución inmediata, Producción, Estrategia, Evaluación).
 
+**Alcance de DT-042 — andamio mecánico, no narrativa:**
+- El compilador NO usa LLM para las secciones 0/2/4/6.
+- Su techo es: extraer datos estructurados, contar lo contable y armar el esqueleto de las 7 secciones.
+- La narrativa, la tesis sintética, el filtrado de decisiones estratégicas y el análisis cualitativo son trabajo del Growth Hacker (D-099: DATA ≠ LECTURA).
+
 **Qué quedó afuera / siguiente paso:**
-- Normalizar métricas de baseline en `01-auditorias/` (tabla clave-valor) para que el compilador las extraiga.
-- Normalizar objetivos/entregables/misiones del mes en un archivo estructurado (o en frontmatter de actas).
-- Decidir si la narrativa sintética la genera un LLM (Claude/Kimi) a partir del compilado mecánico, o si el compilador es solo un asistente de borrador para Growth Hacker.
+- Aprobar y aplicar el formato mínimo de normalización (tabla de métricas en auditorías + `resumen-YYYY-MM.md`).
+- Actualizar el compilador para leer esas dos fuentes cuando existan.
 - Revisión narrativa de Growth Hacker sigue siendo obligatoria antes de entregar al cliente.
 
 ### DT-043 · Modelo de 3 cerebros — convención de roles y formato I/O entre modelos
