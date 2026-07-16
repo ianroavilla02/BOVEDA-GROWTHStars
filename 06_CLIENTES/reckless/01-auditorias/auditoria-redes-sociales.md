@@ -9,6 +9,20 @@
 
 ---
 
+## Métricas clave
+
+| Indicador | Valor | Significado |
+|-----------|-------|-------------|
+| Tier G*S (redes) | 1 — Emergente | Base mínima sin masa crítica |
+| IG followers | 1.032 | Perfil perdiendo audiencia (−92/año) |
+| IG posts /28d | 0 | Cuenta completamente apagada |
+| IG engagement /28d | 4 interacciones | Engagement prácticamente nulo |
+| TikTok views /año | 33.000 | Picos aislados, sin sostenimiento |
+| TikTok publicaciones /28d | 0 | Cuenta completamente apagada |
+| Score redes | 7/30 | Crítico |
+
+---
+
 ## 1. Resumen ejecutivo
 
 RECKLESS presenta un ecosistema social en estado critico con metricas de traccion minimas, crecimiento negativo en Instagram (-92 seguidores netos en 365 dias) y plano en TikTok, donde la actividad viral se concentro en Nov 2025 y no se sostuvo. La cuenta de Instagram tiene 1,032 seguidores con engagement practicamente nulo y una dependencia total de un unico ad ($24.93) que genero 15.6K views pero 0 follows. TikTok acumula 33K views anuales con picos aislados pero 0 publicaciones en los ultimos 28 dias.
