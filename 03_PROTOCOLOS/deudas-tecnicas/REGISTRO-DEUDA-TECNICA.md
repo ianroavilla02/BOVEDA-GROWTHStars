@@ -30,7 +30,7 @@
 | DT-036 | Programar el Perfilador (`gs-perfilador-artista`) — agente cualitativo completo | SOP Análisis 360 | Abierta (bloquea DT-037 y Sintetizador) |
 | DT-037 | Crear Auditor de Mercado (fase 2) — entorno, competencia, nicho, norma demográfica · Motor: Antigravity | SOP Análisis 360 | Abierta (↑ Alta, desbloqueado por Antigravity) |
 | DT-038 | Orquestación con dependencia de fase — guarda que impida ejecutar Auditor Mercado sin perfil válido | SOP Análisis 360 | Abierta |
-| DT-039 | Agente Limpiador de Transcripción (`gs-limpiador-input`) — sanea el crudo del notetaker antes del Perfilador | SOP Análisis 360 | Abierta |
+| DT-039 | **PARCIAL (2026-07-16).** Agente `gs-limpiador-input.md` creado y commiteado (commit `0ebe408`). Prompt v1.0 completo: rol, límites, input, 6 pasos de limpieza, formato de output `TRANSCRIPCIÓN LIMPIA`, regla de calidad, preservación de evidencia textual. Sin secrets. **Nunca se ejecutó sobre una transcripción real:** no existe `transcripcion-limpia.md` en ningún artista, ni referencias en outputs, ni invocaciones registradas. Falta validar con una reunión real de onboarding. | SOP Análisis 360 | Parcial — ver traza en detalle expandido |
 | DT-040 | Pipeline automático Drive → BÓVEDA: n8n vigila carpeta de Drive, convierte .docx → .md, empuja a BÓVEDA | Operaciones / Meetings | **Alta** (elevada 2026-07-15 por D-101) |
 | DT-041 | **PARCIAL (2026-07-15).** Fase 0 de higiene estabilizadora: smoke tests Jest 5/5 pasan (`tests/smoke.test.js`), `npm test` configurado, rutas BOVEDA centralizadas en `config.js` con migración de consumidores (`deliverables.js`, scripts de test). **Falta:** tests E2E por endpoint crítico, schema validation contra Supabase, guardrails de regresión. | Operaciones | Parcial — ver traza en detalle expandido |
 | DT-042 | Informe mensual de entrega (.md con Kimi) — compilar objetivos, entregables, reuniones, misiones → narrativa | Operaciones / MGMT | Abierta |
@@ -198,16 +198,35 @@
 **Solución propuesta:** Validación en el hand-off: antes de crear run para Auditor de Mercado, verificar que existe run `complete` del Perfilador para ese artista con output válido vs output_schema.
 **Conexión:** Requiere el protocolo de hand-off entre agentes (Anexo A del SOP Análisis 360) y la tabla `runs` en Supabase.
 
-### DT-039 · Agente Limpiador de Transcripción (`gs-limpiador-input`)
-**Prioridad:** Alta (gatea la calidad de TODO lo que el Perfilador produce) · **Fecha:** 2026-06-30
+### DT-039 · Agente Limpiador de Transcripción (`gs-limpiador-input`) — PARCIAL
+**Prioridad:** Alta (gatea la calidad de TODO lo que el Perfilador produce) · **Fecha:** 2026-06-30 · **Actualizado:** 2026-07-16
+**Estado:** Parcial. El agente está construido y versionado, pero nunca se ejecutó sobre una transcripción real.
 **Problema:** La regla de evidencia textual del Perfilador (DT-036) solo vale si lo que cita es lo que el artista REALMENTE dijo. El crudo del notetaker viene con ruido conversacional, errores de transcripción y sin etiquetas de hablante. Basura de entrada = evidencia contaminada.
-**Definición de hecho (DoD):**
+**Qué se hizo:**
+- Se creó y commiteó `.claude/agents/gs-limpiador-input.md` (commit `0ebe408`, 2026-07-16).
+- Prompt v1.0 completo con:
+  - Rol y límites claros: preprocesador de texto, NO interpreta, NO resume, NO perfila.
+  - Contrato I/O: input `.md` de Notas de Gemini; output `TRANSCRIPCIÓN LIMPIA` con metadata + transcripción etiquetada.
+  - 6 pasos de procesamiento: extraer transcripción, identificar/normalizar hablantes, limpiar ruido, fusionar fragmentos, corregir errores de transcripción, estructurar salida.
+  - Formato de output explícito con etiquetas `[ARTISTA]`, `[ENTREVISTADOR]`, `[PARTICIPANTE: nombre]`.
+  - Regla de calidad (BUENA/ACEPTABLE/POBRE) y advertencia para transcripciones de calidad pobre.
+  - Regla de preservación de evidencia textual: "Si dudás si algo es ruido o signal: PRESERVALO."
+- Sin secrets: `grep` no encuentra API keys, passwords, tokens, connection strings ni data de clientes en el archivo.
+**Cómo se validó (estático):**
+- Frontmatter completo (slug, name, version, role, description, model, tools, vault_read/write, handoff_to, depends_on, status).
+- Contrato I/O legible y completo en el cuerpo del prompt.
+**Qué falta para cerrar DT-039:**
+- Ejecutar el agente sobre una transcripción real de onboarding (ej. Reckless, Marlon o un nuevo artista).
+- Verificar que el output se escribe en `06_CLIENTES/<slug>/00-perfilamiento/transcripcion-limpia.md`.
+- Validar que las etiquetas `[ARTISTA]` / `[ENTREVISTADOR]` sean correctas y que no se pierda contenido sustantivo.
+- Confirmar que el Perfilador pueda usar el output como input sin re-procesamiento.
+**Definición de hecho (DoD) original:**
 - Input: transcripción literal cruda del notetaker (no el resumen).
 - Limpia ruido conversacional (saludos, charla, muletillas que no aportan).
-- Corrige errores de transcripción de nombres/términos (ej. "enpeso"→"empezó", nombres de productores, títulos de canciones).
-- **Etiqueta hablantes:** `[ARTISTA]` / `[ENTREVISTADOR]`. Crítico — sin esto el Perfilador le atribuye al artista frases del entrevistador.
+- Corrige errores de transcripción de nombres/términos.
+- Etiqueta hablantes: `[ARTISTA]` / `[ENTREVISTADOR]`.
 - Output: transcripción limpia y etiquetada, lista para el Perfilador.
-- NO parafrasea el contenido del artista (debe preservar las palabras exactas para que la cita textual siga siendo válida).
+- NO parafrasea el contenido del artista.
 **Conexión:** Fase 0.5 del SOP Análisis 360. Va entre la reunión de onboarding y el Perfilador (DT-036). Es barato pero no opcional.
 
 ### DT-040 · Pipeline automático Drive → BÓVEDA (n8n + Google Drive)
