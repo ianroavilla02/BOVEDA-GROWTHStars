@@ -2,7 +2,7 @@
 
 > Canon único de decisiones (D-082). Este archivo es la ÚNICA fuente de verdad.
 > El CTO-Engram registra nuevas decisiones aquí al cerrar cada discusión (D-084).
-> Última actualización: 2026-07-02 · Última decisión: D-098
+> Última actualización: 2026-07-15 · Última decisión: D-101
 
 ---
 
@@ -396,6 +396,9 @@
 | Snippet Testing | D-089 (OBSOLETA), D-090, D-091 |
 | SOP Análisis 360 | D-092 a D-096 |
 | Modelo Comercial / Tier | D-097, D-098 |
+| Jerarquía organizacional de agentes | D-099 |
+| Infraestructura / PaaS (stateless first) | D-100 |
+| Ingesta automática de reuniones (Drive → bitácora) | D-101 |
 
 ---
 
@@ -656,6 +659,50 @@ Fase 3: Síntesis (Sintetizador recibe los 4 outputs → veredicto + brandbook)
 **Qué descartó.** (a) Construir las cajas vacías por completitud del organigrama — cada agente nuevo se construye cuando resuelva un dolor actual (filosofía #3). (b) Órganos de Control como auditores de runs individuales — ese rol quedó descartado; son puente de contexto, no QA por run.
 
 **Criterio para revisar:** cuando Órganos de Control y Jefes de Área estén operando, validar que la separación de responsabilidades (Control = puente de contexto; Jefes = vigilancia de proceso operativo) no genere solapamiento en la práctica.
+
+---
+
+# PARTE 15 — Infraestructura y despliegue (2026-07-15, D-100)
+
+### D-100 — "stateless first" para nuevos módulos y servicios
+
+**Fecha:** 2026-07-15
+**Contexto.** Ian preguntó si Railway podía ayudar al stack. El dashboard actual depende del filesystem local de BOVEDA (`06_CLIENTES/`, `.claude/agents/`), por lo que subirlo a un PaaS rompería el acceso a los archivos a menos que se reestructure el sistema. Al mismo tiempo, hay servicios futuros (webhooks, agent runner, bridges de inteligencia externa) que sí podrían beneficiarse de un PaaS.
+
+**Decisión.** Los **nuevos módulos y servicios** de G*S se diseñan "stateless first": no dependen del filesystem local de BOVEDA. Su input/output viene de Supabase, variables de entorno o APIs externas. Esto permite desplegarlos en Railway, Render o cualquier PaaS sin reescritura cuando el volumen o el acceso remoto lo justifiquen.
+
+**Qué descartó.** (a) Migrar el dashboard actual a Railway — lee/escribe archivos locales y no cruza el umbral de costo/beneficio de SaaS. (b) Diseñar nuevos módulos asumiendo filesystem local — cerraría la puerta al PaaS y forzaría una refactor costosa después.
+
+**Detalle.**
+- El dashboard actual sigue corriendo localmente. Su dependencia con BOVEDA es conocida y aceptada.
+- Los nuevos servicios (ej.: agent runner stateless, bridge de Antigravity, webhooks) reciben y devuelven datos via Supabase o HTTP.
+- Las variables de entorno sensibles (connection strings, API keys) viven en `.env` y nunca en código versionado.
+- Esta decisión no cambia D-003 (Supabase como BD operacional) ni D-004 (sin UI custom hasta validar); las complementa.
+
+**Criterio para revisar:** cuando un nuevo módulo necesite estar disponible 24/7, ser accesible desde múltiples dispositivos, o escalar más allá de la laptop de Ian, se evalúa su despliegue en Railway/u otro PaaS sin reescribirlo.
+
+---
+
+# PARTE 16 — Ingesta de reuniones (2026-07-15, D-101)
+
+### D-101 — La ingesta de reuniones se automatiza: Drive es la puerta, la bitácora es el destino
+
+**Fecha:** 2026-07-15
+**Contexto.** Las transcripciones de reuniones (Notas de Gemini) caen como `.docx` en Google Drive. Hoy Ian las trae a mano: entra a Drive, descarga, convierte a `.md` y las sube a la bitácora del artista. Es un paso manual por reunión y ya se rompió: al 2026-07-15 lleva **varios días sin registrar reuniones de Chimbita Records y Marlon**. El costo no es el tiempo del upload — es que **las reuniones no registradas no existen** para el cierre de mes, que es archive-first (se genera desde los `.md` de la BÓVEDA, no desde la BD). Un mes sin bitácoras produce un informe incompleto y silencioso.
+
+**Decisión.** La ingesta de reuniones **se automatiza**. Ian deja de ser el transporte entre Drive y la BÓVEDA. El pipeline es: **Drive (`.docx`) → conversión a `.md` → bitácora del artista (`06_CLIENTES/<artista>/mgmt/meetings/`)**, sin intervención manual. Ian solo interviene si el ruteo es ambiguo.
+
+**Qué descartó.** (a) Seguir manual y "ser más disciplinado" — ya se demostró que falla, y falla en silencio. (b) Subir por el dashboard como paso obligatorio — mueve el trabajo manual de lugar, no lo elimina. (c) Un LLM que decida de qué artista es cada reunión — inventa ruteos; el ruteo se resuelve por convención de nombre/carpeta, y lo ambiguo se encola para que Ian lo decida, nunca se adivina.
+
+**Detalle.**
+- **Fuente:** carpeta vigilada en Drive. **Destino:** `06_CLIENTES/<artista>/mgmt/meetings/` con la convención de nombre vigente (`empalme-meta-N` / `entrega-meta-N`).
+- **Ruteo por convención, no por adivinanza.** Se resuelve por carpeta o prefijo de archivo. Si el artista no se resuelve, el archivo va a una bandeja de pendientes y **se avisa** — nunca se archiva al azar (mismo principio que la D- de cobros: alertar, no adivinar).
+- **Idempotencia:** un `.docx` ya procesado no se reprocesa ni duplica la bitácora.
+- **El `.md` en la BÓVEDA es la fuente de verdad** de la reunión, consistente con el cierre archive-first del SOP-CIERRE-DE-MES.
+- La limpieza de la transcripción sigue siendo trabajo del `gs-limpiador-input`; este pipeline solo transporta y archiva.
+- **Ejecución:** DT-040 (elevada de *Diferida* a **Alta** por esta decisión). El backlog inmediato de Chimbita y Marlon se sube a mano una sola vez; la automatización evita el próximo atraso, no cura este.
+
+**Criterio para revisar:** si el ruteo automático manda reuniones a la carpeta equivocada más de una vez, se corta el auto-archivado y todo pasa por bandeja de pendientes con confirmación de Ian.
 
 ---
 

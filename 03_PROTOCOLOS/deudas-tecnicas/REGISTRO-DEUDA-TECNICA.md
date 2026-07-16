@@ -1,7 +1,7 @@
 # Registro de Deuda Técnica — G*S / SANCORT
 
 > Canon único de deuda técnica. Mismo patrón que REGISTRO-DECISIONES.md (D-082).
-> Última actualización: 2026-07-05
+> Última actualización: 2026-07-15
 
 ---
 
@@ -12,7 +12,7 @@
 | DT-001 | Paridad agentes filesystem/Supabase | Fundación | Cerrada (sync automático al arrancar server — db.js:syncAgentsToSupabase) |
 | DT-004 | fire-and-forget (D-054) se rompe en serverless | D-054 | Inactiva (solo aplica si se deploya) |
 | DT-005 | Migrar sub-agentes de global a project scope | D-005 | Cerrada (17 agentes G*S en BOVEDA/.claude/agents/) |
-| DT-020 | Contextos de Reckless, Ery, Jot4 R pendientes de carga | Día 7 | Abierta |
+| DT-020 | ~~Contextos de Reckless, Ery, Jot4 R pendientes~~ → **scope reducido a RECKLESS** (2026-07-15): Ery ya tiene `contexto.md` (verificado en DT-053); **Jot4 R descartado** — está `inactive`, ROI cero. Reckless (el artista más trabajado del roster) sigue sin `contexto.md` en la raíz → `boveda=null` y cada agente que se invoca sobre él corre a ciegas | Día 7 / DT-053 | Abierta (solo Reckless — hay materia prima de sobra: auditorías, síntesis, brand-book, 7 actas, informe de junio) |
 | DT-023 | Sin UI para listar/re-abrir lotes existentes (press_batches) | D-065 | Abierta |
 | DT-024 | Huérfanos en Supabase Storage al reemplazar adjunto | D-059/D-075 | Abierta (volumen bajo) |
 | DT-025 | Commit consolidado no atómico (commit 5692507) | Día 8 | Asumida |
@@ -30,7 +30,7 @@
 | DT-037 | Crear Auditor de Mercado (fase 2) — entorno, competencia, nicho, norma demográfica · Motor: Antigravity | SOP Análisis 360 | Abierta (↑ Alta, desbloqueado por Antigravity) |
 | DT-038 | Orquestación con dependencia de fase — guarda que impida ejecutar Auditor Mercado sin perfil válido | SOP Análisis 360 | Abierta |
 | DT-039 | Agente Limpiador de Transcripción (`gs-limpiador-input`) — sanea el crudo del notetaker antes del Perfilador | SOP Análisis 360 | Abierta |
-| DT-040 | Pipeline automático Drive → BÓVEDA: n8n vigila carpeta de Drive, convierte .docx → .md, empuja a BÓVEDA | Operaciones / Meetings | Diferida |
+| DT-040 | Pipeline automático Drive → BÓVEDA: n8n vigila carpeta de Drive, convierte .docx → .md, empuja a BÓVEDA | Operaciones / Meetings | **Alta** (elevada 2026-07-15 por D-101) |
 | DT-041 | Dashboard Stabilization — tests E2E, schema validation, guardrails para evitar regresiones | Operaciones | Abierta |
 | DT-042 | Informe mensual de entrega (.md con Kimi) — compilar objetivos, entregables, reuniones, misiones → narrativa | Operaciones / MGMT | Abierta |
 | DT-043 | Modelo de 3 cerebros: Antigravity (externo) + Claude (interno) + Kimi (runtime) — convención de roles y formato I/O | Stack / Arquitectura | Abierta |
@@ -38,6 +38,16 @@
 | DT-045 | Infraestructura de datos para cierres de mes en el DASHBOARD: baseline/métricas time-series (`artist_metrics`), lanzamientos + 4 frentes (`launches`/`launch_fronts`), dirección artística mensual (`artistic_direction`), decisiones estructuradas (`mgmt_decisions`), índice de documentos por artista | Auditoría SOP-Cierre | Diferida (los cierres se generan ARCHIVO-FIRST; estas tablas son para VISUALIZAR en el dashboard, no para producir el informe) |
 | DT-046 | Schema no reproducible desde `05_BASES_DE_DATOS/*.sql`: 4 tablas HOLDING (`artists`, `artist_links`, `service_lines`, `service_types`) + varias columnas (`clients.type`, `projects.artist_id`, `secondary_tasks.artist_id/archived`, `mgmt_engagements.service_line_id`, `trm_daily`) viven solo en Supabase, sin migración versionada | Auditoría schema | Abierta (higiene: exportar el schema vivo a un `.sql` versionado para reproducibilidad) |
 | DT-047 | Data confidencial de clientes (revenue, RPS, métricas, decisiones internas, citas de reuniones) publicada en repos GitHub Pages PÚBLICOS con `noindex` (reckless-sintesis-growth, reckless-cierre-junio, etc.). URL no indexable pero accesible por cualquiera con el link; queda en historial git permanente | Deploy deliverables | Riesgo ASUMIDO conscientemente. Criterio de revisión: al superar 4 clientes simultáneos entra un CTO profesional que reorganiza y da ciberseguridad a todo el stack |
+| DT-048 | Doble mecanismo de cierre de mes: el nuevo `closeMonth` manual por-artista (P1, correcto) coexiste con `legacyCloseMonthBatch` (ex-`closeMonth` global del botón "CERRAR MES" del Roster) que hace rollover batch POR CALENDARIO | Validación P1 (CTO Jr) | **En progreso (2026-07-13):** trigger UI deprecado — botón "CERRAR MES" del Roster + handler `openCloseMonthModal()` removidos de index.html, `legacyCloseMonthBatch` marcada `@deprecated` (lógica intacta). Cierre por-artista (`closeArtistMonth` → `POST /api/mgmt/engagement/:id/close`) es el ÚNICO camino disparable desde UI. **RESTA:** endpoint `POST /api/mgmt/close-month` sigue alcanzable por HTTP directo — decisión Ian: dejarlo por ahora (requiere POST manual, nadie lo dispara sin querer), tapar con 410 cuando se limpie el legacy del todo. No urgente |
+| DT-049 | ~~`getAllArtists` resuelve `engagement_status` con lógica month-based (mismo bug class que P1 arregló)~~ | Validación P1 | **CERRADA (2026-07-15, Tanda F)** — migrado a status-based: trae el engagement MÁS RECIENTE del service_line (order by month desc) y usa su `status` real, sin exigir match exacto con `activeMonth`. Verificado vía HTTP `/api/artists`: Reckless sigue `active`, Ery/Jot4r siguen `paused` (sin regresión). Ver DT-058 (hallazgo nuevo, sin cerrar) |
+| DT-050 | ~~Endpoint `POST /api/mgmt/engagement/:id/close` responde 500 con id inexistente (debería ser 404)~~ | Validación P1 | **CERRADA (2026-07-15, Tanda F)** — mismo patrón que `/api/artist/:slug/dashboard` (`err.code === 'PGRST116' ? 404 : 500`). Verificado con curl: id inexistente → 404 `{"error":"Engagement no encontrado"}` |
+| DT-051 | ~~BUG ACTIVO — `.maybeSingle()` en query de `projects` revienta con >1 proyecto (Chimbita, 3 proyectos)~~ | P5 / Vista de Sello | **CERRADA (2026-07-13)** — fix validado por Ian: devuelve ARRAY; full-context de Chimbita da 200 con 3 proyectos |
+| DT-052 | ~~Client huérfano `marlon-villamil` (id 68abb0bf, `type=null`) con engagement legacy 2026-06 `paused` $750 USD — homónimo del artist del sello. NO era inofensivo: 2 `cuentas_cobro` (CC-TENTACION-001, CC-HENESSY-001, 6M COP) colgaban de él por match de substring, escondiendo el revenue real de Marlon~~ | Rollout Chimbita+Marlon | **CERRADA (2026-07-15, Tanda F)** — orden 1→2→3→4 ejecutado: (1) CC reapuntadas a `chimbita-records`, revenue global de junio verificado idéntico antes/después (1.200 USD + 6M COP); (2) `syncCuentasCobro` migrado de substring-match a mapeo EXPLÍCITO `CC_ARTISTA_TO_CLIENT_SLUG` (match exacto, nunca adivina — fila sin match cae en `client_id_no_resuelto`, no toca el `client_id` existente); (3) sync corrido 2x, ambas CC estables en chimbita; (4) fantasma archivado (`status=archived`, `slug=marlon-villamil-legacy`, NUNCA DELETE), engagement legacy $750 intacto, Marlon real (`artists.f078d25a`) intacto. ~~**Caveat:** la card HISTORIAL de Marlon queda vacía porque el engagement de Chimbita de junio nunca se cerró (`mgmt_monthly_reports` vacío)~~ → **RESUELTO (2026-07-15, modelo artista-de-sello):** la ficha de Marlon ya muestra junio con 6M COP. El historial ahora entra por **revenue ∪ ejecución** (Regla 3 del modelo): un mes aparece si tiene revenue O snapshot — el revenue de línea AV no depende de ningún cierre MGMT |
+| DT-053 | ~~`getArtistDashboard` cambió para TODOS los artistas: antes leía de `00-contexto/` (carpeta inexistente), ahora lee `contexto.md` plano. Cambio GLOBAL — Reckless validado OK, resto del roster sin verificar uno por uno~~ | Rollout Chimbita+Marlon | **CERRADA (2026-07-15, Tanda F)** — los 5 artistas (Reckless, Marlon, Ery, Jot4r, Javier archivado) devuelven HTTP 200 sin excepción vía `/api/artist/:slug/dashboard` (el try/catch hace `boveda=null` si faltan archivos, nunca revienta). Contenido real por artista: Marlon y Ery tienen `contexto.md`+`notes.md` y cargan boveda; Reckless y Jot4r NO tienen `contexto.md` en la raíz de su carpeta (boveda=null, coincide con DT-020 ya abierta); Javier Ferreira tiene la carpeta `06_CLIENTES/javier-ferreira/` completamente vacía (esperado, archivado) |
+| DT-054 | ~~`contracts_active` contaba solo engagements `active` HOY → meses cerrados mostraban "0 contratos"~~ | Validación Tanda A | **CERRADA (2026-07-14, Tanda D)** — fix: `isCurrentMonth` (mes en curso cuenta solo `active`; meses cerrados cuentan todos los engagements de ese `month`). Snapshot de junio REGENERADO con verificación diferencial (revenue idéntico) + traza en `metadata` (`reason: fix DT-054`). Junio ahora muestra 1 contrato |
+| DT-055 | `projects_by_phase` de junio vacío: no hay FK proyecto→mes; los videoclips se pagaron en junio pero no están atados al "mes" de junio. El CTO Jr infirió "proyectos del mes" vía `client_id` | Validación Tanda A | Abierta (definir qué significa "proyecto del mes" — por fecha de pago, de inicio, o de fase) |
+| DT-056 | ~~Doble fuente de verdad de cobros: tabla `cuentas_cobro` vs `.md` `consecutivos-cuentas-cobro.md` como espejos independientes~~ | Validación Tanda A / DT-029 | **CERRADA (2026-07-14, Tanda E)** — **DECISIÓN: el `.md` es la FUENTE DE VERDAD** (es donde se registra, está versionado en git, el CTO puede escribirlo); `cuentas_cobro` es **derivado sincronizado**, nunca al revés. Implementado: `syncCuentasCobro()` parsea el `.md` → `select-then-update` por fila (NO upsert ciego — evita pisar `client_id` con null y da diff campo a campo) → `POST /api/cobros/sync` → botón "SINCRONIZAR COBROS" en Métricas con reporte visual. Nunca borra (huérfanas se reportan). Validado: sync idempotente (7 sin cambios), parser resiste bold/comas/fecha DD-MM, cálculo EN VIVO de junio coincide (1.200 USD + 6M COP). **Flujo nuevo: registrar SOLO en el `.md` → apretar Sincronizar → aparece en el dashboard** |
+| DT-057 | ~~`formatHistRevenue` no probado con mes de moneda mixta (COP+USD)~~ | Validación Tanda B | **CERRADA (2026-07-14, Tanda D)** — junio muestra 1.200 USD + 6M COP separadas, nunca sumadas. ⚠️ **HALLAZGO CLAVE que evitó duplicar revenue:** `revenue_month_usd` y `revenue_month_cop` son **la MISMA plata normalizada a dos denominaciones**, NO montos por moneda — mostrarlos "separados" habría duplicado el revenue en pantalla. Los montos crudos por moneda viven en **`by_line`**. Usar `by_line` para desglose por moneda, NUNCA sumar usd+cop |
 
 ## Deuda activa — detalle expandido
 
@@ -160,7 +170,11 @@
 **Conexión:** Fase 0.5 del SOP Análisis 360. Va entre la reunión de onboarding y el Perfilador (DT-036). Es barato pero no opcional.
 
 ### DT-040 · Pipeline automático Drive → BÓVEDA (n8n + Google Drive)
-**Prioridad:** Diferida · **Fecha:** 2026-06-30
+**Prioridad:** **Alta** (elevada 2026-07-15) · **Fecha:** 2026-06-30 · **Decisión:** D-101
+
+> **Por qué se elevó (2026-07-15).** El criterio de graduación se cumplió: al 2026-07-15 Ian lleva **varios días sin registrar reuniones de Chimbita Records y Marlon**. El upload manual dejó de ser una molestia y pasó a ser pérdida de datos — y como el cierre de mes es archive-first (se genera desde los `.md` de la BÓVEDA), un mes sin bitácoras produce un informe incompleto **en silencio**. Ver **D-101** para las reglas de diseño (ruteo por convención, idempotencia, bandeja de pendientes en vez de adivinanza).
+>
+> **Backlog abierto:** las reuniones atrasadas de Chimbita y Marlon se suben a mano una vez. La automatización previene el próximo atraso, no cura este.
 **Problema:** Las transcripciones de reuniones llegan como .docx a Google Drive. Hoy se suben manualmente al dashboard, donde el server convierte a .md (mammoth). Funciona, pero requiere intervención manual en cada reunión.
 **Solución propuesta:** Workflow n8n que vigila una carpeta de Drive. Cuando cae un .docx nuevo: descarga → convierte a .md → empuja a BÓVEDA en la carpeta del artista correspondiente → opcionalmente notifica o crea la reunión en el dashboard.
 **Pre-requisitos:** n8n operativo (DT-030 Node ≤22), Google Drive API credentials, convención de naming en Drive para mapear archivo → artista.
@@ -253,6 +267,8 @@
 **Decisión CTO.** NO se construye ahora. El cierre de mes se genera **archivo-first** (leyendo los `.md` de la raíz del artista, per SOP) — el informe de junio de Reckless lo demuestra: salió completo SIN estas tablas. Estas tablas son para VISUALIZAR/consultar en el dashboard, no para producir el informe. Se construyen cuando el dashboard necesite mostrar esta data agregada y haya ROI (criterio D-004: ≥3 clientes pagos operando).
 **Conexión:** complementa DT-042/DT-044. La fuente 1 (métricas) es la de mayor valor si algún día se prioriza (habilita el "antes/después" automático).
 
+| DT-058 | ~~`getAllArtists` no aplica la resolución "artista de sello" (`label_client_id`) → el Roster mostraba a Marlon con el engagement legacy ($750/paused) en vez del real de Chimbita ($4M/active)~~ | Hallazgo del fix DT-049 (Tanda F) | **CERRADA (2026-07-15, modelo artista-de-sello)** — la decisión pedida se tomó: **Regla 1 del modelo** — "un artista de sello se resuelve SIEMPRE por `label_client_id`, NUNCA por service_line propio". `getAllArtists` migrado. Validado por Ian: Roster muestra Marlon `active` / 4.000.000 COP. El service_line legacy quedó neutralizado con el fantasma archivado (DT-052) |
+
 ## Deuda cerrada
 
 | # | Descripción | Resolución |
@@ -261,4 +277,4 @@
 
 ## Bug conocido
 
-- Encoding "discogrÃ¡fico" — prioridad media, pendiente
+- ~~Encoding "discogrÃ¡fico"~~ — CERRADO (2026-07-15). Auditoría de Fase 0 no encontró ocurrencias activas en BOVEDA ni en agent-dashboard. La forma rota solo persistía en esta línea del registro.
