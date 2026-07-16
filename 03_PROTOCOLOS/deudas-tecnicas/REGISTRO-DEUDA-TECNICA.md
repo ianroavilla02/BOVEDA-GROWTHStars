@@ -1,7 +1,7 @@
 # Registro de Deuda Técnica — G*S / SANCORT
 
 > Canon único de deuda técnica. Mismo patrón que REGISTRO-DECISIONES.md (D-082).
-> Última actualización: 2026-07-15
+> Última actualización: 2026-07-16
 
 ---
 
@@ -12,7 +12,7 @@
 | DT-001 | Paridad agentes filesystem/Supabase | Fundación | Cerrada (sync automático al arrancar server — db.js:syncAgentsToSupabase) |
 | DT-004 | fire-and-forget (D-054) se rompe en serverless | D-054 | Inactiva (solo aplica si se deploya) |
 | DT-005 | Migrar sub-agentes de global a project scope | D-005 | Cerrada (17 agentes G*S en BOVEDA/.claude/agents/) |
-| DT-020 | ~~Contextos de Reckless, Ery, Jot4 R pendientes~~ → **scope reducido a RECKLESS** (2026-07-15): Ery ya tiene `contexto.md` (verificado en DT-053); **Jot4 R descartado** — está `inactive`, ROI cero. Reckless (el artista más trabajado del roster) sigue sin `contexto.md` en la raíz → `boveda=null` y cada agente que se invoca sobre él corre a ciegas | Día 7 / DT-053 | Abierta (solo Reckless — hay materia prima de sobra: auditorías, síntesis, brand-book, 7 actas, informe de junio) |
+| DT-020 | **CERRADA (2026-07-15, ~20:17 UTC-5, commit ac00279 en BOVEDA).** Scope reducido a RECKLESS: Ery ya tenía `contexto.md` (DT-053); Jot4 R descartado por `inactive`. Se creó `06_CLIENTES/reckless/contexto.md` destilando auditoría musical, auditoría de redes, síntesis growth, Brand Book, 7 actas de reunión e informe de cierre junio 2026. Validación: `GET /api/artist/reckless/dashboard` devuelve HTTP 200 con `boveda.contexto` de 17,287 caracteres. **Pendiente de verificar:** año de nacimiento exacto de Reckless (día 9 de agosto confirmado; año no recordado). | Día 7 / DT-053 | Cerrada — ver traza en detalle expandido |
 | DT-023 | Sin UI para listar/re-abrir lotes existentes (press_batches) | D-065 | Abierta |
 | DT-024 | Huérfanos en Supabase Storage al reemplazar adjunto | D-059/D-075 | Abierta (volumen bajo) |
 | DT-025 | Commit consolidado no atómico (commit 5692507) | Día 8 | Asumida |
@@ -31,18 +31,18 @@
 | DT-038 | Orquestación con dependencia de fase — guarda que impida ejecutar Auditor Mercado sin perfil válido | SOP Análisis 360 | Abierta |
 | DT-039 | Agente Limpiador de Transcripción (`gs-limpiador-input`) — sanea el crudo del notetaker antes del Perfilador | SOP Análisis 360 | Abierta |
 | DT-040 | Pipeline automático Drive → BÓVEDA: n8n vigila carpeta de Drive, convierte .docx → .md, empuja a BÓVEDA | Operaciones / Meetings | **Alta** (elevada 2026-07-15 por D-101) |
-| DT-041 | Dashboard Stabilization — tests E2E, schema validation, guardrails para evitar regresiones | Operaciones | Abierta |
+| DT-041 | **PARCIAL (2026-07-15).** Fase 0 de higiene estabilizadora: smoke tests Jest 5/5 pasan (`tests/smoke.test.js`), `npm test` configurado, rutas BOVEDA centralizadas en `config.js` con migración de consumidores (`deliverables.js`, scripts de test). **Falta:** tests E2E por endpoint crítico, schema validation contra Supabase, guardrails de regresión. | Operaciones | Parcial — ver traza en detalle expandido |
 | DT-042 | Informe mensual de entrega (.md con Kimi) — compilar objetivos, entregables, reuniones, misiones → narrativa | Operaciones / MGMT | Abierta |
 | DT-043 | Modelo de 3 cerebros: Antigravity (externo) + Claude (interno) + Kimi (runtime) — convención de roles y formato I/O | Stack / Arquitectura | Abierta |
 | DT-044 | Activación jerarquía D-099: Growth Hacker → Órgano de Control + primer Jefe de Área (registro mensual MGMT/Growth por artista) + primer Loop de cierre de mes | D-099 / DT-042 | Abierta (primer módulo orquestador — enciende Loops + GitHub Pages) |
 | DT-045 | Infraestructura de datos para cierres de mes en el DASHBOARD: baseline/métricas time-series (`artist_metrics`), lanzamientos + 4 frentes (`launches`/`launch_fronts`), dirección artística mensual (`artistic_direction`), decisiones estructuradas (`mgmt_decisions`), índice de documentos por artista | Auditoría SOP-Cierre | Diferida (los cierres se generan ARCHIVO-FIRST; estas tablas son para VISUALIZAR en el dashboard, no para producir el informe) |
-| DT-046 | Schema no reproducible desde `05_BASES_DE_DATOS/*.sql`: 4 tablas HOLDING (`artists`, `artist_links`, `service_lines`, `service_types`) + varias columnas (`clients.type`, `projects.artist_id`, `secondary_tasks.artist_id/archived`, `mgmt_engagements.service_line_id`, `trm_daily`) viven solo en Supabase, sin migración versionada | Auditoría schema | Abierta (higiene: exportar el schema vivo a un `.sql` versionado para reproducibilidad) |
+| DT-046 | **CERRADA (2026-07-15, ~20:17 UTC-5, commit ac00279 en BOVEDA).** Schema vivo exportado a `05_BASES_DE_DATOS/12-schema-vivo-2026-07-16.sql` (61 KB, ~2,124 líneas) con `pg_dump --schema-only` vía `scripts/clean-schema-dump.js`. Incluye las 4 tablas HOLDING (`artists`, `artist_links`, `service_lines`, `service_types`) y columnas recientes (`artists.label_client_id`, etc.). Sin secrets en el `.sql`. Reproducible: correr `node scripts/clean-schema-dump.js` en `agent-dashboard`. | Auditoría schema | Cerrada — ver traza en detalle expandido |
 | DT-047 | Data confidencial de clientes (revenue, RPS, métricas, decisiones internas, citas de reuniones) publicada en repos GitHub Pages PÚBLICOS con `noindex` (reckless-sintesis-growth, reckless-cierre-junio, etc.). URL no indexable pero accesible por cualquiera con el link; queda en historial git permanente | Deploy deliverables | Riesgo ASUMIDO conscientemente. Criterio de revisión: al superar 4 clientes simultáneos entra un CTO profesional que reorganiza y da ciberseguridad a todo el stack |
 | DT-048 | Doble mecanismo de cierre de mes: el nuevo `closeMonth` manual por-artista (P1, correcto) coexiste con `legacyCloseMonthBatch` (ex-`closeMonth` global del botón "CERRAR MES" del Roster) que hace rollover batch POR CALENDARIO | Validación P1 (CTO Jr) | **En progreso (2026-07-13):** trigger UI deprecado — botón "CERRAR MES" del Roster + handler `openCloseMonthModal()` removidos de index.html, `legacyCloseMonthBatch` marcada `@deprecated` (lógica intacta). Cierre por-artista (`closeArtistMonth` → `POST /api/mgmt/engagement/:id/close`) es el ÚNICO camino disparable desde UI. **RESTA:** endpoint `POST /api/mgmt/close-month` sigue alcanzable por HTTP directo — decisión Ian: dejarlo por ahora (requiere POST manual, nadie lo dispara sin querer), tapar con 410 cuando se limpie el legacy del todo. No urgente |
 | DT-049 | ~~`getAllArtists` resuelve `engagement_status` con lógica month-based (mismo bug class que P1 arregló)~~ | Validación P1 | **CERRADA (2026-07-15, Tanda F)** — migrado a status-based: trae el engagement MÁS RECIENTE del service_line (order by month desc) y usa su `status` real, sin exigir match exacto con `activeMonth`. Verificado vía HTTP `/api/artists`: Reckless sigue `active`, Ery/Jot4r siguen `paused` (sin regresión). Ver DT-058 (hallazgo nuevo, sin cerrar) |
 | DT-050 | ~~Endpoint `POST /api/mgmt/engagement/:id/close` responde 500 con id inexistente (debería ser 404)~~ | Validación P1 | **CERRADA (2026-07-15, Tanda F)** — mismo patrón que `/api/artist/:slug/dashboard` (`err.code === 'PGRST116' ? 404 : 500`). Verificado con curl: id inexistente → 404 `{"error":"Engagement no encontrado"}` |
 | DT-051 | ~~BUG ACTIVO — `.maybeSingle()` en query de `projects` revienta con >1 proyecto (Chimbita, 3 proyectos)~~ | P5 / Vista de Sello | **CERRADA (2026-07-13)** — fix validado por Ian: devuelve ARRAY; full-context de Chimbita da 200 con 3 proyectos |
-| DT-052 | ~~Client huérfano `marlon-villamil` (id 68abb0bf, `type=null`) con engagement legacy 2026-06 `paused` $750 USD — homónimo del artist del sello. NO era inofensivo: 2 `cuentas_cobro` (CC-TENTACION-001, CC-HENESSY-001, 6M COP) colgaban de él por match de substring, escondiendo el revenue real de Marlon~~ | Rollout Chimbita+Marlon | **CERRADA (2026-07-15, Tanda F)** — orden 1→2→3→4 ejecutado: (1) CC reapuntadas a `chimbita-records`, revenue global de junio verificado idéntico antes/después (1.200 USD + 6M COP); (2) `syncCuentasCobro` migrado de substring-match a mapeo EXPLÍCITO `CC_ARTISTA_TO_CLIENT_SLUG` (match exacto, nunca adivina — fila sin match cae en `client_id_no_resuelto`, no toca el `client_id` existente); (3) sync corrido 2x, ambas CC estables en chimbita; (4) fantasma archivado (`status=archived`, `slug=marlon-villamil-legacy`, NUNCA DELETE), engagement legacy $750 intacto, Marlon real (`artists.f078d25a`) intacto. ~~**Caveat:** la card HISTORIAL de Marlon queda vacía porque el engagement de Chimbita de junio nunca se cerró (`mgmt_monthly_reports` vacío)~~ → **RESUELTO (2026-07-15, modelo artista-de-sello):** la ficha de Marlon ya muestra junio con 6M COP. El historial ahora entra por **revenue ∪ ejecución** (Regla 3 del modelo): un mes aparece si tiene revenue O snapshot — el revenue de línea AV no depende de ningún cierre MGMT |
+| DT-052 | ~~Client huérfano `marlon-villamil` (id 68abb0bf, `type=null`) con engagement legacy 2026-06 `paused` $750 USD — homónimo del artist del sello. NO era inofensivo: 2 `cuentas_cobro` (CC-TENTACION-001, CC-HENESSY-001, 6M COP) colgaban de él por match de substring, escondiendo el revenue real de Marlon~~ | Rollout Chimbita+Marlon | **CERRADA (2026-07-15, ~19:54 UTC-5, commit a22d769).** El fix estructural (orden 1→2→3→4) se ejecutó en Tanda F, pero la validación final — Marlon visible en el Roster como `active` / 4.000.000 COP y la ficha de Marlon mostrando junio con 6.000.000 COP — recién se cumplió con el **modelo artista-de-sello** (commit a22d769). Trayectoria real: (1) CC reapuntadas a `chimbita-records`, revenue global de junio verificado idéntico antes/después (1.200 USD + 6M COP); (2) `syncCuentasCobro` migrado de substring-match a mapeo EXPLÍCITO `CC_ARTISTA_TO_CLIENT_SLUG` (match exacto, sin adivinar); (3) sync corrido 2x, ambas CC estables en chimbita; (4) fantasma archivado (`status=archived`, `slug=marlon-villamil-legacy`, NUNCA DELETE), engagement legacy $750 intacto, Marlon real (`artists.f078d25a`) intacto; (5) modelo artista-de-sello aplicado: `getAllArtists` resuelve por `label_client_id`, el historial entra por **revenue ∪ ejecución** (Regla 3), y la ficha de Marlon muestra junio con 6M COP. Validado por Ian: Roster `active` / $4M, HISTORIAL con 6M COP. |
 | DT-053 | ~~`getArtistDashboard` cambió para TODOS los artistas: antes leía de `00-contexto/` (carpeta inexistente), ahora lee `contexto.md` plano. Cambio GLOBAL — Reckless validado OK, resto del roster sin verificar uno por uno~~ | Rollout Chimbita+Marlon | **CERRADA (2026-07-15, Tanda F)** — los 5 artistas (Reckless, Marlon, Ery, Jot4r, Javier archivado) devuelven HTTP 200 sin excepción vía `/api/artist/:slug/dashboard` (el try/catch hace `boveda=null` si faltan archivos, nunca revienta). Contenido real por artista: Marlon y Ery tienen `contexto.md`+`notes.md` y cargan boveda; Reckless y Jot4r NO tienen `contexto.md` en la raíz de su carpeta (boveda=null, coincide con DT-020 ya abierta); Javier Ferreira tiene la carpeta `06_CLIENTES/javier-ferreira/` completamente vacía (esperado, archivado) |
 | DT-054 | ~~`contracts_active` contaba solo engagements `active` HOY → meses cerrados mostraban "0 contratos"~~ | Validación Tanda A | **CERRADA (2026-07-14, Tanda D)** — fix: `isCurrentMonth` (mes en curso cuenta solo `active`; meses cerrados cuentan todos los engagements de ese `month`). Snapshot de junio REGENERADO con verificación diferencial (revenue idéntico) + traza en `metadata` (`reason: fix DT-054`). Junio ahora muestra 1 contrato |
 | DT-055 | `projects_by_phase` de junio vacío: no hay FK proyecto→mes; los videoclips se pagaron en junio pero no están atados al "mes" de junio. El CTO Jr infirió "proyectos del mes" vía `client_id` | Validación Tanda A | Abierta (definir qué significa "proyecto del mes" — por fecha de pago, de inicio, o de fase) |
@@ -73,6 +73,46 @@
 ### DT-018 · Script de onboarding de clientes — CERRADA
 **Prioridad:** Crítica · **Fecha:** 2026-06-03 · **Cerrada:** 2026-07-01
 **Resolución:** Implementado como `onboardClient()` en db.js + botón "+ NUEVO ARTISTA" en el dashboard. Crea filesystem (estructura D-006 v2) + INSERT en Supabase (clients + artist) + README.md auto-generado. Funcional desde el dashboard sin CLI.
+
+### DT-020 · Contexto de Reckless — CERRADA
+**Prioridad:** Media · **Fecha:** 2026-07-15 · **Cerrada:** 2026-07-15 (~20:17 UTC-5, commit `ac00279` en BOVEDA)
+**Problema:** `getArtistDashboard` leía `contexto.md` plano en la raíz de la carpeta del artista. Reckless, el artista más trabajado del roster, no lo tenía → `boveda=null`; cada agente invocado sobre él corría a ciegas.
+**Scope:** Se redujo a Reckless. Ery ya tenía `contexto.md` (verificado en DT-053); Jot4 R fue descartado (`inactive`, ROI cero).
+**Qué se hizo:**
+- Se creó `06_CLIENTES/reckless/contexto.md` siguiendo la estructura de Javier Ferreira pero con la voz de Reckless.
+- Fuentes destiladas (todas reales, nada inventado):
+  - `01-auditorias/auditoria-musical.md` → tier, métricas, hallazgos musicales.
+  - `01-auditorias/auditoria-redes-sociales.md` → IG/TikTok, funnel, nichos.
+  - `02-sintesis/sintesis-growth.md` → NSM, 5 hallazgos integrados, roadmap.
+  - `brand-book/01-vision-estrategica.md` → era "La Era de Quitarse la Máscara", paleta, storyworld.
+  - `mgmt/monthly/informe-2026-06.md` → estado al cierre de junio.
+  - 7 actas en `mgmt/meetings/` → decisiones estratégicas y operativas.
+**Cómo se validó:**
+- `GET http://localhost:3737/api/artist/reckless/dashboard` → HTTP 200, `boveda` presente, `boveda.contexto` con 17,287 caracteres.
+**Qué quedó afuera / pendiente de verificar:**
+- Año de nacimiento exacto de Reckless: día 9 de agosto confirmado (viernes), año no recordado. Marcado como ⚠️ en `contexto.md`.
+- No se creó `notes.md` (no se pidió).
+
+### DT-046 · Schema vivo versionado — CERRADA
+**Prioridad:** Media · **Fecha:** 2026-07-15 · **Cerrada:** 2026-07-15 (~20:17 UTC-5, commit `ac00279` en BOVEDA)
+**Problema:** 4 tablas HOLDING (`artists`, `artist_links`, `service_lines`, `service_types`) y varias columnas recientes vivían solo en Supabase, sin migración versionada en `05_BASES_DE_DATOS/`. El schema no era reproducible desde el repo.
+**Qué se hizo:**
+- Se terminó `agent-dashboard/scripts/clean-schema-dump.js`:
+  - Lee `DIRECT_URL` o `DATABASE_URL` desde `.env` (nunca hardcodea credenciales).
+  - Busca `pg_dump` en PATH o en ubicaciones comunes (scoop, PostgreSQL installer).
+  - Ejecuta `pg_dump --schema-only --no-owner --no-privileges --schema=public` excluyendo schemas de sistema.
+  - Limpia líneas `\restrict`/`\unrestrict` y cualquier connection string residual.
+  - Escribe `05_BASES_DE_DATOS/{NN}-schema-vivo-YYYY-MM-DD.sql` con número de secuencia autoincremental.
+- Se generó `05_BASES_DE_DATOS/12-schema-vivo-2026-07-16.sql` (61 KB, ~2,124 líneas).
+**Cómo se validó:**
+- El `.sql` incluye `CREATE TABLE public.artists`, `public.artist_links`, `public.service_lines`, `public.service_types`.
+- Incluye `label_client_id uuid` en `artists` y las FK asociadas.
+- Sin secrets: `grep` no encuentra passwords ni connection strings en el dump.
+- Reproducible: volver a correr `node scripts/clean-schema-dump.js` genera un nuevo archivo con el mismo contenido estructural.
+**Qué quedó afuera:**
+- No se versionan datos, solo schema.
+- No se incluyen schemas de sistema (`auth`, `storage`, `pgbouncer`, etc.).
+- El ritual de regenerar después de cada migración manual queda documentado en el header del `.sql`.
 
 ### DT-028 · Gráfica de Revenue histórico (mensual + extra)
 **Prioridad:** Media · **Fecha:** 2026-06-27
@@ -181,11 +221,21 @@
 **Trigger de graduación:** Cuando el volumen de reuniones haga que el upload manual sea cuello de botella (estimado: ≥4 reuniones/semana).
 **Conexión:** Complementa DT-035 (Meetings Hub) y DT-039 (Limpiador). El pipeline sería: Drive → n8n (descarga + convierte) → BÓVEDA → Limpiador (DT-039) → Perfilador (DT-036).
 
-### DT-041 · Dashboard Stabilization (tests + guardrails)
-**Prioridad:** Alta · **Fecha:** 2026-06-30
-**Problema:** Cada modificación al dashboard rompe algo (queries, joins, nombres de columna, month rollover). No hay tests ni validación de schema. El sistema depende de Claude Code para sostenimiento — Ian quiere estabilidad sin depender de IA para que funcione.
-**Solución propuesta:** Suite de tests E2E mínima (endpoint responses, schema validation contra Supabase, smoke tests de queries). Validar que cada función de db.js retorna la estructura esperada. CI local (npm test) antes de cada deploy.
-**Pre-requisitos:** Definir runner (Jest/Vitest), mock de Supabase o test DB, inventario de endpoints críticos.
+### DT-041 · Dashboard Stabilization (tests + guardrails) — PARCIAL
+**Prioridad:** Alta · **Fecha:** 2026-06-30 · **Actualizado:** 2026-07-16
+**Estado:** Parcial. Fase 0 de higiene estabilizadora completada el 2026-07-15.
+**Hecho:**
+- Smoke tests Jest en `agent-dashboard/tests/smoke.test.js`: 5/5 pasan (levantan server real en puerto efímero y verifican `/`, `/api/agents`, `/api/artists`, `/api/mgmt/metrics`, `/api/artist/:slug/dashboard`).
+- `npm test` configurado en `package.json` (`jest --runInBand`).
+- Rutas de BOVEDA centralizadas en `agent-dashboard/config.js` (`BOVEDA_PATH`, `CLIENTS_PATH`, `AGENTS_PATH`) con fallback a paths locales.
+- Consumidores migrados: `deliverables.js`, `scripts/test-meeting-create.js`, `scripts/test-meeting-parse.js`.
+- Commits: `b3ecea8` (gitignore), `5e9b05a` (config), `1488fae` (tests), `64d269e` (.env.example), `c8ef7ae` (schema script).
+**Falta para cerrar DT-041:**
+- Tests E2E por endpoint crítico (no solo smoke: validar contratos de respuesta campo a campo).
+- Schema validation contra Supabase (verificar que tablas/columnas esperadas existen antes de arrancar server).
+- Guardrails de regresión (CI local, pre-commit o hook que corra `npm test`).
+- Inventario completo de endpoints críticos y funciones de `db.js` cuya estructura de retorno deba validarse.
+**Problema original:** Cada modificación al dashboard rompe algo (queries, joins, nombres de columna, month rollover). El sistema depende de Claude Code para sostenimiento — Ian quiere estabilidad sin depender de IA para que funcione.
 **Trigger:** Inmediato — cada bug fix introduce regresiones.
 
 ### DT-042 · Informe mensual de entrega (.md con Kimi)
