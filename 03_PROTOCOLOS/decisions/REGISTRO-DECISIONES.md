@@ -2,7 +2,7 @@
 
 > Canon único de decisiones (D-082). Este archivo es la ÚNICA fuente de verdad.
 > El CTO-Engram registra nuevas decisiones aquí al cerrar cada discusión (D-084).
-> Última actualización: 2026-07-15 · Última decisión: D-102
+> Última actualización: 2026-07-15 · Última decisión: D-103
 
 ---
 
@@ -400,6 +400,7 @@
 | Infraestructura / PaaS (stateless first) | D-100 |
 | Ingesta automática de reuniones (Drive → bitácora) | D-101 |
 | Revenue por devengo + switch de estado de contrato | D-102 |
+| Definición de Hecho (backend → vista → puerta → controles) | D-103 |
 
 ---
 
@@ -732,6 +733,39 @@ Fase 3: Síntesis (Sintetizador recibe los 4 outputs → veredicto + brandbook)
 **Por qué Ian no avisa cada pago.** El switch existe para que Ian NO sea el transporte: aprieta → el server escribe el `.md` → sincroniza. El CTO no interviene. Si el CTO tuviera que editar el `.md` en cada pago, sería el mismo cuello de botella humano que D-101 elimina para las reuniones. **Ian solo avisa lo excepcional: el contrato caído (`Anulada`).**
 
 **Riesgo asumido.** El devengo muestra plata firmada que todavía no entró (hoy: 5.2M COP de julio). Con 4 clientes y Ian controlando cada peso, es manejable. **Criterio para revisar:** al pasar de ~10 clientes o si aparece un cliente que se atrasa en pagos, la card "Por cobrar" deja de ser informativa y pasa a necesitar antigüedad de saldos (aging) y alertas de vencimiento — ver DT-029.
+
+---
+
+# PARTE 18 — Definición de Hecho (2026-07-15, D-103)
+
+### D-103 — Está HECHO cuando Ian puede OPERARLO, no cuando se ve
+
+**Fecha:** 2026-07-15 · **Aplica a:** todo prompt de construcción (CTO Jr, Kimi, cualquier agente que escriba código)
+
+**Contexto.** El 2026-07-15, tres veces en el mismo día, algo "funcionaba" y no se podía usar:
+
+| # | Falla | Qué pasó | Qué probaba el "✅" |
+|---|---|---|---|
+| 1 | **Endpoint sin vista** | `/api/mgmt/metrics/history` (Tanda A) respondía 200; ninguna pantalla lo consumía | Que el backend andaba |
+| 2 | **Vista sin puerta** | `renderLabelDashboard` estaba completa, pero el sidebar solo listaba `/api/artists` → Chimbita (un `client type='sello'`) no aparecía: vista inalcanzable | Que el endpoint devolvía 2 artistas + 3 proyectos |
+| 3 | **Vista sin controles** | La vista de sello mostraba todo y no dejaba crear reuniones, entregables ni ver misiones → Ian no podía **registrar operaciones**, que era el pedido literal | Que la vista renderizaba |
+
+**El patrón:** cada nivel "funciona" y ninguno sirve. La validación siempre probaba **la capa que se construyó**, nunca **lo que Ian necesitaba hacer**. Un 200 no prueba una vista; una vista no prueba navegación; una pantalla no prueba operación.
+
+**Decisión.** La **Definición de Hecho** de G\*S tiene cuatro niveles. Un cambio no está hecho hasta que los cuatro se cumplen:
+
+1. **Backend** — la lógica y el endpoint.
+2. **Vista** — la UI que lo consume (sin esto, es data invisible).
+3. **Puerta** — navegación alcanzable **desde donde Ian ya trabaja** (sin esto, es una casa sin puerta).
+4. **Controles** — Ian puede crear / editar / borrar lo que la vista muestra (sin esto, mira pero no opera).
+
+**La pregunta de validación deja de ser "¿se ve?" y pasa a ser "¿qué puede HACER Ian acá?".** La prueba es con el mouse: si Ian no puede ejecutar la acción que motivó el pedido, **no está hecho** — sin importar cuántos tests pasen.
+
+**Qué NO es esta regla (para no sobre-construir).** El nivel 4 aplica solo a **vistas de operación**. Una vista de **lectura** —un informe de cierre, un historial mensual, un snapshot congelado— está completa en el nivel 3 y **no debe** recibir CRUD. El criterio es el pedido original: si dice *"para registrar / gestionar / cargar"*, necesita controles; si dice *"para ver / consultar"*, no.
+
+**Corolario para quien construye.** Cuando una vista nueva necesita lo que otra ya hace (reuniones, entregables, misiones), **se reusa el componente, no se duplica**. Un CRUD copiado obliga a arreglar cada bug dos veces y diverge en silencio. Si no se puede reusar sin romper la vista original, se frena y se avisa — no se copia.
+
+**Criterio para revisar:** si vuelve a aparecer una cuarta variante del patrón (algo que "funciona" y no se puede usar), la falla no es del ejecutor sino de esta definición — se revisa acá, no en el prompt.
 
 ---
 
