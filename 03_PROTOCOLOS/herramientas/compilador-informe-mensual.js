@@ -238,10 +238,11 @@ function compileReport(slug, month) {
     .map(a => ({ text: a.text, meeting: m.name })));
 
   // Métricas de operación
-  const objetivos = new Set(meetings.map(m => m.meta).filter(Boolean)).size;
-  const entregables = meetings.filter(m => m.tipo === 'entrega').length;
+  // Objetivos, entregables y misiones NO se derivan con confianza desde los .md actuales.
+  // Requieren una fuente estructurada (ver propuesta de normalización en SOP-CIERRE-DE-MES.md).
+  // Hasta entonces, el compilador no inventa números: muestra "—".
   const reuniones = meetings.length;
-  const misiones = openActions.length + meetings.reduce((acc, m) => acc + m.actions.filter(a => a.checked).length, 0);
+  const totalDecisiones = allDecisions.length;
 
   // Sección 0 — tesis del mes
   let tesis = '';
@@ -363,11 +364,11 @@ function compileReport(slug, month) {
   report += `## 5. Métricas de Operación\n\n`;
   report += `| Indicador | Valor |\n`;
   report += `|-----------|-------|\n`;
-  report += `| Objetivos completados | ${objetivos}/${objetivos} |\n`;
-  report += `| Entregables finalizados | ${entregables}/${entregables} |\n`;
+  report += `| Objetivos completados | — |\n`;
+  report += `| Entregables finalizados | — |\n`;
   report += `| Reuniones realizadas | ${reuniones} |\n`;
-  report += `| Misiones ejecutadas | ${misiones} (aproximado desde actas) |\n`;
-  report += `| Decisiones estratégicas registradas | ${allDecisions.length} |\n`;
+  report += `| Misiones ejecutadas | — |\n`;
+  report += `| Decisiones registradas en actas | ${totalDecisiones} |\n`;
   report += `\n`;
 
   // 6. Antes y después
