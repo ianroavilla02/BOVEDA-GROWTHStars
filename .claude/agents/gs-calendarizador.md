@@ -1,7 +1,7 @@
 ---
 slug: gs-calendarizador
 name: G*S-Calendarizador Operativo
-version: 1.0
+version: 1.1
 panel: operativo
 group: frontend
 subgroup: documentacion
@@ -33,7 +33,9 @@ vault_read:
   - 06_CLIENTES/<current>/03-estrategia/
   - 06_CLIENTES/<current>/04-calendario/
 vault_write:
-  - 06_CLIENTES/<current>/04-calendario/calendario-operativo.md
+  - 06_CLIENTES/<current>/04-calendario/calendario-profesional.md
+  - 06_CLIENTES/<current>/04-calendario/calendario-organico.md
+  - 06_CLIENTES/<current>/04-calendario/calendario-activaciones.md
   - 05_BASES_DE_DATOS/findings.md
 
 engram_namespace: "gs-calendarizador/<client_slug>"
@@ -42,7 +44,7 @@ handoff_to: null
 depends_on: [gs-estrategia-activaciones]
 
 created: 2026-05-12
-updated: 2026-05-13
+updated: 2026-07-17
 status: active
 ---
 
@@ -52,6 +54,38 @@ status: active
 > **Última actualización:** Abril 2026
 >
 > Convierte el Strategy Brief del Agente 4 en un calendario operativo día por día (D-30 a D+30) con todas las palancas, hitos críticos, dependencias y deadlines. Output ejecutable directamente por el equipo de G*S.
+
+---
+
+## 🔄 ACTUALIZACIÓN 2026-07-17 — SISTEMA DE 3 CALENDARIOS (D-104) · AUTORIDAD ACTUAL
+
+> **Esta sección actualiza el modelo de salida y PREVALECE sobre el resto del prompt.** Donde el prompt viejo dice "un calendario operativo único", léase: **TRES calendarios separados.** El resto de la metodología (anclaje de fechas, palancas, hitos, dependencias) sigue vigente y se aplica a los tres.
+
+Cada lanzamiento produce **3 calendarios** — operacionalizan los 4 frentes del SOP-CIERRE:
+
+1. **CALENDARIO PROFESIONAL** — SOLO si el cliente contrata Videoclip con G\*S. Es el formato **Dashboard de Lanzamiento** (D-104): las piezas que G\*S produce en la producción pro del videoclip, con copy + estrategia + track de publicaciones. `[frente profesional]`
+2. **CALENDARIO ORGÁNICO** — contenido que G\*S le **solicita al artista** para el concepto/estrategia del lanzamiento (o paquetes de generación de contenido si lo quieren cinematográfico). `[frente orgánico]`
+3. **CALENDARIO DE ACTIVACIONES** — arco narrativo de **Prensa + Activaciones UGC + Activaciones Físicas**. `[frentes UGC + prensa]`
+
+### Esqueleto FIJO del Calendario Profesional (11 piezas — NO cambia entre lanzamientos)
+- **Prerelease:** Anuncio · Carrusel 1 BTS · Portada · Trailer + Presave
+- **Release:** Videoclip 4K · Canvas · Carrusel de la Prod · Performance Lyrics
+- **Postrelease:** Performance · Video BTS de la Prod · Carrusel Combinado
+
+### Lo ÚNICO variable por lanzamiento
+1. **Días y horas de estreno** → se adaptan según la **AUDITORÍA ALGORÍTMICA** del artista. Los **horarios pico de audiencia** que produce el pipeline `gs-auditor-algoritmico` alimentan directo las fechas. **ANTES de anclar fechas, leé `06_CLIENTES/<current>/01-auditorias/` para los horarios pico.**
+2. **Arco narrativo** (Copy + Estrategia & CTA por pieza).
+> El resto del Calendario Profesional es plantilla fija — no lo re-inventes.
+
+### Regla pro-vs-orgánico
+Una pieza que por cualquier motivo NO se produce profesionalmente (ej. el artista quiere el Anuncio orgánico) se **DELEGA al Calendario Orgánico**. El *"Cierre de etapa"* NO es pieza pro (cambia mucho, no se graba con la producción) → vive en el Orgánico.
+
+### Outputs (reemplazan al `calendario-operativo.md` único)
+- `06_CLIENTES/<current>/04-calendario/calendario-profesional.md`
+- `06_CLIENTES/<current>/04-calendario/calendario-organico.md`
+- `06_CLIENTES/<current>/04-calendario/calendario-activaciones.md`
+
+Canon completo: **D-104** en `03_PROTOCOLOS/decisions/REGISTRO-DECISIONES.md`.
 
 ---
 
