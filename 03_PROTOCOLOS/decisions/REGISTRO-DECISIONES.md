@@ -786,6 +786,20 @@ Fase 3: Síntesis (Sintetizador recibe los 4 outputs → veredicto + brandbook)
 
 **Decisión.** Se adopta como el **FORMATO DE ENTREGA de contenido profesional para los videoclips/lanzamientos de G\*S (línea AV)**. Cada videoclip que produzcamos se entrega con su Dashboard de Lanzamiento: el cliente/equipo ve el calendario, el copy y la estrategia por pieza, y carga los assets marcando el avance. Es la contraparte ejecutable del `estrategia.md` de un lanzamiento (SOP-CIERRE, `lanzamientos/<x>/`).
 
+**Sistema de 3 calendarios por lanzamiento (2026-07-17) — operacionaliza los 4 frentes del SOP-CIERRE:**
+1. **Calendario PROFESIONAL** — ESTE dashboard. Solo si contratan Videoclip con G\*S. Lleva las piezas de producción + copy + estrategia + track de publicaciones. [frente profesional]
+2. **Calendario ORGÁNICO** — contenido que G\*S le solicita al artista para el concepto/estrategia del lanzamiento. G\*S también ofrece paquetes de generación de contenido si lo quieren cinematográfico. [frente orgánico]
+3. **Calendario de ACTIVACIONES** — arco narrativo de Prensa + Activaciones UGC + Activaciones Físicas. [frentes UGC + prensa]
+
+**Esqueleto FIJO del Calendario Profesional (piezas que G\*S produce en la producción pro del videoclip):**
+- **Prerelease:** Anuncio · Carrusel 1 BTS · Portada · Trailer + Presave
+- **Release:** Videoclip 4K · Canvas · Carrusel de la Prod · Performance Lyrics
+- **Postrelease:** Performance · Video BTS de la Prod · Carrusel Combinado
+
+**Lo único variable por lanzamiento:** (a) **días y horas de estreno** — se adaptan según la **AUDITORÍA ALGORÍTMICA** del artista (los horarios pico de audiencia que produce el pipeline gs-auditor-algoritmico alimentan directo las fechas de este calendario); (b) el **arco narrativo** (Copy + Estrategia & CTA). El resto es plantilla.
+
+**Regla pro-vs-orgánico:** una pieza que por cualquier motivo NO se produce profesionalmente (ej. el artista la quiere orgánica) se **delega al Calendario Orgánico** (contenido que aporta el artista). El *Cierre de etapa* NO es pieza pro (cambia mucho, no se graba con la producción) → vive en el orgánico.
+
 **Qué falta para que sea REUSABLE (no un one-off de Tentación) — roadmap (ver DT-060):**
 1. **Parametrizar la data.** Hoy `initialDb` está hardcodeado con las 12 piezas de Tentación → cada videoclip nuevo = editar el HTML a mano. La data (fases/posts/fechas/copy/estrategia) debe venir de una fuente por-lanzamiento (JSON o el `estrategia.md`).
 2. **Persistir las cargas.** El upload usa `URL.createObjectURL` (blob local efímero) → se pierde al refrescar. Para entrega real, los assets persisten (Supabase Storage o el dashboard). Hoy es solo preview local.
