@@ -2,7 +2,7 @@
 
 > Canon único de decisiones (D-082). Este archivo es la ÚNICA fuente de verdad.
 > El CTO-Engram registra nuevas decisiones aquí al cerrar cada discusión (D-084).
-> Última actualización: 2026-07-15 · Última decisión: D-103
+> Última actualización: 2026-07-17 · Última decisión: D-104
 
 ---
 
@@ -401,6 +401,7 @@
 | Ingesta automática de reuniones (Drive → bitácora) | D-101 |
 | Revenue por devengo + switch de estado de contrato | D-102 |
 | Definición de Hecho (backend → vista → puerta → controles) | D-103 |
+| Dashboard de Lanzamiento (formato entrega AV) | D-104 |
 
 ---
 
@@ -773,6 +774,26 @@ Fase 3: Síntesis (Sintetizador recibe los 4 outputs → veredicto + brandbook)
 **Corolario para quien construye.** Cuando una vista nueva necesita lo que otra ya hace (reuniones, entregables, misiones), **se reusa el componente, no se duplica**. Un CRUD copiado obliga a arreglar cada bug dos veces y diverge en silencio. Si no se puede reusar sin romper la vista original, se frena y se avisa — no se copia.
 
 **Criterio para revisar:** si vuelve a aparecer una cuarta variante del patrón (algo que "funciona" y no se puede usar), la falla no es del ejecutor sino de esta definición — se revisa acá, no en el prompt.
+
+---
+
+# PARTE 19 — Formato de entrega de lanzamiento (2026-07-17, D-104)
+
+### D-104 — Dashboard de Lanzamiento como formato de entrega de contenido AV
+
+**Fecha:** 2026-07-17
+**Contexto.** Ian construyó (con Gemini) un dashboard de lanzamiento para el single **Tentación** de Marlon Villamil: un HTML self-contained (React + Tailwind + Framer Motion vía CDN) con dos vistas — (1) **Modelo Operativo** (reglas base de publicación, sistema de piezas, hashtags, barra de progreso) y (2) **línea de tiempo del lanzamiento por fases** (prerelease / release / postrelease), donde cada publicación trae fecha, hora, plataforma, tipo, piezas, **copy propuesto**, **estrategia + CTA**, y un botón de **carga de material con preview** que marca el progreso. Sirve para ejecutar el lanzamiento y controlar contenido + fechas.
+
+**Decisión.** Se adopta como el **FORMATO DE ENTREGA de contenido profesional para los videoclips/lanzamientos de G\*S (línea AV)**. Cada videoclip que produzcamos se entrega con su Dashboard de Lanzamiento: el cliente/equipo ve el calendario, el copy y la estrategia por pieza, y carga los assets marcando el avance. Es la contraparte ejecutable del `estrategia.md` de un lanzamiento (SOP-CIERRE, `lanzamientos/<x>/`).
+
+**Qué falta para que sea REUSABLE (no un one-off de Tentación) — roadmap (ver DT-060):**
+1. **Parametrizar la data.** Hoy `initialDb` está hardcodeado con las 12 piezas de Tentación → cada videoclip nuevo = editar el HTML a mano. La data (fases/posts/fechas/copy/estrategia) debe venir de una fuente por-lanzamiento (JSON o el `estrategia.md`).
+2. **Persistir las cargas.** El upload usa `URL.createObjectURL` (blob local efímero) → se pierde al refrescar. Para entrega real, los assets persisten (Supabase Storage o el dashboard). Hoy es solo preview local.
+3. **(Opcional) Integrar con el contrato de videoclip del dashboard** — las fases pre/pro/post ya existen ahí.
+
+**Archivo.** Instancia de Tentación en `06_CLIENTES/marlon-villamil/lanzamientos/tentacion/dashboard-lanzamiento.html`. El template reusable se deriva al parametrizar (punto 1).
+
+**Criterio para revisar.** Cuando haya ≥2 videoclips usando el formato, se templatiza de verdad (data-driven) y se decide si vive standalone o dentro del dashboard.
 
 ---
 
