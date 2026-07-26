@@ -2,7 +2,7 @@
 
 > Canon único de decisiones (D-082). Este archivo es la ÚNICA fuente de verdad.
 > El CTO-Engram registra nuevas decisiones aquí al cerrar cada discusión (D-084).
-> Última actualización: 2026-07-17 · Última decisión: D-104
+> Última actualización: 2026-07-17 · Última decisión: D-105
 
 ---
 
@@ -402,6 +402,7 @@
 | Revenue por devengo + switch de estado de contrato | D-102 |
 | Definición de Hecho (backend → vista → puerta → controles) | D-103 |
 | Dashboard de Lanzamiento (formato entrega AV) | D-104 |
+| Growth*Startups: mismo dashboard + portales por colaborador | D-105 |
 
 ---
 
@@ -808,6 +809,28 @@ Fase 3: Síntesis (Sintetizador recibe los 4 outputs → veredicto + brandbook)
 **Archivo.** Instancia de Tentación en `06_CLIENTES/marlon-villamil/lanzamientos/tentacion/dashboard-lanzamiento.html`. El template reusable se deriva al parametrizar (punto 1).
 
 **Criterio para revisar.** Cuando haya ≥2 videoclips usando el formato, se templatiza de verdad (data-driven) y se decide si vive standalone o dentro del dashboard.
+
+---
+
+# PARTE 20 — Growth*Startups (2026-07-17, D-105)
+
+### D-105 — Growth*Startups vive en el mismo dashboard central, con portales por colaborador
+
+**Fecha:** 2026-07-17
+**Contexto.** G\*Startups es la línea de servicios para **marcas/empresas** (no artistas). Ian es el **ÚNICO operario** del dashboard central (tanto G\*S como G\*Startups). Lo "independiente" NO es el operador — son los **portales** que entrega a cada persona (cliente o colaborador). Hay 3 contratos activos: (1) dirección de growth de una **Cumbre** (Ian a cargo de 6 personas de marketing + coordinación con directores de prensa/logística/turismo, cada uno necesita el calendario operativo + tareas + archivos centralizados); (2) **marca de ropa deportiva femenina** (estrategia 3 meses); (3) **spa en sector exclusivo de Cali** (estrategia 3 meses).
+
+**Decisión.**
+- G\*Startups **NO** es sistema separado ni bóveda aparte. Vive en el **MISMO dashboard central y la MISMA bóveda** que G\*S. (Se descarta la bóveda separada que se había evaluado: aplicaba solo si un equipo independiente OPERARA el sistema — no es el caso, Ian opera todo. Esto NO contradice el patrón Santiago: Santiago es un socio que opera SU propio Claude/repo; acá los colaboradores no operan, solo consumen portales.)
+- G\*Startups entra como **tipos de cliente nuevos (marca / evento)** con **campañas** como proyectos, reusando la maquinaria (clientes, cobros, reuniones, tareas, cierres).
+- **Pieza nueva: PORTALES POR COLABORADOR.** El portal de Reckless (1 por artista, read-only) se agranda a **1 por persona** (cliente o miembro de equipo), con vista acotada a: sus **objetivos**, el **calendario operativo compartido**, sus **tareas** (que checkea), y los **archivos**.
+
+**Requisito de seguridad (BLOQUEANTE antes de repartir a externos).** Pasar de 1 portal a muchos portales para gente distinta con acceso de **ESCRITURA** (checkean tareas) exige scoping real — **auth + RLS por persona**. El modelo actual (anon key + filtro por slug en JS) NO sirve. **Recomendación:** Supabase Auth con magic-link por email; cada colaborador entra con su correo, ve/edita solo lo suyo. El spa no puede ver la marca deportiva; un director no ve las tareas privadas de otro (el calendario sí es compartido).
+
+**Arranque.** La **Cumbre primero** (6+ personas esperando). Incremental: modelo evento/áreas/personas → un portal de colaborador scopeado → cerrar auth/RLS antes de repartir a externos.
+
+**Criterio para revisar.** Si el volumen de colaboradores externos escala mucho, o si G\*Startups se vuelve operado por un equipo propio (no Ian), se re-evalúa la separación (bóveda/Supabase propios).
+
+Relacionado: D-027/067/068 (holding multi-línea), `artist-portal.html`, DT-047 (data en Pages público — riesgo), el pendiente de RLS del portal.
 
 ---
 
