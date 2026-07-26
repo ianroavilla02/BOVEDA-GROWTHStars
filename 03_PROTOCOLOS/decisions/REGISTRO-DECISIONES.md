@@ -830,7 +830,21 @@ Fase 3: Síntesis (Sintetizador recibe los 4 outputs → veredicto + brandbook)
 
 **Criterio para revisar.** Si el volumen de colaboradores externos escala mucho, o si G\*Startups se vuelve operado por un equipo propio (no Ian), se re-evalúa la separación (bóveda/Supabase propios).
 
-Relacionado: D-027/067/068 (holding multi-línea), `artist-portal.html`, DT-047 (data en Pages público — riesgo), el pendiente de RLS del portal.
+**Refinamiento del modelo (2026-07-17):**
+- **Dos tipos de proyecto (reusan la estructura MGMT/AV de G\*S):** (a) **clientes recurrentes** — contratan el servicio de Growth Hacking continuo (como MGMT); ej. la Cumbre, la marca deportiva, el spa. (b) **contratos sueltos** — promocional, activación, web, sesión de contenido (como AV); van solos o **se incorporan a un cliente recurrente** (ej. los Add-Ons de la Cumbre).
+- **Cada proyecto = su propio mini-dashboard** con **dos caras: vista interna del equipo** (opera tareas/fases/calendario/archivos) + **vista del cliente** (curada: avances, entregables, calendario). Idéntico a Artista→Lanzamiento→interno+portal de G\*S, pero con **fases propias de G\*Startups** (no las de un videoclip).
+- **ALERTAR, NO AUTO-ACTUAR (regla SISTEMA-WIDE, G\*S y G\*Startups):** cuando un entregable pasa su SLA o cualquier fecha se atrasa/vence, el sistema pinta una **alerta 🔴**; NUNCA mueve fechas ni toma acción automática. El humano (director) decide. Mismo principio que el clasificador (propone, no archiva), el audit (marca, no inventa), y las alertas de cobros vencidos (DT-029). La cláusula del contrato ("los retrasos corren las fechas") es la conversación con el cliente, separada del sistema.
+
+**Cumbre Nacional del Café & Turismo — spec concreto (contrato COP 8M, Ibagué/Fresno, primer caso G\*Startups):**
+- Cliente **recurrente**, servicio Growth Hacking. Revenue COP 8M, 50% ($4M) el 30-ago (último día del evento).
+- **3 fases (arco 28D):** Fase I Preproducción (15d) · Fase II In-Site (3d, War Room) · Fase III Postproducción/Sostenimiento (10d).
+- **NSM por fase:** Registros confirmados → Organic/earned (QR, WhatsApp, UGC, prensa) → Waitlist B2C ≥40% + ≥15 marcas pipeline B2B.
+- **Roles:** CM · Generador de Contenido · Diseñador · Director de Prensa · Filmmaker · Postproducción (definir cuáles son equipo-portal vs directivo-compartido).
+- **Hub de archivos:** carpeta en la nube central (recursos finales compartidos).
+- **SLAs a trackear con alerta:** aprobación ≤24h por entregable · entrega in-site ≤90 min.
+- **Add-ons (sueltos que se incorporan):** Landing+tracking (COP 1.2M) · Pauta+remarketing (15% fee).
+
+Relacionado: D-027/067/068 (holding multi-línea), `artist-portal.html`, DT-047 (data en Pages público — riesgo), el pendiente de RLS del portal, DT-029 (alertas de cobros).
 
 ---
 
