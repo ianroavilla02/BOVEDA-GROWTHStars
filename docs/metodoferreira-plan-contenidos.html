@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan de Contenidos · Método Ferreira · GROWTH*Startups</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --surface: #0f0f0f;
+      --card: #141414;
+      --card-hover: #1a1a1a;
+      --border: #222;
+      --text: #f3f5f3;
+      --muted: #888;
+      --accent: #00d4ff;
+      --accent-soft: rgba(0, 212, 255, 0.1);
+      --danger: #ff4d6d;
+      --success: #00e676;
+      --warning: #ffca28;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    section:last-child { border-bottom: none; }
+
+    h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px; }
+    h3 { font-size: 1.25rem; margin-bottom: 12px; }
+
+    p { color: var(--muted); margin-bottom: 16px; }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .lead { font-size: 1.25rem; color: var(--text); max-width: 700px; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo { font-weight: 800; font-size: 1.1rem; color: var(--text); letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .nav-links a { color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .hero { padding-top: 160px; padding-bottom: 100px; }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--card);
+      margin: 4px 8px 4px 0;
+    }
+
+    .badge.accent {
+      background: var(--accent-soft);
+      border-color: rgba(0, 212, 255, 0.3);
+      color: var(--accent);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .card-grid.two-cols {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 700px) {
+      .card-grid.two-cols { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .card h3 { display: flex; align-items: center; gap: 10px; }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .problem-box {
+      background: rgba(255, 77, 109, 0.08);
+      border: 1px solid rgba(255, 77, 109, 0.25);
+      border-radius: 16px;
+      padding: 28px;
+      margin: 32px 0;
+    }
+
+    .problem-box h3 { color: var(--danger); margin-bottom: 12px; }
+
+    .framework {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .framework-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      position: relative;
+    }
+
+    .framework-card .number {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.05);
+    }
+
+    .framework-card h3 { margin-bottom: 12px; }
+
+    .exercise-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .exercise-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exercise-section {
+      margin-bottom: 20px;
+    }
+
+    .exercise-section h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .exercise-accordion { margin-top: 32px; }
+    .exercise-item {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      background: var(--card);
+    }
+    .exercise-header {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 24px 28px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .exercise-header:hover { background: var(--card-hover); }
+    .exercise-title { font-size: 1.3rem; font-weight: 700; }
+    .exercise-preview { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+    .exercise-toggle {
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .exercise-item.active .exercise-toggle { transform: rotate(45deg); }
+    .exercise-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      background: var(--surface);
+    }
+    .exercise-item.active .exercise-body { max-height: 1500px; }
+    .exercise-body-content { padding: 28px; }
+    .exercise-body-content .exercise-section:last-child { margin-bottom: 0; }
+
+
+    .exercise-section p { margin-bottom: 8px; }
+
+    .script-box {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 20px;
+      margin: 16px 0;
+      font-style: italic;
+      color: var(--text);
+    }
+
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+    @media (max-width: 900px) {
+      .format-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .format-grid { grid-template-columns: 1fr; }
+    }
+
+    .format-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .format-card h4 { font-size: 1rem; margin-bottom: 8px; }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 32px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    th {
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      background: var(--surface);
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .month-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .month-card h3 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .month-tag {
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .checklist li::before {
+      content: '✓';
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 900px) {
+      .framework { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">GROWTH<span>*</span>Startups</div>
+      <ul class="nav-links">
+        <li><a href="#problema">Problema</a></li>
+        <li><a href="#marco">Marco</a></li>
+        <li><a href="#ejercicios">Ejercicios</a></li>
+        <li><a href="#formatos">Formatos</a></li>
+        <li><a href="#expansion">Expansión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+    <section id="problema">
+    <div class="container">
+      <div class="eyebrow">Diagnóstico</div>
+      <h2>Por qué el plan anterior no justificaba el ticket</h2>
+
+      <div class="problem-box">
+        <h3>El problema</h3>
+        <p>El plan tenía videos estáticos de ejercicios sin estructura narrativa. Un video de "cómo hacer sentadilla" no vende un plan de 900k COP. Lo que vende es el sistema detrás: por qué este ejercicio, qué resuelve, cómo se ejecuta correctamente, qué errores evitar, y cómo progresa dentro del método.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3><span class="card-icon">✗</span> Antes</h3>
+          <p>Video del ejercicio sin contexto. El usuario ve el movimiento pero no entiende el valor ni la aplicación.</p>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">✓</span> Ahora</h3>
+          <p>Cada ejercicio es una lección: hook, función, ejecución paso a paso, errores, progresión. El usuario aprende y percibe autoridad.</p>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">↗</span> Impacto</h3>
+          <p>El contenido deja de ser "entrenamiento gratis" y pasa a ser "muestra del método de Javier". Eso justifica el precio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="marco">
+    <div class="container">
+      <div class="eyebrow">Sistema de Narrativa</div>
+      <h2>Los 3 actos de cada ejercicio</h2>
+      <p class="lead">
+        Cada ejercicio se convierte en una lección con estructura de storytelling: el gancho que lo hace relevante, la función que le da sentido, y el método paso a paso que demuestra dominio.
+      </p>
+
+      <div class="framework">
+        <div class="framework-card">
+          <div class="number">01</div>
+          <h3>Presentación / Hook</h3>
+          <p>Abrir con el problema o la promesa. Por qué este ejercicio importa y qué cambia si lo dominas.</p>
+          <ul style="margin-top: 12px; padding-left: 18px; color: var(--muted); font-size: 0.9rem;">
+            <li>Hook emocional o práctico</li>
+            <li>Contexto: cuándo se usa</li>
+            <li>Promesa del resultado</li>
+          </ul>
+        </div>
+        <div class="framework-card">
+          <div class="number">02</div>
+          <h3>Función del ejercicio</h3>
+          <p>Explicar qué trabaja, qué problema resuelve y por qué está en el programa de Javier.</p>
+          <ul style="margin-top: 12px; padding-left: 18px; color: var(--muted); font-size: 0.9rem;">
+            <li>Músculos principales</li>
+            <li>Transferencia al objetivo</li>
+            <li>Por qué no es reemplazable</li>
+          </ul>
+        </div>
+        <div class="framework-card">
+          <div class="number">03</div>
+          <h3>Método paso a paso</h3>
+          <p>La ejecución correcta desglosada. Cada detalle cuenta porque ahí está la diferencia entre entrenar y mover peso.</p>
+          <ul style="margin-top: 12px; padding-left: 18px; color: var(--muted); font-size: 0.9rem;">
+            <li>Setup inicial</li>
+            <li>Fase excéntrica y concéntrica</li>
+            <li>Respiración, ritmo y tensión</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ejercicios">
+    <div class="container">
+      <div class="eyebrow">Ejemplos aplicados</div>
+      <h2>Guiones por ejercicio</h2>
+      <p class="lead">
+        Cada ejercicio tiene un guión completo para que Javier grabe. Despliega para ver hook, función y paso a paso.
+      </p>
+
+      <div class="exercise-accordion">
+        <div class="exercise-item active">
+          <button class="exercise-header">
+            <div>
+              <div class="exercise-title">Sentadilla</div>
+              <div class="exercise-preview">Hook · Función · 6 pasos de ejecución</div>
+            </div>
+            <div class="exercise-toggle">+</div>
+          </button>
+          <div class="exercise-body">
+            <div class="exercise-body-content">
+              <div class="exercise-section">
+                <h4>01 — Presentación / Hook</h4>
+                <p><strong>Tema:</strong> La sentadilla no es solo pierna. Es el ejercicio que más testosterona libera, que más músculo involucra y que define si tu tren inferior crece o no.</p>
+                <div class="script-box">"Si haces sentadilla mal, estás dejando crecimiento en la mesa. Y no hablo de profundidad solo. Hablo de cómo organizas tu cuerpo antes de bajar."</div>
+              </div>
+              <div class="exercise-section">
+                <h4>02 — Función del ejercicio</h4>
+                <p>Trabaja cuádriceps, glúteos, isquiotibiales y core. Es el movimiento pattern más importante del tren inferior. Dentro del Método Ferreira se usa como base de las sesiones de pierna y como indicador de progresión de fuerza.</p>
+              </div>
+              <div class="exercise-section">
+                <h4>03 — Método paso a paso</h4>
+                <p><strong>1. Posición de pies:</strong> apertura media, puntas ligeramente hacia afuera.</p>
+                <p><strong>2. Setup de torso:</strong> pecho alto, lumbares neutros, core apretado.</p>
+                <p><strong>3. Descenso:</strong> controlado, rodillas alineadas con los pies, caderas hacia atrás y abajo.</p>
+                <p><strong>4. Profundidad:</strong> abajo del paralelo si la movilidad lo permite.</p>
+                <p><strong>5. Subida:</strong> empuja por el talón, extiende caderas y rodillas al mismo tiempo.</p>
+                <p><strong>6. Respiración:</strong> inhala antes de bajar, sostiene abajo, exhala en la subida.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          <button class="exercise-header">
+            <div>
+              <div class="exercise-title">Press de banca</div>
+              <div class="exercise-preview">Hook · Función · 6 pasos de ejecución</div>
+            </div>
+            <div class="exercise-toggle">+</div>
+          </button>
+          <div class="exercise-body">
+            <div class="exercise-body-content">
+              <div class="exercise-section">
+                <h4>01 — Presentación / Hook</h4>
+                <p><strong>Tema:</strong> El press de banca es el ejercicio donde más se ve el ego. Todo el mundo sube peso, pocos lo hacen bien. Y el pecho no crece por peso, crece por tensión.</p>
+                <div class="script-box">"Si tu pecho no crece con press de banca, no es porque falte peso. Es porque falta tensión en el músculo. Hoy te muestro cómo cambiar eso."</div>
+              </div>
+              <div class="exercise-section">
+                <h4>02 — Función del ejercicio</h4>
+                <p>Desarrolla pectoral mayor, hombro anterior y tríceps. Es el movimiento básico de empuje horizontal y el mejor indicador de fuerza de tren superior en el método.</p>
+              </div>
+              <div class="exercise-section">
+                <h4>03 — Método paso a paso</h4>
+                <p><strong>1. Posición en banca:</strong> ojos debajo de la barra, pies firmes en el suelo.</p>
+                <p><strong>2. Agarre:</strong> ancho medio, muñecas neutras, codos a 45-75 grados.</p>
+                <p><strong>3. Despegue:</strong> saca la barra con control, brazos extendidos.</p>
+                <p><strong>4. Descenso:</strong> barra hacia la parte baja del pecho, codos cerrados.</p>
+                <p><strong>5. Pausa:</strong> toque suave, sin rebotar.</p>
+                <p><strong>6. Subida:</strong> empuja en línea recta hasta extender codos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          <button class="exercise-header">
+            <div>
+              <div class="exercise-title">Peso muerto</div>
+              <div class="exercise-preview">Hook · Función · 6 pasos de ejecución</div>
+            </div>
+            <div class="exercise-toggle">+</div>
+          </button>
+          <div class="exercise-body">
+            <div class="exercise-body-content">
+              <div class="exercise-section">
+                <h4>01 — Presentación / Hook</h4>
+                <p><strong>Tema:</strong> El peso muerto es el rey de los ejercicios compuestos. Pero también es el que más lesiona cuando se hace mal. Dominarlo cambia tu espalda, tus glúteos y tu fuerza general.</p>
+                <div class="script-box">"El peso muerto no es levantar peso del suelo. Es aprender a tensar todo tu cuerpo como una sola unidad. Eso es lo que te hace fuerte."</div>
+              </div>
+              <div class="exercise-section">
+                <h4>02 — Función del ejercicio</h4>
+                <p>Trabaja cadena posterior: isquiotibiales, glúteos, lumbares, espalda alta y trapecios. Es el ejercicio de fuerza total por excelencia y base de las sesiones de espalda/pierna posterior.</p>
+              </div>
+              <div class="exercise-section">
+                <h4>03 — Método paso a paso</h4>
+                <p><strong>1. Posición:</strong> pies a ancho de cadera, barra sobre el empeine.</p>
+                <p><strong>2. Agarre:</strong> mixto o prono, brazos rectos como cables.</p>
+                <p><strong>3. Setup:</strong> baja las caderas, eleva el pecho, tensa la espalda.</p>
+                <p><strong>4. Subida:</strong> empuja el suelo con los pies, barra cerca del cuerpo.</p>
+                <p><strong>5. Cierre:</strong> glúteos apretados, hombros atrás sin exagerar.</p>
+                <p><strong>6. Descenso:</strong> caderas hacia atrás, barra cerca de las piernas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          <button class="exercise-header">
+            <div>
+              <div class="exercise-title">Dominadas</div>
+              <div class="exercise-preview">Hook · Función · 6 pasos de ejecución</div>
+            </div>
+            <div class="exercise-toggle">+</div>
+          </button>
+          <div class="exercise-body">
+            <div class="exercise-body-content">
+              <div class="exercise-section">
+                <h4>01 — Presentación / Hook</h4>
+                <p><strong>Tema:</strong> La dominada es el filtro. Si puedes hacer dominadas limpias con peso, tu espalda está bien. Si no, hay trabajo que hacer antes de presumir de carga.</p>
+                <div class="script-box">"No necesitas más remo. Necesitas dominar tu propio peso primero. La dominada limpia es la prueba real de fuerza de espalda."</div>
+              </div>
+              <div class="exercise-section">
+                <h4>02 — Función del ejercicio</h4>
+                <p>Desarrolla dorsal ancho, romboides, bíceps y core. Es el empuje vertical por excelencia y el mejor indicador de relación fuerza/peso corporal.</p>
+              </div>
+              <div class="exercise-section">
+                <h4>03 — Método paso a paso</h4>
+                <p><strong>1. Agarre:</strong> prono, ancho medio, pulgares arriba.</p>
+                <p><strong>2. Suspensión:</strong> hombros abajo y atrás, core apretado.</p>
+                <p><strong>3. Subida:</strong> tira codos hacia abajo, barbilla por encima de la barra.</p>
+                <p><strong>4. Contracción:</strong> aprieta dorsales arriba sin encorvar.</p>
+                <p><strong>5. Descenso:</strong> controlado hasta extender brazos.</p>
+                <p><strong>6. Progresión:</strong> lastre cuando se hagan 10 limpias.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          <button class="exercise-header">
+            <div>
+              <div class="exercise-title">Press militar</div>
+              <div class="exercise-preview">Hook · Función · 6 pasos de ejecución</div>
+            </div>
+            <div class="exercise-toggle">+</div>
+          </button>
+          <div class="exercise-body">
+            <div class="exercise-body-content">
+              <div class="exercise-section">
+                <h4>01 — Presentación / Hook</h4>
+                <p><strong>Tema:</strong> Los hombros se construyen con press de pie, no sentado. Cuando haces press militar de pie, obligas a todo el cuerpo a estabilizar. Eso es fuerza real.</p>
+                <div class="script-box">"Si quieres hombros grandes, el press militar tiene que estar en tu programa. No como opción, como obligatorio."</div>
+              </div>
+              <div class="exercise-section">
+                <h4>02 — Función del ejercicio</h4>
+                <p>Desarrolla deltoides anterior, medio y tríceps. Mejora estabilidad de core y fuerza de empuje vertical. Es el básico de hombros del método.</p>
+              </div>
+              <div class="exercise-section">
+                <h4>03 — Método paso a paso</h4>
+                <p><strong>1. Posición:</strong> pies a ancho de hombros, barra en rack alto.</p>
+                <p><strong>2. Despegue:</strong> barra a altura de clavículas, codos bajo las manos.</p>
+                <p><strong>3. Respiración:</strong> inhala y aprieta el core.</p>
+                <p><strong>4. Subida:</strong> barra en línea recta, cabeza ligeramente atrás.</p>
+                <p><strong>5. Cierre:</strong> brazos extendidos, barra sobre la cabeza.</p>
+                <p><strong>6. Descenso:</strong> controlado a la clavícula.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          <button class="exercise-header">
+            <div>
+              <div class="exercise-title">Curl de bíceps con barra</div>
+              <div class="exercise-preview">Hook · Función · 6 pasos de ejecución</div>
+            </div>
+            <div class="exercise-toggle">+</div>
+          </button>
+          <div class="exercise-body">
+            <div class="exercise-body-content">
+              <div class="exercise-section">
+                <h4>01 — Presentación / Hook</h4>
+                <p><strong>Tema:</strong> Todo el mundo hace curl. Pocos sienten el bíceps trabajando. La diferencia entre un bíceps que crece y uno que no está en la tensión, no en el peso.</p>
+                <div class="script-box">"Deja de balancearte para levantar más. Un curl controlado con menos peso crece más que uno con trampa y kilos de más."</div>
+              </div>
+              <div class="exercise-section">
+                <h4>02 — Función del ejercicio</h4>
+                <p>Desarrolla bíceps braquial, braquial anterior y braquiorradial. Es el movimiento de aislamiento de flexión de codo del método, usado al final de las sesiones de empuje/tren superior.</p>
+              </div>
+              <div class="exercise-section">
+                <h4>03 — Método paso a paso</h4>
+                <p><strong>1. Posición:</strong> de pie, barra en agarre supino a ancho de hombros.</p>
+                <p><strong>2. Setup:</strong> codos pegados al cuerpo, hombros abajo.</p>
+                <p><strong>3. Flexión:</strong> sube barra sin mover codos.</p>
+                <p><strong>4. Contracción:</strong> aprieta bíceps arriba.</p>
+                <p><strong>5. Descenso:</strong> controlado hasta extensión casi completa.</p>
+                <p><strong>6. Tensión:</strong> no dejes caer el peso, mantén la carga en el músculo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formatos">
+    <div class="container">
+      <div class="eyebrow">Producción de contenido</div>
+      <h2>Formatos por ejercicio: un activo, múltiples piezas</h2>
+      <p class="lead">
+        Cada ejercicio no genera un solo video. Genera un paquete de contenido que puede publicarse en diferentes momentos y plataformas.
+      </p>
+
+      <div class="format-grid">
+        <div class="format-card">
+          <h4>Video principal (60-90s)</h4>
+          <p>Los 3 actos completos: hook, función y ejecución paso a paso. Publicación en feed + reel + TikTok.</p>
+        </div>
+        <div class="format-card">
+          <h4>Clip 1: El error (15-30s)</h4>
+          <p>Muestra el error más común del ejercicio y la corrección. Alto potencial viral y educativo.</p>
+        </div>
+        <div class="format-card">
+          <h4>Clip 2: El detalle (15-30s)</h4>
+          <p>Un solo punto clave de la ejecución, explicado en profundidad. Posiciona autoridad técnica.</p>
+        </div>
+        <div class="format-card">
+          <h4>Clip 3: La progresión (15-30s)</h4>
+          <p>Cómo avanzar de principiante a avanzado en este ejercicio. Muestra que hay método detrás.</p>
+        </div>
+        <div class="format-card">
+          <h4>Audio de Javier</h4>
+          <p>30-45 segundos explicando el ejercicio por voz. Se usa en stories, DMs y como material del plan.</p>
+        </div>
+        <div class="format-card">
+          <h4>Story educativa</h4>
+          <p>Secuencia de 5-7 stories con el ejercicio paso a paso, usando stickers de pregunta y encuesta.</p>
+        </div>
+        </div>
+
+      <div class="table-wrap" style="margin-top: 48px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Formato</th>
+              <th>Duración</th>
+              <th>Plataforma</th>
+              <th>Objetivo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Video principal</td>
+              <td>60-90s</td>
+              <td>IG Reels / TikTok / YT Shorts</td>
+              <td>Enseñar el ejercicio completo</td>
+            </tr>
+            <tr>
+              <td>Clip de error</td>
+              <td>15-30s</td>
+              <td>IG Reels / TikTok</td>
+              <td>Viralidad + autoridad</td>
+            </tr>
+            <tr>
+              <td>Clip de detalle</td>
+              <td>15-30s</td>
+              <td>IG Reels / TikTok</td>
+              <td>Profundidad técnica</td>
+            </tr>
+            <tr>
+              <td>Clip de progresión</td>
+              <td>15-30s</td>
+              <td>IG Reels / TikTok</td>
+              <td>Mostrar sistema</td>
+            </tr>
+            <tr>
+              <td>Audio de Javier</td>
+              <td>30-45s</td>
+              <td>Stories / DMs / Plan</td>
+              <td>Confianza y cercanía</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="ticket">
+    <div class="container">
+      <div class="eyebrow">Justificación del ticket</div>
+      <h2>Cómo este contenido justifica los 900k COP</h2>
+
+      <div class="card-grid two-cols">
+        <div class="card">
+          <h3><span class="card-icon">1</span> De gratis a premium</h3>
+          <p>El contenido gratuito enseña el qué. El plan pago enseña el cómo, el cuándo, el por qué y la progresión personalizada.</p>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">2</span> Muestra el método</h3>
+          <p>Cada ejercicio demuestra que Javier no improvisa. Hay un sistema detrás, y eso es lo que se paga.</p>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">3</span> Reduce el riesgo</h3>
+          <p>Al mostrar técnica, errores y progresiones, el cliente percibe que está comprando resultados seguros, no solo un PDF.</p>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">4</span> Crea comparación</h3>
+          <p>El contenido gratuito es bueno. El plan pago es completo, personalizado y con acceso a Javier. La diferencia justifica el precio.</p>
+        </div>
+      </div>
+
+      <div class="problem-box" style="margin-top: 40px; background: rgba(0, 230, 118, 0.06); border-color: rgba(0, 230, 118, 0.2);">
+        <h3 style="color: var(--success);">Frase clave de venta</h3>
+        <p style="margin-bottom: 0;">"Lo que ves gratis es una lección. Lo que compras es el método completo: tu plan de entrenamiento, tu alimentación, tu progresión semana a semana, y yo pendiente de ti."</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="expansion">
+    <div class="container">
+      <div class="eyebrow">Expansión mes a mes</div>
+      <h2>Plan de contenido a 4 meses</h2>
+      <p class="lead">
+        El objetivo es que el contenido no se repita y vaya profundizando. Cada mes tiene un eje temático que nutre al siguiente.
+      </p>
+
+      <div class="month-card">
+        <h3>Mes 1: Fundamentos y técnica <span class="month-tag">Base</span></h3>
+        <p>Enseñar los ejercicios básicos con la estructura de 3 actos. Cada semana cubre 2-3 ejercicios. El foco es posicionar a Javier como coach técnico y mostrar el método.</p>
+        <ul class="checklist">
+          <li>Sentadilla, press de banca, peso muerto, dominadas</li>
+          <li>Highlights: El Método, Técnica, Nutrición</li>
+          <li>2 reels a cámara presentando el programa</li>
+          <li>Stories diarias con tips técnicos</li>
+        </ul>
+      </div>
+
+      <div class="month-card">
+        <h3>Mes 2: Progresión y cargas <span class="month-tag">Fuerza</span></h3>
+        <p>Pasar de la técnica a la progresión. Cómo aumentar peso, cuándo hacerlo, cómo programar series y repeticiones. El contenido ahora apunta a quienes ya entienden los básicos.</p>
+        <ul class="checklist">
+          <li>Videos de progresión por ejercicio</li>
+          <li>Cómo leer un programa de entrenamiento</li>
+          <li>Series al fallo vs series reservadas</li>
+          <li>Testimonios de progreso de clientes</li>
+        </ul>
+      </div>
+
+      <div class="month-card">
+        <h3>Mes 3: Nutrición y recuperación <span class="month-tag">Dieta</span></h3>
+        <p>Conectar el entrenamiento con la alimentación. La mitad del resultado está fuera del gimnasio. Contenido de comidas, suplementación, descanso y manejo de vida social.</p>
+        <ul class="checklist">
+          <li>"Un día de comida" de Javier</li>
+          <li>Proteína objetivo según peso</li>
+          <li>Cómo comer fuera de casa</li>
+          <li>Sueño, recuperación y suplementos básicos</li>
+        </ul>
+      </div>
+
+      <div class="month-card">
+        <h3>Mes 4+: Especialización y casos <span class="month-tag">Escala</span></h3>
+        <p>Contenido más específico según el tipo de cliente que entra. Ejercicios para objetivos concretos, casos de clientes, FAQs y detrás de cámaras del Método.</p>
+        <ul class="checklist">
+          <li>Rutinas para principiantes vs avanzados</li>
+          <li>Casos de clientes con resultados</li>
+          <li>Errores que Javier corrige en llamadas</li>
+          <li>Detrás de cámaras del Método Ferreira</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="produccion">
+    <div class="container">
+      <div class="eyebrow">Producción</div>
+      <h2>Requerimientos técnicos y escenográficos</h2>
+      <p class="lead">
+        Para producir contenido de entrenamiento con calidad profesional sin perder autenticidad, necesitamos un setup mínimo pero consistente. El objetivo es que todos los videos se vean como parte del mismo sistema.
+      </p>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3><span class="card-icon">🏋️</span> Escenografía</h3>
+          <ul class="checklist">
+            <li>Gimnasio con buena iluminación natural o artificial</li>
+            <li>Fondo limpio: pared oscura o zona despejada del gimnasio</li>
+            <li>Equipo visible: barras, discos, rack, banca</li>
+            <li>Elementos de marca: remera del Método Ferreira, botella, toalla</li>
+            <li>Ángulos definidos: frontal, lateral 45°, detalle del movimiento</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">🎨</span> Estética</h3>
+          <ul class="checklist">
+            <li>Paleta oscura con acentos en cyan/blanco (marca G*Startups / Método)</li>
+            <li>Tipografía Inter para textos en pantalla</li>
+            <li>Motion graphics limpios: títulos de ejercicio, pasos numerados</li>
+            <li>Audio consistente: música de fondo baja o solo voz de Javier</li>
+            <li>Formatos 16:9 para Método, 9:16 para redes y WhatsApp</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">👤</span> Talento</h3>
+          <ul class="checklist">
+            <li>Javier Ferreira como presentador principal</li>
+            <li>1 modelo/demo cuando el ejercicio requiera demostración externa</li>
+            <li>1 asistente de producción para manejar cámara y audio</li>
+            <li>1 editor de video para postproducción</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 64px;">Cantidad de formatos y videos entregables</h2>
+      <p class="lead">
+        Por cada ejercicio se generan piezas en dos orientaciones: horizontal para la plataforma del Método y vertical para redes sociales y WhatsApp.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Formato</th>
+              <th>Orientación</th>
+              <th>Duración</th>
+              <th>Uso</th>
+              <th>Cantidad por ejercicio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Video tutorial completo</td>
+              <td>Horizontal 16:9</td>
+              <td>2-4 min</td>
+              <td>Plataforma del Método, contenido del plan</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Video principal</td>
+              <td>Vertical 9:16</td>
+              <td>60-90s</td>
+              <td>IG Reels / TikTok / YT Shorts</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Clip: El error</td>
+              <td>Vertical 9:16</td>
+              <td>15-30s</td>
+              <td>IG Reels / TikTok / WhatsApp</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Clip: El detalle</td>
+              <td>Vertical 9:16</td>
+              <td>15-30s</td>
+              <td>IG Reels / TikTok / WhatsApp</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Clip: La progresión</td>
+              <td>Vertical 9:16</td>
+              <td>15-30s</td>
+              <td>IG Reels / TikTok / WhatsApp</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Audio de Javier</td>
+              <td>Audio</td>
+              <td>30-45s</td>
+              <td>Stories / DMs / Plan</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Story educativa</td>
+              <td>Vertical 9:16</td>
+              <td>5-7 stories</td>
+              <td>IG Stories / WhatsApp Status</td>
+              <td>1 secuencia</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="problem-box" style="margin-top: 40px; background: rgba(0, 212, 255, 0.06); border-color: rgba(0, 212, 255, 0.2);">
+        <h3 style="color: var(--accent);">Total por ejercicio</h3>
+        <p style="margin-bottom: 0;">1 video horizontal (plataforma) + 4 videos verticales (redes) + 1 audio + 1 secuencia de stories = <strong>7 piezas por ejercicio</strong>. Con 6 ejercicios base son <strong>42 piezas de contenido</strong> listas para distribuir.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Plan de contenidos producido por <strong>GROWTH*Startups</strong> · Prototipo en 10_PROTOTIPS_KIMI</p>
+    </div>
+  </footer>
+
+
+  <script>
+    (function(){
+      document.querySelectorAll('.exercise-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const item = header.parentElement;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.exercise-item').forEach(i => i.classList.remove('active'));
+          if (!isActive) item.classList.add('active');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

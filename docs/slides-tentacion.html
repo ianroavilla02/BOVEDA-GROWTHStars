@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TENTACIÓN — Plan Operativo | Marlon Villamil</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --void: #030624;
+            --signal: #DA261C;
+            --midnight: #1a2479;
+            --blood: #741511;
+            --text: #f0f0f0;
+            --text-dim: #a0a0a0;
+        }
+
+        .reveal {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 300;
+            font-size: 28px;
+            color: var(--text);
+            background: var(--void);
+        }
+
+        .reveal .slides {
+            text-align: left;
+        }
+
+        .reveal .slides section {
+            padding: 40px 60px;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            font-family: 'Teko', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text);
+            margin-bottom: 0.4em;
+            line-height: 1;
+        }
+
+        .reveal h1 { font-size: 2.4em; }
+        .reveal h2 { font-size: 1.8em; color: var(--signal); }
+        .reveal h3 { font-size: 1.3em; color: var(--text); }
+        .reveal h4 { font-size: 1.1em; color: var(--text-dim); }
+
+        .reveal p {
+            line-height: 1.5;
+            margin-bottom: 0.8em;
+        }
+
+        .reveal ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1em;
+        }
+
+        .reveal ul li {
+            position: relative;
+            padding-left: 1.2em;
+            margin-bottom: 0.5em;
+            line-height: 1.4;
+        }
+
+        .reveal ul li::before {
+            content: "►";
+            position: absolute;
+            left: 0;
+            color: var(--signal);
+            font-size: 0.7em;
+            top: 0.3em;
+        }
+
+        .reveal table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75em;
+            margin: 1em 0;
+        }
+
+        .reveal table th {
+            background: var(--signal);
+            color: white;
+            font-family: 'Teko', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        .reveal table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            vertical-align: top;
+        }
+
+        .reveal table tr:nth-child(even) {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .reveal strong {
+            color: var(--signal);
+            font-weight: 600;
+        }
+
+        .reveal em {
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        .reveal .slide-number {
+            background: var(--signal);
+            color: white;
+            font-family: 'Teko', sans-serif;
+            font-size: 18px;
+            padding: 8px 14px;
+            border-radius: 0;
+        }
+
+        .reveal .controls {
+            color: var(--signal);
+        }
+
+        .reveal .progress {
+            background: rgba(255,255,255,0.1);
+            height: 4px;
+        }
+
+        .reveal .progress span {
+            background: var(--signal);
+        }
+
+        .cover {
+            text-align: center !important;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cover h1 {
+            font-size: 4em;
+            color: var(--signal);
+            margin-bottom: 0.2em;
+        }
+
+        .cover h2 {
+            font-size: 1.6em;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .cover .tagline {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.4em;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            margin-top: 2em;
+        }
+
+        .section-title {
+            text-align: center !important;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-title h2 {
+            font-size: 3em;
+        }
+
+        .section-title p {
+            font-size: 1.1em;
+            color: var(--text-dim);
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .phase-label {
+            display: inline-block;
+            background: var(--signal);
+            color: white;
+            font-family: 'Teko', sans-serif;
+            padding: 4px 12px;
+            margin-bottom: 0.5em;
+            font-size: 0.9em;
+        }
+
+        .metric-box {
+            display: inline-block;
+            background: rgba(218, 38, 28, 0.1);
+            border-left: 4px solid var(--signal);
+            padding: 15px 20px;
+            margin: 10px 0;
+        }
+
+        .metric-box strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .small-text {
+            font-size: 0.75em;
+            color: var(--text-dim);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .highlight-box {
+            background: rgba(26, 36, 121, 0.3);
+            border: 1px solid var(--midnight);
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box h3 {
+            color: var(--signal);
+            margin-top: 0;
+        }
+
+        .footer-note {
+            position: absolute;
+            bottom: 25px;
+            left: 60px;
+            font-size: 0.6em;
+            color: var(--text-dim);
+        }
+
+        .reveal .slides section .centered {
+            text-align: center;
+        }
+
+        @media print {
+            .reveal .slides section {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- PORTADA -->
+            <section class="cover">
+                <div class="tagline">GROWTH*STARS · PLAN OPERATIVO</div>
+                <h1>TENTACIÓN</h1>
+                <h2>Calendario de Publicaciones, Activaciones y Sprint 72hrs</h2>
+                <p style="margin-top: 2em; color: var(--text-dim);">Marlon Villamil · Lanzamiento 28 ago 2026 · Tier 1 Estándar</p>
+            </section>
+
+            <!-- INDICE -->
+            <section>
+                <h2>Índice</h2>
+                <ul>
+                    <li><strong>Sección 7:</strong> Calendario de Publicaciones de Marlon</li>
+                    <li><strong>Sección 8:</strong> Plan de Activaciones</li>
+                    <li><strong>Sección 9:</strong> Sprint 72hrs y Árbol de Decisión D+7</li>
+                </ul>
+                <div class="highlight-box" style="margin-top: 2em;">
+                    <h3>Tesis del plan</h3>
+                    <p>Convertir la audiencia social de Marlon (mayoría mujeres 13-25) en oyentes de Spotify mediante una narrativa personal de guerrilla: cumpleaños + livestream + "encuentro" falso + experimento social sobre la era "Atrapado en los 2000".</p>
+                </div>
+            </section>
+
+            <!-- SECCION 7: DISTRIBUCION -->
+            <section class="section-title">
+                <div class="tagline">SECCIÓN 7</div>
+                <h2>Calendario de Publicaciones de Marlon</h2>
+                <p>Distribución TOFU/MOFU/BOFU calibrada para Tier 1 Estándar + publicaciones día por día.</p>
+            </section>
+
+            <section>
+                <h2>Distribución del Funnel</h2>
+                <p>Tier 1 Estándar: <strong>50% TOFU / 30% MOFU / 20% BOFU</strong></p>
+                <div class="two-col">
+                    <div>
+                        <h3>TOFU — Descubrimiento (5 piezas)</h3>
+                        <ul>
+                            <li>Hooks visuales fuertes</li>
+                            <li>Primeros 2 segundos críticos</li>
+                            <li>Sin CTA comercial</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>MOFU — Comunidad (3 piezas)</h3>
+                        <ul>
+                            <li>Storytelling y BTS</li>
+                            <li>Conexión emocional</li>
+                            <li>CTA suave (seguir, guardar)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="metric-box" style="margin-top: 1em;">
+                    <strong>BOFU — Conversión (2 piezas)</strong>
+                    CTAs explícitos: pre-save, save, listen, share.
+                </div>
+                <p class="small-text">Total: 10 piezas de producción + orgánico LIBRE diario en Stories.</p>
+            </section>
+
+            <section>
+                <h2>Fase 1 — Invitación (9-13 ago)</h2>
+                <div class="phase-label">Expectativa + exclusividad</div>
+                <table>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Formato</th>
+                        <th>Copy / Idea</th>
+                        <th>Trigger</th>
+                    </tr>
+                    <tr>
+                        <td>9 ago</td>
+                        <td>19:00</td>
+                        <td>Reel 15s</td>
+                        <td>"El 14 hay fiesta. Los que de verdad me siguen, caigan. 🔴"</td>
+                        <td>UAU-09, UCT-10</td>
+                    </tr>
+                    <tr>
+                        <td>10 ago</td>
+                        <td>18:00</td>
+                        <td>Story</td>
+                        <td>"Estoy armando algo el viernes. No es lo que creen."</td>
+                        <td>UAU-08</td>
+                    </tr>
+                    <tr>
+                        <td>11 ago</td>
+                        <td>19:00</td>
+                        <td>Reel 15s</td>
+                        <td>"Mi cumple se celebra el 14. Pero no es solo cumple."</td>
+                        <td>UAU-09, UCT-10</td>
+                    </tr>
+                    <tr>
+                        <td>12 ago</td>
+                        <td>18:00</td>
+                        <td>Story poll</td>
+                        <td>"¿Ustedes creen en el amor a primera vista?"</td>
+                        <td>UAU-08</td>
+                    </tr>
+                    <tr>
+                        <td>13 ago</td>
+                        <td>20:00</td>
+                        <td>Story</td>
+                        <td>"Mañana empieza todo. Activen notis."</td>
+                        <td>UAU-08</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>Fase 2 — La Fiesta (14-16 ago)</h2>
+                <div class="phase-label">Euforia + caos + misterio</div>
+                <table>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Formato</th>
+                        <th>Acción</th>
+                        <th>Trigger</th>
+                    </tr>
+                    <tr>
+                        <td>14 ago</td>
+                        <td>12:00</td>
+                        <td>Stories en vivo</td>
+                        <td>"Hoy es la fiesta. Llegan los míos."</td>
+                        <td>UAU-08, UCT-12</td>
+                    </tr>
+                    <tr>
+                        <td>14 ago</td>
+                        <td>21:00</td>
+                        <td>Livestream digital</td>
+                        <td>Livestream con estética "Atrapado en los 2000". Marlon "desaparece".</td>
+                        <td>UCT-12</td>
+                    </tr>
+                    <tr>
+                        <td>15 ago</td>
+                        <td>01:00</td>
+                        <td>Story misterio</td>
+                        <td>Desde cuenta de amigo/equipo: "Se fue con alguien????"</td>
+                        <td>UAU-08</td>
+                    </tr>
+                    <tr>
+                        <td>16 ago</td>
+                        <td>14:00</td>
+                        <td>Story silencio</td>
+                        <td>Silencio de Marlon. Recap del equipo: "anoche fue una locura".</td>
+                        <td>UAU-08</td>
+                    </tr>
+                </table>
+                <div class="metric-box">
+                    <strong>Meta livestream:</strong> 100+ viewers concurrentes (objetivo Tier 1).
+                </div>
+            </section>
+
+            <section>
+                <h2>Fase 3 — El Rumor (17-19 ago)</h2>
+                <div class="phase-label">Curiosidad + teorías + chisme controlado</div>
+                <table>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Formato</th>
+                        <th>Copy / Idea</th>
+                        <th>Trigger</th>
+                    </tr>
+                    <tr>
+                        <td>17 ago</td>
+                        <td>18:00</td>
+                        <td>Carrusel "filtrado"</td>
+                        <td>"Fotos de anoche que no debieron salir. 🔴 Deslizá →"</td>
+                        <td>UAU-07, UCT-10</td>
+                    </tr>
+                    <tr>
+                        <td>18 ago</td>
+                        <td>19:00</td>
+                        <td>Reel teorías</td>
+                        <td>"Ustedes ya están armando teorías. Quiero leerlas todas."</td>
+                        <td>UAU-05, UAU-09</td>
+                    </tr>
+                    <tr>
+                        <td>19 ago</td>
+                        <td>18:00</td>
+                        <td>Story Ask.fm</td>
+                        <td>"Pregúnteme lo que sea, anónimo. Mañana respondo."</td>
+                        <td>UAU-08</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>Fase 4 — La Explicación (20-22 ago)</h2>
+                <div class="phase-label">Arrepentimiento + vulnerabilidad</div>
+                <table>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Formato</th>
+                        <th>Copy / Idea</th>
+                        <th>Trigger</th>
+                    </tr>
+                    <tr>
+                        <td>20 ago</td>
+                        <td>19:00</td>
+                        <td>Ask.fm respuestas</td>
+                        <td>"¿Qué pasó en la fiesta? Les cuento en un video."</td>
+                        <td>UAU-08</td>
+                    </tr>
+                    <tr>
+                        <td>21 ago</td>
+                        <td>18:00</td>
+                        <td>Fotos producción</td>
+                        <td>"Mientras tanto, esto es lo que estaba preparando. 🔴"</td>
+                        <td>UAU-07, UCT-10</td>
+                    </tr>
+                    <tr>
+                        <td>21 ago</td>
+                        <td>20:00</td>
+                        <td>Story anuncio YT</td>
+                        <td>"Subí un video a YouTube. Vayan a verlo."</td>
+                        <td>UAU-08, UCT-13</td>
+                    </tr>
+                    <tr>
+                        <td>22 ago</td>
+                        <td>19:00</td>
+                        <td>Video YouTube</td>
+                        <td>"No debí hacer eso… pero el ambiente hace que pasen cosas."</td>
+                        <td>UAU-11, UAU-12</td>
+                    </tr>
+                    <tr>
+                        <td>22 ago</td>
+                        <td>21:00</td>
+                        <td>Reel corte YT</td>
+                        <td>Corte del video YT con hook fuerte</td>
+                        <td>UAU-09, UAU-10</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>Fase 5 — Calentamiento (23-27 ago)</h2>
+                <div class="phase-label">Anticipación + intimidad</div>
+                <table>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Formato</th>
+                        <th>Copy / Idea</th>
+                        <th>Trigger</th>
+                    </tr>
+                    <tr>
+                        <td>23 ago</td>
+                        <td>20:00</td>
+                        <td>Live</td>
+                        <td>"Hablemos de por qué hice eso."</td>
+                        <td>UCT-12</td>
+                    </tr>
+                    <tr>
+                        <td>24 ago</td>
+                        <td>12:00</td>
+                        <td>TikTok audio oficial</td>
+                        <td>Audio oficial de TENTACIÓN disponible. CTA "úsalo".</td>
+                        <td>MOC-01, UCT-06</td>
+                    </tr>
+                    <tr>
+                        <td>24 ago</td>
+                        <td>19:00</td>
+                        <td>Live</td>
+                        <td>"Les cuento qué se viene el 28."</td>
+                        <td>UCT-12</td>
+                    </tr>
+                    <tr>
+                        <td>25 ago</td>
+                        <td>19:00</td>
+                        <td>Trailer + pre-save</td>
+                        <td>"4 días. Esto es TENTACIÓN. 🔴 Link en bio."</td>
+                        <td>UAU-09, UCT-03, UCT-11</td>
+                    </tr>
+                    <tr>
+                        <td>26 ago</td>
+                        <td>20:00</td>
+                        <td>Live</td>
+                        <td>"Última live antes del drop. Pregunten lo que sea."</td>
+                        <td>UCT-12</td>
+                    </tr>
+                    <tr>
+                        <td>27 ago</td>
+                        <td>18:00</td>
+                        <td>Carrusel BTS</td>
+                        <td>"Así se hizo TENTACIÓN. Deslizá →"</td>
+                        <td>UAU-07, UCT-10</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>Fase 6 — Lanzamiento (28 ago)</h2>
+                <div class="phase-label">Entrega + comunidad</div>
+                <table>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Formato</th>
+                        <th>Plataforma</th>
+                        <th>Copy / Idea</th>
+                        <th>Trigger</th>
+                    </tr>
+                    <tr>
+                        <td>00:00</td>
+                        <td>Videoclip 4K</td>
+                        <td>YouTube</td>
+                        <td>TENTACIÓN — Marlon Villamil (Video Oficial)</td>
+                        <td>UAU-11, UAU-12</td>
+                    </tr>
+                    <tr>
+                        <td>08:00</td>
+                        <td>Canvas + portada</td>
+                        <td>Spotify + IG</td>
+                        <td>"Ya está en todas las plataformas. 🔴"</td>
+                        <td>UAU-02, UCT-01</td>
+                    </tr>
+                    <tr>
+                        <td>12:00</td>
+                        <td>Carrusel lanzamiento</td>
+                        <td>IG Feed</td>
+                        <td>"Cada frame de TENTACIÓN tiene una historia. Deslizá →"</td>
+                        <td>UAU-07, UCT-10</td>
+                    </tr>
+                    <tr>
+                        <td>13:00</td>
+                        <td>Performance/Lyrics Reel</td>
+                        <td>IG Reel + TikTok</td>
+                        <td>"Se supone que no debía sentir esto. #Tentacion"</td>
+                        <td>UAU-03, UAU-09, UCT-06</td>
+                    </tr>
+                    <tr>
+                        <td>16:00</td>
+                        <td>One Shot viral</td>
+                        <td>TikTok + Reel</td>
+                        <td>Corte más viral del video con audio original</td>
+                        <td>UAU-03, UCT-06</td>
+                    </tr>
+                    <tr>
+                        <td>19:00</td>
+                        <td>Live drop</td>
+                        <td>IG/TikTok</td>
+                        <td>"Ya salió. Gracias por estar."</td>
+                        <td>UCT-12</td>
+                    </tr>
+                    <tr>
+                        <td>20:00</td>
+                        <td>Reel reacción UGC</td>
+                        <td>IG Reel + TikTok</td>
+                        <td>"Miren lo que están haciendo con TENTACIÓN."</td>
+                        <td>UCT-09</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- SECCION 8 -->
+            <section class="section-title">
+                <div class="tagline">SECCIÓN 8</div>
+                <h2>Plan de Activaciones</h2>
+                <p>UGC, Ask.fm, livestream, pauta digital y cuenta de fans.</p>
+            </section>
+
+            <section>
+                <h2>UGC — 3 Oleadas (24-30 ago)</h2>
+                <div class="highlight-box">
+                    <h3>Objetivo</h3>
+                    <p>15+ videos en 6h (MOC-01) · 60+ videos en semana 1 (MOC-02) · Activar UCT-06 y UCT-07.</p>
+                </div>
+                <table>
+                    <tr>
+                        <th>Oleada</th>
+                        <th>Fecha</th>
+                        <th>Creadores</th>
+                        <th>Brief</th>
+                        <th>Meta</th>
+                    </tr>
+                    <tr>
+                        <td><strong>0 — Siembra</strong></td>
+                        <td>24 ago</td>
+                        <td>3-5 nano/micro</td>
+                        <td>"¿A quién les hace acordar TENTACIÓN?" + audio oficial</td>
+                        <td>10-15 videos D-4</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1 — Drop</strong></td>
+                        <td>28 ago 12-15h</td>
+                        <td>5-8 TikTok + 2 IG micro</td>
+                        <td>Usar audio, reaccionar al video, lipsync hook, teorías</td>
+                        <td>15+ videos en 6h</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2 — Post-tendencia</strong></td>
+                        <td>30 ago</td>
+                        <td>3-5 creadores</td>
+                        <td>Duet/Stitch con el Reel de Marlon</td>
+                        <td>10+ videos D2</td>
+                    </tr>
+                </table>
+                <p class="small-text">Mix Tier 1 Estándar: 90% nano/micro + 10% medio si el presupuesto lo permite.</p>
+            </section>
+
+            <section>
+                <h2>Brief UGC</h2>
+                <ul>
+                    <li>Usar audio oficial + hashtag <strong>#TentacionMarlon</strong></li>
+                    <li>Hook sugerido: "Marlon se fue de su fiesta con alguien y ahora entiendo por qué"</li>
+                    <li>CTA en bio: link a Spotify</li>
+                    <li>No confirmar que el rumor es real</li>
+                    <li>Duración: 8-15s para máxima retención</li>
+                </ul>
+                <div class="metric-box">
+                    <strong>Hashtag unificado:</strong> #TentacionMarlon
+                    <span style="display:block; margin-top:5px; font-size:0.9em;">Meta: 35+ usos mínimo, 75+ objetivo al final de semana 1.</span>
+                </div>
+            </section>
+
+            <section>
+                <h2>Ask.fm + Livestream + Pauta</h2>
+                <div class="two-col">
+                    <div>
+                        <h3>Ask.fm (19-20 ago)</h3>
+                        <ul>
+                            <li>Abrir perfil el 19 ago</li>
+                            <li>Story: "Pregúnteme lo que sea, anónimo"</li>
+                            <li>Responder 5-8 preguntas el 20 ago</li>
+                            <li>Dirigir al video YT del 22</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Livestream digital (14 ago)</h3>
+                        <ul>
+                            <li>21:00 COL desde la fiesta</li>
+                            <li>Estética "Atrapado en los 2000"</li>
+                            <li>Marlon "desaparece" del live</li>
+                            <li>Meta: 100+ viewers concurrentes</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 1.5em;">
+                    <h3>Pauta Tier 1 Estándar</h3>
+                    <ul>
+                        <li><strong>Meta Ads:</strong> pre-saves + tráfico a Spotify, D-3 a D0, audiencia mujeres 13-25 COL/MX.</li>
+                        <li><strong>TikTok Spark Ads:</strong> escalar 3-5 mejores UGC orgánicos D+1 a D+3, solo si >8% engagement.</li>
+                    </ul>
+                    <p class="small-text">Regla: no gastar más del 50% del presupuesto antes de D+7.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Cuenta de Fans (CM)</h2>
+                <ul>
+                    <li>Arranca activa el <strong>17 ago</strong></li>
+                    <li>Función: sembrar teorías, responder comentarios, repostear UGC, testear formatos</li>
+                    <li>Meta: <strong>100 DMs en 3 semanas</strong></li>
+                    <li>Cadencia: 2-3 piezas/semana</li>
+                </ul>
+                <div class="metric-box">
+                    <strong>Triggers que mueve:</strong> UAU-05, UAU-06, UCT-07, UCT-08, UCT-10.
+                </div>
+            </section>
+
+            <!-- SECCION 9 -->
+            <section class="section-title">
+                <div class="tagline">SECCIÓN 9</div>
+                <h2>Sprint 72hrs y Árbol de Decisión</h2>
+                <p>Monitoreo en tiempo real del 28 al 31 ago y decisión estratégica el D+7.</p>
+            </section>
+
+            <section>
+                <h2>Sprint 72hrs — Cronograma</h2>
+                <table>
+                    <tr>
+                        <th>Día</th>
+                        <th>Hora</th>
+                        <th>Acción</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"><strong>D0 — 28 ago</strong></td>
+                        <td>00:00-12:00</td>
+                        <td>Videoclip, Canvas, Artist Pick, post portada.</td>
+                    </tr>
+                    <tr>
+                        <td>12:00-15:00</td>
+                        <td>Oleada 1 UGC simultánea. Stories CTA "GUARDA en Spotify". WhatsApp broadcast.</td>
+                    </tr>
+                    <tr>
+                        <td>15:00-23:59</td>
+                        <td>Comment seeding 20 comentarios. Live drop. Reel reacción UGC.</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>D+1 — 29 ago</strong></td>
+                        <td>10:00-12:00</td>
+                        <td>Video del artista post-tendencia (UCT-09).</td>
+                    </tr>
+                    <tr>
+                        <td>14:00</td>
+                        <td>Activar Spark Ads sobre mejores UGC orgánicos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D+2 — 30 ago</strong></td>
+                        <td>10:00</td>
+                        <td>Evaluar Sound Reuse Rate. Escalar o pausar Spark Ads. Reel IG con CTA shares.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D+3 — 31 ago</strong></td>
+                        <td>18:00</td>
+                        <td>Resumen 3 días en stories. Story con números preliminares. Iniciar pitch a playlists.</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h2>KPIs de Salida del Sprint</h2>
+                <div class="two-col">
+                    <div>
+                        <div class="metric-box">
+                            <strong>Save Rate Spotify</strong>
+                            >6% mínimo · >9% objetivo
+                        </div>
+                        <div class="metric-box">
+                            <strong>Completion Rate Spotify</strong>
+                            >70%
+                        </div>
+                        <div class="metric-box">
+                            <strong>Videos UGC</strong>
+                            >15 D1 · >60 semana 1
+                        </div>
+                    </div>
+                    <div>
+                        <div class="metric-box">
+                            <strong>Medios publicados</strong>
+                            1-2 en 48h
+                        </div>
+                        <div class="metric-box">
+                            <strong>DM Shares vs Likes IG</strong>
+                            >30%
+                        </div>
+                        <div class="metric-box">
+                            <strong>Sound Reuse D7</strong>
+                            10-50/día (escenario B) o >50/día (A)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Árbol de Decisión D+7</h2>
+                <p>Evaluar contra benchmarks Tier 1 Estándar. La mayoría de indicadores define el escenario.</p>
+                <table>
+                    <tr>
+                        <th>Escenario</th>
+                        <th>Indicadores</th>
+                        <th>Acciones D+8 a D+10</th>
+                    </tr>
+                    <tr>
+                        <td><strong>A — Está pegando</strong></td>
+                        <td>Sound reuse >50/día<br>Save rate >9%<br>Views >3x promedio<br>DM shares > likes</td>
+                        <td>Escalar Spark Ads, contactar influencers medianos, lives diarios, segunda ola PR, evaluar CapCut template.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B — Tibio</strong></td>
+                        <td>Sound reuse 10-50/día<br>Save rate 6-9%<br>Engagement normal</td>
+                        <td>Probar Clip B, cambiar hook de TikTok, mantener Meta Ads, redistribuir budget si Meta convierte mejor.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C — No prende</strong></td>
+                        <td>Sound reuse <10/día<br>Save rate <6%<br>Skip rate >40%</td>
+                        <td>Pausar TikTok Ads, mover presupuesto a Meta Ads directos a Spotify, pivotar a YouTube lyric video/Shorts.</td>
+                    </tr>
+                </table>
+                <p class="small-text">Si Escenario C persiste 7 días → Crisis 4. No invertir más por terquedad.</p>
+            </section>
+
+            <!-- CIERRE -->
+            <section class="cover">
+                <h2>Próximos Pasos Urgentes</h2>
+                <ul style="text-align: left; max-width: 700px; margin: 0 auto;">
+                    <li>Confirmar fecha definitiva de lanzamiento.</li>
+                    <li>Obtener S4A nativo antes del 25 ago.</li>
+                    <li>Confirmar presupuesto exacto Tier 1 y activar pre-save.</li>
+                    <li>Cerrar compromisos con amigos influencers.</li>
+                    <li>Preparar assets: videoclip, portada, trailer, Canvas, fotos "filtradas".</li>
+                </ul>
+                <p style="margin-top: 3em; color: var(--text-dim); font-size: 0.9em;">Growth*Stars · Estrategia AV & Growth Hacking · Marlon Villamil</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: 'c/t',
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            width: 1280,
+            height: 720,
+            margin: 0.04,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+    </script>
+</body>
+</html>

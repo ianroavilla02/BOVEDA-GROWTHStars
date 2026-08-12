@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototipos GROWTH*Startups</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #050505;
+      color: #f3f5f3;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .container {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+    }
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .logo span { color: #00d4ff; }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    p {
+      color: #888;
+      margin-bottom: 48px;
+      font-size: 1.1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    a.card {
+      display: block;
+      background: #141414;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 28px;
+      text-decoration: none;
+      color: #f3f5f3;
+      transition: background 0.2s, border-color 0.2s;
+      text-align: left;
+    }
+    a.card:hover {
+      background: #1a1a1a;
+      border-color: #333;
+    }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .card-client {
+      font-size: 0.8rem;
+      color: #00d4ff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    .card-desc {
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">GROWTH<span>*</span>Startups</div>
+    <h1>Prototipos</h1>
+    <p>Selecciona un prototipo para verlo.</p>
+
+    <div class="grid">
+      <a class="card" href="metodoferreira-estrategia-lanzamiento.html">
+        <div class="card-client">Método Ferreira</div>
+        <div class="card-title">Estrategia de Lanzamiento</div>
+        <div class="card-desc">Cohorte 0, funnel híbrido, calendario operativo y KPIs.</div>
+      </a>
+
+      <a class="card" href="metodoferreira-plan-contenidos.html">
+        <div class="card-client">Método Ferreira</div>
+        <div class="card-title">Plan de Contenidos</div>
+        <div class="card-desc">Sistema de narrativa por ejercicio y producción.</div>
+      </a>
+
+      <a class="card" href="metodoferreira-funnel-contenidos.html">
+        <div class="card-client">Método Ferreira</div>
+        <div class="card-title">Funnel de Contenidos TOFU-MOFU-BOFU</div>
+        <div class="card-desc">Inbound marketing para convertir fandom en clientes.</div>
+      </a>
+
+      <a class="card" href="one-page-tentacion.html">
+        <div class="card-client">Marlon Villamil</div>
+        <div class="card-title">One Page Tentación</div>
+        <div class="card-desc">Página one-page para el lanzamiento de Tentación.</div>
+      </a>
+
+      <a class="card" href="slides-tentacion.html">
+        <div class="card-client">Marlon Villamil</div>
+        <div class="card-title">Slides Tentación</div>
+        <div class="card-desc">Presentación de slides para el lanzamiento.</div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
