@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funnel de Contenidos · Método Ferreira · GROWTH*Startups</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050505;
+      --surface: #0f0f0f;
+      --card: #141414;
+      --card-hover: #1a1a1a;
+      --border: #222;
+      --text: #f3f5f3;
+      --muted: #888;
+      --accent: #00d4ff;
+      --accent-soft: rgba(0, 212, 255, 0.1);
+      --tofu: #7c4dff;
+      --mofu: #ffca28;
+      --bofu: #00e676;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    section:last-child { border-bottom: none; }
+
+    h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px; }
+    h3 { font-size: 1.25rem; margin-bottom: 12px; }
+
+    p { color: var(--muted); margin-bottom: 16px; }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .lead { font-size: 1.25rem; color: var(--text); max-width: 700px; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo { font-weight: 800; font-size: 1.1rem; color: var(--text); letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .nav-links a { color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    .hero { padding-top: 160px; padding-bottom: 100px; }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--card);
+      margin: 4px 8px 4px 0;
+    }
+
+    .badge.accent {
+      background: var(--accent-soft);
+      border-color: rgba(0, 212, 255, 0.3);
+      color: var(--accent);
+    }
+
+    .badge.tofu { background: rgba(124, 77, 255, 0.1); border-color: rgba(124, 77, 255, 0.3); color: var(--tofu); }
+    .badge.mofu { background: rgba(255, 202, 40, 0.1); border-color: rgba(255, 202, 40, 0.3); color: var(--mofu); }
+    .badge.bofu { background: rgba(0, 230, 118, 0.1); border-color: rgba(0, 230, 118, 0.3); color: var(--bofu); }
+
+    .funnel-visual {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .funnel-stage {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .funnel-stage::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .funnel-stage.tofu::before { background: var(--tofu); }
+    .funnel-stage.mofu::before { background: var(--mofu); }
+    .funnel-stage.bofu::before { background: var(--bofu); }
+
+    .funnel-stage h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .funnel-stage .subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .funnel-stage ul {
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .funnel-stage ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .funnel-stage ul li:last-child { border-bottom: none; }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .card h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 32px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      vertical-align: top;
+    }
+
+    th {
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      background: var(--surface);
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      margin: 2px 4px 2px 0;
+    }
+
+    .tag.tofu { color: var(--tofu); border-color: rgba(124, 77, 255, 0.3); }
+    .tag.mofu { color: var(--mofu); border-color: rgba(255, 202, 40, 0.3); }
+    .tag.bofu { color: var(--bofu); border-color: rgba(0, 230, 118, 0.3); }
+
+    .cta-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 24px;
+    }
+
+    .cta-box h4 { color: var(--text); margin-bottom: 8px; }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .calendar-day {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      min-height: 120px;
+    }
+
+    .calendar-day .day-name {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .calendar-day .day-content {
+      font-size: 0.8rem;
+      color: var(--text);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .metric-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .metric-card .value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .metric-card .label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 900px) {
+      .funnel-visual { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      section { padding: 60px 0; }
+      .calendar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">GROWTH<span>*</span>Startups</div>
+      <ul class="nav-links">
+        <li><a href="#funnel">Funnel</a></li>
+        <li><a href="#contenidos">Contenidos</a></li>
+        <li><a href="#calendario">Calendario</a></li>
+        <li><a href="#metricas">Métricas</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Estrategia de Contenidos · Inbound Marketing</div>
+      <h1>Funnel TOFU-MOFU-BOFU</h1>
+      <p class="lead">
+        Estrategia de contenidos para convertir el fandom de Javier Ferreira en clientes del Método Ferreira. Cada etapa del funnel tiene un objetivo claro: conciencia, consideración y conversión.
+      </p>
+      <div style="margin-top: 32px;">
+        <span class="badge tofu">TOFU · Alcance</span>
+        <span class="badge mofu">MOFU · Autoridad</span>
+        <span class="badge bofu">BOFU · Conversión</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="funnel">
+    <div class="container">
+      <div class="eyebrow">Arquitectura del funnel</div>
+      <h2>De seguidor a cliente</h2>
+      <p class="lead">
+        El fandom ya existe. El funnel convierte esa atención en interés, confianza y finalmente en una reunión de cierre con Javier.
+      </p>
+
+      <div class="funnel-visual">
+        <div class="funnel-stage tofu">
+          <h3>TOFU</h3>
+          <div class="subtitle">Top of Funnel · Conciencia</div>
+          <ul>
+            <li>Captar atención del fandom</li>
+            <li>Educar sin vender</li>
+            <li>Mostrar personalidad y estilo</li>
+            <li>Posicionar a Javier como referente</li>
+          </ul>
+          <div class="cta-box" style="margin-top: 20px;">
+            <h4>CTA</h4>
+            <p style="margin-bottom: 0; font-size: 0.9rem;">Seguir la cuenta, guardar el reel, comentar.</p>
+          </div>
+        </div>
+
+        <div class="funnel-stage mofu">
+          <h3>MOFU</h3>
+          <div class="subtitle">Middle of Funnel · Consideración</div>
+          <ul>
+            <li>Enseñar el método</li>
+            <li>Mostrar resultados y casos</li>
+            <li>Resolver objeciones</li>
+            <li>Construir confianza</li>
+          </ul>
+          <div class="cta-box" style="margin-top: 20px;">
+            <h4>CTA</h4>
+            <p style="margin-bottom: 0; font-size: 0.9rem;">Enviar DM, dejar datos, agendar llamada.</p>
+          </div>
+        </div>
+
+        <div class="funnel-stage bofu">
+          <h3>BOFU</h3>
+          <div class="subtitle">Bottom of Funnel · Conversión</div>
+          <ul>
+            <li>Presentar la oferta</li>
+            <li>Generar urgencia real</li>
+            <li>Cerrar en llamada</li>
+            <li>Capturar lista de espera</li>
+          </ul>
+          <div class="cta-box" style="margin-top: 20px;">
+            <h4>CTA</h4>
+            <p style="margin-bottom: 0; font-size: 0.9rem;">Comprar, agendar reunión, entrar a los 10 cupos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contenidos">
+    <div class="container">
+      <div class="eyebrow">Biblioteca de contenidos</div>
+      <h2>Contenidos por etapa del funnel</h2>
+      <p class="lead">
+        Cada fila es un contenido con formato, idea, objetivo y CTA. Lo que Javier debe grabar está marcado con su nombre. El contenido externo se usa solo cuando aporta credibilidad o alcance.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Etapa</th>
+              <th>Formato</th>
+              <th>Idea de contenido</th>
+              <th>Objetivo</th>
+              <th>Quién lo graba</th>
+              <th>CTA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag tofu">TOFU</span></td>
+              <td>Reel 15-30s</td>
+              <td>"El error que veo en el 90% al hacer [ejercicio]"</td>
+              <td>Educar y posicionar autoridad técnica</td>
+              <td>Javier Ferreira</td>
+              <td>Guardar y seguir</td>
+            </tr>
+            <tr>
+              <td><span class="tag tofu">TOFU</span></td>
+              <td>Reel 30-45s</td>
+              <td>"Un día de entrenamiento conmigo"</td>
+              <td>Humanizar y mostrar lifestyle de Javier</td>
+              <td>Javier Ferreira</td>
+              <td>Seguir la cuenta</td>
+            </tr>
+            <tr>
+              <td><span class="tag tofu">TOFU</span></td>
+              <td>Reel 15-30s</td>
+              <td>"Mito vs realidad: ¿el cardio quema músculo?"</td>
+              <td>Generar engagement y debate</td>
+              <td>Javier Ferreira</td>
+              <td>Comentar opinión</td>
+            </tr>
+            <tr>
+              <td><span class="tag tofu">TOFU</span></td>
+              <td>Carrusel 5-7 slides</td>
+              <td>"Los 5 básicos que deberías dominar"</td>
+              <td>Posicionar método y guardabilidad</td>
+              <td>Equipo de diseño + foto de Javier</td>
+              <td>Guardar y compartir</td>
+            </tr>
+            <tr>
+              <td><span class="tag tofu">TOFU</span></td>
+              <td>Story</td>
+              <td>Encuesta: "¿Qué te cuesta más: dieta o entreno?"</td>
+              <td>Conocer audiencia y generar interacción</td>
+              <td>Javier Ferreira</td>
+              <td>Responder encuesta</td>
+            </tr>
+            <tr>
+              <td><span class="tag mofu">MOFU</span></td>
+              <td>Reel 60-90s</td>
+              <td>"Mi método en 3 puntos: frecuencia, pesado, progresión"</td>
+              <td>Explicar el sistema del Método Ferreira</td>
+              <td>Javier Ferreira</td>
+              <td>DM para más info</td>
+            </tr>
+            <tr>
+              <td><span class="tag mofu">MOFU</span></td>
+              <td>Reel 45-60s</td>
+              <td>"Así transformé a [cliente] en 12 semanas"</td>
+              <td>Prueba social y resultados</td>
+              <td>UGC / Testimonio del cliente</td>
+              <td>Link en bio</td>
+            </tr>
+            <tr>
+              <td><span class="tag mofu">MOFU</span></td>
+              <td>Live 15-20min</td>
+              <td>"Pregúntame lo que quieras sobre entrenamiento"</td>
+              <td>Construir confianza y recolectar dudas</td>
+              <td>Javier Ferreira</td>
+              <td>Agendar llamada</td>
+            </tr>
+            <tr>
+              <td><span class="tag mofu">MOFU</span></td>
+              <td>Reel 30-45s</td>
+              <td>"Entrenar solo vs entrenar conmigo: la diferencia"</td>
+              <td>Justificar valor del acompañamiento 1:1</td>
+              <td>Javier Ferreira</td>
+              <td>DM para aplicar</td>
+            </tr>
+            <tr>
+              <td><span class="tag mofu">MOFU</span></td>
+              <td>Audio de voz</td>
+              <td>Javier responde por audio a un DM con una duda</td>
+              <td>Cercanía y confianza personal</td>
+              <td>Javier Ferreira</td>
+              <td>Agendar llamada</td>
+            </tr>
+            <tr>
+              <td><span class="tag bofu">BOFU</span></td>
+              <td>Reel 30-45s</td>
+              <td>"Abro 10 cupos para entrenar 1:1 conmigo"</td>
+              <td>Anunciar oferta con escasez real</td>
+              <td>Javier Ferreira</td>
+              <td>Link en bio / DM</td>
+            </tr>
+            <tr>
+              <td><span class="tag bofu">BOFU</span></td>
+              <td>Story</td>
+              <td>"Quedan X cupos. Cierro en llamada personal."</td>
+              <td>Urgencia y cierre</td>
+              <td>Javier Ferreira</td>
+              <td>Agendar llamada</td>
+            </tr>
+            <tr>
+              <td><span class="tag bofu">BOFU</span></td>
+              <td>Reel 60s</td>
+              <td>"¿Cuánto cuesta? ¿Qué incluye? FAQ del Método"</td>
+              <td>Quitar objeciones de precio y proceso</td>
+              <td>Javier Ferreira</td>
+              <td>Link de pago</td>
+            </tr>
+            <tr>
+              <td><span class="tag bofu">BOFU</span></td>
+              <td>Audio / DM</td>
+              <td>Javier invita personalmente a la llamada de cierre</td>
+              <td>Cierre personalizado</td>
+              <td>Javier Ferreira</td>
+              <td>Confirmar horario</td>
+            </tr>
+            <tr>
+              <td><span class="tag bofu">BOFU</span></td>
+              <td>Story / Reel</td>
+              <td>"Cohorte completa. Lista de espera abierta."</td>
+              <td>Social proof y sembrar próxima cohorte</td>
+              <td>Javier Ferreira</td>
+              <td>Entrar a lista de espera</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="roles">
+    <div class="container">
+      <div class="eyebrow">Producción</div>
+      <h2>Quién graba qué</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3><span class="card-icon">🎙</span> Javier Ferreira</h3>
+          <p>Todo el contenido principal de sus cuentas: reels educativos, lifestyle, lives, audios de voz, stories y anuncios de cupos. Su rostro y voz son el activo más valioso.</p>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">🎬</span> Equipo de contenido</h3>
+          <p>Edición de video, diseño de carruseles, motion graphics, subtítulos, música y programación de publicaciones. También recorta lives en clips.</p>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">👥</span> UGC / Clientes</h3>
+          <p>Testimonios en video, antes/después, y contenido de clientes entrenando. Solo se usa cuando hay material real y de buena calidad.</p>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">🤝</span> Contenido externo profesional</h3>
+          <p>Colaboraciones con otros influencers fitness, apariciones en podcasts o entrevistas. Se usa solo si el perfil del invitado alinea con el público objetivo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="calendario">
+    <div class="container">
+      <div class="eyebrow">Distribución semanal</div>
+      <h2>Calendario de publicaciones sugerido</h2>
+      <p class="lead">
+        Ejemplo de una semana tipo durante la fase de lanzamiento. El balance es 50% TOFU, 30% MOFU, 20% BOFU.
+      </p>
+
+      <div class="calendar">
+        <div class="calendar-day">
+          <div class="day-name">Lunes</div>
+          <div class="day-content">
+            <span class="tag tofu">TOFU</span><br>
+            Reel: error común de sentadilla<br><br>
+            <span class="tag mofu">MOFU</span><br>
+            Story: explicación del método
+          </div>
+        </div>
+        <div class="calendar-day">
+          <div class="day-name">Martes</div>
+          <div class="day-content">
+            <span class="tag tofu">TOFU</span><br>
+            Reel: día de entrenamiento<br><br>
+            <span class="tag tofu">TOFU</span><br>
+            Story: encuesta
+          </div>
+        </div>
+        <div class="calendar-day">
+          <div class="day-name">Miércoles</div>
+          <div class="day-content">
+            <span class="tag mofu">MOFU</span><br>
+            Reel: caso de cliente<br><br>
+            <span class="tag mofu">MOFU</span><br>
+            Audio de Javier en DM
+          </div>
+        </div>
+        <div class="calendar-day">
+          <div class="day-name">Jueves</div>
+          <div class="day-content">
+            <span class="tag mofu">MOFU</span><br>
+            Live Q&A 15 min<br><br>
+            <span class="tag tofu">TOFU</span><br>
+            Story: detrás de cámaras
+          </div>
+        </div>
+        <div class="calendar-day">
+          <div class="day-name">Viernes</div>
+          <div class="day-content">
+            <span class="tag bofu">BOFU</span><br>
+            Reel: abro 10 cupos<br><br>
+            <span class="tag bofu">BOFU</span><br>
+            Story: quedan X cupos
+          </div>
+        </div>
+        <div class="calendar-day">
+          <div class="day-name">Sábado</div>
+          <div class="day-content">
+            <span class="tag bofu">BOFU</span><br>
+            Reel: FAQ precio/proceso<br><br>
+            <span class="tag bofu">BOFU</span><br>
+            Llamadas de cierre
+          </div>
+        </div>
+        <div class="calendar-day">
+          <div class="day-name">Domingo</div>
+          <div class="day-content">
+            <span class="tag tofu">TOFU</span><br>
+            Reel: mito fitness<br><br>
+            <span class="tag mofu">MOFU</span><br>
+            Story: testimonio
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="metricas">
+    <div class="container">
+      <div class="eyebrow">Medición</div>
+      <h2>KPIs por etapa del funnel</h2>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="value">50k+</div>
+          <div class="label">Alcance semanal TOFU</div>
+        </div>
+        <div class="metric-card">
+          <div class="value">5-10%</div>
+          <div class="label">Engagement rate TOFU</div>
+        </div>
+        <div class="metric-card">
+          <div class="value">40-60</div>
+          <div class="label">DMs / leads MOFU</div>
+        </div>
+        <div class="metric-card">
+          <div class="value">15-25</div>
+          <div class="label">Llamadas de cierre BOFU</div>
+        </div>
+        <div class="metric-card">
+          <div class="value">10</div>
+          <div class="label">Cupos vendidos BOFU</div>
+        </div>
+        <div class="metric-card">
+          <div class="value">20-30</div>
+          <div class="label">Lista de espera</div>
+        </div>
+      </div>
+
+      <div class="card-grid" style="margin-top: 48px;">
+        <div class="card">
+          <h3><span class="card-icon">📊</span> Métricas TOFU</h3>
+          <p>Alcance, reproducciones, guardados, compartidos, nuevos seguidores y tasa de engagement. El objetivo es llenar la parte superior del funnel.</p>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">📊</span> Métricas MOFU</h3>
+          <p>DMs recibidos, clicks al link en bio, aplicaciones, tiempo de respuesta del CM y leads calificados. El objetivo es convertir espectadores en interesados.</p>
+        </div>
+        <div class="card">
+          <h3><span class="card-icon">📊</span> Métricas BOFU</h3>
+          <p>Llamadas agendadas, tasa de cierre, CAC, ingresos, cupos vendidos y personas en lista de espera. El objetivo es llenar los 10 cupos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="recursos">
+    <div class="container">
+      <div class="eyebrow">Recursos</div>
+      <h2>Checklist de contenido para el lanzamiento</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Recurso</th>
+              <th>Cantidad</th>
+              <th>Responsable</th>
+              <th>Uso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Reels educativos TOFU</td>
+              <td>8-10</td>
+              <td>Javier + editor</td>
+              <td>Alcance y posicionamiento</td>
+            </tr>
+            <tr>
+              <td>Reels MOFU (método + casos)</td>
+              <td>4-6</td>
+              <td>Javier + editor</td>
+              <td>Consideración y confianza</td>
+            </tr>
+            <tr>
+              <td>Reels BOFU (oferta + FAQ)</td>
+              <td>3-4</td>
+              <td>Javier + editor</td>
+              <td>Conversión y cierre</td>
+            </tr>
+            <tr>
+              <td>Audios de Javier</td>
+              <td>10-15</td>
+              <td>Javier</td>
+              <td>DMs, stories y plan</td>
+            </tr>
+            <tr>
+              <td>Stories de respaldo</td>
+              <td>20-30</td>
+              <td>CM / editor</td>
+              <td>Soporte durante el lanzamiento</td>
+            </tr>
+            <tr>
+              <td>Testimonios UGC</td>
+              <td>2-4</td>
+              <td>Clientes / equipo</td>
+              <td>Prueba social</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Funnel de contenidos producido por <strong>GROWTH*Startups</strong> · Prototipo en 10_PROTOTIPS_KIMI</p>
+    </div>
+  </footer>
+
+</body>
+</html>

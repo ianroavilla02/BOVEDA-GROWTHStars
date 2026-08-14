@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TENTACIÓN · Plan Operativo | GROWTH*Stars</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --bg-elevated: #0a0a0a;
+            --card: #111111;
+            --card-hover: #181818;
+            --border: #222222;
+            --border-hover: #333333;
+            --text: #ffffff;
+            --text-secondary: #9a9a9a;
+            --text-muted: #666666;
+            --accent: #ff2d1a;
+            --accent-dark: #c41e0f;
+            --accent-glow: rgba(255, 45, 26, 0.15);
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--text);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+            position: relative;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 45, 26, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 45, 26, 0.05) 0%, transparent 40%);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .hero-badge::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 12vw, 140px);
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 0.9;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #ff2d1a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 2.5vw, 28px);
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 700px;
+            margin-bottom: 48px;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .hero-meta div strong {
+            display: block;
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .section-desc {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 800px;
+            font-weight: 300;
+        }
+
+        /* Hypothesis Section */
+        .hypothesis {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hypothesis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .hypothesis-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hypothesis-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+
+        .hypothesis-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .hypothesis-card p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .hypothesis-quote {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 32px;
+        }
+
+        .hypothesis-quote span {
+            color: var(--accent);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .stat-item strong {
+            display: block;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .stat-item span {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            background: var(--bg);
+        }
+
+        .calendar-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .calendar-main {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .calendar-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        .calendar-nav button {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calendar-nav button:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .day-label {
+            text-align: center;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            padding: 12px 0;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .calendar-day:hover {
+            background: var(--card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .calendar-day.active {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .calendar-day.empty {
+            background: transparent;
+            border-color: transparent;
+            cursor: default;
+        }
+
+        .calendar-day.empty:hover {
+            transform: none;
+        }
+
+        .calendar-day .day-number {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .calendar-day .day-dots {
+            display: flex;
+            gap: 3px;
+            flex-wrap: wrap;
+        }
+
+        .calendar-day .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+        }
+
+        .dot-content { background: var(--accent); }
+        .dot-activation { background: var(--info); }
+        .dot-kpi { background: var(--success); }
+        .dot-press { background: var(--warning); }
+
+        .calendar-day.phase-start::after {
+            content: "";
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        /* Detail Panel */
+        .detail-panel {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 32px;
+            position: sticky;
+            top: 100px;
+            min-height: 600px;
+        }
+
+        .detail-date {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .detail-day-number {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .detail-phase {
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .detail-block {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .detail-block:last-child {
+            border-bottom: none;
+        }
+
+        .detail-block h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .detail-block h4::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .block-content h4::before { background: var(--accent); }
+        .block-activation h4::before { background: var(--info); }
+        .block-kpi h4::before { background: var(--success); }
+        .block-press h4::before { background: var(--warning); }
+
+        .detail-block ul {
+            list-style: none;
+        }
+
+        .detail-block li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .detail-block li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        .detail-block li strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 60px 20px;
+        }
+
+        .empty-state svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        /* KPI Section */
+        .kpi-section {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .kpi-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.2s;
+        }
+
+        .kpi-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .kpi-card .label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .kpi-card .value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .kpi-card .target {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Narrative Section */
+        .narrative-section {
+            background: var(--bg);
+        }
+
+        .narrative-timeline {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+        }
+
+        .timeline-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .timeline-card:hover {
+            border-color: var(--accent);
+            background: var(--card-hover);
+        }
+
+        .timeline-card .number {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .timeline-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .timeline-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        footer .logo {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .calendar-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .detail-panel {
+                position: static;
+                min-height: auto;
+            }
+            .hypothesis-grid {
+                grid-template-columns: 1fr;
+            }
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .narrative-timeline {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 16px 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+            section {
+                padding: 60px 20px;
+            }
+            .hero {
+                padding: 120px 20px 80px;
+            }
+            .calendar-main {
+                padding: 20px;
+            }
+            .calendar-day {
+                padding: 4px;
+            }
+            .calendar-day .day-number {
+                font-size: 11px;
+            }
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+            .narrative-timeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">GROWTH<span>*</span>STARS</div>
+        <div class="nav-links">
+            <a href="#hypothesis">Hipótesis</a>
+            <a href="#calendar">Calendario</a>
+            <a href="#kpis">KPIs</a>
+            <a href="#narrative">Narrativa</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-badge">Plan Operativo · Lanzamiento Musical</div>
+        <h1>TENTACIÓN</h1>
+        <p class="hero-subtitle">Estrategia de guerrilla personal para convertir la audiencia social de Marlon en oyentes de Spotify mediante una polémica controlada.</p>
+        <div class="hero-meta">
+            <div><strong>28 AGO 2026</strong>Drop oficial</div>
+            <div><strong>TIER 1</strong>Modo Estándar</div>
+            <div><strong>CO / MX</strong>Plaza primaria</div>
+            <div><strong>MUJERES 13-25</strong>Público core</div>
+        </div>
+        <div class="scroll-hint">Scroll</div>
+    </section>
+
+    <section class="hypothesis" id="hypothesis">
+        <div class="section-header">
+            <div class="section-label">Eje Central</div>
+            <h2 class="section-title">La Hipótesis</h2>
+        </div>
+        <div class="hypothesis-grid">
+            <div class="hypothesis-card">
+                <h3>¿Por qué esto funciona?</h3>
+                <p class="hypothesis-quote">
+                    El <span>80%</span> del público de Marlon son mujeres de <span>13 a 25 años</span> que lo recuerdan por su <span>vida diaria</span>, no por su música.
+                </p>
+                <p>Su fandom no es musical todavía: es personal. Eso es una ventaja. Si logramos que su audiencia sienta que la canción habla de algo que "casi vieron pasar", la curiosidad emocional hará el trabajo de conversión a Spotify.</p>
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <strong>80%</strong>
+                        <span>Mujeres en su audiencia</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>13-25</strong>
+                        <span>Rango de edad core</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>Personal</strong>
+                        <span>Interés dominante</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>Colombia</strong>
+                        <span>Plaza primaria</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hypothesis-card">
+                <h3>La polémica controlada</h3>
+                <p>No buscamos clickbait barato. Buscamos una <strong>intriga honesta</strong>: algo que parece chisme personal pero que en realidad es el puente hacia la canción.</p>
+                <p>La estrategia simula un "encuentro" en la fiesta de cumpleaños de Marlon, genera teorías durante 72 horas y revela que todo fue material para entender TENTACIÓN.</p>
+                <p style="margin-top: 24px; padding: 20px; background: rgba(255,45,26,0.08); border-left: 3px solid var(--accent); border-radius: 12px; color: var(--text);">
+                    <strong>Regla de oro:</strong> nunca confirmar un romance real. La canción es sobre la emoción, no sobre el chisme.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="calendar-section" id="calendar">
+        <div class="section-header">
+            <div class="section-label">Plan Operativo</div>
+            <h2 class="section-title">Calendario Fecha a Fecha</h2>
+            <p class="section-desc">Hacé clic en cualquier día para ver contenido del artista, activaciones, KPIs y prensa/chisme planificado.</p>
+        </div>
+        <div class="calendar-wrapper">
+            <div class="calendar-main">
+                <div class="calendar-header">
+                    <h3>Agosto 2026</h3>
+                    <div class="calendar-nav">
+                        <button onclick="prevMonth()">‹</button>
+                        <button onclick="nextMonth()">›</button>
+                    </div>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Generated by JS -->
+                </div>
+                <div style="display: flex; gap: 24px; margin-top: 24px; font-size: 12px; color: var(--text-muted);">
+                    <span style="display: flex; align-items: center; gap: 6px;"><span class="dot dot-content"></span> Contenido artista</span>
+                    <span style="display: flex; align-items: center; gap: 6px;"><span class="dot dot-activation"></span> Activación</span>
+                    <span style="display: flex; align-items: center; gap: 6px;"><span class="dot dot-kpi"></span> KPI / Métrica</span>
+                    <span style="display: flex; align-items: center; gap: 6px;"><span class="dot dot-press"></span> Prensa / Chisme</span>
+                </div>
+            </div>
+            <div class="detail-panel" id="detailPanel">
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <p>Seleccioná un día del calendario para ver el plan completo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="kpi-section" id="kpis">
+        <div class="section-header">
+            <div class="section-label">Métricas</div>
+            <h2 class="section-title">KPIs del Lanzamiento</h2>
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="label">NSM</div>
+                <div class="value">+40-60%</div>
+                <div class="target">Oyentes mensuales Spotify en 90 días</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label">Save Rate</div>
+                <div class="value">>9%</div>
+                <div class="target">Objetivo Tier 1 Estándar</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label">UGC Semana 1</div>
+                <div class="value">120+</div>
+                <div class="target">Videos usando el audio en TikTok</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label">Pre-saves</div>
+                <div class="value">350+</div>
+                <div class="target">Meta Tier 1 Estándar</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label">DM Shares vs Likes</div>
+                <div class="value">>55%</div>
+                <div class="target">Señal de conversación privada</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label">Sound Reuse D7</div>
+                <div class="value">10-50/día</div>
+                <div class="target">Umbral escenario B; >50/día escenario A</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label">Live Viewers</div>
+                <div class="value">100+</div>
+                <div class="target">Concurrentes en lives</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label">Medios 48h</div>
+                <div class="value">2</div>
+                <div class="target">Blogs de cultura pop urbana</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="narrative-section" id="narrative">
+        <div class="section-header">
+            <div class="section-label">Arco Narrativo</div>
+            <h2 class="section-title">6 Fases de la Polémica Controlada</h2>
+        </div>
+        <div class="narrative-timeline">
+            <div class="timeline-card">
+                <div class="number">01</div>
+                <h4>Invitación</h4>
+                <p>9-13 ago<br>"Hay fiesta"<br>Expectativa y exclusividad</p>
+            </div>
+            <div class="timeline-card">
+                <div class="number">02</div>
+                <h4>La Fiesta</h4>
+                <p>14-16 ago<br>"Algo pasó"<br>Euforia y misterio</p>
+            </div>
+            <div class="timeline-card">
+                <div class="number">03</div>
+                <h4>El Rumor</h4>
+                <p>17-19 ago<br>"¿Con quién se fue?"<br>Teorías y chisme</p>
+            </div>
+            <div class="timeline-card">
+                <div class="number">04</div>
+                <h4>Explicación</h4>
+                <p>20-22 ago<br>"No debí hacer eso"<br>Vulnerabilidad</p>
+            </div>
+            <div class="timeline-card">
+                <div class="number">05</div>
+                <h4>Calentamiento</h4>
+                <p>23-27 ago<br>"Esto se siente real"<br>Anticipación</p>
+            </div>
+            <div class="timeline-card">
+                <div class="number">06</div>
+                <h4>Lanzamiento</h4>
+                <p>28 ago<br>"TENTACIÓN"<br>Entrega</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">GROWTH<span>*</span>STARS</div>
+        <p>Operating system para growth musical · Estrategia AV & Growth Hacking · Marlon Villamil</p>
+    </footer>
+
+    <script>
+        const calendarData = {
+            9: {
+                phase: "Fase 1 — Invitación",
+                content: [
+                    "<strong>19:00</strong> Reel 15s: 'El 14 hay fiesta. Los que de verdad me siguen, caigan. 🔴'",
+                    "Story de respaldo con CTA a activar notificaciones."
+                ],
+                activation: [
+                    "Contactar 8-10 nano/micro influencers para Oleada 0.",
+                    "Abrir brief base de UGC."
+                ],
+                kpi: [
+                    "Alcance orgánico del Reel > promedio.",
+                    "Story reply rate >3% (UAU-08)."
+                ],
+                press: [
+                    "<em>Chisme controlado:</em> 'Marlon anuncia que va a hacer algo el 14'."
+                ]
+            },
+            10: {
+                phase: "Fase 1 — Invitación",
+                content: [
+                    "<strong>18:00</strong> Story orgánico: 'Estoy armando algo el viernes. No es lo que creen.'"
+                ],
+                activation: [
+                    "Cuenta de fans empieza a sembrar expectativa."
+                ],
+                kpi: [
+                    "Respuestas a stories >3%.",
+                    "Menciones orgánicas en stories de fans."
+                ],
+                press: [
+                    "Silencio. No se confirma nada."
+                ]
+            },
+            11: {
+                phase: "Fase 1 — Invitación",
+                content: [
+                    "<strong>19:00</strong> Reel 15s: 'Mi cumple se celebra el 14. Pero no es solo cumple.'"
+                ],
+                activation: [
+                    "Confirmar amigos influencers que asistirán a la fiesta."
+                ],
+                kpi: [
+                    "DM Shares vs Likes >30% (UCT-10).",
+                    "Shares del Reel creciendo."
+                ],
+                press: [
+                    "<em>Chisme controlado:</em> '¿Qué está planeando Marlon para su cumpleaños?'"
+                ]
+            },
+            12: {
+                phase: "Fase 1 — Invitación",
+                content: [
+                    "<strong>18:00</strong> Story poll: '¿Ustedes creen en el amor a primera vista?'"
+                ],
+                activation: [
+                    "Preparar livestream del 14 con estética de era."
+                ],
+                kpi: [
+                    "Participación en poll >5%.",
+                    "Story reply rate >3%."
+                ],
+                press: [
+                    "Cuentas de entretenimiento repostean encuesta sin confirmar nada."
+                ]
+            },
+            13: {
+                phase: "Fase 1 — Invitación",
+                content: [
+                    "<strong>20:00</strong> Story: 'Mañana empieza todo. Activen notis.'"
+                ],
+                activation: [
+                    "Última confirmación de influencers y captura de fiesta."
+                ],
+                kpi: [
+                    "Notificaciones activadas (proxy: views de stories en primera hora)."
+                ],
+                press: [
+                    "<em>Chisme controlado:</em> 'Cumpleaños de Marlon: ¿habrá sorpresa?'"
+                ]
+            },
+            14: {
+                phase: "Fase 2 — La Fiesta",
+                content: [
+                    "<strong>12:00</strong> Stories en vivo: 'Hoy es la fiesta. Llegan los míos.'",
+                    "<strong>21:00</strong> Livestream digital con producción 'Atrapado en los 2000'."
+                ],
+                activation: [
+                    "Livestream cross-post IG/TikTok/YouTube.",
+                    "Amigos influencers repostean stories."
+                ],
+                kpi: [
+                    "Live viewers concurrentes >100 (UCT-12).",
+                    "Comment-to-view TikTok >2% (UAU-05)."
+                ],
+                press: [
+                    "<em>Chisme controlado:</em> 'Marlon celebra su cumpleaños y promete sorpresa'."
+                ]
+            },
+            15: {
+                phase: "Fase 2 — La Fiesta",
+                content: [
+                    "<strong>01:00</strong> Story desde cuenta de amigo: 'Se fue con alguien????'",
+                    "<strong>14:00</strong> Silencio de Marlon. Equipo sube recap: 'Anoche fue una locura'."
+                ],
+                activation: [
+                    "Cuenta de fans inicia teorías."
+                ],
+                kpi: [
+                    "Menciones y DMs aumentando.",
+                    "DM Shares vs Likes >30%."
+                ],
+                press: [
+                    "<em>Chisme:</em> '¿Marlon se fue de su fiesta con alguien?'."
+                ]
+            },
+            16: {
+                phase: "Fase 2 — La Fiesta",
+                content: [
+                    "<strong>14:00</strong> Story misterio del equipo: recap de la fiesta sin mostrar a Marlon."
+                ],
+                activation: [
+                    "Sembrar pistas en comentarios de cuentas de fans."
+                ],
+                kpi: [
+                    "Teorías en comentarios creciendo.",
+                    "Profile visits desde Sound Page TikTok >5% (UAU-06)."
+                ],
+                press: [
+                    "<em>Chisme:</em> 'El silencio de Marlon alimenta rumores'."
+                ]
+            },
+            17: {
+                phase: "Fase 3 — El Rumor",
+                content: [
+                    "<strong>18:00</strong> Carrusel 'filtrado': 'Fotos de anoche que no debieron salir. 🔴 Deslizá →'"
+                ],
+                activation: [
+                    "Cuenta de fans comparte carrusel y arma hilos de teorías."
+                ],
+                kpi: [
+                    "Carrusel Save Rate >5% (UAU-07).",
+                    "DM Shares vs Likes >55% (UCT-10)."
+                ],
+                press: [
+                    "<em>Chisme:</em> 'Filtran fotos de Marlon supuestamente coqueteando'."
+                ]
+            },
+            18: {
+                phase: "Fase 3 — El Rumor",
+                content: [
+                    "<strong>19:00</strong> Reel teorías: 'Ustedes ya están armando teorías. Quiero leerlas todas.'"
+                ],
+                activation: [
+                    "Responder comentarios estratégicos."
+                ],
+                kpi: [
+                    "Comment-to-view TikTok >2% (UAU-05).",
+                    "Share-to-View TikTok >0.7% (UCT-07)."
+                ],
+                press: [
+                    "<em>Chisme:</em> 'Fandom de Marlon crea teorías sobre su fiesta'."
+                ]
+            },
+            19: {
+                phase: "Fase 3 — El Rumor",
+                content: [
+                    "<strong>18:00</strong> Story Ask.fm: 'Pregúnteme lo que sea, anónimo. Mañana respondo.'"
+                ],
+                activation: [
+                    "Abrir perfil de Ask.fm."
+                ],
+                kpi: [
+                    "Preguntas recibidas >50.",
+                    "Story reply rate >3%."
+                ],
+                press: [
+                    "<em>Chisme:</em> 'Marlon va a responder preguntas anónimas'."
+                ]
+            },
+            20: {
+                phase: "Fase 4 — Explicación",
+                content: [
+                    "<strong>19:00</strong> Ask.fm respuestas: '¿Qué pasó en la fiesta? Les cuento en un video.'"
+                ],
+                activation: [
+                    "Cuenta de fans resume las mejores preguntas."
+                ],
+                kpi: [
+                    "Engagement en Ask.fm alto.",
+                    "Tráfico a perfil aumentando."
+                ],
+                press: [
+                    "<em>Chisme:</em> 'Marlon rompe el silencio y promete explicación'."
+                ]
+            },
+            21: {
+                phase: "Fase 4 — Explicación",
+                content: [
+                    "<strong>18:00</strong> Fotos producción TENTACIÓN: 'Mientras tanto, esto es lo que estaba preparando. 🔴'",
+                    "<strong>20:00</strong> Story anuncio YouTube: 'Subí un video. Vayan a verlo.'"
+                ],
+                activation: [
+                    "Activar link de pre-save."
+                ],
+                kpi: [
+                    "Pre-saves totales: meta 150+ día 1 (MOC-05).",
+                    "Carrusel Save Rate >5% (UAU-07)."
+                ],
+                press: [
+                    "Nota de prensa: 'Marlon reaparece y anuncia explicación en video'."
+                ]
+            },
+            22: {
+                phase: "Fase 4 — Explicación",
+                content: [
+                    "<strong>19:00</strong> Video YouTube: 'No debí hacer eso… pero el ambiente hace que pasen cosas.'",
+                    "<strong>21:00</strong> Reel corte del video."
+                ],
+                activation: [
+                    "Subir Shorts derivados del video."
+                ],
+                kpi: [
+                    "Watch Time YT >50% (UAU-12).",
+                    "CTR Thumbnail >8% (UAU-11).",
+                    "Subscriber Conversion >0.8% (UCT-13)."
+                ],
+                press: [
+                    "Nota de prensa: 'Marlon explica el rumor y anticipa canción nueva'."
+                ]
+            },
+            23: {
+                phase: "Fase 5 — Calentamiento",
+                content: [
+                    "<strong>20:00</strong> Live: 'Hablemos de por qué hice eso.'"
+                ],
+                activation: [
+                    "Oleada 0 UGC con 3-5 creadores."
+                ],
+                kpi: [
+                    "Live viewers >100.",
+                    "UGC del sonido empezando a crecer."
+                ],
+                press: [
+                    "Repost de la explicación en blogs de cultura pop."
+                ]
+            },
+            24: {
+                phase: "Fase 5 — Calentamiento",
+                content: [
+                    "<strong>12:00</strong> TikTok audio oficial disponible.",
+                    "<strong>19:00</strong> Live: 'Les cuento qué se viene el 28.'"
+                ],
+                activation: [
+                    "Audio oficial en TikTok + cuenta de fans impulsando uso."
+                ],
+                kpi: [
+                    "Videos UGC en 6h: 15+ (MOC-01).",
+                    "Sound Reuse Rate D1: 15+ videos (UCT-06)."
+                ],
+                press: [
+                    "<em>Chisme:</em> 'Marlon activa el audio de su nueva canción'."
+                ]
+            },
+            25: {
+                phase: "Fase 5 — Calentamiento",
+                content: [
+                    "<strong>19:00</strong> Trailer TENTACIÓN + pre-save: '4 días. Esto es TENTACIÓN. 🔴'",
+                    "<strong>21:00</strong> Story countdown: '3 días. Pre-guárdenla.'"
+                ],
+                activation: [
+                    "Meta Ads de pre-save."
+                ],
+                kpi: [
+                    "Pre-saves >350 (MOC-05 objetivo).",
+                    "Reel Completion >80% (UAU-09)."
+                ],
+                press: [
+                    "Nota de prensa: 'Marlon anuncia TENTACIÓN para el 28'."
+                ]
+            },
+            26: {
+                phase: "Fase 5 — Calentamiento",
+                content: [
+                    "<strong>20:00</strong> Live: 'Última live antes del drop. Pregunten lo que sea.'"
+                ],
+                activation: [
+                    "Confirmar Oleada 1 UGC para D0."
+                ],
+                kpi: [
+                    "Live viewers >100.",
+                    "Pre-saves acumulando."
+                ],
+                press: [
+                    "Recordatorio a medios: embargo para el 28."
+                ]
+            },
+            27: {
+                phase: "Fase 5 — Calentamiento",
+                content: [
+                    "<strong>18:00</strong> Carrusel BTS producción: 'Así se hizo TENTACIÓN. Deslizá →'",
+                    "<strong>21:00</strong> Story countdown final: 'Mañana. 00:00.'"
+                ],
+                activation: [
+                    "Último push de cuenta de fans y DMs."
+                ],
+                kpi: [
+                    "Carrusel Save Rate >5%.",
+                    "DM Shares vs Likes >55%."
+                ],
+                press: [
+                    "<em>Chisme:</em> 'A horas del estreno, ¿de qué hablará TENTACIÓN?'"
+                ]
+            },
+            28: {
+                phase: "Fase 6 — Lanzamiento",
+                content: [
+                    "<strong>00:00</strong> Videoclip 4K en YouTube.",
+                    "<strong>08:00</strong> Canvas + portada oficial.",
+                    "<strong>12:00</strong> Carrusel lanzamiento.",
+                    "<strong>13:00</strong> Performance/Lyrics Reel.",
+                    "<strong>16:00</strong> One Shot viral.",
+                    "<strong>19:00</strong> Live drop.",
+                    "<strong>20:00</strong> Reel reacción UGC."
+                ],
+                activation: [
+                    "Oleada 1 UGC simultánea (5-8 creadores).",
+                    "WhatsApp broadcast CTA save.",
+                    "Meta Ads activas."
+                ],
+                kpi: [
+                    "Videos UGC en 6h: 15+ (MOC-01).",
+                    "Save Rate Spotify >6% mínimo, >9% objetivo (UCT-01).",
+                    "Completion Rate Spotify >70% (UAU-01).",
+                    "Pre-save conversion >45% (UCT-03)."
+                ],
+                press: [
+                    "Nota de prensa: 'Ya salió TENTACIÓN, lo nuevo de Marlon'."
+                ]
+            },
+            29: {
+                phase: "Sprint 72hrs",
+                content: [
+                    "<strong>10:00-12:00</strong> Video del artista post-tendencia.",
+                    "<strong>14:00</strong> Activar Spark Ads sobre mejores UGC."
+                ],
+                activation: [
+                    "Escalar 3-5 UGC orgánicos con Spark Ads."
+                ],
+                kpi: [
+                    "Sound Reuse D2: 18+ videos (UCT-06).",
+                    "Spark Ads Engagement Rate >8% (UAU-04)."
+                ],
+                press: [
+                    "<em>Chisme:</em> 'TENTACIÓN ya se usa en TikTok'."
+                ]
+            },
+            30: {
+                phase: "Sprint 72hrs",
+                content: [
+                    "<strong>10:00</strong> Evaluar Sound Reuse Rate.",
+                    "Reel IG con CTA shares."
+                ],
+                activation: [
+                    "Oleada 2 UGC: Duet/Stitch con Reel de Marlon."
+                ],
+                kpi: [
+                    "UGC acumulados >30.",
+                    "Hashtag #TentacionMarlon >35 usos (MOC-03)."
+                ],
+                press: [
+                    "Nota de prensa: 'El experimento social de Marlon: ¿era verdad el rumor?'"
+                ]
+            },
+            31: {
+                phase: "Sprint 72hrs",
+                content: [
+                    "<strong>18:00</strong> Resumen 3 días en stories.",
+                    "Iniciar pitch a playlists de nicho colombianas."
+                ],
+                activation: [
+                    "Pitch a playlists independientes."
+                ],
+                kpi: [
+                    "Playlist adds orgánicas: 3+ mínimo (UCT-04).",
+                    "Save rate dentro de benchmark."
+                ],
+                press: [
+                    "Seguimiento de notas según performance."
+                ]
+            }
+        };
+
+        let currentMonth = 7; // August (0-indexed)
+        let currentYear = 2026;
+        let selectedDay = null;
+
+        function getDaysInMonth(year, month) {
+            return new Date(year, month + 1, 0).getDate();
+        }
+
+        function getFirstDayOfMonth(year, month) {
+            return new Date(year, month, 1).getDay();
+        }
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            grid.innerHTML = '';
+
+            const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+            days.forEach(day => {
+                const label = document.createElement('div');
+                label.className = 'day-label';
+                label.textContent = day;
+                grid.appendChild(label);
+            });
+
+            const firstDay = getFirstDayOfMonth(currentYear, currentMonth);
+            const daysInMonth = getDaysInMonth(currentYear, currentMonth);
+
+            for (let i = 0; i < firstDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'calendar-day empty';
+                grid.appendChild(empty);
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const cell = document.createElement('div');
+                cell.className = 'calendar-day';
+                if (day === selectedDay) cell.classList.add('active');
+                if ([9, 14, 17, 20, 23, 28].includes(day)) cell.classList.add('phase-start');
+
+                const data = calendarData[day];
+                
+                const number = document.createElement('div');
+                number.className = 'day-number';
+                number.textContent = day;
+                cell.appendChild(number);
+
+                const dots = document.createElement('div');
+                dots.className = 'day-dots';
+                if (data) {
+                    if (data.content.length) dots.appendChild(createDot('dot-content'));
+                    if (data.activation.length) dots.appendChild(createDot('dot-activation'));
+                    if (data.kpi.length) dots.appendChild(createDot('dot-kpi'));
+                    if (data.press.length) dots.appendChild(createDot('dot-press'));
+                }
+                cell.appendChild(dots);
+
+                cell.addEventListener('click', () => selectDay(day));
+                grid.appendChild(cell);
+            }
+        }
+
+        function createDot(className) {
+            const dot = document.createElement('div');
+            dot.className = `dot ${className}`;
+            return dot;
+        }
+
+        function selectDay(day) {
+            selectedDay = day;
+            renderCalendar();
+            renderDetail(day);
+        }
+
+        function renderDetail(day) {
+            const panel = document.getElementById('detailPanel');
+            const data = calendarData[day];
+            
+            if (!data) {
+                panel.innerHTML = `
+                    <div class="empty-state">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <p>No hay actividades planificadas para este día.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const date = new Date(2026, 7, day);
+            const dayName = date.toLocaleDateString('es-ES', { weekday: 'long' });
+
+            panel.innerHTML = `
+                <div class="detail-date">${dayName} · agosto 2026</div>
+                <div class="detail-day-number">${String(day).padStart(2, '0')}</div>
+                <div class="detail-phase">${data.phase}</div>
+                
+                <div class="detail-block block-content">
+                    <h4>Contenido del Artista</h4>
+                    <ul>${data.content.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+                
+                <div class="detail-block block-activation">
+                    <h4>Activaciones</h4>
+                    <ul>${data.activation.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+                
+                <div class="detail-block block-kpi">
+                    <h4>KPI / Triggers</h4>
+                    <ul>${data.kpi.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+                
+                <div class="detail-block block-press">
+                    <h4>Prensa / Chisme</h4>
+                    <ul>${data.press.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+            `;
+        }
+
+        function prevMonth() {
+            if (currentMonth === 7) return; // Keep locked on August
+            currentMonth--;
+            renderCalendar();
+        }
+
+        function nextMonth() {
+            if (currentMonth === 7) return; // Keep locked on August
+            currentMonth++;
+            renderCalendar();
+        }
+
+        // Initialize
+        renderCalendar();
+        selectDay(14); // Default to party day
+    </script>
+</body>
+</html>
