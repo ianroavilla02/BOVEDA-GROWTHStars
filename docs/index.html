@@ -3,25 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prototipos GROWTH*Startups</title>
+  <title>Prototipos por Cliente · GROWTH*Startups</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
       background: #050505;
       color: #f3f5f3;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       padding: 40px 24px;
     }
     .container {
-      max-width: 800px;
-      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .header {
       text-align: center;
+      padding: 60px 0 40px;
     }
     .logo {
       font-size: 1.2rem;
@@ -34,11 +35,47 @@
       font-weight: 800;
       margin-bottom: 16px;
     }
-    p {
+    .subtitle {
       color: #888;
-      margin-bottom: 48px;
       font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
+
+    .client-section {
+      margin-bottom: 60px;
+    }
+    .client-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #222;
+    }
+    .client-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #141414;
+      border: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .client-info h2 {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+    .client-info p {
+      color: #888;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -49,71 +86,138 @@
       background: #141414;
       border: 1px solid #222;
       border-radius: 16px;
-      padding: 28px;
+      padding: 24px;
       text-decoration: none;
       color: #f3f5f3;
-      transition: background 0.2s, border-color 0.2s;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
       text-align: left;
     }
     a.card:hover {
       background: #1a1a1a;
       border-color: #333;
+      transform: translateY(-2px);
+    }
+    .card-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #00d4ff;
+      margin-bottom: 12px;
     }
     .card-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       margin-bottom: 8px;
-    }
-    .card-client {
-      font-size: 0.8rem;
-      color: #00d4ff;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 12px;
     }
     .card-desc {
       font-size: 0.9rem;
       color: #888;
     }
+
+    .chimbita .client-logo { color: #EF1E1E; border-color: #EF1E1E; }
+    .chimbita .card-tag { color: #EF1E1E; }
+
+    .ferreira .client-logo { color: #00d4ff; border-color: #00d4ff; }
+    .ferreira .card-tag { color: #00d4ff; }
+
+    .marlon .client-logo { color: #f3f5f3; border-color: #f3f5f3; }
+    .marlon .card-tag { color: #f3f5f3; }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: #666;
+      font-size: 0.85rem;
+      border-top: 1px solid #222;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .client-header { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="logo">GROWTH<span>*</span>Startups</div>
-    <h1>Prototipos</h1>
-    <p>Selecciona un prototipo para verlo.</p>
-
-    <div class="grid">
-      <a class="card" href="metodoferreira-estrategia-lanzamiento.html">
-        <div class="card-client">Método Ferreira</div>
-        <div class="card-title">Estrategia de Lanzamiento</div>
-        <div class="card-desc">Cohorte 0, funnel híbrido, calendario operativo y KPIs.</div>
-      </a>
-
-      <a class="card" href="metodoferreira-plan-contenidos.html">
-        <div class="card-client">Método Ferreira</div>
-        <div class="card-title">Plan de Contenidos</div>
-        <div class="card-desc">Sistema de narrativa por ejercicio y producción.</div>
-      </a>
-
-      <a class="card" href="metodoferreira-funnel-contenidos.html">
-        <div class="card-client">Método Ferreira</div>
-        <div class="card-title">Funnel de Contenidos TOFU-MOFU-BOFU</div>
-        <div class="card-desc">Inbound marketing para convertir fandom en clientes.</div>
-      </a>
-
-      <a class="card" href="one-page-tentacion.html">
-        <div class="card-client">Marlon Villamil</div>
-        <div class="card-title">One Page Tentación</div>
-        <div class="card-desc">Página one-page para el lanzamiento de Tentación.</div>
-      </a>
-
-      <a class="card" href="slides-tentacion.html">
-        <div class="card-client">Marlon Villamil</div>
-        <div class="card-title">Slides Tentación</div>
-        <div class="card-desc">Presentación de slides para el lanzamiento.</div>
-      </a>
+    <div class="header">
+      <div class="logo">GROWTH<span>*</span>Startups</div>
+      <h1>Prototipos por cliente</h1>
+      <p class="subtitle">Selecciona un cliente para ver sus prototipos activos.</p>
     </div>
+
+    <!-- CHIMBITA RECORDS -->
+    <div class="client-section chimbita">
+      <div class="client-header">
+        <div class="client-logo">CR</div>
+        <div class="client-info">
+          <h2>Chimbita Records</h2>
+          <p>Sello discográfico urbano-pop · Medellín · "Todo melo, siempre Chimbita."</p>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="card" href="chimbita-brandbook.html">
+          <div class="card-tag">Brandbook</div>
+          <div class="card-title">Identidad de marca</div>
+          <div class="card-desc">Lema, paleta de color, tipografías y aplicaciones del sello.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- MÉTODO FERREIRA -->
+    <div class="client-section ferreira">
+      <div class="client-header">
+        <div class="client-logo">MF</div>
+        <div class="client-info">
+          <h2>Método Ferreira</h2>
+          <p>Plan fit 1:1 personalizado con Javier Ferreira · 10 cupos · Cohorte 0.</p>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="card" href="metodoferreira-estrategia-lanzamiento.html">
+          <div class="card-tag">Lanzamiento</div>
+          <div class="card-title">Estrategia de Lanzamiento</div>
+          <div class="card-desc">Cohorte 0, funnel híbrido, calendario operativo y KPIs.</div>
+        </a>
+        <a class="card" href="metodoferreira-plan-contenidos.html">
+          <div class="card-tag">Contenidos</div>
+          <div class="card-title">Plan de Contenidos</div>
+          <div class="card-desc">Sistema de narrativa por ejercicio y requerimientos de producción.</div>
+        </a>
+        <a class="card" href="metodoferreira-funnel-contenidos.html">
+          <div class="card-tag">Inbound</div>
+          <div class="card-title">Funnel TOFU-MOFU-BOFU</div>
+          <div class="card-desc">Estrategia de contenidos para convertir fandom en clientes.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- MARLON VILLAMIL -->
+    <div class="client-section marlon">
+      <div class="client-header">
+        <div class="client-logo">MV</div>
+        <div class="client-info">
+          <h2>Marlon Villamil</h2>
+          <p>Lanzamiento del single "Tentación" · Estrategia AV + Growth Hacking.</p>
+        </div>
+      </div>
+      <div class="grid">
+        <a class="card" href="one-page-tentacion.html">
+          <div class="card-tag">One Page</div>
+          <div class="card-title">One Page Tentación</div>
+          <div class="card-desc">Página one-page para el lanzamiento del single.</div>
+        </a>
+        <a class="card" href="slides-tentacion.html">
+          <div class="card-tag">Slides</div>
+          <div class="card-title">Slides Tentación</div>
+          <div class="card-desc">Presentación de slides para el lanzamiento.</div>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      <p>Prototipos producidos por <strong>GROWTH*Startups</strong></p>
+    </footer>
   </div>
 </body>
 </html>
