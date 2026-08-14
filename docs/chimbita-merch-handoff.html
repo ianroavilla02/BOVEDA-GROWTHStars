@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHIMBITA Merch — Handoff · Head of Production</title>
+<style>
+  :root{--bg:#D9D9D9;--ink:#0A0A0A;--red:#E30613;--line:#B8B8B8;--soft:#C6C6C6;--white:#F2F2F2;--nav-h:58px;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--red);color:#fff;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--ink);height:var(--nav-h);display:flex;align-items:center;gap:26px;padding:0 30px;}
+  .brand{color:var(--bg);font-weight:800;font-size:16px;text-decoration:none;flex:none;white-space:nowrap;}
+  .brand b{color:var(--red);}
+  .navlinks{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;}
+  .navlinks::-webkit-scrollbar{display:none;}
+  .navlinks a{color:#9a9a9a;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s;}
+  .navlinks a:hover{color:#fff;}
+  .navlinks a.active{background:var(--red);color:#fff;}
+  .navcta{flex:none;background:var(--red);color:#fff;text-decoration:none;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:9px 16px;border-radius:999px;white-space:nowrap;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:calc(var(--nav-h) + 40px) 30px 0;}
+
+  section{padding:60px 0 20px;scroll-margin-top:calc(var(--nav-h) + 10px);}
+  section:first-of-type{padding-top:24px;}
+  .sec-head{display:grid;grid-template-columns:250px 1fr;gap:32px;border-top:2px solid var(--ink);padding-top:20px;}
+  .sec-label{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+  .sec-label .num{color:var(--red);margin-right:10px;}
+  .sec-title{font-size:clamp(28px,3.8vw,42px);font-weight:800;letter-spacing:-0.02em;line-height:1.08;}
+  .sec-title em{font-style:normal;color:var(--red);}
+  .sec-body{display:grid;grid-template-columns:250px 1fr;gap:32px;margin-top:26px;}
+  .sec-note{font-size:12.5px;color:#444;line-height:1.75;}
+  .sec-note b{color:var(--ink);}
+  .content p{margin-bottom:12px;}
+  .content p:last-child{margin-bottom:0;}
+  .rule{border:none;border-top:1px solid var(--line);margin:20px 0;}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;}
+
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px;}
+  .card{background:var(--white);border:1px solid var(--line);padding:22px 24px;border-radius:5px;transition:transform .25s,box-shadow .25s,border-color .25s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.12);border-color:var(--ink);}
+  .card h4{font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:8px;}
+  .card h4 .dot{width:9px;height:9px;background:var(--red);border-radius:50%;flex:none;}
+  .card p{font-size:13.5px;color:#2a2a2a;margin-bottom:8px;}
+  .card p:last-child{margin-bottom:0;}
+  .pill{display:inline-block;background:var(--ink);color:var(--bg);font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-left:auto;flex:none;}
+
+  .chk{list-style:none;margin-top:8px;}
+  .chk li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;padding:5px 0;color:#2a2a2a;}
+  .chk li::before{content:"☐";font-weight:800;color:var(--red);flex:none;}
+
+  .day{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start;}
+  .day:last-child{border-bottom:none;}
+  .day .d{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);padding-top:2px;}
+  .day p{font-size:13.5px;color:#2a2a2a;}
+
+  .tblwrap{overflow-x:auto;margin-top:12px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:600px;}
+  th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;border-bottom:2px solid var(--ink);padding:10px;}
+  td{border-bottom:1px solid var(--line);padding:10px;vertical-align:top;}
+  td.num{font-weight:800;white-space:nowrap;}
+  tr.hl td{background:var(--white);font-weight:700;}
+  tr.hl td:first-child{border-left:4px solid var(--red);}
+  tbody tr:hover td{background:var(--white);}
+
+  .bigquote{background:var(--ink);color:var(--bg);border-radius:8px;padding:40px 42px;margin-top:12px;position:relative;overflow:hidden;}
+  .bigquote::before{content:"#1";position:absolute;right:10px;bottom:-80px;font-size:200px;font-weight:800;color:rgba(255,255,255,.045);pointer-events:none;}
+  .bigquote p{font-size:clamp(17px,2.2vw,23px);font-weight:700;line-height:1.5;position:relative;}
+  .bigquote .red{color:var(--red);}
+  .bigquote .sig{margin-top:20px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9a9a9a;position:relative;}
+
+  .doclink{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:var(--ink);color:var(--bg);text-decoration:none;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:12px 20px;border-radius:999px;}
+  .doclink:hover{background:var(--red);}
+  .doclink.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
+  .doclink.alt:hover{background:var(--ink);color:var(--bg);}
+
+  footer{margin-top:90px;background:var(--ink);color:#8a8a8a;padding:44px 0;}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding-top:0;padding-bottom:0;}
+  footer .red{color:var(--red);font-weight:800;}
+  footer a{color:#8a8a8a;text-decoration:none;}
+  footer a:hover{color:#fff;}
+
+  @media (max-width:860px){
+    .sec-head,.sec-body{grid-template-columns:1fr;gap:12px;}
+    .cards{grid-template-columns:1fr;}
+    .day{grid-template-columns:1fr;gap:6px;}
+    nav{gap:14px;padding:0 16px;}
+    .navcta{display:none;}
+    .wrap{padding:calc(var(--nav-h) + 20px) 18px 0;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#top">CHIMBITA MERCH<b> · HANDOFF — HEAD OF PRODUCTION</b></a>
+  <div class="navlinks">
+    <a href="#mision">Tu misión</a>
+    <a href="#decidido">Ya decidido</a>
+    <a href="#productos">Productos</a>
+    <a href="#arranque">Arranque</a>
+    <a href="#checklists">Checklists</a>
+    <a href="#planb">Plan B</a>
+  </div>
+  <a class="navcta" href="/produccion">SOP Completo →</a>
+</nav>
+
+<div class="wrap" id="top">
+
+  <!-- 01 MISIÓN -->
+  <section id="mision">
+    <div class="sec-head reveal in">
+      <div class="sec-label"><span class="num">01</span>Misión</div>
+      <div class="sec-title">Tu misión</div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal in">
+        Una sola frase: <b>entregar el primer stock con calidad premium, a tiempo, sin sorpresas.</b>
+      </div>
+      <div class="content">
+        <div class="cards">
+          <div class="card reveal in">
+            <h4><span class="dot"></span>Tu norte</h4>
+            <p>Producto comparable o superior a los referentes del mercado paisa (Monastery, Clemont). Si dudas entre rápido y bueno: <b>bueno</b>. La fecha se mueve antes que la calidad — eso ya está aprobado por el founder.</p>
+          </div>
+          <div class="card reveal in d1">
+            <h4><span class="dot"></span>Tus métricas <span class="pill">KPIs del rol</span></h4>
+            <p>① Muestras aprobadas a la 1ª ronda: <b>≥ 3 de 4</b> · ② Defectos críticos en QC: <b>&lt; 3%</b> · ③ Encogimiento post-lavado: <b>&lt; 5%</b> · ④ Costo real vs cotizado: <b>± 5%</b> · ⑤ Lead time reorden boxers: <b>≤ 21 días</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 DECIDIDO -->
+  <section id="decidido">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">02</span>No re-decidir</div>
+      <div class="sec-title">Lo que <em>ya está decidido</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        Estas decisiones ya pasaron por el founder. Puedes cuestionarlas con datos, pero no ignorarlas.
+      </div>
+      <div class="content">
+        <ul class="chk reveal">
+          <li><b>Modelo:</b> Drop 1 con socio Full Package (un solo socio hace patronaje, insumos, corte y confección). Boxers migran a CMT/maquila desde el lote 2.</li>
+          <li><b>Regla de oro:</b> nada avanza sin muestra física aprobada y firmada ("muestra patrón").</li>
+          <li><b>Pago:</b> 50% anticipo / 50% contra entrega. Nunca 100% anticipo.</li>
+          <li><b>Numeración:</b> Hoodies 001–040 y Camisetas 001–080 numeradas (etiqueta tejida o bordado). El Hoodie #001/40 no se vende: es la reliquia de la rifa.</li>
+          <li><b>Merma:</b> producir +5% (42 hoodies, 84 camisetas) para QC destructivo y repuestos.</li>
+          <li><b>Penalidad:</b> toda orden de compra incluye cláusula de retraso (ej. −2% por día) e "idéntico a muestra patrón".</li>
+          <li><b>Seeding:</b> 60 boxers salen en cajas cinematográficas con nota manuscrita — tú los apartas en QC, marketing los despacha.</li>
+          <li><b>Sin fechas rígidas:</b> la meta total son ~30 días, con gates por fase. Los imprevistos se absorben en el proceso, no en la calidad.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 PRODUCTOS -->
+  <section id="productos">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">03</span>Producto</div>
+      <div class="sec-title">Tus 4 referencias y <em>specs de calidad</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        El gsm y la construcción son el lenguaje con el que exiges calidad al taller. Memoriza esta tabla.
+      </div>
+      <div class="content">
+        <div class="tblwrap reveal">
+        <table>
+          <thead><tr><th>Referencia</th><th>Cantidad</th><th>Tela y construcción</th><th>Detalle clave</th></tr></thead>
+          <tbody>
+          <tr><td class="num">Hoodie</td><td>40 (+2 merma)<br>10 por talla S–XL</td><td>Felpa/perchado 100% algodón u 80/20 · <b>380–400 gsm</b> · capucha forrada · costuras reforzadas</td><td>Cordones con puntas metálicas · bordado &gt; estampado · numerado 001–040</td></tr>
+          <tr><td class="num">Camiseta Top</td><td>40 (+2 merma)<br>10 por talla</td><td>Algodón peinado <b>200–220 gsm</b> · cuello reforzado con sesgo</td><td>Fit entallado · patrón propio (no es la oversize cortada distinto)</td></tr>
+          <tr><td class="num">Camiseta Oversize</td><td>40 (+2 merma)<br>10 por talla</td><td>Algodón peinado <b>200–220 gsm</b> · hombro caído</td><td>Mismo arte que Top, patrón distinto</td></tr>
+          <tr class="hl"><td class="num">Boxer ∞</td><td>200 lote inicial<br>(60 seeding + 140 venta)</td><td>Algodón-licra 92/8 o 95/5 · doble costura plana</td><td><b>Elástico jacquard con logo tejido — ese elástico ES el producto</b> · mismo fit siempre</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <hr class="rule">
+        <p class="reveal" style="font-size:13px;"><b>Etiquetado legal (todas las referencias):</b> Resolución 2109 de 2019 — composición de fibra, talla, país de origen, cuidados de lavado, razón social/NIT. <b>Referencia de costos a validar en cotización:</b> Hoodie ≈ $60–90K COP · Camiseta ≈ $25–40K · Boxer ≈ $15–25K.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 ARRANQUE -->
+  <section id="arranque">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">04</span>Ejecución</div>
+      <div class="sec-title">Tus primeras <em>2 semanas</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        Referencias de tiempo, no fechas. Si algo se desvía, avisa el mismo día — las sorpresas tardías son lo único imperdonable.
+      </div>
+      <div class="content">
+        <div class="day reveal"><div class="d">Días 1–2</div><p><b>Aterrizaje:</b> leer la estrategia de lanzamiento y el SOP de producción completos · conocer al equipo (IA, cine, founder) · recibir los renders/referencias visuales del equipo de IA · crear la hoja de control de producción (unidades × talla × referencia).</p></div>
+        <div class="day reveal"><div class="d">Días 2–5</div><p><b>Tech packs:</b> liderar la construcción de los 4 tech packs (medidas por talla con tolerancias ±1 cm, BOM, construcción, arte en vector, etiquetado legal). Input visual del equipo IA; aprobación del founder. <b>Gate: sin tech pack aprobado, no se contacta a nadie.</b></p></div>
+        <div class="day reveal"><div class="d">Días 3–6 (‖)</div><p><b>Longlist de proveedores:</b> 6–8 candidatos full package en Medellín (directorio Inexmoda, clúster Moda de la Cámara de Comercio, búsqueda directa) + 2 talleres especializados en ropa interior para boxers.</p></div>
+        <div class="day reveal"><div class="d">Días 6–8</div><p><b>Cotizaciones:</b> enviar tech packs y aplicar las 7 preguntas obligatorias (ver Checklists). Pregunta crítica: <b>¿tela en inventario o hay que tejerla?</b> — inventario = ~30 días viable; tejer = +3–4 semanas y hay que avisar ya.</p></div>
+        <div class="day reveal"><div class="d">Días 8–10</div><p><b>Shortlist y visitas:</b> 2–3 finalistas, visita física obligatoria. Evalúas: orden, máquinas, prendas en proceso, trato al producto. Criterio: 40% calidad · 25% cumplimiento · 20% precio · 15% comunicación. <b>Te quedas con 1 elegido + 2 en banca.</b></p></div>
+        <div class="day reveal"><div class="d">Días 10–14</div><p><b>Muestras:</b> 1 por referencia (talla M) + boxer con elástico real. Aplicas el checklist de 10 puntos (incluye prueba de 3 lavados). Aprobación final del founder → firma de muestra patrón → el founder emite la OC 50/50.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 CHECKLISTS -->
+  <section id="checklists">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">05</span>Herramientas</div>
+      <div class="sec-title">Tus <em>checklists</em> de batalla</div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">Imprime esto. Es tu día a día.</div>
+      <div class="content">
+        <div class="cards">
+          <div class="card reveal">
+            <h4><span class="dot"></span>Las 7 preguntas al taller</h4>
+            <ul class="chk">
+              <li>¿MOQ por referencia y cuántas tallas incluye?</li>
+              <li>¿Cómo calculan la cotización (qué incluye y qué no)?</li>
+              <li>¿Tiempo para muestra y tiempo de producción?</li>
+              <li>¿Tela en inventario o hay que tejerla?</li>
+              <li>¿Bordado y etiquetas tejidas numeradas?</li>
+              <li>¿Dos marcas de referencia para las que produjeron?</li>
+              <li>¿Condiciones de pago? (estándar 50/50)</li>
+            </ul>
+          </div>
+          <div class="card reveal d1">
+            <h4><span class="dot"></span>Muestra física — 10 puntos</h4>
+            <ul class="chk">
+              <li>gsm real = lo cotizado</li>
+              <li>Medidas vs ficha (±1 cm)</li>
+              <li>Costuras rectas, sin hilos, reforzadas</li>
+              <li>Logo exacto, bordado limpio</li>
+              <li>Etiquetas completas + numeración legible</li>
+              <li>Tacto: "se siente cara"</li>
+              <li>3 lavados: encogimiento &lt;5%, sin decoloración</li>
+              <li>Fit en cuerpo real</li>
+              <li>Olor y acabado general</li>
+              <li>Foto completa → muestra patrón firmada</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <h4><span class="dot"></span>Producción — supervisión</h4>
+            <ul class="chk">
+              <li>2 visitas por semana al taller (no negociable)</li>
+              <li>Revisar "primeras de línea": 5 prendas por referencia al inicio</li>
+              <li>Checkpoint con foto al WhatsApp del equipo</li>
+              <li>Desviación detectada → se corrige al 10%, no al 100%</li>
+            </ul>
+          </div>
+          <div class="card reveal d1">
+            <h4><span class="dot"></span>QC final — al 100% de piezas</h4>
+            <ul class="chk">
+              <li>Medidas spot-check (1 por talla)</li>
+              <li>Costuras, logo, numeración correcta</li>
+              <li>Sin manchas ni hilos · etiquetas legales completas</li>
+              <li>Secuencia numérica verificada (#001 existe, sin duplicados)</li>
+              <li>Apartar: Hoodie #001/40 (rifa) + 60 cajas de seeding</li>
+              <li>Defecto crítico → reposición a costa del taller (va en OC)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 PLAN B -->
+  <section id="planb">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">06</span>Plan B</div>
+      <div class="sec-title">Cuando algo salga mal</div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">Es la primera producción de la empresa. El plan B no es pesimismo: es diseño.</div>
+      <div class="content">
+        <div class="tblwrap reveal">
+        <table>
+          <thead><tr><th>Escenario</th><th>Tu jugada</th></tr></thead>
+          <tbody>
+          <tr><td>No hay tela en inventario (+3–4 semanas)</td><td>Cambiar a tela de inventario equivalente en gsm. La fecha no se negocia con la tela; la tela se negocia con la fecha</td></tr>
+          <tr><td>Muestra mala sin tiempo de 2ª ronda</td><td>Activar taller en banca o sacrificar 1 referencia: mejor 2 productos perfectos que 3 mediocres</td></tr>
+          <tr><td>Retraso &gt; 5 días</td><td>Penalidad de OC + aviso inmediato al founder (el drop se mueve, el hype no)</td></tr>
+          <tr><td>Presupuesto apretado</td><td>Prioridad: ① Hoodie ② Camisetas ③ Boxers. Nunca bajar el gsm para ahorrar</td></tr>
+          <tr><td>Piden 100% anticipo</td><td>Rechazar y negociar 50/50 — o siguiente taller de la banca</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>CHIMBITA MERCH — Hecho en Medellín, que el mundo pregunte</span>
+    <span class="red">#CHIMBITA</span>
+    <a href="#top">↑ Volver arriba</a>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const links=[...document.querySelectorAll('.navlinks a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+  const navIO=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id));
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(s=>s&&navIO.observe(s));
+</script>
+
+</body>
+</html>

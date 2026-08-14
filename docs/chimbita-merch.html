@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHIMBITA Merch — Estrategia de Lanzamiento</title>
+<style>
+  :root{
+    --bg:#D9D9D9;
+    --ink:#0A0A0A;
+    --red:#E30613;
+    --line:#B8B8B8;
+    --soft:#C6C6C6;
+    --white:#F2F2F2;
+    --nav-h:58px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:15px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--red);color:#fff;}
+
+  /* ── NAV ─────────────────────────────────── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:var(--ink);height:var(--nav-h);
+    display:flex;align-items:center;gap:26px;
+    padding:0 30px;
+    box-shadow:0 1px 0 rgba(0,0,0,.4);
+  }
+  .brand{
+    color:var(--bg);font-weight:800;letter-spacing:-0.01em;font-size:16px;
+    text-decoration:none;flex:none;white-space:nowrap;
+  }
+  .brand b{color:var(--red);}
+  .navlinks{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;}
+  .navlinks::-webkit-scrollbar{display:none;}
+  .navlinks a{
+    color:#9a9a9a;text-decoration:none;font-size:11px;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;
+    padding:8px 12px;border-radius:999px;white-space:nowrap;
+    transition:color .2s,background .2s;
+  }
+  .navlinks a:hover{color:#fff;}
+  .navlinks a.active{background:var(--red);color:#fff;}
+  .navcta{
+    flex:none;background:var(--red);color:#fff;text-decoration:none;
+    font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    padding:9px 16px;border-radius:999px;white-space:nowrap;
+  }
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 30px;}
+
+  /* ── HERO ────────────────────────────────── */
+  header{
+    min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding-top:var(--nav-h);position:relative;
+  }
+  .hero-meta{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    font-size:11px;margin-bottom:36px;gap:20px;
+  }
+  .hero-meta .l{font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+  .hero-meta .r{text-align:right;color:#3d3d3d;line-height:1.7;}
+  .hero-meta .r b{color:var(--ink);}
+  .kicker{
+    font-size:12px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--red);margin-bottom:14px;
+  }
+  h1{
+    font-size:clamp(48px,8.4vw,108px);
+    line-height:.98;letter-spacing:-0.035em;font-weight:800;
+  }
+  h1 .red{color:var(--red);}
+  .subtitle{
+    font-size:clamp(16px,2.1vw,21px);font-weight:600;letter-spacing:-0.01em;
+    max-width:780px;margin-top:26px;
+  }
+  .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;}
+  .tag{
+    border:1px solid var(--ink);border-radius:999px;
+    padding:6px 15px;font-size:11px;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;
+  }
+  .tag.red{background:var(--red);border-color:var(--red);color:#fff;}
+  .tag.fill{background:var(--ink);color:var(--bg);}
+
+  /* stock strip */
+  .stockgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px;}
+  .stock{
+    background:var(--white);border:1px solid var(--line);border-radius:5px;
+    padding:18px 20px;position:relative;
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s;
+  }
+  .stock:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.12);border-color:var(--ink);}
+  .stock .sk{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--red);}
+  .stock .sn{font-size:34px;font-weight:800;letter-spacing:-0.02em;line-height:1;margin:6px 0 4px;font-variant-numeric:tabular-nums;}
+  .stock .sn small{font-size:14px;font-weight:700;color:#555;letter-spacing:0;}
+  .stock h3{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;}
+  .stock p{font-size:12px;color:#3d3d3d;line-height:1.6;}
+  .stock.forever{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+  .stock.forever p{color:#cfcfcf;}
+  .stock.forever .sn small{color:#9a9a9a;}
+
+  .scrollcue{
+    position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+    font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#555;
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+  }
+  .scrollcue::after{
+    content:"";width:1.5px;height:44px;background:var(--ink);
+    animation:cue 1.8s ease-in-out infinite;transform-origin:top;
+  }
+  @keyframes cue{0%{transform:scaleY(0);}50%{transform:scaleY(1);}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+  /* ── Sections ────────────────────────────── */
+  section{padding:84px 0 20px;scroll-margin-top:calc(var(--nav-h) + 10px);}
+  .sec-head{
+    display:grid;grid-template-columns:250px 1fr;gap:32px;
+    border-top:2px solid var(--ink);padding-top:20px;
+  }
+  .sec-label{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+  .sec-label .num{color:var(--red);margin-right:10px;}
+  .sec-title{font-size:clamp(28px,3.8vw,42px);font-weight:800;letter-spacing:-0.02em;line-height:1.08;}
+  .sec-title em{font-style:normal;color:var(--red);}
+  .sec-body{display:grid;grid-template-columns:250px 1fr;gap:32px;margin-top:26px;}
+  .sec-note{font-size:12.5px;color:#444;line-height:1.75;}
+  .sec-note b{color:var(--ink);}
+  .content p{margin-bottom:12px;}
+  .content p:last-child{margin-bottom:0;}
+  .lead{font-size:18px;font-weight:600;}
+  .rule{border:none;border-top:1px solid var(--line);margin:20px 0;}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;} .reveal.d3{transition-delay:.24s;}
+
+  /* ── Cards ───────────────────────────────── */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px;}
+  .card{
+    background:var(--white);border:1px solid var(--line);
+    padding:22px 24px;border-radius:5px;
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.12);border-color:var(--ink);}
+  .card h4{
+    font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+    margin-bottom:9px;display:flex;align-items:center;gap:8px;
+  }
+  .card h4 .dot{width:9px;height:9px;background:var(--red);border-radius:50%;flex:none;}
+  .card p{font-size:13.5px;color:#2a2a2a;}
+  .pill{
+    display:inline-block;background:var(--ink);color:var(--bg);
+    font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    padding:3px 9px;border-radius:999px;margin-left:auto;flex:none;
+  }
+  .pill.red{background:var(--red);color:#fff;}
+
+  /* ── Funnel ──────────────────────────────── */
+  .funnel{margin-top:12px;display:flex;flex-direction:column;align-items:center;}
+  .fstep{
+    position:relative;text-align:center;
+    padding:18px 24px;margin-bottom:22px;
+    border:1.5px solid var(--ink);background:var(--white);border-radius:5px;
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .fstep:hover{transform:scale(1.02);box-shadow:0 12px 26px rgba(0,0,0,.12);}
+  .fstep::after{
+    content:"▼";position:absolute;left:50%;transform:translateX(-50%);
+    bottom:-20px;font-size:11px;color:var(--ink);
+  }
+  .fstep:last-child::after{display:none;}
+  .fstep .fk{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--red);}
+  .fstep .ft{font-size:15.5px;font-weight:800;margin:3px 0;}
+  .fstep .fd{font-size:11.5px;color:#3d3d3d;max-width:560px;}
+  .w1{width:100%;} .w2{width:88%;} .w3{width:78%;} .w4{width:88%;} .w5{width:100%;}
+  .fstep.dark{background:var(--ink);color:var(--bg);}
+  .fstep.dark .fd{color:#cfcfcf;}
+  .fstep.redstep{background:var(--red);border-color:var(--red);color:#fff;}
+  .fstep.redstep .fk{color:#fff;}
+  .fstep.redstep .fd{color:#ffe3e5;}
+
+  /* ── Rifa mechanics ──────────────────────── */
+  .mech{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);}
+  .mech:last-child{border-bottom:none;}
+  .mech .badge{
+    flex:none;width:54px;height:54px;border-radius:50%;
+    background:var(--ink);color:var(--bg);
+    display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:800;
+  }
+  .mech .badge.red{background:var(--red);color:#fff;}
+  .mech h5{font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:5px;}
+  .mech p{font-size:13.5px;color:#2a2a2a;}
+
+  .prow{display:grid;grid-template-columns:minmax(90px,150px) 1fr 62px;gap:14px;align-items:center;padding:7px 0;font-size:12.5px;}
+  .prow .pct{font-weight:800;text-align:right;font-variant-numeric:tabular-nums;}
+  .pbar{height:12px;background:var(--soft);border-radius:999px;overflow:hidden;}
+  .pbar i{display:block;height:100%;width:0;background:var(--ink);border-radius:999px;transition:width 1.2s cubic-bezier(.2,.8,.2,1);}
+  .pbar i.red{background:var(--red);}
+  .pbar i.gold{background:repeating-linear-gradient(45deg,var(--red),var(--red) 6px,var(--ink) 6px,var(--ink) 12px);}
+  .in .pbar i{width:var(--w);}
+
+  .album{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0 4px;}
+  .ltr{
+    width:54px;height:66px;border:1.5px solid var(--ink);border-radius:5px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:29px;font-weight:800;background:var(--white);position:relative;
+    transition:transform .2s;
+  }
+  .ltr:hover{transform:translateY(-5px) rotate(-2deg);}
+  .ltr small{position:absolute;bottom:3px;right:5px;font-size:8px;font-weight:700;letter-spacing:.05em;color:#666;text-transform:uppercase;}
+  .ltr.rare{background:var(--red);border-color:var(--red);color:#fff;animation:pulse 2.2s infinite;}
+  .ltr.rare small{color:#ffd7da;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(227,6,19,.5);}50%{box-shadow:0 0 0 9px rgba(227,6,19,0);}}
+
+  /* ── Timeline ────────────────────────────── */
+  .timeline{position:relative;margin-top:16px;padding-left:28px;}
+  .timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--ink);}
+  .tl{position:relative;padding:0 0 30px 20px;}
+  .tl::before{
+    content:"";position:absolute;left:-28px;top:4px;width:14px;height:14px;
+    background:var(--bg);border:3px solid var(--ink);border-radius:50%;
+  }
+  .tl.hot::before{background:var(--red);border-color:var(--red);}
+  .tl .when{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);}
+  .tl h6{font-size:17px;font-weight:800;margin:3px 0 6px;}
+  .tl p{font-size:13.5px;color:#2a2a2a;}
+  .gate{
+    display:inline-block;margin-top:10px;background:var(--ink);color:var(--bg);
+    font-size:11.5px;padding:8px 14px;border-radius:4px;line-height:1.55;
+  }
+  .gate b{color:#fff;}
+  .gate::before{content:"🚪 ";}
+  .goal{
+    display:inline-block;margin-top:10px;background:var(--red);color:#fff;
+    font-size:11.5px;font-weight:700;padding:8px 14px;border-radius:4px;line-height:1.55;
+  }
+  .goal::before{content:"🎯 ";}
+
+  /* ── Tables ──────────────────────────────── */
+  .tblwrap{overflow-x:auto;margin-top:12px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:560px;}
+  th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;border-bottom:2px solid var(--ink);padding:10px;}
+  td{border-bottom:1px solid var(--line);padding:10px;vertical-align:top;}
+  td.num{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  tr.hl td{background:var(--white);font-weight:700;}
+  tr.hl td:first-child{border-left:4px solid var(--red);}
+  tbody tr{transition:background .15s;}
+  tbody tr:hover td{background:var(--white);}
+
+  /* ── NO list ─────────────────────────────── */
+  .nolist{list-style:none;margin-top:8px;}
+  .nolist li{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px;}
+  .nolist li:last-child{border-bottom:none;}
+  .nolist .x{
+    flex:none;width:23px;height:23px;background:var(--red);color:#fff;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;
+  }
+
+  /* ── Summary ─────────────────────────────── */
+  .bigquote{background:var(--ink);color:var(--bg);border-radius:8px;padding:40px 42px;margin-top:12px;position:relative;overflow:hidden;}
+  .bigquote::before{
+    content:"#CHIMBITA";position:absolute;right:-30px;bottom:-58px;
+    font-size:150px;font-weight:800;color:rgba(255,255,255,.045);letter-spacing:-0.04em;
+    pointer-events:none;
+  }
+  .bigquote p{font-size:clamp(17px,2.2vw,23px);font-weight:700;line-height:1.5;letter-spacing:-0.01em;position:relative;}
+  .bigquote .red{color:var(--red);}
+  .bigquote .sig{margin-top:20px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9a9a9a;position:relative;}
+
+  footer{margin-top:90px;background:var(--ink);color:#8a8a8a;padding:44px 0;}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;}
+  footer .red{color:var(--red);font-weight:800;}
+  footer a{color:#8a8a8a;text-decoration:none;}
+  footer a:hover{color:#fff;}
+
+  @media (max-width:860px){
+    .sec-head,.sec-body{grid-template-columns:1fr;gap:12px;}
+    .cards,.stockgrid{grid-template-columns:1fr;}
+    nav{gap:14px;padding:0 16px;}
+    .navcta{display:none;}
+    .wrap{padding:0 18px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#top">CHIMBITA MERCH<b>.</b></a>
+  <div class="navlinks">
+    <a href="#mercado">Mercado</a>
+    <a href="#contenido">Contenido</a>
+    <a href="#funnel">Funnel</a>
+    <a href="#rifa">La Rifa</a>
+    <a href="#calendario">Calendario</a>
+    <a href="#jugadas">Jugadas</a>
+    <a href="#kpis">KPIs</a>
+    <a href="#disciplina">Disciplina</a>
+  </div>
+  <a class="navcta" href="#calendario">Drop · Día 41</a>
+</nav>
+
+<div class="wrap" id="top">
+
+  <!-- ═══ HERO ═══ -->
+  <header>
+    <div class="hero-meta">
+      <div class="l">Estrategia de Lanzamiento · Fase × Fase</div>
+      <div class="r">
+        <b>Primer drop:</b> Hoodie (40) · Camisetas (80) · Boxers (∞)<br>
+        <b>60</b> boxers para seeding · Limitadas numeradas<br>
+        <b>Mercados:</b> Colombia → Miami → México
+      </div>
+    </div>
+    <p class="kicker">Confidencial · Chimbita Records × G*Startups</p>
+    <h1>CHIMBITA MERCH<span class="red">.</span></h1>
+    <p class="subtitle">30 días de hype fabricado con IA y cine → una serie vertical que convierte comentarios en base de datos → un juego (no una lista de espera) → 120 piezas limitadas numeradas que se agotan en público + los boxers que nunca se agotan.</p>
+    <div class="tagrow">
+      <span class="tag fill">Objetivo: HYPE</span>
+      <span class="tag red">Stock listo: Día 30</span>
+      <span class="tag">Drop: Día 41</span>
+      <span class="tag">CAC ≈ $0</span>
+      <span class="tag">Limitadas sold out ≤ 72h</span>
+    </div>
+
+    <div class="stockgrid">
+      <div class="stock reveal">
+        <div class="sk">Limitado · Solo este drop</div>
+        <div class="sn">40 <small>piezas</small></div>
+        <h3>Hoodie</h3>
+        <p>10 por talla · Numerados <b>001–040</b> · Nunca se repone. La pieza corona del drop — el #001/40 es la reliquia que se rifa.</p>
+      </div>
+      <div class="stock reveal d1">
+        <div class="sk">Limitado · Solo este drop</div>
+        <div class="sn">80 <small>piezas</small></div>
+        <h3>Camisetas — Top + Oversize</h3>
+        <p>40 Top + 40 Oversize · 10 por talla por corte · Numeradas <b>001–080</b> · Nunca se reponen.</p>
+      </div>
+      <div class="stock forever reveal d2">
+        <div class="sk">Stock permanente ∞</div>
+        <div class="sn">∞ <small>siempre</small></div>
+        <h3>Boxers — El Ticket</h3>
+        <p>El único artículo que <b>siempre tiene stock</b>: el ticket de entrada al ecosistema (funnel de fidelización, igual que los boxers de Supreme). 60 unidades iniciales van a seeding.</p>
+      </div>
+    </div>
+
+    <div class="scrollcue">Scroll</div>
+  </header>
+
+  <!-- ═══ 01 MERCADO ═══ -->
+  <section id="mercado">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">01</span>Contexto</div>
+      <div class="sec-title">El mercado y <em>el carril vacío</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        Fuentes: El Colombiano (feb 2026), Portafolio (ago 2025), Fortune Business Insights, Euromonitor.<br><br>
+        <b>Lectura estratégica:</b> nadie ocupa el carril femenino-provocador-satírico con respaldo musical real. Ese es CHIMBITA.
+      </div>
+      <div class="content">
+        <p class="lead reveal">El streetwear paisa ya mueve <b>$140.000+ millones COP/año</b> y crece ~18% anual: moda y reggaetón funcionan como un mismo engranaje económico en Medellín.</p>
+        <div class="tblwrap reveal d1">
+        <table>
+          <thead><tr><th>Marca</th><th>Escala</th><th>Lo que le falta</th></tr></thead>
+          <tbody>
+          <tr><td class="num">Monastery</td><td>$80.000M COP/año · vistió a la Selección Colombia</td><td>Sin humor, sin sátira — lujo serio</td></tr>
+          <tr><td class="num">Clemont</td><td>$39.000M COP/año · 150+ tiendas multimarca</td><td>Místico/espiritual — femenino secundario</td></tr>
+          <tr><td class="num">Undergold</td><td>250.000 unidades en 2025 · expansión internacional</td><td>Línea femenina = 15% de ventas… pero <b>duplica cada año</b> → demanda insatisfecha</td></tr>
+          <tr><td class="num">True</td><td>$20.000M COP · exporta a 7 países</td><td>Femenina, pero sin sátira ni sello musical</td></tr>
+          <tr class="hl"><td class="num">CHIMBITA</td><td>Nace con sello discográfico propio (Medellín + Miami)</td><td><b>El carril vacío: femenino, provocador, satírico, nativo de la música</b></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <hr class="rule">
+        <p class="reveal"><b>Códigos culturales del público (La Chimbita × El Parchado):</b> la música es su sistema operativo · el chisme es su canal de distribución (nada se anuncia, <i>se filtra</i>) · el estatus se demuestra, no se declara · la tensión Chimbita↔Parchado es el motor narrativo · lealtad de barrio + ambición global.</p>
+        <hr class="rule">
+        <p class="reveal"><b>Arquitectura de producto (modelo Supreme):</b> Hoodies y Camisetas son <b>limitadas numeradas</b> — motor de escasez, hype y reventa. Los <b>Boxers son el único artículo con stock permanente</b>: el ticket de entrada que convierte compradores en leads y leads en clientes recurrentes (funnel de fidelización — igual que los boxers de Supreme, la puerta de entrada barata al mundo de la marca).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 02 CONTENIDO ═══ -->
+  <section id="contenido">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">02</span>Producción</div>
+      <div class="sec-title">El motor de contenido — <em>4 líneas</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        No hacemos contenido de redes: hacemos <b>cine de marca</b>. El equipo de IA fabrica el deseo antes de que exista la prenda; el equipo cinematográfico le da alma de película; los 60 contactos crean la ilusión de omnipresencia.
+      </div>
+      <div class="content">
+        <div class="cards">
+          <div class="card reveal">
+            <h4><span class="dot"></span>Línea 1 · El Mundo Chimbita <span class="pill">IA · TOFU</span></h4>
+            <p><b>Editoriales sintéticas:</b> las prendas en campañas estilo Vogue × barrio paisa (calidad de $50K, costo ~cero). <b>Mundos imposibles localizados:</b> el hoodie gigante sobre el metro de Medellín, el skyline de Brickell, el Ángel de la Independencia. <b>La Tensión en IA:</b> la Chimbita y el Parchado como personajes recurrentes — los personajes generan fandom; los posts no.</p>
+          </div>
+          <div class="card reveal d1">
+            <h4><span class="dot"></span>Línea 2 · Cine de Marca <span class="pill">Cine · MOFU</span></h4>
+            <p><b>Mini-serie vertical de 3 capítulos</b> con cliffhanger — la columna vertebral del funnel. <b>Tráiler del drop:</b> 45–60s que no muestra el producto hasta el final; se estrena como película. <b>Micro-documentales del sello</b> (Medellín y Miami): la marca aparece de fondo — el backstage real es lo que la competencia no puede copiar. Cada pieza esconde un <b>QR de La Cacería</b>.</p>
+          </div>
+          <div class="card reveal d2">
+            <h4><span class="dot"></span>Línea 3 · Los 60 <span class="pill red">Seeding</span></h4>
+            <p><b>60 boxers a sembrar:</b> ~35 Colombia · ~20 Miami · ~5 México. <b>Tier 1</b> (5–8 artistas grandes): apariciones casuales, no posts — la caja de fondo en un live vale 10x un post etiquetado. <b>Tier 2</b> (20–30 chimbitas): unboxings cinematográficos (caja + idea de escena, no guion). <b>Tier 3</b> (comodines): todos en la misma ventana de 48h. <b>El efecto:</b> "todo el mundo tiene CHIMBITA menos yo".</p>
+          </div>
+          <div class="card reveal d3">
+            <h4><span class="dot"></span>Línea 4 · La Marca como Persona <span class="pill">Orgánico</span></h4>
+            <p>Comenta como persona en páginas de chisme y cuentas de la escena (COL/MIA/MEX). Voz pícara, nunca tono de CM. Cada <i>"¿eso qué es?"</i> ajeno es una victoria y empuja el algoritmo. Anuncia públicamente cada Golden Ticket encontrado: contenido y prueba social a la vez.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 03 FUNNEL ═══ -->
+  <section id="funnel">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">03</span>Inbound</div>
+      <div class="sec-title">El funnel: de un comentario<br>a <em>La Rifa Chimbita</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        <b>La entrada:</b> cliffhanger → "Comenta CHIMBITA" → DM automatizado con link → chimbita.com (hub de series verticales, geo-adaptado COL/USA/MEX) → registra datos para desbloquear el siguiente capítulo → recibe su <b>Boleto numerado</b>.<br><br>
+        Tráfico frío → audiencia propia en menos de 60 segundos.
+      </div>
+      <div class="content">
+        <div class="funnel">
+          <div class="fstep w1 reveal">
+            <div class="fk">TOFU — Descubrimiento</div>
+            <div class="ft">IA mundos imposibles · Apariciones Tier 1 · Cliffhangers</div>
+            <div class="fd">Comentarios infiltrados · Stickers guerrilla con QR (La Cacería)</div>
+          </div>
+          <div class="fstep w2 reveal">
+            <div class="fk">MOFU — Captura</div>
+            <div class="ft">"Comenta CHIMBITA" → DM automatizado → chimbita.com</div>
+            <div class="fd">Hub de series verticales → registra datos → desbloquea siguiente capítulo + bono</div>
+          </div>
+          <div class="fstep w3 dark reveal">
+            <div class="fk">🎟️ El Juego</div>
+            <div class="ft">LA RIFA CHIMBITA</div>
+            <div class="fd">Boleto numerado → Raspaditas random → Álbum C·H·I·M·B·I·T·A → 7 Golden Tickets → Premios Relámpago → Cacería QR → Trueque en El Parche VIP</div>
+          </div>
+          <div class="fstep w4 redstep reveal">
+            <div class="fk">BOFU — El Drop · Día 41</div>
+            <div class="ft">120 limitadas numeradas + boxers permanentes</div>
+            <div class="fd">Acceso: ① Golden Tickets → ② Álbum completo → ③ Prioridades → ④ Público · Contador en vivo · Pop-up Medellín + online USA/MEX · Rifa en vivo del Hoodie #001/40 · Los boxers quedan siempre disponibles</div>
+          </div>
+          <div class="fstep w5 reveal">
+            <div class="fk">Post-Drop</div>
+            <div class="ft">"El Velorio" — Sold out de las limitadas celebrado</div>
+            <div class="fd">Los boxers siguen vendiendo: el ticket de fidelización nunca se agota · El juego reinicia para el Drop 2 · Boletos y letras se conservan: la base queda enganchada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 04 LA RIFA ═══ -->
+  <section id="rifa">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">04</span>El Juego</div>
+      <div class="sec-title">La Rifa Chimbita — <em>5 mecánicas</em><br>robadas de las que ya funcionan</div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        Mecánicas validadas: colección incompleta (McDonald's Monopoly, 37 años, +5.6% ventas) · recompensa variable · near-miss · cacería QR (Nike SNKRS: 80K desbloqueos incluso agotado, "porque era divertido") · shock drops (Corteiz) · boleto dorado (Wonka).<br><br>
+        <b>Insight:</b> los premios grandes atraen; los premios instantáneos pequeños y aleatorios hacen que vuelvan todos los días.
+      </div>
+      <div class="content">
+        <div class="mech reveal">
+          <div class="badge">🎟️</div>
+          <div>
+            <h5>1 · El Boleto — tu identidad en el juego</h5>
+            <p>Al registrarte recibes tu Boleto CHIMBITA numerado. Acumula todo: raspaditas, letras, referidos. Es compartible ("mira mi boleto #0231") — se vuelve UGC por sí solo.</p>
+          </div>
+        </div>
+        <div class="mech reveal">
+          <div class="badge">🎰</div>
+          <div>
+            <h5>2 · La Raspadita — recompensa variable · premios random</h5>
+            <p>Cada acción = una raspadita digital: registrarte (1), referir confirmado (1), comentar la palabra clave (1), compartir en stories (1), encontrar un QR de La Cacería (1 especial). <b>Al raspar, siempre ganas algo:</b></p>
+            <div style="margin-top:12px;">
+              <div class="prow"><span>Descuentos 5–10% en boxers · envío gratis USA/MEX · stickers</span><div class="pbar"><i style="--w:40%"></i></div><span class="pct">~40%</span></div>
+              <div class="prow"><span>Letra para El Álbum (comunes)</span><div class="pbar"><i style="--w:35%"></i></div><span class="pct">~35%</span></div>
+              <div class="prow"><span>Parche VIP temporal · prioridad · letras medias</span><div class="pbar"><i style="--w:15%"></i></div><span class="pct">~15%</span></div>
+              <div class="prow"><span>Raspadita doble · letra rara · contenido exclusivo</span><div class="pbar"><i style="--w:8%"></i></div><span class="pct">~8%</span></div>
+              <div class="prow"><span>Boxer gratis · subir 100 puestos</span><div class="pbar"><i class="red" style="--w:1.9%"></i></div><span class="pct">~1.9%</span></div>
+              <div class="prow"><span><b>🏆 GOLDEN TICKET (solo existen 7)</b></span><div class="pbar"><i class="gold" style="--w:0.8%"></i></div><span class="pct">~0.1%</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="mech reveal">
+          <div class="badge">🔤</div>
+          <div>
+            <h5>3 · El Álbum — colección · efecto Zeigarnik</h5>
+            <p>Completa las 8 letras. Las comunes salen fácil; la <b>"M" es rarísima</b> (todo el mundo está "a una letra" — near-miss engineering). Las repetidas se <b>intercambian en El Parche VIP</b> → el juego se vuelve comunidad. Completar el álbum = ventana de compra garantizada de piezas limitadas + entrar a la rifa del Premio Mayor.</p>
+            <div class="album">
+              <div class="ltr">C<small>común</small></div>
+              <div class="ltr">H<small>común</small></div>
+              <div class="ltr">I<small>común</small></div>
+              <div class="ltr rare">M<small>¡rara!</small></div>
+              <div class="ltr">B<small>común</small></div>
+              <div class="ltr">I<small>media</small></div>
+              <div class="ltr">T<small>común</small></div>
+              <div class="ltr">A<small>común</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="mech reveal">
+          <div class="badge red">🏆</div>
+          <div>
+            <h5>4 · El Golden Ticket — el eje fundamental</h5>
+            <p>Solo <b>7 Golden Tickets</b> escondidos entre las raspaditas de todo el pre-lanzamiento. Quien encuentra uno: <b>compra garantizada de piezas limitadas en el drop + invitación al evento oficial del drop en Medellín</b> (experiencia con los artistas del sello). Cada uno encontrado se anuncia con bombo: <i>"SALIÓ EL TERCERO. Quedan 4 escondidos."</i> — FOMO con evidencia.</p>
+          </div>
+        </div>
+        <div class="mech reveal">
+          <div class="badge">⚡</div>
+          <div>
+            <h5>5 · Premios Relámpago + La Cacería</h5>
+            <p><b>Relámpago:</b> mensajes sin horario fijo por WhatsApp — <i>"los próximos 20 que comenten ⚡ ganan raspadita doble"</i>. La impredecibilidad sostiene la atención diaria. <b>La Cacería:</b> QRs escondidos en frames de la serie, piezas de IA y stickers físicos en Medellín y Miami; escanear desbloquea raspaditas especiales. La gente <b>re-ve el contenido buscando el frame</b> — el engagement se dispara solo.</p>
+          </div>
+        </div>
+
+        <hr class="rule">
+        <div class="card reveal" style="border-left:4px solid var(--red);">
+          <h4><span class="dot"></span>🏅 El Premio Mayor — la rifa del Hoodie #001/40</h4>
+          <p>Entre todos los que completaron El Álbum, se rifa <b>en vivo (Instagram Live) el Hoodie #001/40</b> — la pieza corona del drop, que jamás estará a la venta. El ganador queda <b>invitado al evento de drop en Medellín, Colombia</b>, y recibe el #001 en persona, con cámaras encima: el momento se vuelve contenido. Un solo ganador, anunciado en vivo el día del drop.<br><br><b>Conexión:</b> el Golden Ticket garantiza <i>comprar</i> y asistir al evento; el Premio Mayor es <i>ganar la reliquia</i>. Dos caminos de estatus.</p>
+        </div>
+
+        <hr class="rule">
+        <p class="reveal" style="font-size:13px;"><b>Reglas de diseño:</b> un boleto por WhatsApp/email verificado · referidos cuentan solo confirmados · las letras no se pueden comprar · <b>regla de los 60 segundos:</b> cada registro dispara su boleto + primera raspadita al instante · los premios grandes se anuncian en público, los pequeños por DM.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 05 CALENDARIO ═══ -->
+  <section id="calendario">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">05</span>Ejecución</div>
+      <div class="sec-title">Calendario de <em>45 días</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        No se pasa de fase por calendario: se pasa por señal (gates). El hype no obedece fechas.<br><br>
+        <b>Metas conservadoras:</b> los números de este calendario son el piso, no el techo.
+      </div>
+      <div class="content">
+        <div class="timeline">
+          <div class="tl reveal">
+            <div class="when">Días 1–14 · Semana 1–2</div>
+            <h6>"Aparece el mundo"</h6>
+            <p>1 pieza IA diaria + comentarios infiltrados. <b>Día 5:</b> estreno del Capítulo 1 con mecánica comenta→DM→chimbita.com activa. <b>Día 7:</b> abre chimbita.com + arranca La Rifa (primer boleto, primera raspadita). <b>Día 10:</b> primer Premio Relámpago. Guerrilla de stickers con QR + filtración a cuentas de chisme.</p>
+            <span class="goal">Meta: 200 boletos · 1 contenido > 50K vistas</span>
+          </div>
+          <div class="tl reveal">
+            <div class="when">Días 15–29 · Semana 3–4</div>
+            <h6>"El rumor crece"</h6>
+            <p><b>Día 15:</b> Capítulo 2 (con QR escondido). <b>Día 20:</b> micro-documental del sello. Escalada IA: mundos imposibles en Medellín, Brickell y CDMX. Tier 1 prepara apariciones casuales. <b>Día 22–25:</b> se anuncia el primer Golden Ticket encontrado. <b>Día 25:</b> anuncio del estreno del tráiler.</p>
+            <span class="gate"><b>Gate día 29:</b> ≥ 375 boletos · 2 contenidos > 50K · rumor activo · ≥ 20% de la base fuera de Colombia · ≥ 1 Golden Ticket encontrado</span>
+          </div>
+          <div class="tl reveal">
+            <div class="when">Días 30–37 · Semana 5</div>
+            <h6>"Las 60 siembran"</h6>
+            <p><b>Día 30:</b> llega el stock → seeding express de los 60 boxers en 48h (empaque cinematográfico, nota manuscrita, sin pedir post; Miami sale por courier el mismo día). <b>Día 31:</b> estreno del tráiler del drop — marca + Tier 1 + Tier 2 en la misma hora. <b>Días 33–35:</b> saturación coordinada de 48h en 3 mercados. <b>Día 36:</b> Capítulo 3 (final) → revela la fecha del drop + último QR de La Cacería.</p>
+            <span class="gate"><b>Gate:</b> ≥ 25 UGC del seeding · alcance ≥ 500K · ≥ 750 boletos</span>
+          </div>
+          <div class="tl hot reveal">
+            <div class="when">Días 38–45 · Semana 6</div>
+            <h6>"120 limitadas y se acabó" 🔥</h6>
+            <p><b>Día 38:</b> countdown 72h + estado del juego ("quedan 2 Golden Tickets — salen en el drop"). <b>Día 41, 10 a.m. (hora Miami):</b> EL DROP — acceso ① Golden Tickets ② Álbum completo ③ Prioridades ④ Público. Hoodies (40) y Camisetas (80) con contador en vivo · pop-up Medellín con fila real + online USA/MEX · <b>los boxers salen a la venta permanente desde este día</b>. <b>"El Intercambio"</b> (estilo Bolo Exchange de Corteiz): los primeros 30 que lleguen con boxers de otra marca los cambian por raspadita física + descuento; las prendas se donan. <b>Cierre:</b> rifa en vivo del Hoodie #001/40 entre álbumes completos. <b>Día 42:</b> sold out de limitadas → "El Velorio" + el juego reinicia para el Drop 2 (los boxers siguen vendiendo).</p>
+            <span class="goal">Misión: 120/120 limitadas · CAC ≈ $0 · base 750+ enganchada · documental de la fila listo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 06 JUGADAS ═══ -->
+  <section id="jugadas">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">06</span>Disrupción</div>
+      <div class="sec-title">Las <em>4 jugadas</em> grandes</div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">Lo que solo una marca con sello discográfico, equipo de cine e IA puede ejecutar.</div>
+      <div class="content">
+        <div class="cards">
+          <div class="card reveal"><h4><span class="dot"></span>1 · El estreno de cine</h4><p>El tráiler del drop se estrena como película: función privada para 150 personas (artistas, chisme, top del juego) + streaming privado para Miami. Nadie ha estrenado un hoodie en cine. Eso es noticia.</p></div>
+          <div class="card reveal d1"><h4><span class="dot"></span>2 · La valla falsa-real</h4><p>Valla IA gigante (Medellín y la I-95 de Miami) → debate sobre si existe → al día siguiente, una valla real pequeña en un punto absurdo (un lavadero, una tienda de barrio). El contraste ES el chiste.</p></div>
+          <div class="card reveal d2"><h4><span class="dot"></span>3 · La fila como partido de fútbol</h4><p>El día del drop se documenta con narración, entrevistas y cámaras — el contenido del sold out se convierte en el tráiler del Drop 2.</p></div>
+          <div class="card reveal d3"><h4><span class="dot"></span>4 · El Intercambio + el #001</h4><p>La pieza corona (Hoodie #001/40) jamás se vende — se rifa en vivo y se entrega en el evento — y la gente entrega prendas de otras marcas en público. Dos declaraciones de guerra simbólica en una semana.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 07 KPIs ═══ -->
+  <section id="kpis">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">07</span>Medición</div>
+      <div class="sec-title">KPIs y <em>gates</em> — <em>metas conservadoras</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        <b>Métricas reinas:</b> ① K-factor (si llega a 1.0, el juego crece solo) · ② jugadores activos diarios (si &lt; 25%, subir frecuencia de premios instantáneos) · ③ conversión DM→registro (si &lt; 30%, el problema es la serie, no el producto).<br><br>
+        Metas ajustadas al piso conservador: lo que supere estos números es upside.
+      </div>
+      <div class="content">
+        <div class="tblwrap reveal">
+        <table>
+          <thead><tr><th>Métrica</th><th>Semana 2</th><th>Semana 4</th><th>Drop</th></tr></thead>
+          <tbody>
+          <tr><td>Boletos emitidos (base de datos)</td><td class="num">200</td><td class="num">375</td><td class="num">750+</td></tr>
+          <tr><td>% base fuera de Colombia (MIA/MEX)</td><td class="num">10%</td><td class="num">20%</td><td class="num">30%+</td></tr>
+          <tr><td>Raspaditas raspadas (actividad del juego)</td><td class="num">500</td><td class="num">1.500</td><td class="num">3.750+</td></tr>
+          <tr><td>Golden Tickets encontrados (de 7)</td><td class="num">0–1</td><td class="num">1–2</td><td class="num">5+</td></tr>
+          <tr><td>Jugadores activos diarios / boletos</td><td class="num">25%</td><td class="num">35%</td><td class="num">50%+</td></tr>
+          <tr><td>Comentarios-keyword por capítulo</td><td class="num">125</td><td class="num">375</td><td class="num">1.250+</td></tr>
+          <tr><td>Conversión DM → registro</td><td class="num">30%</td><td class="num">40%</td><td class="num">50%+</td></tr>
+          <tr><td>K-factor de referidos</td><td class="num">0.3</td><td class="num">0.6</td><td class="num">1.0+</td></tr>
+          <tr><td>UGC con #CHIMBITA</td><td class="num">10</td><td class="num">30</td><td class="num">80+</td></tr>
+          <tr class="hl"><td>Ventas</td><td class="num">—</td><td class="num">—</td><td class="num">120 / 120 limitadas + boxers continuos</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 08 DISCIPLINA ═══ -->
+  <section id="disciplina">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">08</span>Disciplina</div>
+      <div class="sec-title">Lo que <em>NO</em> hacemos</div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">Tan importante como lo que sí. Cada "no" protege la escasez y el misticismo.</div>
+      <div class="content">
+        <ul class="nolist">
+          <li class="reveal"><span class="x">✕</span><span><b>Pauta de conversión antes del drop</b> — se quema dinero en público frío sin credibilidad.</span></li>
+          <li class="reveal"><span class="x">✕</span><span><b>Explicar el chiste</b> — el misterio de la palabra es el gancho internacional.</span></li>
+          <li class="reveal"><span class="x">✕</span><span><b>Paisa en la infraestructura de conversión</b> — el chiste es de la marca; el checkout es de todos.</span></li>
+          <li class="reveal"><span class="x">✕</span><span><b>Reponer las 120 limitadas</b> — la escasez se rompe una sola vez y la marca muere (los boxers son la excepción por diseño: stock permanente).</span></li>
+          <li class="reveal"><span class="x">✕</span><span><b>Tono de community manager</b> — la marca responde como persona.</span></li>
+          <li class="reveal"><span class="x">✕</span><span><b>Raspaditas que no ganan nada</b> — la frustración mata el juego; ganar algo pequeño debe ser lo normal.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 09 RESUMEN ═══ -->
+  <section id="resumen">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">09</span>Cierre</div>
+      <div class="sec-title">Resumen <em>ejecutivo</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note"></div>
+      <div class="content">
+        <div class="bigquote reveal">
+          <p>30 días de mundo fabricado con IA y cine → una serie vertical que convierte comentarios en registros → <span class="red">La Rifa CHIMBITA</span>: boletos, raspaditas con premios random, un álbum de 8 letras con una letra rarísima, 7 Golden Tickets escondidos que salen en público, cacerías de QR y premios relámpago → 60 boxers sembrando omnipresencia en Medellín, Miami y México → <span class="red">120 piezas limitadas</span> (Hoodie 40 + Camisetas 80) que se agotan en público con El Intercambio y la rifa en vivo del Hoodie #001/40 — mientras los boxers, el ticket de fidelización, <span class="red">nunca se agotan</span>.<br><br>No es una lista de espera. <span class="red">Es un juego del que la gente habla.</span></p>
+          <div class="sig">Estrategia de Lanzamiento · CHIMBITA MERCH × G*Startups</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>CHIMBITA MERCH — Hecho en Medellín, que el mundo pregunte</span>
+    <span class="red">#CHIMBITA</span>
+    <a href="#top">↑ Volver arriba</a>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Active nav link
+  const links=[...document.querySelectorAll('.navlinks a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+  const navIO=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id));
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(s=>s&&navIO.observe(s));
+</script>
+
+</body>
+</html>
