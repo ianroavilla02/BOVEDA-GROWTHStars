@@ -1,0 +1,34 @@
+# === Node.js ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+*.log
+
+# === Backups locales ===
+*.bak
+*.backup
+*.pre-*.bak
+
+# === Sistema operativo ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === IDEs ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === Credenciales Supabase ===
+.env
+.env.local
+*.env
+!.env.example
+
+# === Configuración local (paths absolutos) ===
+# El registry PROJECTS en server.js contiene paths absolutos
+# de máquina específica. No se versiona como template.
+# Si querés versionar template, crear server.config.example.js

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "fa804102-ab93-4aed-9f9c-6ecc62ec56c4",
+    "slug": "jot4r",
+    "display_name": "Jot4 R",
+    "artist_tier": 1,
+    "status": "active",
+    "country": "CO",
+    "genre": "ndombolo",
+    "contact_info": {},
+    "notes": "Primer cliente piloto migrado a Supabase. Género: ndombolo (música afro). Lanzamiento TUCUTÚ en preparación.",
+    "metadata": {
+      "vault_path": "06_CLIENTES/jot4r/",
+      "afro_subgenre": "ndombolo"
+    },
+    "created_at": "2026-06-03T04:23:04.095278+00:00",
+    "updated_at": "2026-06-03T04:23:42.729524+00:00"
+  },
+  {
+    "id": "0800a051-f575-4083-a5fc-98ed7652707c",
+    "slug": "reckless",
+    "display_name": "Reckless",
+    "artist_tier": 1,
+    "status": "active",
+    "country": "CO",
+    "genre": null,
+    "contact_info": {},
+    "notes": "MGMT client. Proyecto de dirección artística, discovery y auditoría redes.",
+    "metadata": {
+      "city": "Medellín",
+      "manager": "SANCORT Mgmt (Santiago Anzola)",
+      "service": "mgmt"
+    },
+    "created_at": "2026-06-05T15:57:00.250138+00:00",
+    "updated_at": "2026-06-05T15:57:00.250138+00:00"
+  },
+  {
+    "id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "slug": "chimbita-records",
+    "display_name": "Chimbita Records",
+    "artist_tier": 1,
+    "status": "active",
+    "country": "CO",
+    "genre": null,
+    "contact_info": {},
+    "notes": "MGMT client. Sello/colectivo. Proyectos: Javier Ferreira x LitBari, Colectivo Mansión, Marlon EP.",
+    "metadata": {
+      "cc": "1088350169",
+      "city": "Medellín",
+      "contact": "Santiago Restrepo Escobar",
+      "service": "mgmt"
+    },
+    "created_at": "2026-06-05T15:57:00.250138+00:00",
+    "updated_at": "2026-06-05T15:57:00.250138+00:00"
+  },
+  {
+    "id": "da13b1c7-ae9f-4308-9f4e-6469b8f7c705",
+    "slug": "ery-la-buena-vida",
+    "display_name": "ERY LA BUENA VIDA",
+    "artist_tier": 3,
+    "status": "active",
+    "country": "PR",
+    "genre": "Latin Urban",
+    "contact_info": {},
+    "notes": "Ery \"La Buena Vida\" (también conocido como \"La Good Life\") es un artista, compositor y cantante puertorriqueño de música urbana. Nació en Carolina, Puerto Rico, y actualmente está radicado en el estado de Florida, Estados Unidos.Trayectoria y Estilo MusicalInicios musicales: Empezó a crear música de manera empírica a los 18 años, motivado por su hermano mayor, con quien montó su propio estudio casero.Evolución artística: Comenzó su carrera formando parte de un dúo musical antes de dar el salto definitivo como solista para consolidar su propia identidad.Propuesta musical: Se caracteriza por hacer un reggaetón con un enfoque real y consciente, priorizando las letras profundas y con peso social sobre las tendencias comerciales masivas.Colaboraciones destacadas: A lo largo de su carrera ha trabajado con figuras de gran renombre en el género urbano como Nicky Jam, Cosculluela, Tony Dize y Ana Isabelle.",
+    "metadata": {
+      "city": "San Juan",
+      "service": "gs",
+      "products": [
+        "gs"
+      ],
+      "onboard_date": "2026-06-06",
+      "onboard_method": "dashboard"
+    },
+    "created_at": "2026-06-06T19:07:06.785673+00:00",
+    "updated_at": "2026-06-06T19:07:06.785673+00:00"
+  },
+  {
+    "id": "4caff612-c613-4d73-9731-e2bcf057ac14",
+    "slug": "moneymade",
+    "display_name": "MoneyMade",
+    "artist_tier": 1,
+    "status": "active",
+    "country": "CO",
+    "genre": "sello discogr�fico",
+    "contact_info": {},
+    "notes": "Cliente principal: inversor/sello discogr�fico. �nico artista invertido: Jared La J (Brandon Ospina). MoneyMade llega a Colombia el 29-may-2026. Co-gesti�n con SANCORT MGMT v�a Santiago Anzola (DC) e Ian Villaveces. La estructura sigue principio operativo SANCORT: el sello/inversor es cliente principal, el artista es el proyecto.",
+    "metadata": {
+      "city": "Cali",
+      "contact": "Junior (sello), Cristian D�az (Sancor MGMT ops)",
+      "manager": "Junior",
+      "service": "mgmt",
+      "products": [
+        "mgmt"
+      ],
+      "onboard_date": "2026-06-10",
+      "migrated_from": "jared-la-j (D-030)",
+      "artist_project": "Jared La J",
+      "onboard_method": "dashboard"
+    },
+    "created_at": "2026-06-10T00:10:48.371111+00:00",
+    "updated_at": "2026-06-10T02:40:10.434913+00:00"
+  }
+]

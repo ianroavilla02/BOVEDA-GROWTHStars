@@ -1,0 +1,122 @@
+[
+  {
+    "id": "ba89b8b4-852a-4575-8043-26a03ac692af",
+    "engagement_id": "1b866cbb-b63a-47bc-936b-89d51e26919f",
+    "number": 1,
+    "title": "Dirección Artística",
+    "subtitle": "Brand Book de la Era Musical",
+    "description": "Construcción del Manual de Marca de Era: define quién es la artista, cómo se ve, cómo se siente y cómo comunica.",
+    "status": "pending",
+    "notes": null,
+    "created_at": "2026-06-05T15:57:00.250138+00:00",
+    "updated_at": "2026-06-05T15:57:00.250138+00:00"
+  },
+  {
+    "id": "9b570500-ffe5-4cd8-939f-f078a942de7f",
+    "engagement_id": "1b866cbb-b63a-47bc-936b-89d51e26919f",
+    "number": 2,
+    "title": "Discovery Session",
+    "subtitle": "Sesión de Escucha del Catálogo",
+    "description": "Exploración y validación musical orientada a alinear el sonido de la artista con el universo de marca.",
+    "status": "pending",
+    "notes": null,
+    "created_at": "2026-06-05T15:57:00.250138+00:00",
+    "updated_at": "2026-06-05T15:57:00.250138+00:00"
+  },
+  {
+    "id": "c5b6eba3-7800-4cba-bdb7-aa67ae382ca9",
+    "engagement_id": "1b866cbb-b63a-47bc-936b-89d51e26919f",
+    "number": 3,
+    "title": "Auditoría Redes Sociales",
+    "subtitle": "Salud Algorítmica y Plan de Contenidos",
+    "description": "Diagnóstico y estrategia de contenidos basada en datos reales del comportamiento de la audiencia.",
+    "status": "pending",
+    "notes": null,
+    "created_at": "2026-06-05T15:57:00.250138+00:00",
+    "updated_at": "2026-06-05T15:57:00.250138+00:00"
+  },
+  {
+    "id": "fabfc97d-9fbf-40c5-895c-b7c12013894c",
+    "engagement_id": "19b3bd7b-5e83-4ffd-b0ab-1a4c47f1d4fc",
+    "number": 1,
+    "title": "Estrategia de Sostenimiento",
+    "subtitle": "Quien como yo? - Javier Ferreira x LitBari",
+    "description": "Acompañamiento del sencillo ya lanzado: narrativa de prensa, cronograma de activaciones, administración de contenido existente y preproducción orgánica.",
+    "status": "pending",
+    "notes": null,
+    "created_at": "2026-06-05T15:57:00.250138+00:00",
+    "updated_at": "2026-06-05T15:57:00.250138+00:00"
+  },
+  {
+    "id": "668ca959-802d-4671-aac6-af467581de3d",
+    "engagement_id": "19b3bd7b-5e83-4ffd-b0ab-1a4c47f1d4fc",
+    "number": 2,
+    "title": "Nueva Era Creativa",
+    "subtitle": "Colectivo en Mansión (Plan de Trabajo 1 mes)",
+    "description": "Diseño de estrategia de contenidos para la convivencia del colectivo en la mansión: captura, sesiones, dinámica de grupo, plan de publicación.",
+    "status": "pending",
+    "notes": null,
+    "created_at": "2026-06-05T15:57:00.250138+00:00",
+    "updated_at": "2026-06-05T15:57:00.250138+00:00"
+  },
+  {
+    "id": "7e77d2cc-ea20-46f3-a15b-7693c24e07d9",
+    "engagement_id": "19b3bd7b-5e83-4ffd-b0ab-1a4c47f1d4fc",
+    "number": 3,
+    "title": "Lanzamiento de EP",
+    "subtitle": "Amor Juvenil - Marlon x ChimbitaRecords",
+    "description": "Estructuración de identidad del EP: presskit básico, estrategia de contenidos orgánicos, notas de prensa del mes con calendario de activaciones.",
+    "status": "pending",
+    "notes": null,
+    "created_at": "2026-06-05T15:57:00.250138+00:00",
+    "updated_at": "2026-06-05T15:57:00.250138+00:00"
+  },
+  {
+    "id": "a4af1dca-d9c5-4c84-93ac-3f6439636b8a",
+    "engagement_id": "8a2bda61-d657-4034-b1ec-747424608226",
+    "number": 1,
+    "title": "Estrategia de Apoyo",
+    "subtitle": "Nanda Free (artista como Featuring)",
+    "description": "Estrategia para capitalizar la exposición del artista como featuring: contenido orgánico y gira de discotecas en Cali.",
+    "status": "pending",
+    "notes": null,
+    "created_at": "2026-06-05T15:57:00.250138+00:00",
+    "updated_at": "2026-06-05T15:57:00.250138+00:00"
+  },
+  {
+    "id": "a9ca5360-8d73-45cb-a7ea-30ffb34f1e43",
+    "engagement_id": "8a2bda61-d657-4034-b1ec-747424608226",
+    "number": 2,
+    "title": "Estrategia de Lanzamiento",
+    "subtitle": "PXRX NX Jared feat. Calao",
+    "description": "Estrategia de lanzamiento del sencillo propio: plan de videoclip, medios de prensa, preproducción de contenidos orgánicos.",
+    "status": "pending",
+    "notes": null,
+    "created_at": "2026-06-05T15:57:00.250138+00:00",
+    "updated_at": "2026-06-05T15:57:00.250138+00:00"
+  },
+  {
+    "id": "24fa8ecd-c4ed-4310-92f2-53d9f4736244",
+    "engagement_id": "8a2bda61-d657-4034-b1ec-747424608226",
+    "number": 3,
+    "title": "Evento en Barranquilla",
+    "subtitle": "Logística y Cubrimiento Show Carabin3",
+    "description": "Logística y cubrimiento de la presentación en Barranquilla donde el artista abrirá el show de Carabin3.",
+    "status": "pending",
+    "notes": null,
+    "created_at": "2026-06-05T15:57:00.250138+00:00",
+    "updated_at": "2026-06-05T15:57:00.250138+00:00"
+  },
+  {
+    "id": "390cf03f-b6eb-45c7-ab6a-f7b5e2a1d761",
+    "engagement_id": "1b866cbb-b63a-47bc-936b-89d51e26919f",
+    "number": 4,
+    "title": "Viaje Reckless Medellin - Julio 4",
+    "subtitle": "Show Carabine / Sesion de Contenido",
+    "description": null,
+    "status": "pending",
+    "notes": null,
+    "created_at": "2026-06-14T19:37:51.158876+00:00",
+    "updated_at": "2026-06-14T19:37:51.158876+00:00"
+  }
+]

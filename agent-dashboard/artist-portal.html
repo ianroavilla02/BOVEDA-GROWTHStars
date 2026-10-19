@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal del Artista — G*S</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #14141f;
+      --elevated: #1a1a28;
+      --border: #1f1f2e;
+      --text: #e4e4f0;
+      --text-muted: #8b8fa3;
+      --text-dim: #6b6f80;
+      --violet: #a855f7;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --orange: #fb923c;
+      --pink: #ec4899;
+      --red: #ef4444;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+    }
+
+    /* ===== LOADING & ERROR ===== */
+    .state-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      text-align: center;
+      gap: 12px;
+    }
+    .state-screen .title { font-size: 20px; font-weight: 600; }
+    .state-screen .subtitle { font-size: 14px; color: var(--text-muted); max-width: 400px; }
+    .spinner {
+      width: 32px; height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--violet);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ===== HEADER ===== */
+    .portal-header {
+      text-align: center;
+      padding: 32px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+    .portal-brand {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+    .portal-artist-name {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .portal-tier-badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 3px 12px;
+      border-radius: 12px;
+      background: rgba(168,85,247,0.15);
+      color: var(--violet);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .portal-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .portal-meta span + span::before {
+      content: ' · ';
+      color: var(--text-dim);
+    }
+
+    /* ===== SECTIONS ===== */
+    .portal-section {
+      margin-bottom: 36px;
+    }
+    .portal-section-title {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .portal-empty {
+      padding: 20px 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+
+    /* ===== PROGRESS ===== */
+    .progress-bar-container {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .progress-bar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .progress-bar-label {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .progress-bar-pct {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--violet);
+    }
+    .progress-bar-track {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--violet), var(--blue));
+      border-radius: 3px;
+      transition: width 0.6s ease;
+    }
+
+    /* ===== OBJECTIVE CARD ===== */
+    .obj-card {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+    }
+    .obj-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .obj-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .obj-number {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--violet);
+      background: rgba(168,85,247,0.12);
+      padding: 2px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .obj-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* ===== STATUS BADGES ===== */
+    .status-badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .status-badge.done { background: rgba(16,185,129,0.15); color: var(--green); }
+    .status-badge.in_progress, .status-badge.en_progreso { background: rgba(59,130,246,0.15); color: var(--blue); }
+    .status-badge.pending, .status-badge.pendiente { background: rgba(139,143,163,0.12); color: var(--text-muted); }
+    .status-badge.active { background: rgba(16,185,129,0.15); color: var(--green); }
+    .status-badge.hecha { background: rgba(16,185,129,0.15); color: var(--green); }
+
+    /* ===== DELIVERABLE LIST ===== */
+    .del-list { margin-top: 4px; }
+    .del-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: var(--elevated);
+      margin-bottom: 4px;
+      gap: 8px;
+    }
+    .del-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
+    }
+    .del-title {
+      font-size: 13px;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .del-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .del-view-btn {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: rgba(59,130,246,0.12);
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .del-view-btn:hover {
+      background: rgba(59,130,246,0.25);
+    }
+
+    /* ===== DOCUMENTS GRID ===== */
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .doc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color 0.15s;
+    }
+    .doc-card:hover { border-color: var(--violet); }
+    .doc-category {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+    .doc-category.brandbook { color: var(--violet); }
+    .doc-category.guia-tecnica { color: var(--orange); }
+    .doc-category.biolink { color: var(--blue); }
+    .doc-category.auditoria { color: var(--green); }
+    .doc-category.general { color: var(--text-muted); }
+    .doc-label {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .doc-open-btn {
+      display: inline-block;
+      margin-top: auto;
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 6px;
+      background: var(--elevated);
+      color: var(--blue);
+      text-decoration: none;
+      text-align: center;
+      font-weight: 500;
+      transition: background 0.15s;
+    }
+    .doc-open-btn:hover { background: var(--border); }
+
+    /* ===== TASKS ===== */
+    .task-item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: var(--surface);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      gap: 10px;
+    }
+    .task-info { flex: 1; min-width: 0; }
+    .task-desc {
+      font-size: 13px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .task-assigned {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    .task-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    /* ===== FOOTER ===== */
+    .portal-footer {
+      text-align: center;
+      padding: 32px 0 16px;
+      border-top: 1px solid var(--border);
+      margin-top: 24px;
+    }
+    .portal-footer-text {
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 480px) {
+      .portal-artist-name { font-size: 26px; }
+      .container { padding: 16px 16px 40px; }
+      .docs-grid { grid-template-columns: 1fr; }
+      .obj-header { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <div class="state-screen" id="loading-screen">
+      <div class="spinner"></div>
+      <div class="subtitle">Cargando portal...</div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    var SUPABASE_URL = 'https://hdfaxjxqsrknfcghawdl.supabase.co';
+    var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhkZmF4anhxc3JrbmZjZ2hhd2RsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA0MzYyNzQsImV4cCI6MjA5NjAxMjI3NH0.OGsEKCd2PrckG0lpWaBgZdmSE1nTCaAU7E8GtSUJwGI';
+
+    var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    function getArtistSlug() {
+      var host = window.location.hostname;
+      var parts = host.split('.');
+      if (parts.length >= 3 && parts[0] !== 'www') {
+        return parts[0];
+      }
+      return new URLSearchParams(window.location.search).get('artist');
+    }
+
+    function esc(str) {
+      if (!str) return '';
+      var d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    function getMonthName(dateStr) {
+      var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      if (!dateStr) {
+        return months[new Date().getMonth()] + ' ' + new Date().getFullYear();
+      }
+      var parts = dateStr.split('-');
+      return months[parseInt(parts[1], 10) - 1] + ' ' + parts[0];
+    }
+
+    function statusLabel(s) {
+      var map = { done: 'Done', in_progress: 'En progreso', pending: 'Pendiente', pendiente: 'Pendiente', en_progreso: 'En progreso', hecha: 'Hecha', active: 'Activo' };
+      return map[s] || s || 'Pendiente';
+    }
+
+    function statusClass(s) {
+      return (s || 'pending').replace(/ /g, '_');
+    }
+
+    function categoryIcon(cat) {
+      var icons = { brandbook: '🎨', 'guia-tecnica': '📋', biolink: '🔗', auditoria: '📊', general: '📎' };
+      return icons[cat] || '📎';
+    }
+
+    function showError(msg) {
+      document.getElementById('app').innerHTML =
+        '<div class="state-screen"><div class="title">' + esc(msg) + '</div>' +
+        '<div class="subtitle">Verifica la URL o intenta de nuevo mas tarde.</div></div>';
+    }
+
+    async function loadPortal() {
+      var slug = getArtistSlug();
+      if (!slug) {
+        showError('Artista no encontrado');
+        return;
+      }
+
+      try {
+        var artistRes = await sb.from('artists').select('id, slug, stage_name, status, metadata').eq('slug', slug).single();
+        if (artistRes.error || !artistRes.data) {
+          showError('Artista no encontrado');
+          return;
+        }
+        var artist = artistRes.data;
+
+        var clientRes = await sb.from('clients').select('id, artist_tier, genre, country').eq('slug', slug).single();
+        var client = clientRes.data;
+
+        var linksRes = await sb.from('artist_links').select('id, label, url, category, attachment_type').eq('artist_id', artist.id);
+        var links = (linksRes.data || []);
+
+        var tasksRes = await sb.from('secondary_tasks').select('id, descripcion, status, assigned_to').eq('artist_id', artist.id).eq('archived', false).order('created_at', { ascending: false });
+        var tasks = (tasksRes.data || []);
+
+        var engagement = null;
+        var objectives = [];
+        var engMonth = '';
+
+        if (client) {
+          var currentMonth = new Date().toISOString().substring(0, 7);
+          var engRes = await sb.from('mgmt_engagements').select('id, month, status').eq('client_id', client.id).eq('status', 'active');
+          var engagements = engRes.data || [];
+          var currentEng = engagements.find(function(e) { return e.month === currentMonth; });
+          if (!currentEng && engagements.length > 0) {
+            currentEng = engagements.sort(function(a, b) { return b.month.localeCompare(a.month); })[0];
+          }
+
+          if (currentEng) {
+            engagement = currentEng;
+            engMonth = currentEng.month;
+            var objRes = await sb.from('mgmt_objectives')
+              .select('id, number, title, status, mgmt_deliverables(id, title, status, file_path, attachment_type)')
+              .eq('engagement_id', currentEng.id)
+              .order('number', { ascending: true });
+            objectives = objRes.data || [];
+          }
+        }
+
+        renderPortal(artist, client, objectives, engMonth, links, tasks);
+
+      } catch (err) {
+        showError('Error de conexion. Intenta de nuevo mas tarde.');
+      }
+    }
+
+    function renderPortal(artist, client, objectives, engMonth, links, tasks) {
+      var tier = (client && client.artist_tier) ? client.artist_tier : null;
+      var genre = (client && client.genre) ? client.genre : null;
+      var country = (client && client.country) ? client.country : null;
+      var tierLabels = { 1: 'Emergente', 2: 'Establecido', 3: 'Reconocido', 4: 'Consolidado' };
+
+      var totalDels = 0, doneDels = 0;
+      objectives.forEach(function(obj) {
+        var dels = obj.mgmt_deliverables || [];
+        totalDels += dels.length;
+        doneDels += dels.filter(function(d) { return d.status === 'done'; }).length;
+      });
+      var pct = totalDels > 0 ? Math.round((doneDels / totalDels) * 100) : 0;
+
+      var html = '';
+
+      // Header
+      html += '<header class="portal-header">' +
+        '<div class="portal-brand">G*S</div>' +
+        '<div class="portal-artist-name">' + esc(artist.stage_name) + '</div>';
+      if (tier) {
+        html += '<div class="portal-tier-badge">Tier ' + tier + ' — ' + esc(tierLabels[tier] || '') + '</div>';
+      }
+      var metaParts = [];
+      if (genre) metaParts.push(esc(genre));
+      if (country) metaParts.push(esc(country));
+      if (metaParts.length > 0) {
+        html += '<div class="portal-meta">' + metaParts.map(function(p) { return '<span>' + p + '</span>'; }).join('') + '</div>';
+      }
+      html += '</header>';
+
+      // Progress
+      html += '<section class="portal-section">' +
+        '<div class="portal-section-title">Progreso — ' + getMonthName(engMonth) + '</div>';
+
+      if (objectives.length > 0) {
+        html += '<div class="progress-bar-container">' +
+          '<div class="progress-bar-header">' +
+            '<span class="progress-bar-label">Avance general</span>' +
+            '<span class="progress-bar-pct">' + pct + '%</span>' +
+          '</div>' +
+          '<div class="progress-bar-track"><div class="progress-bar-fill" style="width:' + pct + '%"></div></div>' +
+        '</div>';
+
+        objectives.forEach(function(obj) {
+          var dels = obj.mgmt_deliverables || [];
+          html += '<div class="obj-card">' +
+            '<div class="obj-header">' +
+              '<div class="obj-header-left">' +
+                '<span class="obj-number">#' + (obj.number || '—') + '</span>' +
+                '<span class="obj-title">' + esc(obj.title) + '</span>' +
+              '</div>' +
+              '<span class="status-badge ' + statusClass(obj.status) + '">' + statusLabel(obj.status) + '</span>' +
+            '</div>';
+
+          if (dels.length > 0) {
+            html += '<div class="del-list">';
+            dels.forEach(function(d) {
+              html += '<div class="del-item">' +
+                '<div class="del-info">' +
+                  '<span class="status-badge ' + statusClass(d.status) + '">' + statusLabel(d.status) + '</span>' +
+                  '<span class="del-title">' + esc(d.title) + '</span>' +
+                '</div>' +
+                '<div class="del-actions">';
+              if (d.file_path && d.attachment_type === 'link') {
+                html += '<a href="' + esc(d.file_path) + '" target="_blank" class="del-view-btn">Ver</a>';
+              }
+              html += '</div></div>';
+            });
+            html += '</div>';
+          }
+          html += '</div>';
+        });
+      } else {
+        html += '<div class="portal-empty">Sin plan activo este mes</div>';
+      }
+      html += '</section>';
+
+      // Documents
+      html += '<section class="portal-section">' +
+        '<div class="portal-section-title">Documentos</div>';
+
+      if (links.length > 0) {
+        html += '<div class="docs-grid">';
+        links.forEach(function(link) {
+          var cat = link.category || 'general';
+          html += '<div class="doc-card">' +
+            '<div class="doc-category ' + esc(cat) + '">' + categoryIcon(cat) + ' ' + esc(cat) + '</div>' +
+            '<div class="doc-label">' + esc(link.label) + '</div>';
+          if (link.url) {
+            html += '<a href="' + esc(link.url) + '" target="_blank" class="doc-open-btn">Abrir</a>';
+          }
+          html += '</div>';
+        });
+        html += '</div>';
+      } else {
+        html += '<div class="portal-empty">Sin documentos disponibles</div>';
+      }
+      html += '</section>';
+
+      // Tasks
+      html += '<section class="portal-section">' +
+        '<div class="portal-section-title">Tareas</div>';
+
+      if (tasks.length > 0) {
+        tasks.forEach(function(t) {
+          html += '<div class="task-item">' +
+            '<div class="task-info">' +
+              '<div class="task-desc">' + esc(t.descripcion) + '</div>' +
+              (t.assigned_to ? '<div class="task-assigned">Asignado: ' + esc(t.assigned_to) + '</div>' : '') +
+            '</div>' +
+            '<div class="task-right">' +
+              '<span class="status-badge ' + statusClass(t.status) + '">' + statusLabel(t.status) + '</span>' +
+            '</div>' +
+          '</div>';
+        });
+      } else {
+        html += '<div class="portal-empty">Sin tareas pendientes</div>';
+      }
+      html += '</section>';
+
+      // Footer
+      html += '<footer class="portal-footer">' +
+        '<div class="portal-footer-text">Powered by G*S · GrowthStars · ' + new Date().getFullYear() + '</div>' +
+      '</footer>';
+
+      document.getElementById('app').innerHTML = html;
+      document.title = artist.stage_name + ' — Portal G*S';
+    }
+
+    loadPortal();
+  </script>
+</body>
+</html>

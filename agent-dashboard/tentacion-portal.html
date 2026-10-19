@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanzamiento Tentación | AMOR ADOLESCENTE</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#050505',
+                            card: '#111111',
+                            cardHover: '#1a1a1a',
+                            border: '#2a2a2a',
+                            text: '#e5e5e5',
+                            muted: '#888888',
+                            accent: '#ffffff'
+                        }
+                    },
+                    boxShadow: {
+                        'glow-white': '0 0 20px rgba(255, 255, 255, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .glass-panel {
+            background: rgba(17, 17, 17, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid #2a2a2a;
+        }
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .gradient-gray {
+            background-image: linear-gradient(90deg, #ffffff, #888888);
+        }
+
+        /* Loading spinner animation */
+        .spinner {
+            animation: rotate 2s linear infinite;
+        }
+        .spinner .path {
+            stroke: #ffffff;
+            stroke-linecap: round;
+            animation: dash 1.5s ease-in-out infinite;
+        }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+        @keyframes dash {
+            0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
+            50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
+            100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+        const { motion, AnimatePresence } = window.Motion;
+
+        const CLIENT_SLUG = 'marlon-villamil-legacy';
+
+        const initialDb = {
+            tentacion: {
+                title: "TENTACION",
+                color: "brand-accent",
+                shadow: "shadow-glow-white",
+                gradient: "gradient-gray",
+                phases: [
+                    {
+                        name: "PRERELEASE - EL SECRETO",
+                        posts: [
+                            { id: "ORG-01", date: "22 jul", day: "Mié 19:00", title: "Anuncio faceta musical", type: "LIBRE (Orgánico)", pieces: "-", platform: "IG/TikTok", phase: "PRE", copy: "Llevo meses guardando algo. No sé si estoy listo... pero ya no puedo callarlo.\nNada de lo que sabían de mí va a seguir igual.", strategy: "Marlon cara a cámara, sin producción. Objetivo: intriga + activar notificaciones. CTA: 'Activá la campanita'.", isOrganic: true, status: 'pending', fileName: null, fileUrl: null },
+                            { id: "T-P01", date: "27 jul", day: "Lun 19:00", title: "Carrusel combinado #1", type: "Carrusel", pieces: "OS-01,02,03 + BTS-01,02,03", platform: "IG", phase: "PRE", copy: "Hay lugares a los que uno no debería volver. Yo volví.\nDeslizá y entendé de qué les hablo. ->", strategy: "Alterna cortes One Shot + fotos BTS = alta retención. Construir universo sin spoilear. CTA: '¿qué creen que pasó ahí?'.", status: 'pending', fileName: null, fileUrl: null },
+                            { id: "T-P02", date: "31 jul", day: "Vie 18:00", title: "Portada reveal", type: "Post Estático", pieces: "POR-01", platform: "IG Feed/Stories", phase: "PRE", copy: "TENTACIÓN.\n10 . 08\nMi primera canción. La escribí cuando no debía sentir lo que sentí.", strategy: "Reveal de portada + título + nueva fecha. Oficializa el primer single. Objetivo: conversión a 'espera'. CTA: 'Marcá la fecha'.", status: 'pending', fileName: null, fileUrl: null },
+                            { id: "T-P03", date: "05 ago", day: "Mié 19:00", title: "Trailer + pre-save", type: "Video", pieces: "TRL-01", platform: "Reel/TikTok/YT", phase: "PRE", copy: "5 días. Esto es TENTACIÓN. Y el 10 de agosto (mi cumpleaños) por fin es suya.", strategy: "Trailer (primer audio real) + activa link de pre-guardado. Conversión dura a pre-save conectada al cumpleaños. CTA: 'Link en bio'.", status: 'pending', fileName: null, fileUrl: null }
+                        ]
+                    },
+                    {
+                        name: "RELEASE DAY - 10 DE AGOSTO (CUMPLEAÑOS)",
+                        posts: [
+                            { id: "T-P04", date: "10 ago", day: "Lun 00:00", title: "Videoclip 4K", type: "YouTube", pieces: "VC-01", platform: "YT", phase: "RELEASE", copy: "TENTACIÓN - Marlon Villamil (Video Oficial)\nHoy es mi cumpleaños y mi mejor regalo es entregarles esto. Escúchala en todas las plataformas.", strategy: "Pieza ancla a medianoche para acumular vistas. Conexión emocional por el cumpleaños.", status: 'pending', fileName: null, fileUrl: null },
+                            { id: "T-P05", date: "10 ago", day: "Lun 09:00", title: "Canvas Spotify + Portada", type: "Reuso", pieces: "TRL-01 + POR-01", platform: "Spotify/IG", phase: "RELEASE", copy: "Ya está en todas las plataformas. Dale play sin miedo.", strategy: "Activa Canvas en Spotify + post oficial. Experiencia en la DSP.", status: 'pending', fileName: null, fileUrl: null },
+                            { id: "T-P06", date: "10 ago", day: "Lun 13:00", title: "Carrusel de lanzamiento", type: "Carrusel", pieces: "FRM 1-4 + VC", platform: "IG", phase: "RELEASE", copy: "Cada frame de este video tiene una historia. Deslizá por TENTACIÓN.", strategy: "Alterna Frames + secciones del videoclip. Muestra la calidad y lleva tráfico al clip completo.", status: 'pending', fileName: null, fileUrl: null },
+                            { id: "T-P07", date: "10 ago", day: "Lun 16:00", title: "Performance/Lyrics #1", type: "Reel Vertical", pieces: "LYR-01", platform: "Reel/TikTok", phase: "RELEASE", copy: "Se supone que no debía sentir esto. TENTACIÓN ya está afuera.", strategy: "Reel vertical directo con la frase más coreable. Activar uso del audio.", status: 'pending', fileName: null, fileUrl: null }
+                        ]
+                    },
+                    {
+                        name: "POSTRELEASE - MANTENIMIENTO",
+                        posts: [
+                            { id: "T-P08", date: "12 ago", day: "Mié 19:00", title: "Performance/Lyrics #2", type: "Reel Vertical", pieces: "LYR-02", platform: "Reel/TikTok", phase: "POST", copy: "Esta parte es la que más me duele cantar.", strategy: "Segundo Reel de lyrics. Extiende la vida del audio. Segunda ola de UGC.", status: 'pending', fileName: null, fileUrl: null },
+                            { id: "T-P09", date: "15 ago", day: "Sáb 12:00", title: "BTS Producción", type: "Video", pieces: "BPG-01", platform: "Reel/YT", phase: "POST", copy: "Cómo hicimos TENTACIÓN. Nada de esto era fácil.", strategy: "Autoridad y valor de producción. Percepción de 'artista real'.", status: 'pending', fileName: null, fileUrl: null },
+                            { id: "T-P10", date: "18 ago", day: "Mar 19:00", title: "Carrusel combinado #2", type: "Carrusel", pieces: "OS-04,05,06 + BTS-04,05,06", platform: "IG", phase: "POST", copy: "Lo que la cámara no alcanzó a grabar. Gracias por esta primera semana. Deslizá ->", strategy: "Material restante. Cierra la ventana de lanzamiento con gratitud y recapitulando el éxito del single.", status: 'pending', fileName: null, fileUrl: null },
+                            { id: "ORG-02", date: "22 ago", day: "Sáb 17:00", title: "Cierre de etapa", type: "LIBRE", pieces: "-", platform: "IG Stories", phase: "POST", copy: "Los números son una locura, pero lo que me llevo son ustedes. Esto apenas empieza.", strategy: "Orgánico. Cierre de campaña del single. CTA: 'sigan escuchando'.", isOrganic: true, status: 'pending', fileName: null, fileUrl: null }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        const rules = [
+            { icon: "fa-clock", title: "Ventanas COL", desc: "Entre semana 18:00-21:00; findes/festivos 12:00-14:00 y 19:00-21:00." },
+            { icon: "fa-mobile-screen", title: "Volumen Diario", desc: "1 publicación de feed por día máximo. El volumen extra va a Stories." },
+            { icon: "fa-user", title: "Orgánico LIBRE", desc: "Marlon todos los días en Stories - el pegamento humano." },
+            { icon: "fa-images", title: "Regla de Carruseles", desc: "El primer ítem SIEMPRE es un One Shot con movimiento." },
+            { icon: "fa-link", title: "Smartlinks", desc: "Todo link va a bio. Cero links en descripciones de IG/TK." }
+        ];
+
+        function phaseForPost(post) {
+            if (post.phase === 'PRE') return 'prerelease';
+            if (post.phase === 'RELEASE') return 'releaseday';
+            if (post.phase === 'POST') return 'postrelease';
+            return 'general';
+        }
+
+        function fileIsImage(mimeType) {
+            return (mimeType || '').startsWith('image/');
+        }
+
+        function fileIsVideo(mimeType) {
+            return (mimeType || '').startsWith('video/');
+        }
+
+        const PostCard = ({ post, asset, onFileUpload, onDeleteAsset }) => {
+            const [expanded, setExpanded] = useState(false);
+            const [isUploading, setIsUploading] = useState(false);
+            const [uploadError, setUploadError] = useState(null);
+            const fileInputRef = useRef(null);
+            
+            const isOrganic = post.isOrganic;
+            const isUploaded = !!asset;
+            const baseBorder = isUploaded ? 'border-white' : 'border-brand-border';
+            const borderClass = isOrganic 
+                ? `border-dashed ${baseBorder}` 
+                : `border-l-4 border-l-white border-t border-r border-b ${baseBorder}`;
+            
+            const getIcon = (platform) => {
+                if(platform.includes('IG')) return 'fa-instagram';
+                if(platform.includes('YT') || platform === 'YouTube') return 'fa-youtube';
+                if(platform.includes('TikTok')) return 'fa-tiktok';
+                if(platform.includes('Spotify')) return 'fa-spotify';
+                return 'fa-hashtag';
+            };
+
+            const triggerFileInput = (e) => {
+                e.stopPropagation();
+                fileInputRef.current.click();
+            };
+
+            const handleFileChange = async (e) => {
+                if (e.target.files && e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    setIsUploading(true);
+                    setUploadError(null);
+                    try {
+                        await onFileUpload(post, file);
+                    } catch (err) {
+                        setUploadError(err.message || 'Error al subir');
+                    } finally {
+                        setIsUploading(false);
+                        if (fileInputRef.current) fileInputRef.current.value = '';
+                    }
+                }
+            };
+
+            const handleDelete = async (e) => {
+                e.stopPropagation();
+                if (!asset) return;
+                if (!window.confirm('¿Eliminar este asset de Supabase?')) return;
+                try {
+                    await onDeleteAsset(asset.id);
+                } catch (err) {
+                    setUploadError(err.message || 'Error al eliminar');
+                }
+            };
+
+            return (
+                <motion.div 
+                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className={`bg-brand-card rounded-xl p-5 cursor-pointer hover:bg-brand-cardHover transition-all duration-300 ${borderClass} mb-4 relative overflow-hidden`}
+                    onClick={() => setExpanded(!expanded)}
+                >
+                    {isOrganic && <div className="absolute top-0 right-0 bg-brand-border text-xs px-3 py-1 rounded-bl-lg text-brand-muted font-mono tracking-widest">ORGÁNICO</div>}
+                    
+                    <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+                        <div className="flex items-center gap-4 w-full lg:w-auto">
+                            <div className="flex flex-col items-center justify-center bg-black/50 rounded-lg p-2 min-w-[70px] border border-brand-border">
+                                <span className="text-xs text-brand-muted font-bold uppercase">{post.date.split(' ')[1]}</span>
+                                <span className="text-xl font-display font-bold text-white">{post.date.split(' ')[0]}</span>
+                            </div>
+                            <div className="flex-1">
+                                <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                                    {post.title}
+                                </h3>
+                                <div className="flex flex-wrap items-center gap-2 mt-1 text-xs">
+                                    <span className="text-brand-muted font-mono">{post.id}</span>
+                                    <span className="w-1 h-1 bg-brand-muted rounded-full"></span>
+                                    <span className="text-gray-300 bg-brand-border/50 px-2 py-0.5 rounded flex items-center gap-1">
+                                        <i className={`fa-brands ${getIcon(post.platform)}`}></i> {post.platform}
+                                    </span>
+                                    <span className="w-1 h-1 bg-brand-muted rounded-full"></span>
+                                    <span className="text-gray-300 bg-brand-border/50 px-2 py-0.5 rounded uppercase font-mono tracking-wider">
+                                        {post.type}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div className="flex items-center gap-4 w-full lg:w-auto justify-between lg:justify-end border-t lg:border-t-0 border-brand-border pt-4 lg:pt-0 mt-2 lg:mt-0">
+                            <div className="text-left lg:text-right">
+                                <p className="text-sm text-brand-muted uppercase font-mono"><i className="fa-regular fa-clock mr-1"></i>{post.day}</p>
+                                <p className="text-xs font-mono mt-1 text-gray-400">PIEZAS: <span className="text-white">{post.pieces}</span></p>
+                            </div>
+                            
+                            <div className="flex items-center gap-3">
+                                <input 
+                                    type="file" 
+                                    ref={fileInputRef} 
+                                    onChange={handleFileChange} 
+                                    accept="image/*,video/*"
+                                    className="hidden" 
+                                />
+                                
+                                {isUploading ? (
+                                    <button 
+                                        className="bg-white text-black px-4 py-2 rounded font-bold text-xs uppercase tracking-wider flex items-center gap-2 min-w-[160px] justify-center"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <svg className="spinner w-4 h-4" viewBox="0 0 50 50">
+                                            <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="5"></circle>
+                                        </svg>
+                                        Subiendo...
+                                    </button>
+                                ) : isUploaded ? (
+                                    <button 
+                                        className="bg-brand-border hover:bg-[#333] transition-colors text-white px-4 py-2 rounded font-bold text-xs uppercase tracking-wider flex flex-col items-center justify-center border border-white/20 min-w-[160px] max-w-[200px]"
+                                        onClick={triggerFileInput}
+                                        title="Click para reemplazar archivo"
+                                    >
+                                        <div className="flex items-center gap-2 text-white">
+                                            <i className="fa-solid fa-check"></i> <span>Material Listo</span>
+                                        </div>
+                                        {asset.file_name && (
+                                            <span className="text-[9px] text-gray-400 font-mono mt-1 truncate w-full text-center px-2">
+                                                {asset.file_name}
+                                            </span>
+                                        )}
+                                    </button>
+                                ) : (
+                                    <button 
+                                        className="bg-white/10 hover:bg-white hover:text-black text-white transition-colors px-4 py-2 rounded font-bold text-xs uppercase tracking-wider flex items-center gap-2 min-w-[160px] justify-center border border-white/20"
+                                        onClick={triggerFileInput}
+                                    >
+                                        <i className="fa-solid fa-cloud-arrow-up"></i> Cargar Material
+                                    </button>
+                                )}
+
+                                <button className="text-brand-muted hover:text-white transition-colors w-8 h-8 flex items-center justify-center bg-black/30 rounded">
+                                    <i className={`fa-solid fa-chevron-${expanded ? 'up' : 'down'}`}></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {uploadError && (
+                        <div className="mt-4 p-3 bg-red-900/30 border border-red-500/30 rounded text-xs text-red-200 flex items-start gap-2">
+                            <i className="fa-solid fa-triangle-exclamation mt-0.5"></i>
+                            <span>{uploadError}</span>
+                        </div>
+                    )}
+
+                    <AnimatePresence>
+                        {expanded && (
+                            <motion.div 
+                                initial={{ height: 0, opacity: 0, marginTop: 0 }}
+                                animate={{ height: 'auto', opacity: 1, marginTop: 20 }}
+                                exit={{ height: 0, opacity: 0, marginTop: 0 }}
+                                className="overflow-hidden"
+                            >
+                                <div className="pt-4 border-t border-brand-border flex flex-col md:flex-row gap-6">
+                                    <div className="flex-1 bg-black/40 p-5 rounded border border-brand-border/50">
+                                        <h4 className="text-xs text-brand-muted uppercase tracking-widest font-bold mb-3 flex items-center gap-2">
+                                            <i className="fa-solid fa-align-left"></i> Copy Propuesto
+                                        </h4>
+                                        <p className="text-sm text-gray-300 whitespace-pre-line leading-relaxed font-serif italic">
+                                            "{post.copy}"
+                                        </p>
+                                    </div>
+                                    <div className="flex-1 bg-black/40 p-5 rounded border border-brand-border/50">
+                                        <h4 className="text-xs text-brand-muted uppercase tracking-widest font-bold mb-3 flex items-center gap-2">
+                                            <i className="fa-solid fa-crosshairs"></i> Estrategia & CTA
+                                        </h4>
+                                        <p className="text-sm text-gray-300 leading-relaxed mb-4">
+                                            {post.strategy}
+                                        </p>
+                                        
+                                        {isUploaded && asset.signed_url && (
+                                            <div className="mt-4 pt-4 border-t border-brand-border/50">
+                                                <div className="flex justify-between items-center mb-3">
+                                                    <h4 className="text-xs text-brand-muted uppercase tracking-widest font-bold flex items-center gap-2">
+                                                        <i className="fa-regular fa-image"></i> Vista Previa
+                                                    </h4>
+                                                    <button 
+                                                        onClick={handleDelete}
+                                                        className="text-[10px] uppercase tracking-wider text-red-400 hover:text-red-200 font-bold"
+                                                        title="Eliminar asset"
+                                                    >
+                                                        <i className="fa-solid fa-trash mr-1"></i> Eliminar
+                                                    </button>
+                                                </div>
+                                                {fileIsImage(asset.mime_type) ? (
+                                                    <img src={asset.signed_url} alt="Preview" className="w-full h-32 object-cover rounded border border-brand-border" />
+                                                ) : fileIsVideo(asset.mime_type) ? (
+                                                    <video src={asset.signed_url} controls className="w-full h-32 object-cover rounded border border-brand-border" />
+                                                ) : (
+                                                    <div className="w-full h-32 bg-black flex flex-col items-center justify-center rounded border border-brand-border text-brand-muted">
+                                                        <i className="fa-solid fa-file text-2xl mb-2"></i>
+                                                        <span className="text-xs font-mono mt-2">{asset.file_name}</span>
+                                                    </div>
+                                                )}
+                                                <button 
+                                                    className="w-full mt-3 bg-white/10 hover:bg-white text-brand-muted hover:text-black text-xs py-2 rounded transition-colors font-mono font-bold uppercase tracking-wider"
+                                                    onClick={(e) => { e.stopPropagation(); window.open(asset.signed_url, '_blank'); }}
+                                                >
+                                                    Abrir en nueva pestaña
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </motion.div>
+            );
+        };
+
+        const TimelineView = ({ data, assetsByPost, onFileUpload, onDeleteAsset }) => {
+            return (
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="max-w-5xl mx-auto py-8 px-4"
+                >
+                    <div className="text-center mb-16">
+                        <h2 className={`text-5xl md:text-7xl font-display font-black tracking-tighter text-white uppercase`}>
+                            {data.title}
+                        </h2>
+                        <p className="text-brand-muted mt-4 max-w-xl mx-auto font-mono text-sm tracking-wide">
+                            Línea de tiempo operativa del Single. Carga los assets de cada publicación para marcarla como lista.
+                        </p>
+                    </div>
+
+                    <div className="space-y-16">
+                        {data.phases.map((phase, i) => (
+                            <div key={i} className="relative">
+                                <div className={`absolute left-[35px] md:left-[51px] top-12 bottom-0 w-[1px] bg-brand-border`}></div>
+                                
+                                <div className="sticky top-0 z-10 glass-panel py-3 px-6 rounded inline-flex items-center gap-3 mb-8">
+                                    <div className={`w-2 h-2 bg-white`}></div>
+                                    <h3 className="text-xs font-bold tracking-widest text-white uppercase">{phase.name}</h3>
+                                </div>
+
+                                <div className="space-y-4 pl-0 md:pl-4 relative z-0">
+                                    {phase.posts.map(post => (
+                                        <PostCard 
+                                            key={post.id} 
+                                            post={post} 
+                                            asset={assetsByPost[post.id] || null}
+                                            onFileUpload={onFileUpload}
+                                            onDeleteAsset={onDeleteAsset}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
+            );
+        };
+
+        const Dashboard = () => {
+            const [activeTab, setActiveTab] = useState('overview');
+            const [db, setDb] = useState(initialDb);
+            const [assetsByPost, setAssetsByPost] = useState({});
+            const [loadingAssets, setLoadingAssets] = useState(true);
+            const [assetsError, setAssetsError] = useState(null);
+
+            useEffect(() => {
+                async function loadAssets() {
+                    try {
+                        const res = await fetch(`/api/projects/${CLIENT_SLUG}/assets`);
+                        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                        const { assets } = await res.json();
+                        const map = {};
+                        (assets || []).forEach(asset => {
+                            // Si hay múltiples assets para un post_key, quedarse con el más reciente
+                            const existing = map[asset.post_key];
+                            if (!existing || new Date(asset.created_at) > new Date(existing.created_at)) {
+                                map[asset.post_key] = asset;
+                            }
+                        });
+                        setAssetsByPost(map);
+                    } catch (err) {
+                        console.error('Error cargando assets:', err);
+                        setAssetsError(err.message);
+                    } finally {
+                        setLoadingAssets(false);
+                    }
+                }
+                loadAssets();
+            }, []);
+
+            const handleFileUpload = async (post, file) => {
+                const phase = phaseForPost(post);
+                const formData = new FormData();
+                formData.append('file', file);
+
+                const res = await fetch(`/api/projects/${CLIENT_SLUG}/assets/${encodeURIComponent(post.id)}?phase=${encodeURIComponent(phase)}`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!res.ok) {
+                    const data = await res.json().catch(() => ({}));
+                    throw new Error(data.error || `Error ${res.status}`);
+                }
+
+                const result = await res.json();
+                setAssetsByPost(prev => ({
+                    ...prev,
+                    [post.id]: { ...result.asset, signed_url: result.signed_url }
+                }));
+            };
+
+            const handleDeleteAsset = async (assetId) => {
+                const res = await fetch(`/api/project-assets/${assetId}`, { method: 'DELETE' });
+                if (!res.ok) {
+                    const data = await res.json().catch(() => ({}));
+                    throw new Error(data.error || `Error ${res.status}`);
+                }
+                setAssetsByPost(prev => {
+                    const next = { ...prev };
+                    Object.keys(next).forEach(key => {
+                        if (next[key].id === assetId) delete next[key];
+                    });
+                    return next;
+                });
+            };
+
+            let totalPosts = 0;
+            let uploadedPosts = 0;
+            db.tentacion.phases.forEach(phase => {
+                phase.posts.forEach(post => {
+                    totalPosts++;
+                    if (assetsByPost[post.id]) uploadedPosts++;
+                });
+            });
+            const progressPercentage = totalPosts === 0 ? 0 : Math.round((uploadedPosts / totalPosts) * 100);
+
+            return (
+                <div className="min-h-screen flex flex-col">
+                    <header className="sticky top-0 z-50 glass-panel border-b-0 px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div className="flex items-center gap-3">
+                            <div>
+                                <h1 className="font-display font-black text-2xl tracking-tighter leading-none text-white uppercase">TENTACION</h1>
+                                <p className="text-xs text-brand-muted font-mono mt-1 tracking-widest uppercase">Lanzamiento Single - Marlon Villamil</p>
+                            </div>
+                        </div>
+
+                        <nav className="flex bg-black p-1 border border-brand-border w-full md:w-auto">
+                            <button 
+                                onClick={() => setActiveTab('overview')}
+                                className={`px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeTab === 'overview' ? 'bg-white text-black' : 'text-brand-muted hover:text-white'}`}
+                            >
+                                Modelo Operativo
+                            </button>
+                            <button 
+                                onClick={() => setActiveTab('tentacion')}
+                                className={`px-6 py-2 text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeTab === 'tentacion' ? 'bg-white text-black' : 'text-brand-muted hover:text-white'}`}
+                            >
+                                Lanzamiento Tentación
+                            </button>
+                        </nav>
+                    </header>
+
+                    <main className="flex-1 overflow-y-auto w-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#111] via-brand-dark to-brand-dark">
+                        <AnimatePresence mode="wait">
+                            {activeTab === 'overview' && (
+                                <motion.div 
+                                    key="overview"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    className="max-w-6xl mx-auto py-12 px-4"
+                                >
+                                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                        
+                                        <div className="lg:col-span-1 space-y-6">
+                                            <div className="bg-brand-card border border-brand-border p-6 shadow-2xl">
+                                                <h2 className="font-display font-black text-xl mb-6 text-white border-b border-brand-border pb-4 uppercase tracking-widest">
+                                                    Reglas Base
+                                                </h2>
+                                                <div className="space-y-5">
+                                                    {rules.map((rule, idx) => (
+                                                        <div key={idx} className="flex items-start gap-4 group">
+                                                            <div className="w-8 h-8 bg-brand-border/50 flex items-center justify-center shrink-0 group-hover:bg-white group-hover:text-black transition-colors">
+                                                                <i className={`fa-solid ${rule.icon} text-sm`}></i>
+                                                            </div>
+                                                            <div>
+                                                                <h4 className="text-white text-sm font-bold uppercase tracking-wide">{rule.title}</h4>
+                                                                <p className="text-xs text-brand-muted mt-1 leading-relaxed">{rule.desc}</p>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            <div className="bg-brand-card border border-brand-border p-6 shadow-2xl">
+                                                <h2 className="font-display font-black text-xl mb-4 text-white uppercase tracking-widest">Hashtags</h2>
+                                                <p className="text-xs text-brand-muted mb-4 font-mono">Máx. 3-5 por post.</p>
+                                                <div className="flex flex-wrap gap-2">
+                                                    <span className="px-2 py-1 bg-black text-xs text-gray-300 font-mono border border-brand-border">#MarlonVillamil</span>
+                                                    <span className="px-2 py-1 bg-black text-xs text-gray-300 font-mono border border-brand-border">#AmorAdolescente</span>
+                                                    <span className="px-2 py-1 bg-white/5 text-gray-200 text-xs font-mono border border-white/10">#Tentacion</span>
+                                                    <span className="px-2 py-1 bg-white/5 text-gray-200 text-xs font-mono border border-white/10">#VideoOficial</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="lg:col-span-2 space-y-8">
+                                            <div className="bg-black border border-brand-border p-8 relative overflow-hidden">
+                                                <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-[0.02] blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+                                                
+                                                <h1 className="text-4xl font-display font-black text-white mb-2 uppercase">El Sistema de Piezas</h1>
+                                                <p className="text-brand-muted mb-8 text-sm font-mono tracking-wide">Desglose operativo de formatos para el lanzamiento del single.</p>
+                                                
+                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                    <div className="bg-brand-card p-5 border border-brand-border flex items-center justify-between hover:border-white/20 transition-colors">
+                                                        <div>
+                                                            <h4 className="font-bold text-white mb-1 uppercase text-sm tracking-wide">Carruseles Combinados</h4>
+                                                            <p className="text-xs text-brand-muted font-mono">One Shots + Fotos BTS</p>
+                                                        </div>
+                                                        <span className="text-2xl font-black text-white/20">x2</span>
+                                                    </div>
+                                                    <div className="bg-brand-card p-5 border border-brand-border flex items-center justify-between hover:border-white/20 transition-colors">
+                                                        <div>
+                                                            <h4 className="font-bold text-white mb-1 uppercase text-sm tracking-wide">Reels Performance</h4>
+                                                            <p className="text-xs text-brand-muted font-mono">Lyrics y Clips Nativos</p>
+                                                        </div>
+                                                        <span className="text-2xl font-black text-white/20">x2</span>
+                                                    </div>
+                                                    <div className="bg-brand-card p-5 border border-brand-border flex items-center justify-between hover:border-white/20 transition-colors">
+                                                        <div>
+                                                            <h4 className="font-bold text-white mb-1 uppercase text-sm tracking-wide">Carrusel Lanzamiento</h4>
+                                                            <p className="text-xs text-brand-muted font-mono">Frames 4K + Clips Oficiales</p>
+                                                        </div>
+                                                        <span className="text-2xl font-black text-white/20">x1</span>
+                                                    </div>
+                                                    <div className="bg-brand-card p-5 border border-brand-border flex items-center justify-between hover:border-white/20 transition-colors">
+                                                        <div>
+                                                            <h4 className="font-bold text-white mb-1 uppercase text-sm tracking-wide">Videos Largos</h4>
+                                                            <p className="text-xs text-brand-muted font-mono">Videoclip + BTS YouTube</p>
+                                                        </div>
+                                                        <span className="text-2xl font-black text-white/20">x2</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="bg-brand-card border border-brand-border p-6 shadow-2xl">
+                                                <div className="flex justify-between items-end mb-4">
+                                                    <div>
+                                                        <h3 className="font-display font-black text-xl text-white uppercase tracking-widest">Progreso de Carga</h3>
+                                                        <p className="text-xs text-brand-muted font-mono mt-1">Material subido a Supabase para las publicaciones.</p>
+                                                    </div>
+                                                    <span className="text-xl font-black text-white bg-black px-3 py-1 border border-brand-border">{progressPercentage}%</span>
+                                                </div>
+                                                
+                                                <div className="w-full bg-black h-2 mb-6 border border-brand-border relative overflow-hidden">
+                                                    <motion.div 
+                                                        className="bg-white h-full" 
+                                                        initial={{ width: 0 }}
+                                                        animate={{ width: `${progressPercentage}%` }}
+                                                        transition={{ duration: 0.5, ease: "easeOut" }}
+                                                    ></motion.div>
+                                                </div>
+                                                
+                                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                                                    <div className="bg-black border border-brand-border p-3">
+                                                        <p className="text-xs text-brand-muted font-mono uppercase mb-1">Total</p>
+                                                        <p className="text-lg font-bold text-white">{totalPosts}</p>
+                                                    </div>
+                                                    <div className="bg-black border border-brand-border p-3">
+                                                        <p className="text-xs text-brand-muted font-mono uppercase mb-1">Cargados</p>
+                                                        <p className="text-lg font-bold text-white">{uploadedPosts}</p>
+                                                    </div>
+                                                    <div className="bg-black border border-brand-border p-3">
+                                                        <p className="text-xs text-brand-muted font-mono uppercase mb-1">Pendientes</p>
+                                                        <p className="text-lg font-bold text-brand-muted">{totalPosts - uploadedPosts}</p>
+                                                    </div>
+                                                    <div className="bg-brand-border p-3 flex flex-col justify-center">
+                                                        <button 
+                                                            onClick={() => setActiveTab('tentacion')}
+                                                            className="text-xs font-bold text-white uppercase tracking-widest hover:underline"
+                                                        >
+                                                            Ir a Cargar <i className="fa-solid fa-arrow-right ml-1"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                {loadingAssets && (
+                                                    <p className="text-xs text-brand-muted mt-4 font-mono"><i className="fa-solid fa-circle-notch fa-spin mr-2"></i>Sincronizando assets con Supabase...</p>
+                                                )}
+                                                {assetsError && (
+                                                    <p className="text-xs text-red-400 mt-4 font-mono"><i className="fa-solid fa-triangle-exclamation mr-2"></i>Error cargando assets: {assetsError}</p>
+                                                )}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+                            
+                            {activeTab === 'tentacion' && (
+                                <TimelineView 
+                                    key="tentacion" 
+                                    data={db.tentacion} 
+                                    assetsByPost={assetsByPost}
+                                    onFileUpload={handleFileUpload}
+                                    onDeleteAsset={handleDeleteAsset}
+                                />
+                            )}
+                        </AnimatePresence>
+                    </main>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Dashboard />);
+    </script>
+</body>
+</html>

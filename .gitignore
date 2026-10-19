@@ -22,6 +22,10 @@ venv/
 
 # === Node ===
 node_modules/
+package-lock.json
+
+# === Dashboard backups ===
+*.bak
 
 # === Logs ===
 *.log

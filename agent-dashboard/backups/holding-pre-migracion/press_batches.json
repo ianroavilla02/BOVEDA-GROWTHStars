@@ -1,0 +1,777 @@
+[
+  {
+    "id": "ca764db4-6557-40be-8d85-82ace72410d4",
+    "client_id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "artist_slug": "javier-ferreira",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "Aumentar percepción pública",
+          "fecha": "25-27 Mayo",
+          "index": 1,
+          "angulo": "Transformación profesional del artista",
+          "intencion": "de modelo a artista consolidado, la historia de Javier Ferreira",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Aumentar percepción pública",
+          "fecha": "25-27 Mayo",
+          "index": 2,
+          "angulo": "Legitimación por métricas musicales",
+          "intencion": "El influencer que ya acumula mas de un millon de escuchas en su catalogo musical",
+          "datos_duros": "más de un millón de escuchas",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Aumentar percepción pública",
+          "fecha": "25-27 Mayo",
+          "index": 3,
+          "angulo": "Expansión internacional del proyecto",
+          "intencion": "de Colombia para el mundo, el adonis colombiano ya es pedido en Mexico y paises de Latinoamerica",
+          "datos_duros": "México",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Prelanzamiento / Anuncio de Collab",
+          "fecha": "27-28 Mayo",
+          "index": 4,
+          "angulo": "Especulación orgánica del fandom",
+          "intencion": "La primera collab de Javier Ferreira estan haciendo que ardan las redes, y sus fans ya especulan",
+          "datos_duros": "",
+          "nota_contexto": "montar ss de fans preguntando y adivinando"
+        },
+        {
+          "fase": "Prelanzamiento / Anuncio de Collab",
+          "fecha": "27-28 Mayo",
+          "index": 5,
+          "angulo": "Anuncio formal de la alianza musical",
+          "intencion": "El colombiano Lit Bari se une junto a Javier Ferreira en su proximo lanzamiento \"Quien Como Yo\"",
+          "datos_duros": "Quien Como Yo",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Lanzamiento / Sprint de 72hrs algoritmico",
+          "fecha": "28-29 Mayo",
+          "index": 6,
+          "angulo": "Continuidad de éxitos previos",
+          "intencion": "El artista detras del exito Clack Clack estrena su primera colaboracion",
+          "datos_duros": "Clack Clack",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Lanzamiento / Sprint de 72hrs algoritmico",
+          "fecha": "28-29 Mayo",
+          "index": 7,
+          "angulo": "Disponibilidad inmediata y recepción",
+          "intencion": "Quien Como Yo esta rompiendo expectativas, la primera colaboracion del adonis colombiano Javier Ferreira ya esta disponible",
+          "datos_duros": "Quien Como Yo",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Lanzamiento / Sprint de 72hrs algoritmico",
+          "fecha": "28-29 Mayo",
+          "index": 8,
+          "angulo": "Impacto viral en comunidad digital",
+          "intencion": "Lit Bari y Javier Ferreira, el junte del que todos estan hablando en redes",
+          "datos_duros": "",
+          "nota_contexto": "mostrar interacciones de fans"
+        },
+        {
+          "fase": "Sostenimiento / Hitos",
+          "fecha": "1-3 Junio",
+          "index": 9,
+          "angulo": "Métricas de adopción en plataforma",
+          "intencion": "Quien Como Yo acumula x cantidad de videos en TikTok",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Sostenimiento / Hitos",
+          "fecha": "1-3 Junio",
+          "index": 10,
+          "angulo": "Crecimiento acelerado de comunidad",
+          "intencion": "a nada de llegar a los 4 millones en TikTok luego de lanzar su sencillo Quien Como Yo",
+          "datos_duros": "4 millones en TikTok",
+          "nota_contexto": ""
+        }
+      ],
+      "premisa": "Campaña de 10 notas de prensa distribuidas en 4 fases (del 25 de mayo al 3 de junio) para posicionar a Javier Ferreira como artista urbano pop consolidado, destacando su transición de modelo a músico, el lanzamiento de su primera colaboración \"Quien Como Yo\" con Lit Bari, y el crecimiento de su comunidad digital en TikTok.",
+      "percepcion_objetivo": "Consolidar la imagen de Javier Ferreira como artista musical legítimo y no solo influencer, destacando su tracción internacional, su primera colaboración exitosa y su creciente base de fans digitales."
+    },
+    "status": "cerrado",
+    "created_at": "2026-06-11T01:11:16.288272+00:00",
+    "plan_raw": "FASE 1 / 25-27 Mayo\nAumentar Percepcion publica\n3 notas de prensa\n- de modelo a artista consolidado, la historia de Javier Ferreira\n- El influencer que ya acumula mas de un millon de escuchas en su catalogo musical\n- de Colombia para el mundo, el adonis colombiano ya es pedido en Mexico y paises de Latinoamerica\n\nFASE 2 / 27-28 Mayo\nPrelanzamiento / Anuncio de Collab\n2 notas de prensa\n- La primera collab de Javier Ferreira estan haciendo que ardan las redes, y sus fans ya especulan (montar ss de fans preguntando y adivinando)\n- El colombiano Lit Bari se une junto a Javier Ferreira en su proximo lanzamiento \"Quien Como Yo\"\n\nFASE 3 / 28-29 Mayo\nLanzamiento / Sprint de 72hrs algoritmico\n3 notas de prensa\n- El artista detras del exito Clack Clack estrena su primera colaboracion\n- Quien Como Yo esta rompiendo expectativas, la primera colaboracion del adonis colombiano Javier Ferreira ya esta disponible\n- Lit Bari y Javier Ferreira, el junte del que todos estan hablando en redes (mostrar interacciones de fans)\n\nFASE 4 / 1-3 Junio\nSostenimiento / Hitos\n2 notas de prensa\n- Quien Como Yo acumula x cantidad de videos en TikTok\n- a nada de llegar a los 4 millones en TikTok luego de lanzar su sencillo Quien Como Yo\n\nTOTAL: 10 notas. Activaciones: 25 Mayo - 3 Junio",
+    "client_slug": "chimbita-records"
+  },
+  {
+    "id": "fe4c5b35-55cb-4166-a4af-06f7d55ad471",
+    "client_id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "artist_slug": "javier-ferreira",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "Aumentar Percepcion publica",
+          "fecha": "25-27 Mayo",
+          "index": 1,
+          "angulo": "Narrativa de transformación profesional y legitimación artística",
+          "intencion": "de modelo a artista consolidado, la historia de Javier Ferreira",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Aumentar Percepcion publica",
+          "fecha": "25-27 Mayo",
+          "index": 2,
+          "angulo": "Validación de trayectoria musical mediante métricas de consumo digital",
+          "intencion": "El influencer que ya acumula mas de un millon de escuchas en su catalogo musical",
+          "datos_duros": "más de un millón de escuchas",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Aumentar Percepcion publica",
+          "fecha": "25-27 Mayo",
+          "index": 3,
+          "angulo": "Proyección internacional y demanda transfronteriza del artista",
+          "intencion": "de Colombia para el mundo, el adonis colombiano ya es pedido en Mexico y paises de Latinoamerica",
+          "datos_duros": "México y países de Latinoamérica",
+          "nota_contexto": ""
+        }
+      ],
+      "premisa": "Campaña de legitimación musical que posiciona a Javier Ferreira como artista urbano pop consolidado, destacando su transición desde el modelaje e influencia digital hacia una carrera musical respaldada por métricas de consumo y demanda internacional.",
+      "percepcion_objetivo": "Establecer a Javier Ferreira como artista musical legítimo y consolidado, trascendiendo su imagen previa de influencer/modelo para ser reconocido como figura del urbano pop con alcance en México y Latinoamérica."
+    },
+    "status": "generado",
+    "created_at": "2026-06-11T01:37:31.124453+00:00",
+    "plan_raw": "FASE 1 / 25-27 Mayo\nAumentar Percepcion publica\n3 notas de prensa\n- de modelo a artista consolidado, la historia de Javier Ferreira\n- El influencer que ya acumula mas de un millon de escuchas en su catalogo musical\n- de Colombia para el mundo, el adonis colombiano ya es pedido en Mexico y paises de Latinoamerica",
+    "client_slug": "chimbita-records"
+  },
+  {
+    "id": "3b3450df-4d4f-45e0-acb6-04cd2256e3f4",
+    "client_id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "artist_slug": "javier-ferreira",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "Test endpoint",
+          "fecha": "10 Jun",
+          "index": 1,
+          "angulo": "Validación de trayectoria musical superando expectativas del público",
+          "intencion": "Javier Ferreira esta rompiendo expectativas con su musica",
+          "datos_duros": "",
+          "nota_contexto": ""
+        }
+      ],
+      "premisa": "Campaña de prueba técnica (test endpoint) con una nota de prensa posicionando a Javier Ferreira como artista que supera expectativas musicales.",
+      "percepcion_objetivo": "Consolidar la percepción de Javier Ferreira como artista urbano pop en crecimiento que rompe las expectativas iniciales de su audiencia."
+    },
+    "status": "generado",
+    "created_at": "2026-06-11T02:58:47.993217+00:00",
+    "plan_raw": "FASE 1 / 10 Jun\nTest endpoint\n1 nota de prensa\n- Javier Ferreira esta rompiendo expectativas con su musica",
+    "client_slug": "chimbita-records"
+  },
+  {
+    "id": "9e124fed-798b-47a8-af61-87a435ad48b5",
+    "client_id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "artist_slug": "javier-ferreira",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "FASE 1",
+          "fecha": "10 Jun",
+          "index": 1,
+          "angulo": "Narrativa de evolución profesional: de las pasarelas al estudio musical",
+          "intencion": "de modelo a artista consolidado, la historia de Javier Ferreira",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "FASE 1",
+          "fecha": "10 Jun",
+          "index": 2,
+          "angulo": "Validación métrica del impacto musical más allá del entorno digital",
+          "intencion": "El influencer que ya acumula mas de un millon de escuchas en su catalogo musical",
+          "datos_duros": "mas de un millon de escuchas",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "FASE 1",
+          "fecha": "10 Jun",
+          "index": 3,
+          "angulo": "Proyección internacional y demanda activa en mercados latinoamericanos",
+          "intencion": "de Colombia para el mundo, el adonis colombiano ya es pedido en Mexico y paises de Latinoamerica",
+          "datos_duros": "Mexico y paises de Latinoamerica",
+          "nota_contexto": ""
+        }
+      ],
+      "premisa": "Campaña de consolidación que narra la transición profesional de Javier Ferreira desde el modelaje y el entorno digital hacia la legitimidad artística, respaldada por métricas de consumo musical y evidencia de demanda internacional activa.",
+      "percepcion_objetivo": "Establecer a Javier Ferreira como artista urbano-pop consolidado con trayectoria profesional verificable, distanciándolo de la etiqueta de influencer para proyectarlo como figura musical con alcance transnacional y respaldo cuantificable."
+    },
+    "status": "generado",
+    "created_at": "2026-06-11T03:14:32.46109+00:00",
+    "plan_raw": "FASE 1 / 10 Jun\nTest D-054\n3 notas de prensa\n- de modelo a artista consolidado, la historia de Javier Ferreira\n- El influencer que ya acumula mas de un millon de escuchas en su catalogo musical\n- de Colombia para el mundo, el adonis colombiano ya es pedido en Mexico y paises de Latinoamerica",
+    "client_slug": "chimbita-records"
+  },
+  {
+    "id": "77697f30-c202-46c2-8f01-f876c0cfc5d2",
+    "client_id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "artist_slug": "javier-ferreira",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "Test generando status",
+          "fecha": "10 Jun",
+          "index": 1,
+          "angulo": "Posicionamiento del artista como innovador rompiendo moldes del género urbano mediante propuesta pop comercial diferenciada",
+          "intencion": "Javier Ferreira rompe barreras con su nuevo sonido urbano pop",
+          "datos_duros": "",
+          "nota_contexto": ""
+        }
+      ],
+      "premisa": "Primera aproximación de prensa para testear recepción mediática del sonido urbano pop de Javier Ferreira como propuesta rupturista frente a la escena dominante.",
+      "percepcion_objetivo": "Generar status de artista emergente con sonido diferenciado e innovador en el mercado urbano pop colombiano."
+    },
+    "status": "generado",
+    "created_at": "2026-06-11T03:37:30.24931+00:00",
+    "plan_raw": "FASE 1 / 10 Jun\nTest generando status\n1 nota de prensa\n- Javier Ferreira rompe barreras con su nuevo sonido urbano pop",
+    "client_slug": "chimbita-records"
+  },
+  {
+    "id": "d54405df-5343-4f20-9725-6a8cfa0920ac",
+    "client_id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "artist_slug": "javier-ferreira",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "FASE 1 - Test UI flow",
+          "fecha": "10 Jun",
+          "index": 1,
+          "angulo": "Posicionamiento de breakthrough continental",
+          "intencion": "Javier Ferreira esta rompiendo con su musica nueva en Latinoamerica",
+          "datos_duros": "",
+          "nota_contexto": ""
+        }
+      ],
+      "premisa": "Prueba de flujo de campaña con nota de posicionamiento continental para Javier Ferreira.",
+      "percepcion_objetivo": "Establecer percepción de artista en expansión latinoamericana."
+    },
+    "status": "generado",
+    "created_at": "2026-06-11T03:34:32.531044+00:00",
+    "plan_raw": "FASE 1 / 10 Jun\nTest UI flow\n1 nota de prensa\n- Javier Ferreira esta rompiendo con su musica nueva en Latinoamerica",
+    "client_slug": "chimbita-records"
+  },
+  {
+    "id": "8e999324-0cf7-4f6a-8d73-031a1a661eb4",
+    "client_id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "artist_slug": "javier-ferreira",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "Test D-055 generando",
+          "fecha": "11 Jun",
+          "index": 1,
+          "angulo": "Evolución musical hacia el urbano pop rompiendo esquemas previos",
+          "intencion": "Javier Ferreira rompe barreras con su nuevo sonido urbano pop",
+          "datos_duros": "",
+          "nota_contexto": ""
+        }
+      ],
+      "premisa": "Presentación de la nueva etapa musical de Javier Ferreira, destacando su transición e innovación dentro del género urbano pop como artista que rompe esquemas previos.",
+      "percepcion_objetivo": "Posicionar a Javier Ferreira como un artista en evolución que trasciende barreras musicales con su propuesta de urbano pop, diferenciándose de su trabajo anterior y consolidando una nueva faceta sonora."
+    },
+    "status": "generado",
+    "created_at": "2026-06-11T03:41:03.2108+00:00",
+    "plan_raw": "FASE 1 / 11 Jun\nTest D-055 generando\n1 nota de prensa\n- Javier Ferreira rompe barreras con su nuevo sonido urbano pop",
+    "client_slug": "chimbita-records"
+  },
+  {
+    "id": "46274c27-19b1-4384-8c11-89b0f1f10fb9",
+    "client_id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "artist_slug": "javier-ferreira",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "Aumentar Percepción pública",
+          "fecha": "25-27 Mayo",
+          "index": 1,
+          "angulo": "Transformación profesional: consolidación de carrera musical más allá del modelaje",
+          "intencion": "de modelo a artista consolidado, la historia de javier Ferreira",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Aumentar Percepción pública",
+          "fecha": "25-27 Mayo",
+          "index": 2,
+          "angulo": "Validación por cifras: tracción comercial confirmada por audiencias",
+          "intencion": "El influencer que ya acumula más de un millón de escuchas en su catálogo musical",
+          "datos_duros": "más de un millón de escuchas",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Aumentar Percepción pública",
+          "fecha": "25-27 Mayo",
+          "index": 3,
+          "angulo": "Proyección internacional: demanda transnacional del artista",
+          "intencion": "de Colombia para el mundo, el adonis colombiano ya es pedido en México y países de Latinoamérica",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Prelanzamiento / Anuncio de Collab",
+          "fecha": "27-28 Mayo",
+          "index": 4,
+          "angulo": "Especulación orgánica: expectativa fan previa al anuncio formal",
+          "intencion": "La primera collab de javier Ferreira están haciendo que ardan las redes, y sus fans ya especulan (montar ss de fans preguntando y adivinando)",
+          "datos_duros": "",
+          "nota_contexto": "montar ss de fans preguntando y adivinando"
+        },
+        {
+          "fase": "Prelanzamiento / Anuncio de Collab",
+          "fecha": "27-28 Mayo",
+          "index": 5,
+          "angulo": "Anuncio de alianza: confirmación de colaboración con artista de reggaeton",
+          "intencion": "El colombiano litbari se une junto a Javier Ferreira en su próximo lanzamiento \"quien como yo\"",
+          "datos_duros": "litbari, quien como yo",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Lanzamiento / Sprint de 72hrs algorítmico",
+          "fecha": "28-29 Mayo",
+          "index": 6,
+          "angulo": "Continuidad de éxitos: trayectoria previa respalda el nuevo lanzamiento",
+          "intencion": "El artista detrás del éxito clack clack estrena su primera colaboración",
+          "datos_duros": "clack clack",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Lanzamiento / Sprint de 72hrs algorítmico",
+          "fecha": "28-29 Mayo",
+          "index": 7,
+          "angulo": "Disponibilidad inmediata: impacto del estreno en plataformas",
+          "intencion": "Quien como yo, está rompiendo expectativas, la primera colaboración del adonis colombiano javier Ferreira ya está disponible",
+          "datos_duros": "quien como yo",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Lanzamiento / Sprint de 72hrs algorítmico",
+          "fecha": "28-29 Mayo",
+          "index": 8,
+          "angulo": "Reacción colectiva: conversación social y validación del público",
+          "intencion": "Litbari y javier Ferreira, el junte del que todos están hablando en redes / mostrar interacciones de fans",
+          "datos_duros": "Litbari",
+          "nota_contexto": "mostrar interacciones de fans"
+        },
+        {
+          "fase": "Sostenimiento / Hitos",
+          "fecha": "1-3 Junio",
+          "index": 9,
+          "angulo": "Métrica viral: crecimiento de contenido generado por usuarios",
+          "intencion": "quien como yo acumula x cantidad de videos en TikTok",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Sostenimiento / Hitos",
+          "fecha": "1-3 Junio",
+          "index": 10,
+          "angulo": "Umbral cuantitativo: proximidad a hito millonario en redes",
+          "intencion": "a nada de llegar a los 4 millones en TikTok luego de lanzar su sencillo quien como yo",
+          "datos_duros": "4 millones en TikTok, quien como yo",
+          "nota_contexto": ""
+        }
+      ],
+      "premisa": "Campaña de 10 notas de prensa distribuidas en 4 fases (25 de mayo al 3 de junio) para consolidar la transición de Javier Ferreira de modelo/influencer a artista urbano pop legítimo, centrada en el lanzamiento de su colaboración \"Quien Como Yo\" con Litbari y el registro de hitos digitales en TikTok.",
+      "percepcion_objetivo": "Posicionar a Javier Ferreira como artista urbano pop consolidado y trascendente, alejado de la etiqueta de influencer, destacando su legitimidad musical, alcance internacional y métricas digitales cuantificables."
+    },
+    "status": "draft",
+    "created_at": "2026-06-11T16:01:35.050738+00:00",
+    "plan_raw": "FASE 1 / 25-27 Mayo \nAumentar Percepción pública\n3 notas de prensa\n\n- de modelo a artista consolidado, la historia de javier Ferreira \n- ⁠El influencer que ya acumula más de un millón de escuchas en su catálogo musical\n- ⁠de Colombia para el mundo, el adonis colombiano ya es pedido en México y países de Latinoamérica\n\nFASE 2 / 27-28 Mayo\nPrelanzamiento / Anuncio de Collab \n2 notas de prensa\n\n- La primera collab de javier Ferreira están haciendo que ardan las redes, y sus fans ya especulan (montar ss de fans preguntando y adivinando) \n- ⁠El colombiano litbari se une junto a Javier Ferreira en su próximo lanzamiento “quien como yo”\n\nFase 3 / 28-29 Mayo\nLanzamiento / Sprint de 72hrs algorítmico \n3 notas de prensa\n\n- El artista detrás del éxito clack clack estrena su primera colaboración \n- ⁠Quien como yo, está rompiendo expectativas, la primera colaboración del adonis colombiano javier Ferreira ya está disponible \n- ⁠Litbari y javier Ferreira, el junte del que todos están hablando en redes / mostrar interacciones de fans\n\nFase 4 / 1-3 Junio \nSostenimiento / Hitos\n2 notas de prensa\n\n- quien como yo acumula x cantidad de videos en TikTok \n- ⁠a nada de llegar a los 4 millones en TikTok luego de lanzar su sencillo quien como yo\n\n\nTOTAL DE NOTAS DE PRENSA: 10\nActivaciones: 25 Mayo - 3 Junio",
+    "client_slug": "chimbita-records"
+  },
+  {
+    "id": "9b581ffd-1d01-4c7a-8f53-f1d068dba43d",
+    "client_id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "artist_slug": "javier-ferreira",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "Aumentar Percepción pública",
+          "fecha": "25-27 Mayo",
+          "index": 1,
+          "angulo": "Narrativa de transición profesional del modelaje a la música",
+          "intencion": "de modelo a artista consolidado, la historia de javier Ferreira",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Aumentar Percepción pública",
+          "fecha": "25-27 Mayo",
+          "index": 2,
+          "angulo": "Validación cuantitativa de trayectoria musical mediante consumo streaming",
+          "intencion": "El influencer que ya acumula más de un millón de escuchas en su catálogo musical",
+          "datos_duros": "más de un millón de escuchas",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Aumentar Percepción pública",
+          "fecha": "25-27 Mayo",
+          "index": 3,
+          "angulo": "Proyección internacional y demanda transnacional del artista",
+          "intencion": "de Colombia para el mundo, el adonis colombiano ya es pedido en México y países de Latinoamérica",
+          "datos_duros": "México y países de Latinoamérica",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Prelanzamiento / Anuncio de Collab",
+          "fecha": "27-28 Mayo",
+          "index": 4,
+          "angulo": "Expectativa y teorías del fandom ante colaboración inminente",
+          "intencion": "La primera collab de javier Ferreira están haciendo que ardan las redes, y sus fans ya especulan (montar ss de fans preguntando y adivinando)",
+          "datos_duros": "",
+          "nota_contexto": "montar ss de fans preguntando y adivinando"
+        },
+        {
+          "fase": "Prelanzamiento / Anuncio de Collab",
+          "fecha": "27-28 Mayo",
+          "index": 5,
+          "angulo": "Confirmación oficial de alianza musical binomial",
+          "intencion": "El colombiano litbari se une junto a Javier Ferreira en su próximo lanzamiento “quien como yo”",
+          "datos_duros": "Lit Barry, Quien Como Yo",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Lanzamiento / Sprint de 72hrs algorítmico",
+          "fecha": "28-29 Mayo",
+          "index": 6,
+          "angulo": "Continuidad creativa tras hito previo consolidado",
+          "intencion": "El artista detrás del éxito clack clack estrena su primera colaboración",
+          "datos_duros": "Clack Clack",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Lanzamiento / Sprint de 72hrs algorítmico",
+          "fecha": "28-29 Mayo",
+          "index": 7,
+          "angulo": "Recepción inmediata y disponibilidad oficial del single",
+          "intencion": "Quien como yo, está rompiendo expectativas, la primera colaboración del adonis colombiano javier Ferreira ya está disponible",
+          "datos_duros": "Quien Como Yo",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Lanzamiento / Sprint de 72hrs algorítmico",
+          "fecha": "28-29 Mayo",
+          "index": 8,
+          "angulo": "Impacto conversacional y engagement digital orgánico",
+          "intencion": "Litbari y javier Ferreira, el junte del que todos están hablando en redes / mostrar interacciones de fans",
+          "datos_duros": "Lit Barry",
+          "nota_contexto": "mostrar interacciones de fans"
+        },
+        {
+          "fase": "Sostenimiento / Hitos",
+          "fecha": "1-3 Junio",
+          "index": 9,
+          "angulo": "Adopción orgánica en plataforma de video corto",
+          "intencion": "quien como yo acumula x cantidad de videos en TikTok",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Sostenimiento / Hitos",
+          "fecha": "1-3 Junio",
+          "index": 10,
+          "angulo": "Crecimiento exponencial hacia hito cuantitativo en red social",
+          "intencion": "a nada de llegar a los 4 millones en TikTok luego de lanzar su sencillo quien como yo",
+          "datos_duros": "4 millones en TikTok, Quien Como Yo",
+          "nota_contexto": ""
+        }
+      ],
+      "premisa": "Campaña de lanzamiento de 'Quien Como Yo' estructurada en 4 fases (percepción pública, prelanzamiento, sprint algorítmico de 72 horas y sostenimiento) para consolidar a Javier Ferreira como artista urbano pop legítimo, destacando su transición desde el modelaje, su alcance internacional y la recepción viral de su primera colaboración con Lit Barry.",
+      "percepcion_objetivo": "Posicionar a Javier Ferreira como artista musical consolidado con tracción internacional y comunidad digital activa, legitimando su transición de creador de contenido a referente del reggaeton pop comercial colombiano."
+    },
+    "status": "generado",
+    "created_at": "2026-06-11T17:34:06.191533+00:00",
+    "plan_raw": "FASE 1 / 25-27 Mayo \nAumentar Percepción pública\n3 notas de prensa\n\n- de modelo a artista consolidado, la historia de javier Ferreira \n- ⁠El influencer que ya acumula más de un millón de escuchas en su catálogo musical\n- ⁠de Colombia para el mundo, el adonis colombiano ya es pedido en México y países de Latinoamérica\n\nFASE 2 / 27-28 Mayo\nPrelanzamiento / Anuncio de Collab \n2 notas de prensa\n\n- La primera collab de javier Ferreira están haciendo que ardan las redes, y sus fans ya especulan (montar ss de fans preguntando y adivinando) \n- ⁠El colombiano litbari se une junto a Javier Ferreira en su próximo lanzamiento “quien como yo”\n\nFase 3 / 28-29 Mayo\nLanzamiento / Sprint de 72hrs algorítmico \n3 notas de prensa\n\n- El artista detrás del éxito clack clack estrena su primera colaboración \n- ⁠Quien como yo, está rompiendo expectativas, la primera colaboración del adonis colombiano javier Ferreira ya está disponible \n- ⁠Litbari y javier Ferreira, el junte del que todos están hablando en redes / mostrar interacciones de fans\n\nFase 4 / 1-3 Junio \nSostenimiento / Hitos\n2 notas de prensa\n\n- quien como yo acumula x cantidad de videos en TikTok \n- ⁠a nada de llegar a los 4 millones en TikTok luego de lanzar su sencillo quien como yo\n\n\nTOTAL DE NOTAS DE PRENSA: 10\nActivaciones: 25 Mayo - 3 Junio",
+    "client_slug": "chimbita-records"
+  },
+  {
+    "id": "6d3d4835-225b-4eec-a9e8-f72b9720be5f",
+    "client_id": "fa804102-ab93-4aed-9f9c-6ecc62ec56c4",
+    "artist_slug": "",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "Autoridad en nicho de baile",
+          "fecha": "Por definir",
+          "index": 1,
+          "angulo": "Posicionamiento como referente indiscutible del género urbano en el sector dance nacional",
+          "intencion": "generar autoridad en el nicho de bailarines de colombia",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Autoridad en nicho de baile",
+          "fecha": "Por definir",
+          "index": 2,
+          "angulo": "Construcción de identidad artística exclusivamente vinculada al mundo del baile urbano",
+          "intencion": "reforzar la narrativa de que JOT4 es el artista de los bailarines",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Autoridad en nicho de baile",
+          "fecha": "Por definir",
+          "index": 3,
+          "angulo": "Validación comunitaria a través de adopción orgánica por parte de instituciones de baile nacionales",
+          "intencion": "comunicando el apoyo organico que ha recibido de parte e los bailarines y academias de baile de colombia",
+          "datos_duros": "",
+          "nota_contexto": "mostrar interacciones de academias y bailarines"
+        },
+        {
+          "fase": "Autoridad en nicho de baile",
+          "fecha": "Por definir",
+          "index": 4,
+          "angulo": "Mapeo de penetración cultural nacional a través de contenido generado por usuarios en múltiples ciudades colombianas",
+          "intencion": "videos de su comunidad en clases de baile registradas al interior del pais en ciudades como bogota, medellin, dosquebradas, valledupar, chia, cartagena, Villavicencio y Barranquilla",
+          "datos_duros": "Bogotá, Medellín, Dosquebradas, Valledupar, Chía, Cartagena, Villavicencio, Barranquilla",
+          "nota_contexto": "montar ss de videos de clases en ciudades específicas"
+        },
+        {
+          "fase": "Autoridad en nicho de baile",
+          "fecha": "Por definir",
+          "index": 5,
+          "angulo": "Trascendencia fronteriza de su música en el nicho dance latinoamericano",
+          "intencion": "al exterior en Guatemala y Mexico",
+          "datos_duros": "Guatemala, México",
+          "nota_contexto": "mostrar videos de clases internacionales"
+        },
+        {
+          "fase": "Autoridad en nicho de baile",
+          "fecha": "Por definir",
+          "index": 6,
+          "angulo": "Evidencia de engagement orgánico masivo sin inversión en marketing tradicional",
+          "intencion": "Nos han llegado muchos videos de su comunidad en clases de baile registradas",
+          "datos_duros": "",
+          "nota_contexto": "compilar volumen de contenido generado por fans"
+        }
+      ],
+      "premisa": "Generar autoridad de JOT4 como el artista de referencia en el nicho de bailarines de Colombia mediante la evidencia del apoyo orgánico recibido de academias y comunidades de baile nacionales e internacionales.",
+      "percepcion_objetivo": "JOT4 es el artista de los bailarines, un referente cultural cuya música es adoptada orgánicamente por academias y bailarines en toda Colombia y el extranjero."
+    },
+    "status": "draft",
+    "created_at": "2026-06-25T02:19:46.382661+00:00",
+    "plan_raw": "Necesito generar 6 narrativas diferentes para publicar 2 notas de prensa en bogota, la intencion es generar autoridad en el nicho de bailarines de colombia, y reforzar la narrativa de que JOT4 es el artista de los bailarines comunicando el apoyo organico que ha recibido de parte e los bailarines y academias de baile de colombia y el exterior, Nos han llegado muchos videos de su comunidad en clases de baile registradas al interior del pais en ciudades como bogota, medellin, dosquebradas, valledupar, chia, cartagena, Villavicencio y Barranquilla y al exterior en Guatemala y Mexico",
+    "client_slug": "jot4r"
+  },
+  {
+    "id": "c78acf01-2778-4aa4-ae38-f9b9cd8ce5c5",
+    "client_id": "fa804102-ab93-4aed-9f9c-6ecc62ec56c4",
+    "artist_slug": "",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "Nota 1 - Posicionamiento de autoridad",
+          "fecha": "Por definir",
+          "index": 1,
+          "angulo": "Establecer a JOT4 como referente obligado dentro del gremio dancer nacional",
+          "intencion": "Generar autoridad en el nicho de bailarines de Colombia",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Nota 1 - Posicionamiento de autoridad",
+          "fecha": "Por definir",
+          "index": 2,
+          "angulo": "Construcción de identidad de marca alineada con la cultura dancer",
+          "intencion": "Reforzar la narrativa de que JOT4 es el artista de los bailarines",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Nota 1 - Posicionamiento de autoridad",
+          "fecha": "Por definir",
+          "index": 3,
+          "angulo": "Validación orgánica del movimiento desde las bases del gremio nacional",
+          "intencion": "Comunicar el apoyo orgánico recibido de parte de bailarines y academias de baile de Colombia",
+          "datos_duros": "",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Nota 2 - Expansión territorial",
+          "fecha": "Por definir",
+          "index": 4,
+          "angulo": "Mapeo geográfico de la adopción real de la música en salones de clase nacionales",
+          "intencion": "Mostrar videos creados por la comunidad en clases de baile registradas al interior del país en ciudades bogota, medellin, dosquebradas, valledupar, chia, cartagena, Villavicencio y Barranquilla",
+          "datos_duros": "Bogotá, Medellín, Dosquebradas, Valledupar, Chía, Cartagena, Villavicencio, Barranquilla",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Nota 2 - Expansión territorial",
+          "fecha": "Por definir",
+          "index": 5,
+          "angulo": "Proyección centroamericana y validación orgánica del movimiento JOT4",
+          "intencion": "Registrar videos de clases de baile creados por la comunidad al exterior del país en Guatemala",
+          "datos_duros": "Guatemala",
+          "nota_contexto": ""
+        },
+        {
+          "fase": "Nota 2 - Expansión territorial",
+          "fecha": "Por definir",
+          "index": 6,
+          "angulo": "Conexión transnacional con la escena dancer mexicana",
+          "intencion": "Registrar videos de clases de baile creados por la comunidad al exterior del país en Mexico",
+          "datos_duros": "México",
+          "nota_contexto": ""
+        }
+      ],
+      "premisa": "Posicionar a JOT4 como la autoridad musical del nicho dancer en Colombia mediante la evidencia de adopción orgánica en academias de baile nacionales e internacionales.",
+      "percepcion_objetivo": "Que JOT4 sea percibido como el artista de los bailarines por excelencia, respaldado por el apoyo tangible y orgánico de bailarines y academias tanto en Colombia como en el exterior."
+    },
+    "status": "generado",
+    "created_at": "2026-06-25T02:33:08.855436+00:00",
+    "plan_raw": "Necesito generar 6 narrativas diferentes para publicar 2 notas de prensa en bogota, la intencion es generar autoridad en el nicho de bailarines de colombia, y reforzar la narrativa de que JOT4 es el artista de los bailarines comunicando el apoyo organico que ha recibido de parte e los bailarines y academias de baile de colombia y el exterior, Nos han llegado muchos videos creados por su comunidad en clases de baile registradas al interior del pais en ciudades bogota, medellin, dosquebradas, valledupar, chia, cartagena, Villavicencio y Barranquilla y al exterior del pais en Guatemala y Mexico",
+    "client_slug": "jot4r"
+  },
+  {
+    "id": "edb2899f-fdf8-4997-8353-87998f95ed38",
+    "client_id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "artist_slug": "javier-ferreira",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "Pre-lanzamiento",
+          "fecha": "10 de junio de 2026",
+          "index": 1,
+          "angulo": "Misterio y anticipación visual antes del anuncio oficial",
+          "intencion": "Publicar teaser visual en redes que anuncie el cierre de la era Adonis con el nuevo single sin revelar título aún, mostrando solo elementos estéticos del video",
+          "datos_duros": "",
+          "nota_contexto": "Usar fotos de la sesión Adonis con el monograma JF, sin mostrar rostro completo, resaltando iluminación dramática"
+        },
+        {
+          "fase": "Pre-lanzamiento",
+          "fecha": "12 de junio de 2026",
+          "index": 2,
+          "angulo": "Confirmación oficial del lanzamiento inminente con identidad visual marcada",
+          "intencion": "Revelar título oficial del single, fecha exacta de lanzamiento y portada con tipografía Butler y paleta bronce/negro característica",
+          "datos_duros": "",
+          "nota_contexto": "Incluir link de pre-save y quote del artista referenciando la frase guía de la era"
+        },
+        {
+          "fase": "Pre-lanzamiento",
+          "fecha": "15 de junio de 2026",
+          "index": 3,
+          "angulo": "El making of como prueba de la apuesta por la estética pop idol",
+          "intencion": "Compartir detrás de cámaras del video mostrando la producción visual tipo dios mitológico y el trabajo de iluminación que valoriza el cuerpo y la mirada",
+          "datos_duros": "",
+          "nota_contexto": "Fotos del set con iluminación dorada, vestuario tipo estatuaria clásica y detalles de joyería discreta"
+        },
+        {
+          "fase": "Pre-lanzamiento",
+          "fecha": "17 de junio de 2026",
+          "index": 4,
+          "angulo": "Continuidad artística y crecimiento desde la colaboración anterior",
+          "intencion": "Publicar nota sobre la evolución musical desde Quien Como Yo hacia este single, destacando la madurez en la escritura sin perder el carácter comercial",
+          "datos_duros": "Quien Como Yo feat. Lit Barry, mayo 2026",
+          "nota_contexto": "Mencionar el feat anterior como punto de partida pero enfocar en la nueva narrativa romántica"
+        },
+        {
+          "fase": "Lanzamiento",
+          "fecha": "20 de junio de 2026",
+          "index": 5,
+          "angulo": "El día cero del nuevo capítulo Adonis ya disponible para consumo masivo",
+          "intencion": "Anunciar disponibilidad inmediata del single en todas las plataformas digitales con link directo de acceso y función de estreno",
+          "datos_duros": "",
+          "nota_contexto": "Incluir smart link y capturas de pantalla del single ya live en Spotify y Apple Music"
+        },
+        {
+          "fase": "Lanzamiento",
+          "fecha": "20 de junio de 2026",
+          "index": 6,
+          "angulo": "El video como experiencia visual completa de la era",
+          "intencion": "Estrenar el videoclip oficial y destacar la estética de sensualidad elegante sin vulgaridad, con referencias mitológicas sutiles al concepto Adonis",
+          "datos_duros": "",
+          "nota_contexto": "Embed del video y galería de fotos del rodaje mostrando primeros planos de abdomen, mandíbula y mirada"
+        },
+        {
+          "fase": "Post-lanzamiento",
+          "fecha": "22 de junio de 2026",
+          "index": 7,
+          "angulo": "Validación inmediata del público con datos concretos de consumo digital",
+          "intencion": "Reportar primeras cifras de reproducción en tiempo real y posicionamiento en playlists de estreno de la plataforma",
+          "datos_duros": "",
+          "nota_contexto": "Screenshots de Spotify/Apple Music mostrando posicionamiento en listas de novedades"
+        },
+        {
+          "fase": "Post-lanzamiento",
+          "fecha": "24 de junio de 2026",
+          "index": 8,
+          "angulo": "La comunidad joven validando el nuevo material y generando conversación orgánica",
+          "intencion": "Compilar reacciones de la comunidad (las chimbitas) y menciones de medios especializados sobre el impacto del sonido y la imagen",
+          "datos_duros": "",
+          "nota_contexto": "Montar SS de comentarios de fans en TikTok e Instagram especulando y reaccionando a la estética"
+        },
+        {
+          "fase": "Post-lanzamiento",
+          "fecha": "27 de junio de 2026",
+          "index": 9,
+          "angulo": "Profundidad conceptual que demuestra que no es solo reggaeton repetitivo sino historia central",
+          "intencion": "Análisis profundo de la letra conectando la narrativa romántica/sensual con el concepto de Adonis y la nueva masculinidad latina contemporánea",
+          "datos_duros": "",
+          "nota_contexto": "Destacar estructura de canción con narrativa emocional clara y letras limpias aptas para público amplio"
+        },
+        {
+          "fase": "Sostenimiento",
+          "fecha": "30 de junio de 2026",
+          "index": 10,
+          "angulo": "El lanzamiento como punto de partida para la consolidación en vivo",
+          "intencion": "Anunciar fechas de presentaciones en vivo y adelantar que viene más contenido para cerrar el ciclo completo de la era Adonis",
+          "datos_duros": "",
+          "nota_contexto": "Mencionar posibles activaciones en colegios o shows cercanos replicando la estrategia de Tu Contacto"
+        }
+      ],
+      "premisa": "Campaña de 10 notas para consolidar el nuevo single de Javier Ferreira como hito central de la era Adonis, articulando anticipación visual, estreno masivo y análisis conceptual para posicionarlo como pop idol urbano de referencia.",
+      "percepcion_objetivo": "Establecer el lanzamiento como una evolución natural y madura de su propuesta musical, distanciándolo del trap dominante y reforzando su legitimidad como artista con narrativa visual y conceptual sólida."
+    },
+    "status": "generado",
+    "created_at": "2026-06-26T19:58:36.769025+00:00",
+    "plan_raw": "Genera 10 notas de prensa para anunciar un nuevo lanzamiento",
+    "client_slug": "chimbita-records"
+  },
+  {
+    "id": "53b1f187-0b63-40a4-9831-23846b2d40ca",
+    "client_id": "d0c7b7d9-8b1f-48ec-97de-b88efc87e368",
+    "artist_slug": "javier-ferreira",
+    "objetivo_percepcion": null,
+    "arco": {
+      "beats": [
+        {
+          "fase": "PENDIENTE - Usuario debe especificar",
+          "fecha": "PENDIENTE - Usuario debe especificar",
+          "index": 1,
+          "angulo": "Se requiere el input crudo del usuario para cada nota",
+          "intencion": "Usuario: proporcionar las 10 ideas de notas (bullets/intenciones) tal como las pensó",
+          "datos_duros": "",
+          "nota_contexto": "Faltan: instrucciones operativas, datos duros específicos, y segmentación en fases/fechas"
+        }
+      ],
+      "premisa": "Esperando el detalle completo del plan de campaña de 10 notas para el nuevo lanzamiento de Javier Ferreira",
+      "percepcion_objetivo": "Estructurar fielmente el plan del usuario respetando sus fases, fechas e intenciones sin inventar contenido"
+    },
+    "status": "generado",
+    "created_at": "2026-06-26T20:03:50.447838+00:00",
+    "plan_raw": "Necesito anunciar un nuevo lanzamiento con 10 notas de prensa",
+    "client_slug": "chimbita-records"
+  }
+]

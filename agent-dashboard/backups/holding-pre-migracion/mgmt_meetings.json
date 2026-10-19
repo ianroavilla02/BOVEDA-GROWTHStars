@@ -1,0 +1,90 @@
+[
+  {
+    "id": "c8c45e18-92bd-4024-813f-26a63aa7def4",
+    "objective_id": "ba89b8b4-852a-4575-8043-26a03ac692af",
+    "type": "empalme",
+    "scheduled_at": null,
+    "held_at": "2026-06-11T15:32:16.998+00:00",
+    "status": "documented",
+    "summary": "05/06 PARTE 1 - Reunión de coordinación para organizar maquetas en Drive, resolver problema de pago internacional pendiente con Remitly, revisar feedback de producción musical, y definir estrategia de Dirección Artística enfocada en autenticidad y evolución para evitar ser one hit wonder.",
+    "document_path": "06_CLIENTES/reckless/mgmt/meetings/empalme-meta-1-1781191936993.md",
+    "action_items": "Organizar maquetas en carpeta de Drive clasificada por singles, colaboraciones y EPs\nEnviar maquetas actuales al grupo de WhatsApp\nDesarrollar propuesta de estrategia documental/cinemática",
+    "attendees": [],
+    "notes": null,
+    "created_at": "2026-06-11T15:32:16.544655+00:00",
+    "updated_at": "2026-06-11T15:32:16.544655+00:00"
+  },
+  {
+    "id": "2a220daf-5fd8-498c-9a02-34b298a6df36",
+    "objective_id": "ba89b8b4-852a-4575-8043-26a03ac692af",
+    "type": "empalme",
+    "scheduled_at": null,
+    "held_at": "2026-06-11T15:44:30.907+00:00",
+    "status": "documented",
+    "summary": "05/06 PARTE 2 - Sesión de descubrimiento con Reckless para definir dirección artística. Se exploraron referentes visuales, gustos cinematográficos (terror/suspenso) y se acordó usar Pinterest para recolectar inspiración visual para el Brand Book.",
+    "document_path": "06_CLIENTES/reckless/mgmt/meetings/empalme-meta-1-1781192670905.md",
+    "action_items": "Descargar aplicación Pinterest y dedicar 30 minutos semanales a guardar referentes visuales\nEnviar fecha y hora de nacimiento\nEnviar link de Drive con canciones",
+    "attendees": [
+      "Reckless",
+      "Sancor"
+    ],
+    "notes": null,
+    "created_at": "2026-06-11T15:44:30.471409+00:00",
+    "updated_at": "2026-06-11T15:44:30.471409+00:00"
+  },
+  {
+    "id": "776f3736-ae40-4fb6-9585-947d23c19c87",
+    "objective_id": "c5b6eba3-7800-4cba-bdb7-aa67ae382ca9",
+    "type": "empalme",
+    "scheduled_at": null,
+    "held_at": "2026-06-11T15:50:50.308+00:00",
+    "status": "documented",
+    "summary": "Sesión para recolectar estadísticas de Meta, TikTok, Spotify y distribuidora para auditoría. Se discute organización de contenido en Instagram y análisis de audiencia en México. Pendiente compartir pantalla para screenshots y revisar problema de transferencia con Remely.",
+    "document_path": "06_CLIENTES/reckless/mgmt/meetings/empalme-meta-3-1781193050306.md",
+    "action_items": "Verificar estado de transferencia de pago por Remetly\nFiltrar y archivar publicaciones de Instagram fuera del Brand Book (próxima reunión)\nContenido Local y Audiencia Mexica - Usar",
+    "attendees": [
+      "Sancor",
+      "Reckless"
+    ],
+    "notes": null,
+    "created_at": "2026-06-11T15:50:49.870385+00:00",
+    "updated_at": "2026-06-11T15:50:49.870385+00:00"
+  },
+  {
+    "id": "320d5385-d3c8-4cea-9706-dc467e8f8048",
+    "objective_id": "c5b6eba3-7800-4cba-bdb7-aa67ae382ca9",
+    "type": "entrega",
+    "scheduled_at": null,
+    "held_at": "2026-06-12T19:26:24.573+00:00",
+    "status": "documented",
+    "summary": "Presentación de hallazgos críticos de auditoría de redes sociales (cuentas apagadas, colapso de actividad) y sesión de discovery sobre identidad artística y motivaciones de Reckless.",
+    "document_path": "06_CLIENTES/reckless/mgmt/meetings/entrega-meta-3-1781292384524.md",
+    "action_items": "Adquirir computador para acceder a información adicional de la auditoría",
+    "attendees": [
+      "Reckless",
+      "Sancor"
+    ],
+    "notes": null,
+    "created_at": "2026-06-12T19:26:24.984621+00:00",
+    "updated_at": "2026-06-12T19:26:24.984621+00:00"
+  },
+  {
+    "id": "9defac56-eb3a-4e98-9945-90c9c6b980a9",
+    "objective_id": "ba89b8b4-852a-4575-8043-26a03ac692af",
+    "type": "entrega",
+    "scheduled_at": null,
+    "held_at": "2026-06-21T14:31:39.167+00:00",
+    "status": "documented",
+    "summary": "# Acta de Reunión: Estrategia de Marca y Lanzamiento Musical",
+    "document_path": "06_CLIENTES/reckless/mgmt/meetings/entrega-meta-1-1782052299164.md",
+    "action_items": null,
+    "attendees": [
+      "RECKLESS",
+      "Santiago Anzola",
+      "Ian Villaveces"
+    ],
+    "notes": null,
+    "created_at": "2026-06-21T14:31:38.082306+00:00",
+    "updated_at": "2026-06-21T14:31:38.082306+00:00"
+  }
+]

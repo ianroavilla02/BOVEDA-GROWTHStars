@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHIMBITA Merch — Handoff · Plan de Contenidos</title>
+<style>
+  :root{--bg:#D9D9D9;--ink:#0A0A0A;--red:#E30613;--line:#B8B8B8;--soft:#C6C6C6;--white:#F2F2F2;--nav-h:58px;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--red);color:#fff;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--ink);height:var(--nav-h);display:flex;align-items:center;gap:26px;padding:0 30px;}
+  .brand{color:var(--bg);font-weight:800;font-size:16px;text-decoration:none;flex:none;white-space:nowrap;}
+  .brand b{color:var(--red);}
+  .navlinks{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;}
+  .navlinks::-webkit-scrollbar{display:none;}
+  .navlinks a{color:#9a9a9a;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s;}
+  .navlinks a:hover{color:#fff;}
+  .navlinks a.active{background:var(--red);color:#fff;}
+  .navcta{flex:none;background:var(--red);color:#fff;text-decoration:none;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:9px 16px;border-radius:999px;white-space:nowrap;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:calc(var(--nav-h) + 40px) 30px 0;}
+
+  section{padding:60px 0 20px;scroll-margin-top:calc(var(--nav-h) + 10px);}
+  section:first-of-type{padding-top:24px;}
+  .sec-head{display:grid;grid-template-columns:250px 1fr;gap:32px;border-top:2px solid var(--ink);padding-top:20px;}
+  .sec-label{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;}
+  .sec-label .num{color:var(--red);margin-right:10px;}
+  .sec-title{font-size:clamp(28px,3.8vw,42px);font-weight:800;letter-spacing:-0.02em;line-height:1.08;}
+  .sec-title em{font-style:normal;color:var(--red);}
+  .sec-body{display:grid;grid-template-columns:250px 1fr;gap:32px;margin-top:26px;}
+  .sec-note{font-size:12.5px;color:#444;line-height:1.75;}
+  .sec-note b{color:var(--ink);}
+  .content p{margin-bottom:12px;}
+  .content p:last-child{margin-bottom:0;}
+  .lead{font-size:18px;font-weight:600;}
+  .rule{border:none;border-top:1px solid var(--line);margin:20px 0;}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;}
+
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:6px;}
+  .card{background:var(--white);border:1px solid var(--line);padding:22px 24px;border-radius:5px;transition:transform .25s,box-shadow .25s,border-color .25s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.12);border-color:var(--ink);}
+  .card h4{font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:9px;display:flex;align-items:center;gap:8px;}
+  .card h4 .dot{width:9px;height:9px;background:var(--red);border-radius:50%;flex:none;}
+  .card p{font-size:13.5px;color:#2a2a2a;margin-bottom:8px;}
+  .card p:last-child{margin-bottom:0;}
+  .pill{display:inline-block;background:var(--ink);color:var(--bg);font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-left:auto;flex:none;}
+  .pill.red{background:var(--red);color:#fff;}
+
+  .numgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px;}
+  .nbox{background:var(--white);border:1px solid var(--line);border-radius:5px;padding:18px 20px;transition:transform .25s,border-color .25s;}
+  .nbox:hover{transform:translateY(-4px);border-color:var(--ink);}
+  .nbox .n{font-size:32px;font-weight:800;letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums;}
+  .nbox .n small{font-size:13px;font-weight:700;color:#555;}
+  .nbox .k{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:7px;}
+  .nbox p{font-size:11.5px;color:#3d3d3d;margin-top:7px;line-height:1.55;}
+  .nbox.dark{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+  .nbox.dark p{color:#cfcfcf;}
+
+  .fase{border:1px solid var(--line);border-radius:5px;background:var(--white);margin-top:14px;overflow:hidden;transition:transform .25s,box-shadow .25s;}
+  .fase:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.10);}
+  .fase .fh{display:flex;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--bg);flex-wrap:wrap;}
+  .fase .fh .fw{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--red);flex:none;}
+  .fase .fh h5{font-size:16px;font-weight:800;letter-spacing:-0.01em;}
+  .fase .fh .ff{margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--bg);padding:5px 12px;border-radius:999px;white-space:nowrap;}
+  .fase.hot .fh .ff{background:var(--red);}
+  .fase .fb{padding:18px 22px;}
+  .fase .fb p{font-size:13.5px;color:#2a2a2a;margin-bottom:10px;}
+  .fase .fb p:last-child{margin-bottom:0;}
+  .fase .vol{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0;}
+  .fase .vol span{border:1px solid var(--ink);border-radius:999px;padding:5px 13px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--white);}
+  .fase .vol span.r{background:var(--red);border-color:var(--red);color:#fff;}
+  .fase .meta{display:inline-block;margin-top:6px;background:var(--ink);color:var(--bg);font-size:11.5px;padding:8px 14px;border-radius:4px;line-height:1.55;}
+  .fase .meta b{color:#fff;}
+  .fase .meta::before{content:"🎯 ";}
+  .fase .gate{display:inline-block;margin-top:6px;margin-left:6px;background:var(--red);color:#fff;font-size:11.5px;font-weight:700;padding:8px 14px;border-radius:4px;line-height:1.55;}
+  .fase .gate::before{content:"🚪 ";}
+
+  .tblwrap{overflow-x:auto;margin-top:12px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:600px;}
+  th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;border-bottom:2px solid var(--ink);padding:10px;}
+  td{border-bottom:1px solid var(--line);padding:10px;vertical-align:top;}
+  td.num{font-weight:800;white-space:nowrap;}
+  tr.hl td{background:var(--white);font-weight:700;}
+  tr.hl td:first-child{border-left:4px solid var(--red);}
+  tbody tr:hover td{background:var(--white);}
+
+  .nolist{list-style:none;margin-top:8px;}
+  .nolist li{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px;}
+  .nolist li:last-child{border-bottom:none;}
+  .nolist .x{flex:none;width:23px;height:23px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
+
+  .bigquote{background:var(--ink);color:var(--bg);border-radius:8px;padding:40px 42px;margin-top:12px;position:relative;overflow:hidden;}
+  .bigquote::before{content:"#CHIMBITA";position:absolute;right:-30px;bottom:-58px;font-size:150px;font-weight:800;color:rgba(255,255,255,.045);letter-spacing:-0.04em;pointer-events:none;}
+  .bigquote p{font-size:clamp(17px,2.2vw,23px);font-weight:700;line-height:1.5;position:relative;}
+  .bigquote .red{color:var(--red);}
+  .bigquote .sig{margin-top:20px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9a9a9a;position:relative;}
+
+  .doclink{display:inline-flex;align-items:center;gap:8px;margin-top:18px;margin-right:10px;background:var(--ink);color:var(--bg);text-decoration:none;font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:12px 20px;border-radius:999px;}
+  .doclink:hover{background:var(--red);}
+  .doclink.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink);}
+  .doclink.alt:hover{background:var(--ink);color:var(--bg);}
+
+  footer{margin-top:90px;background:var(--ink);color:#8a8a8a;padding:44px 0;}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding-top:0;padding-bottom:0;}
+  footer .red{color:var(--red);font-weight:800;}
+  footer a{color:#8a8a8a;text-decoration:none;}
+  footer a:hover{color:#fff;}
+
+  @media (max-width:860px){
+    .sec-head,.sec-body{grid-template-columns:1fr;gap:12px;}
+    .cards{grid-template-columns:1fr;}
+    .numgrid{grid-template-columns:repeat(2,1fr);}
+    nav{gap:14px;padding:0 16px;}
+    .navcta{display:none;}
+    .wrap{padding:calc(var(--nav-h) + 20px) 18px 0;}
+    .fase .fh .ff{margin-left:0;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#top">CHIMBITA MERCH<b> · HANDOFF — PLAN DE CONTENIDOS</b></a>
+  <div class="navlinks">
+    <a href="#mision">Misión</a>
+    <a href="#lineas">4 líneas</a>
+    <a href="#volumen">Volumen × fase</a>
+    <a href="#cadencia">Cadencia</a>
+    <a href="#foco">Foco × formato</a>
+    <a href="#produccion">Producción</a>
+    <a href="#reglas">Reglas</a>
+  </div>
+  <a class="navcta" href="/">Estrategia →</a>
+</nav>
+
+<div class="wrap" id="top">
+
+  <!-- 01 MISIÓN -->
+  <section id="mision">
+    <div class="sec-head reveal in">
+      <div class="sec-label"><span class="num">01</span>Misión</div>
+      <div class="sec-title">Tu misión</div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal in">
+        Una sola frase: <b>fabricar el rumor y sostenerlo 45 días, hasta que 120 limitadas se agoten en público.</b><br><br>
+        Este handoff no trae guiones: trae <b>cuánto contenido</b>, <b>en qué formato</b> y <b>con qué foco</b>. Las ideas se guionizan en el calendario editorial semanal.
+      </div>
+      <div class="content">
+        <div class="numgrid">
+          <div class="nbox reveal in"><div class="k">Línea 1 · IA</div><div class="n">~45</div><p>piezas de IA durante el pre-lanzamiento (1 diaria). Editoriales, mundos imposibles, personajes.</p></div>
+          <div class="nbox reveal in"><div class="k">Línea 2 · Cine</div><div class="n">6</div><p>piezas hero: 3 capítulos de la serie vertical + tráiler del drop + micro-documental + documental de la fila.</p></div>
+          <div class="nbox reveal in"><div class="k">Línea 3 · Seeding</div><div class="n">60</div><p>boxers sembrados en 48h → meta <b>≥ 25 UGC</b>. Tier 1 apariciones casuales, Tier 2 unboxings.</p></div>
+          <div class="nbox dark reveal in"><div class="k">Línea 4 · Persona</div><div class="n">20–30<small>/día</small></div><p>comentarios infiltrados en páginas de chisme y cuentas de la escena (COL / MIA / MEX). Voz pícara, nunca CM.</p></div>
+        </div>
+        <hr class="rule">
+        <p class="reveal in"><b>Cómo se mide que funcionó:</b> ① comentarios-keyword por capítulo: <b>125 → 375 → 1.250+</b> · ② contenidos que superan 50K vistas: <b>1 → 2 → 4+</b> · ③ UGC del seeding: <b>≥ 25</b> · ④ alcance acumulado: <b>≥ 500K</b> · ⑤ base fuera de Colombia: <b>≥ 30%</b> al drop. Si una pieza no empuja una de estas cinco, no se publica.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 LAS 4 LÍNEAS -->
+  <section id="lineas">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">02</span>Sistema</div>
+      <div class="sec-title">Las <em>4 líneas</em> de contenido</div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        No hacemos contenido de redes: hacemos <b>cine de marca</b>. La IA fabrica el deseo antes de que exista la prenda; el cine le da alma; los 60 contactos crean la ilusión de omnipresencia; la marca-persona aviva el chisme.<br><br>
+        <b>Regla madre:</b> cada pieza de cine esconde un QR de La Cacería.
+      </div>
+      <div class="content">
+        <div class="cards">
+          <div class="card reveal">
+            <h4><span class="dot"></span>Línea 1 · El Mundo Chimbita <span class="pill">IA · TOFU</span></h4>
+            <p><b>Qué es:</b> editoriales sintéticas estilo Vogue × barrio · mundos imposibles localizados (hoodie gigante sobre el metro de Medellín, skyline de Brickell, Ángel de la Independencia) · La Chimbita y El Parchado como personajes recurrentes.</p>
+            <p><b>Foco:</b> provocar la pregunta <i>"¿eso qué es?"</i> — los personajes generan fandom; los posts, no.</p>
+            <p><b>Cuánto:</b> 1 pieza diaria durante todo el pre-lanzamiento (~45) + la jugada de la valla falsa-real.</p>
+          </div>
+          <div class="card reveal d1">
+            <h4><span class="dot"></span>Línea 2 · Cine de Marca <span class="pill red">Cine · MOFU</span></h4>
+            <p><b>Qué es:</b> mini-serie vertical de <b>3 capítulos</b> con cliffhanger — la columna vertebral del funnel (comenta → DM → chimbita.com) · <b>tráiler del drop</b> (45–60s, no muestra el producto hasta el final) · <b>micro-documental del sello</b> (Medellín/Miami, la marca aparece de fondo).</p>
+            <p><b>Foco:</b> convertir curiosidad en registros. El cliffhanger es la puerta del juego.</p>
+            <p><b>Cuánto:</b> 6 piezas hero en total — se ruedan en bloque, se estrenan escalonadas.</p>
+          </div>
+          <div class="card reveal">
+            <h4><span class="dot"></span>Línea 3 · Los 60 <span class="pill">Seeding</span></h4>
+            <p><b>Qué es:</b> 60 boxers sembrados: ~35 Colombia · ~20 Miami · ~5 México. <b>Tier 1</b> (5–8 artistas): apariciones casuales, no posts — la caja de fondo en un live vale 10× un post etiquetado. <b>Tier 2</b> (20–30 chimbitas): unboxings cinematográficos (caja + idea de escena, no guion). <b>Tier 3</b> (comodines): todos en la misma ventana de 48h.</p>
+            <p><b>Foco:</b> "todo el mundo tiene CHIMBITA menos yo".</p>
+            <p><b>Cuánto:</b> 60 paquetes en 48h → ≥ 25 piezas UGC esperadas.</p>
+          </div>
+          <div class="card reveal d1">
+            <h4><span class="dot"></span>Línea 4 · La Marca como Persona <span class="pill">Orgánico</span></h4>
+            <p><b>Qué es:</b> la marca comenta como persona en páginas de chisme y cuentas de la escena. Voz pícara, nunca tono de CM. Anuncia en público cada Golden Ticket encontrado (<i>"SALIÓ EL TERCERO. Quedan 4."</i>) — contenido y prueba social a la vez.</p>
+            <p><b>Foco:</b> avivar el chisme y empujar el algoritmo — cada <i>"¿eso qué es?"</i> ajeno es una victoria.</p>
+            <p><b>Cuánto:</b> 20–30 comentarios diarios + 7 anuncios de Golden Ticket (uno por encontrado).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 VOLUMEN POR FASE -->
+  <section id="volumen">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">03</span>Volumen × fase</div>
+      <div class="sec-title">Cuánto contenido, <em>cuándo y para qué</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        Las fases se heredan de la estrategia de lanzamiento. No se pasa de fase por calendario: <b>se pasa por señal (gates)</b> — si una fase no cumple su meta, se estira el contenido de esa fase, nunca se apura el drop.<br><br>
+        El contenido de IA y cine <b>nunca depende del stock físico</b>: el hype corre aunque la producción se mueva.
+      </div>
+      <div class="content">
+
+        <div class="fase reveal">
+          <div class="fh"><span class="fw">Días 1–14</span><h5>Fase 1 — "Aparece el mundo"</h5><span class="ff">Foco: provocar la pregunta</span></div>
+          <div class="fb">
+            <div class="vol">
+              <span>14 piezas IA (1/día)</span>
+              <span class="r">Capítulo 1 — día 5</span>
+              <span>chimbita.com + La Rifa abren — día 7</span>
+              <span>Premio Relámpago — día 10</span>
+              <span>Stickers QR guerrilla</span>
+              <span>Filtraciones a cuentas de chisme</span>
+            </div>
+            <p><b>Qué busca:</b> que Medellín, Miami y México pregunten "¿qué es CHIMBITA?" antes de saber que es una marca de ropa. La serie arranca el funnel: comenta la palabra clave → DM automatizado → capítulo completo + bono por registrar datos.</p>
+            <span class="meta"><b>Meta:</b> 200 boletos · 1 contenido &gt; 50K vistas</span>
+          </div>
+        </div>
+
+        <div class="fase reveal">
+          <div class="fh"><span class="fw">Días 15–29</span><h5>Fase 2 — "El rumor crece"</h5><span class="ff">Foco: convertir curiosidad en base de datos</span></div>
+          <div class="fb">
+            <div class="vol">
+              <span>15 piezas IA escalando a 3 ciudades</span>
+              <span class="r">Capítulo 2 (QR escondido) — día 15</span>
+              <span>Micro-documental del sello — día 20</span>
+              <span class="r">1er Golden Ticket anunciado — días 22–25</span>
+              <span>Anuncio del tráiler — día 25</span>
+            </div>
+            <p><b>Qué busca:</b> la prueba social arranca: el primer Golden Ticket encontrado se anuncia con bombo, el micro-documental da credibilidad (el backstage real es lo que la competencia no puede copiar) y Tier 1 prepara apariciones casuales.</p>
+            <span class="meta"><b>Gate día 29:</b> ≥ 375 boletos · 2 contenidos &gt; 50K · rumor activo · ≥ 20% de la base fuera de Colombia · ≥ 1 Golden Ticket encontrado</span>
+          </div>
+        </div>
+
+        <div class="fase reveal">
+          <div class="fh"><span class="fw">Días 30–37</span><h5>Fase 3 — "Las 60 siembran"</h5><span class="ff">Foco: omnipresencia coordinada</span></div>
+          <div class="fb">
+            <div class="vol">
+              <span class="r">Seeding express 48h — día 30</span>
+              <span class="r">Tráiler del drop — día 31 (todos a la misma hora)</span>
+              <span>Saturación 48h en 3 mercados — días 33–35</span>
+              <span class="r">Capítulo 3 (final) — día 36</span>
+              <span>Repost diario de UGC</span>
+            </div>
+            <p><b>Qué busca:</b> la ilusión de que todo el mundo ya tiene CHIMBITA. Empaque cinematográfico + nota manuscrita, sin pedir post. El Capítulo 3 revela la fecha del drop y esconde el último QR de La Cacería. Miami sale por courier el mismo día que Medellín.</p>
+            <span class="gate"><b>Gate:</b> ≥ 25 UGC del seeding · alcance ≥ 500K · ≥ 750 boletos</span>
+          </div>
+        </div>
+
+        <div class="fase hot reveal">
+          <div class="fh"><span class="fw">Días 38–45</span><h5>Fase 4 — "120 limitadas y se acabó" 🔥</h5><span class="ff">Foco: FOMO máximo + documentar el sold out</span></div>
+          <div class="fb">
+            <div class="vol">
+              <span>Countdown 72h — día 38</span>
+              <span class="r">Cobertura en vivo del drop — día 41</span>
+              <span>El Intercambio (fila real pop-up)</span>
+              <span class="r">Rifa en vivo del Hoodie #001/40</span>
+              <span>El Velorio — día 42</span>
+              <span>Documental de la fila</span>
+            </div>
+            <p><b>Qué busca:</b> el drop se documenta como partido de fútbol — narración, entrevistas, contador en vivo. El contenido del sold out se convierte en el tráiler del Drop 2. El Velorio celebra el agotado y reinicia el juego (boletos y letras se conservan; los boxers quedan en venta permanente).</p>
+            <span class="meta"><b>Misión:</b> 120/120 limitadas · base 750+ enganchada · documental de la fila listo</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CADENCIA -->
+  <section id="cadencia">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">04</span>Ritmo</div>
+      <div class="sec-title">Cadencia <em>operativa</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        El ritmo mínimo sostenible. Si un día no hay nada mejor que publicar, se publica la pieza IA del día y se trabajan los comentarios. <b>Nunca se publica por rellenar.</b>
+      </div>
+      <div class="content">
+        <div class="tblwrap reveal">
+        <table>
+          <thead><tr><th>Canal</th><th>Frecuencia</th><th>Qué se publica</th></tr></thead>
+          <tbody>
+          <tr><td class="num">Feed (IG/TikTok)</td><td><b>1 pieza/día</b></td><td>La pieza IA del día o la pieza de cine programada. Calidad de campaña, siempre.</td></tr>
+          <tr><td class="num">Stories</td><td><b>3–5/día</b></td><td>Estado del juego (boletos, letras, golden tickets), repost de UGC, respuestas con humor, countdowns. Aquí vive La Rifa.</td></tr>
+          <tr><td class="num">Comentarios infiltrados</td><td><b>20–30/día</b></td><td>Páginas de chisme y cuentas de la escena en COL/MIA/MEX. Nunca desde un tono de marca oficial.</td></tr>
+          <tr><td class="num">Serie vertical</td><td><b>1 capítulo cada ~10–15 días</b></td><td>3 capítulos totales. Cada estreno es un evento con mecánica comenta→DM→registro.</td></tr>
+          <tr class="hl"><td class="num">Piezas hero</td><td><b>6 en 45 días</b></td><td>Serie (3) + tráiler + micro-doc + documental de la fila. Fechas marcadas en la fase, no negociables una vez anunciadas.</td></tr>
+          <tr><td class="num">Anuncios de Golden Ticket</td><td><b>Máx. 7</b></td><td>Uno por ticket encontrado, en el momento. Es la prueba social más barata del plan.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 FOCO POR FORMATO -->
+  <section id="foco">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">05</span>Foco × formato</div>
+      <div class="sec-title">Qué trabajo hace <em>cada pieza</em></div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        Cada formato tiene UN trabajo y UNA métrica que lo juzga. Si una pieza no sabe cuál es su trabajo, no sale.<br><br>
+        <b>Jerarquía:</b> primero los personajes y el mundo; el producto aparece tarde y de fondo.
+      </div>
+      <div class="content">
+        <div class="tblwrap reveal">
+        <table>
+          <thead><tr><th>Formato</th><th>Su trabajo</th><th>La métrica que lo juzga</th></tr></thead>
+          <tbody>
+          <tr><td class="num">Mundos imposibles / editoriales IA</td><td>Provocar <i>"¿eso qué es?"</i> y que lo compartan</td><td>Compartidos + comentarios preguntando</td></tr>
+          <tr class="hl"><td class="num">Cliffhanger de la serie</td><td>Convertir un comentario en un registro</td><td>Comentarios-keyword (125 → 375 → 1.250+)</td></tr>
+          <tr><td class="num">Capítulo completo (chimbita.com)</td><td>Capturar datos y entregar el bono</td><td>Conversión DM → registro (30% → 50%)</td></tr>
+          <tr><td class="num">Micro-documental del sello</td><td>Credibilidad: esto es real y nace de la música</td><td>Vistas completas + menciones de prensa/chisme</td></tr>
+          <tr><td class="num">Tráiler del drop</td><td>FOMO: revelar que hay fecha y que es poco</td><td>Boletos nuevos en las 72h siguientes</td></tr>
+          <tr><td class="num">UGC de seeding</td><td>Prueba social: "todos lo tienen menos yo"</td><td>≥ 25 piezas · alcance ≥ 500K</td></tr>
+          <tr><td class="num">Anuncio de Golden Ticket</td><td>Evidencia de que el juego paga de verdad</td><td>Pico de raspaditas en las 24h siguientes</td></tr>
+          <tr><td class="num">Cobertura del drop + El Velorio</td><td>Convertir el sold out en el tráiler del Drop 2</td><td>Vistas del documental de la fila · base que se queda al Drop 2</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 PRODUCCIÓN -->
+  <section id="produccion">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">06</span>Operación</div>
+      <div class="sec-title">Cómo se <em>produce</em> sin volverse locos</div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        El volumen se sostiene con producción en bloque, no con inspiración diaria. Una semana de contenido se fabrica en 1–2 sesiones.
+      </div>
+      <div class="content">
+        <div class="cards">
+          <div class="card reveal">
+            <h4><span class="dot"></span>Batch semanal de IA</h4>
+            <p>Las 7 piezas de la semana se generan en una sola sesión (editoriales, mundos imposibles, escenas de La Tensión). Se aprueban en bloque y quedan programadas. La valla falsa-real y las jugadas especiales se producen aparte, con 1 semana de anticipación.</p>
+          </div>
+          <div class="card reveal d1">
+            <h4><span class="dot"></span>Rodaje en bloque</h4>
+            <p>Los 3 capítulos de la serie vertical se ruedan en <b>1–2 días</b> (mismo universo, mismo casting: La Chimbita y El Parchado). El tráiler y el micro-documental se capturan en el mismo rodaje o en el estudio del sello. Post escalonada: se estrena uno, se edita el siguiente.</p>
+          </div>
+          <div class="card reveal">
+            <h4><span class="dot"></span>Kit de seeding</h4>
+            <p>60 paquetes listos antes de que llegue el stock: caja cinematográfica, nota manuscrita, idea de escena (no guion) para Tier 2. El día que llega el stock, los paquetes salen en 48h — Miami por courier el mismo día.</p>
+          </div>
+          <div class="card reveal d1">
+            <h4><span class="dot"></span>Calendario editorial</h4>
+            <p>Una hoja viva con dueño por pieza: qué sale, qué día, en qué canal, con qué QR, y qué métrica la juzga. Revisión semanal contra los gates de la estrategia — si una fase se estira, el calendario se estira con ella.</p>
+          </div>
+        </div>
+        <hr class="rule">
+        <p class="reveal"><b>Dependencia crítica:</b> el único contenido que necesita stock físico es la cobertura del seeding (día 30+) y el drop. Todo lo demás — serie, IA, tráiler, micro-doc — se produce desde ya, sin esperar una sola prenda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 REGLAS -->
+  <section id="reglas">
+    <div class="sec-head reveal">
+      <div class="sec-label"><span class="num">07</span>Reglas</div>
+      <div class="sec-title">Lo que <em>nunca</em> publicamos</div>
+    </div>
+    <div class="sec-body">
+      <div class="sec-note reveal">
+        Heredadas del branding oficial y la estrategia. Cada "no" protege el misticismo o el presupuesto.
+      </div>
+      <div class="content">
+        <ul class="nolist reveal">
+          <li><span class="x">✕</span><span><b>Nunca explicar qué significa "chimbita"</b> — la pregunta es el gancho; responderla mata el marketing.</span></li>
+          <li><span class="x">✕</span><span><b>Nunca tono de community manager</b> — la marca habla como persona: pícara, segura, sin pedir permiso.</span></li>
+          <li><span class="x">✕</span><span><b>Nunca anunciar: filtrar</b> — nada de "estamos felices de presentar". Las cosas se escapan, se filtran, se descubren.</span></li>
+          <li><span class="x">✕</span><span><b>Nunca mostrar el producto primero</b> — primero el mundo y los personajes; la prenda aparece tarde y de fondo (el tráiler la muestra solo al final).</span></li>
+          <li><span class="x">✕</span><span><b>Nunca publicar por rellenar</b> — si una pieza no provoca pregunta, registro, prueba social o FOMO, no sale.</span></li>
+          <li><span class="x">✕</span><span><b>Nunca paisa en la infraestructura de conversión</b> — el chiste vive en el contenido; chimbita.com, DMs y checkout van en español neutro + inglés para Miami.</span></li>
+          <li><span class="x">✕</span><span><b>Nunca depender del stock físico</b> — IA y cine corren desde el día 1; si la producción se mueve, el hype no se detiene.</span></li>
+        </ul>
+
+        <div class="bigquote reveal" style="margin-top:26px;">
+          <p>45 días de rumor fabricado:<br><span class="red">~45 piezas de IA · 6 piezas de cine · 60 boxers sembrados · 20–30 comentarios diarios.</span><br><br>No hacemos contenido de redes. <span class="red">Documentamos un mundo que la gente quiere habitar.</span></p>
+          <div class="sig">Handoff Plan de Contenidos · CHIMBITA MERCH × G*Startups</div>
+        </div>
+
+        <p class="reveal">
+          <a class="doclink" href="/">Estrategia de lanzamiento →</a>
+          <a class="doclink alt" href="/branding">Branding oficial →</a>
+          <a class="doclink alt" href="/produccion">SOP de producción →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <span>CHIMBITA MERCH — Hecho en Medellín, que el mundo pregunte</span>
+    <span class="red">#CHIMBITA</span>
+    <a href="#top">↑ Volver arriba</a>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const links=[...document.querySelectorAll('.navlinks a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+  const navIO=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id));
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  secs.forEach(s=>s&&navIO.observe(s));
+</script>
+
+</body>
+</html>

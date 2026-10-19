@@ -1,0 +1,17 @@
+{
+  "output": "Jared La J y Calao se juntan y el dancehall colombiano no va a ser el mismo\n\nJared La J sigue imparable y esta vez trae refuerzo de lujo. Se unió con Calao —el que viene dominando el dancehall pesado en Bogotá— para soltar *Pero No*, el tema que tenía a todos esperando. Es la combinación que nadie vio venir pero que, apenas suena, entendés que era obvia: dos mundos del género chocando para armar algo nuevo.\n\nLa fórmula es simple pero letal: bajos de UK drill que retumban duro, pero con esa vibra caribeña que obliga a mover la cadera desde el primer segundo. Jared trae la actitud de rockstar urbano y Calao mete la energía callejera que lo viene caracterizando. Nada de melodías tristes ni trap deprimente: esto es puro perreo con armadura, pensado para la discoteca y para romperla en redes.\n\nEl tema sale este **3 de julio** en todas las plataformas. Si tenías planeado quedarte en casa ese día, cancelá todo porque esto se va a escuchar en todos lados.\n\n---\n\n**Para redes:** Jared La J x Calao se juntaron y el dancehall va a explotar 💥🔥 *Pero No* sale este 3 de julio con todo el drill caribeño pa' la disco 🏝️⛓️ ¡Activen las alarmas! ⏰🎶",
+  "usage": {
+    "prompt_tokens": 11103,
+    "completion_tokens": 1652,
+    "total_tokens": 12755,
+    "cached_tokens": 11103,
+    "prompt_tokens_details": {
+      "cached_tokens": 11103
+    }
+  },
+  "model": "kimi-k2.5",
+  "duration_ms": 43859,
+  "agent": "gs-redactor-prensa",
+  "client": "moneymade",
+  "artist": "jared-la-j"
+}
